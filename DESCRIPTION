@@ -11,3 +11,16 @@ Encoding: UTF-8
 LazyData: true
 URL: https://github.com/JayaniLakshika/cardinalR
 BugReports: https://github.com/JayaniLakshika/cardinalR/issues
+imports:
+    dplyr
+    geozoo
+    mgc
+    snedata
+    tibble
+    tidyr
+    MASS
+Suggests: 
+    knitr,
+    rmarkdown,
+    langevitour
+VignetteBuilder: knitr
