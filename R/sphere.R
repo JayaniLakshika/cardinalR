@@ -31,22 +31,8 @@ sphere <- function(radius, resolution, num_noise_dims, min_noise, max_noise) {
 
   if (num_noise_dims != 0) {
 
-    # Initialize an empty list to store the vectors
-    noise_dim_val_list <- list()
-
-    for (j in 1:num_noise_dims) {
-      if ((j%%2) == 0) {
-        noise_dim_val_list[[j]] <- stats::runif(dim(sphere_mat)[1],
-                                                min = min_noise, max = max_noise)
-      } else {
-        noise_dim_val_list[[j]] <- (-1) * stats::runif(dim(sphere_mat)[1],
-                                                       min = min_noise, max = max_noise)
-      }
-
-
-    }
-
-    noise_mat <- matrix(unlist(noise_dim_val_list), ncol = num_noise_dims)
+    noise_mat <- gen_noise_dims(n = dim(sphere_mat)[1], num_noise_dims = num_noise_dims,
+                                min_noise = min_noise, max_noise = max_noise)
     sphere_mat <- cbind(sphere_mat, noise_mat)
 
     sphere_mat

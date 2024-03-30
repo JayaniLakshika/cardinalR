@@ -209,7 +209,7 @@ dataset3 <- gaussian_clusters(sample_size = 250, with_seed = 2023062801, num_clu
 langevitour(dataset3)
 ```
 
-## Dataset 4 (3D Cube)
+## Dataset 4 (3D Cube) (remove)
 
 ```{r}
 ## Equidistant Solid Cube: A function to generate a solid cube with
@@ -264,7 +264,7 @@ cube_3D_with_noise()$sample_size
 langevitour(dataset4)
 ```
 
-## Dataset 5 (Non-linear)
+## Dataset 5 (Non-linear) (nonlinear)
 
 ```{r}
 nonlinear_2D <- function(sample_size = 100, with_seed = NULL, num_of_noise_dim = 2,
@@ -313,7 +313,7 @@ langevitour(dataset5)
 ```
 
 
-## Dataset 6 (Different shape clusters)
+## Dataset 6 (Different shape clusters) (clustering)
 
 ```{r}
 ## To generate different types of clusters
@@ -434,7 +434,7 @@ dataset6 <- clusters_different_shapes()
 langevitour(dataset6)
 ```
 
-## Dataset 7 (Sine curve with noise)
+## Dataset 7 (Sine curve with noise) (nonlinear)
 
 ```{r}
 sine_curve_with_noise <- function(sample_size = 100, with_seed = NULL, num_of_noise_dim = 8,
@@ -483,7 +483,7 @@ langevitour(dataset7)
 ```
 
 
-## Dataset 9 (three clusters data with extra noise dimensions)
+## Dataset 9 (three clusters data with extra noise dimensions) (clustering)
 
 ```{r}
 
@@ -539,7 +539,7 @@ dataset9 <- three_clusters_data_with_noise(sample_size = 300, num_of_noise_dim =
 langevitour(dataset9)
 ```
 
-## Dataset 10 (Torus with extra noise dimensions)
+## Dataset 10 (Torus with extra noise dimensions) (remove)
 
 ```{r}
 # Torus: A function to generate a torus in any dimension
@@ -592,7 +592,7 @@ dataset10 <- torus_with_noise(sample_size = 300, num_of_noise_dim = 4)
 langevitour(dataset10)
 ```
 
-## Dataset 11 (Spiral with extra noise dimensions)
+## Dataset 11 (Spiral with extra noise dimensions) (remove)
 
 ```{r}
 
@@ -641,7 +641,7 @@ dataset11 <- spiral_with_noise(sample_size = 300, num_of_noise_dim = 4)
 langevitour(dataset11)
 ```
 
-## Dataset 12 (Roman surface with extra noise dimensions)
+## Dataset 12 (Roman surface with extra noise dimensions) (remove)
 
 ```{r}
 
@@ -690,7 +690,7 @@ langevitour(dataset12)
 ```
 
 
-## Dataset 13 (Roman surface with extra noise dimensions)
+## Dataset 13 (Roman surface with extra noise dimensions) (remove)
 
 ```{r}
 #Mobius Experiment
@@ -742,7 +742,7 @@ dataset13 <- mobius_with_noise(sample_size = 300, num_of_noise_dim = 3)
 langevitour(dataset13)
 ```
 
-## Dataset 14 (Dini surface with extra noise dimensions)
+## Dataset 14 (Dini surface with extra noise dimensions) (remove)
 
 ```{r}
 dini_surface_with_noise <- function(sample_size = 100, with_seed = NULL, num_of_noise_dim = 8,
@@ -789,7 +789,7 @@ dataset14 <- dini_surface_with_noise(sample_size = 300, num_of_noise_dim = 3)
 langevitour(dataset14)
 ```
 
-## Dataset 15 (conic spiral with extra noise dimensions)
+## Dataset 15 (conic spiral with extra noise dimensions) (remove)
 
 ```{r}
 conic_spiral_with_noise <- function(sample_size = 100, with_seed = NULL, num_of_noise_dim = 8,
@@ -837,7 +837,7 @@ dataset15 <- conic_spiral_with_noise(sample_size = 300, num_of_noise_dim = 3,
 langevitour(dataset15)
 ```
 
-## Dataset 16 (S curve with a hole and extra noise dimensions)
+## Dataset 16 (S curve with a hole and extra noise dimensions) (remove)
 
 ```{r}
 s_curve_data_hole_with_noise <- function(sample_size = 100, with_seed = NULL, num_of_noise_dim = 8,
@@ -892,7 +892,7 @@ s_curve_data_hole_with_noise(sample_size = 300, num_of_noise_dim = 3,
 langevitour(dataset16)
 ```
 
-## Dataset 17
+## Dataset 17 (remove)
 
 ```{r}
 long_cluster_with_noise <- function(sample_size = 100, with_seed = NULL, num_of_noise_dim = 8,
@@ -959,7 +959,7 @@ dataset17 <- long_cluster_with_noise(sample_size = 300, num_of_noise_dim = 3,
 langevitour(dataset17)
 ```
 
-## Dataset 18
+## Dataset 18 (nonlinear)
 
 ```{r}
 nonlinear_connect_with_noise <- function(sample_size = 400, with_seed = NULL, num_of_noise_dim = 8,
@@ -1045,7 +1045,7 @@ dataset18 <- nonlinear_connect_with_noise(sample_size = 400, num_of_noise_dim = 
 langevitour(dataset18)
 ```
 
-## Dataset 19
+## Dataset 19 (nonlinear)
 
 ```{r}
 nonlinear_mirror_with_noise <- function(sample_size = 400, with_seed = NULL, num_of_noise_dim = 8,
@@ -1118,7 +1118,7 @@ langevitour(dataset19)
 ```
 
 
-## Dataset 20
+## Dataset 20 (add)
 
 ```{r}
 three_circulars_with_noise <- function(sample_size = 300, with_seed = NULL, num_of_noise_dim = 8,
@@ -1199,7 +1199,7 @@ dataset20 <- three_circulars_with_noise(sample_size = 300, num_of_noise_dim = 3,
 langevitour(dataset20)
 ```
 
-## Dataset 21
+## Dataset 21 (clustering)
 
 ```{r}
 cluster_and_curvilinear__with_noise_and_bkg_noise <- function(sample_size = 260, with_seed = NULL, num_of_noise_dim = 8,
@@ -1279,7 +1279,7 @@ dataset21 <- cluster_and_curvilinear__with_noise_and_bkg_noise(sample_size = 260
 langevitour(dataset21)
 ```
 
-## Dataset 22
+## Dataset 22 (remove)
 
 ```{r}
 link_data_with_noise <- function(sample_size = 100, with_seed = NULL, num_of_noise_dim = 8,
@@ -1338,7 +1338,7 @@ dataset22 <- link_data_with_noise(sample_size = 300, num_of_noise_dim = 3,
 langevitour(dataset22)
 ```
 
-## Dataset 23
+## Dataset 23 (remove)
 
 ```{r}
 swiss_roll_with_noise <- function(sample_size = 100, with_seed = NULL, num_of_noise_dim = 8,
@@ -1388,7 +1388,7 @@ dataset23 <- swiss_roll_with_noise(sample_size = 300, num_of_noise_dim = 3,
 langevitour(dataset23)
 ```
 
-## Dataset 24
+## Dataset 24 (branching)
 
 ```{r}
 curvy_tree_with_noise <- function(sample_size = 300, with_seed = NULL, num_of_noise_dim = 8,
@@ -1468,7 +1468,7 @@ dataset24 <- curvy_tree_with_noise(sample_size = 300, num_of_noise_dim = 1,
 langevitour(dataset24)
 ```
 
-## Dataset 25
+## Dataset 25 (branching)
 
 ```{r}
 tree_with_noise <- function(sample_size = 300, with_seed = NULL, num_of_noise_dim = 8,
@@ -1564,7 +1564,7 @@ dataset25 <- tree_with_noise(sample_size = 500, num_of_noise_dim = 3,
 langevitour(dataset25)
 ```
 
-## Dataset 26
+## Dataset 26 (add)
 
 ```{r}
 cell_cycle_with_noise <- function(sample_size = 300, with_seed = NULL, num_of_noise_dim = 8,
@@ -1642,7 +1642,7 @@ dataset26 <- cell_cycle_with_noise(sample_size = 300, num_of_noise_dim = 3,
 langevitour(dataset26)
 ```
 
-## Dataset 27
+## Dataset 27 (add)
 
 ```{r}
 curvy_cell_cycle_with_noise <- function(sample_size = 300, with_seed = NULL, num_of_noise_dim = 8,
@@ -1719,7 +1719,7 @@ dataset27 <- curvy_cell_cycle_with_noise(sample_size = 300, num_of_noise_dim = 3
 langevitour(dataset27)
 ```
 
-## Dataset 28
+## Dataset 28 (nonlinear)
 
 ```{r}
 two_curvy_panckakes_with_noise <- function(sample_size = 300, with_seed = NULL, num_of_noise_dim = 8,
@@ -1786,7 +1786,7 @@ dataset28 <- two_curvy_panckakes_with_noise(sample_size = 300, num_of_noise_dim 
 langevitour(dataset28)
 ```
 
-## Dataset 29
+## Dataset 29 (remove)
 
 ```{r}
 small_big_sphere_with_noise <- function(sample_size = 390, with_seed = NULL, num_of_noise_dim = 8,
@@ -1843,7 +1843,7 @@ langevitour(dataset29)
 ```
 
 
-## Dataset 30
+## Dataset 30 (branching)
 
 ```{r}
 seven_branching_data_with_noise <- function(sample_size = 210, with_seed = NULL, num_of_noise_dim = 8,
@@ -1956,7 +1956,7 @@ dataset30 <- seven_branching_data_with_noise(sample_size = 420, num_of_noise_dim
 langevitour(dataset30)
 ```
 
-## Dataset 31
+## Dataset 31 (branching)
 
 ```{r}
 four_branching_data_with_noise <- function(sample_size = 400, with_seed = NULL, num_of_noise_dim = 8,
@@ -2054,7 +2054,7 @@ dataset31 <- four_branching_data_with_noise(sample_size = 400, num_of_noise_dim 
 langevitour(dataset31)
 ```
 
-## Dataset 32
+## Dataset 32 (branching)
 
 ```{r}
 eight_branching_data_with_noise <- function(sample_size = 400, with_seed = NULL, num_of_noise_dim = 8,
@@ -2176,7 +2176,7 @@ dataset32 <- eight_branching_data_with_noise(sample_size = 400, num_of_noise_dim
 langevitour(dataset32)
 ```
 
-## Dataset 33
+## Dataset 33 (clustering)
 
 ```{r}
 one_doublet_with_noise <- function(sample_size = 110, with_seed = NULL, num_of_noise_dim = 6,
@@ -2247,7 +2247,7 @@ langevitour(dataset33)
 ```
 
 
-## Dataset 34
+## Dataset 34 (nonlinear)
 
 ```{r}
 
@@ -2330,7 +2330,7 @@ dataset34 <- two_curvilinear_data_with_noise(sample_size = 500, num_of_noise_dim
 langevitour(dataset34)
 ```
 
-## Dataset 35
+## Dataset 35 (remove)
 
 ```{r}
 
@@ -2380,7 +2380,7 @@ dataset35 <- sphere_data_with_noise(sample_size = 500, num_of_noise_dim = 6,
 langevitour(dataset35)
 ```
 
-## Dataset 36
+## Dataset 36 (clustering)
 
 ```{r}
 
@@ -2484,7 +2484,7 @@ dataset36 <- three_doublets_with_noise(sample_size = 210, num_of_noise_dim = 6,
 langevitour(dataset36)
 ```
 
-## Dataset 37
+## Dataset 37 (clustering)
 
 ```{r}
 
@@ -2568,7 +2568,7 @@ dataset37 <- one_doublet_four_clusters_with_noise(sample_size = 440, num_of_nois
 langevitour(dataset37)
 ```
 
-## Dataset 38
+## Dataset 38 (clustering)
 
 ```{r}
 
@@ -2656,7 +2656,7 @@ langevitour(dataset38)
 ```
 
 
-## Dataset 39
+## Dataset 39 (clustering)
 
 ```{r}
 
@@ -2747,7 +2747,7 @@ dataset39 <- one_doublet_dfifferent_pattern_clusters_with_noise(sample_size = 28
 langevitour(dataset39)
 ```
 
-## Dataset 40
+## Dataset 40 (clustering)
 
 ```{r}
 
@@ -2857,7 +2857,7 @@ dataset40 <- two_doublets_parallel_with_noise(sample_size = 440, num_of_noise_di
 langevitour(dataset40)
 ```
 
-## Dataset 41
+## Dataset 41 (clustering)
 
 ```{r}
 
@@ -2942,7 +2942,7 @@ dataset41 <- one_doublets_with_bkg_noise(sample_size = 250, num_of_noise_dim = 6
 langevitour(dataset41)
 ```
 
-## Dataset 42
+## Dataset 42 (clustering)
 
 ```{r}
 
@@ -3019,7 +3019,7 @@ dataset42 <- curvy_branching_with_noise(sample_size = 250, num_of_noise_dim = 6,
 langevitour(dataset42)
 ```
 
-## Dataset 43
+## Dataset 43 (clustering)
 
 ```{r}
 
@@ -3101,7 +3101,7 @@ dataset43 <- two_doublets_with_bkg_noise(sample_size = 400, num_of_noise_dim = 6
 langevitour(dataset43)
 ```
 
-## Dataset 44
+## Dataset 44 (clustering)
 
 ```{r}
 two_nonlinear_with_noise <- function(sample_size = 200, with_seed = NULL, num_of_noise_dim = 8,
@@ -3176,7 +3176,7 @@ dataset44 <- two_nonlinear_with_noise(sample_size = 200, num_of_noise_dim = 6,
 langevitour(dataset44)
 ```
 
-## Dataset 45
+## Dataset 45 (remove)
 
 ```{r}
 two_s_curve_hole_with_noise <- function(sample_size = 200, with_seed = NULL, num_of_noise_dim = 8,
@@ -3236,7 +3236,7 @@ dataset45$sample_size
 langevitour(dataset45$df)
 ```
 
-## Dataset 46
+## Dataset 46 (add)
 
 ```{r}
 three_grid_with_noise <- function(n_value = 19, with_seed = NULL, num_of_noise_dim = 8,
@@ -3316,7 +3316,7 @@ dataset46$sample_size
 langevitour(dataset46$df)
 ```
 
-## Dataset 47
+## Dataset 47 (add)
 
 ```{r}
 one_grid_diff_with_bkg_noise <- function(sample_size = 260, with_seed = NULL, num_of_noise_dim = 5,
@@ -3411,7 +3411,7 @@ dataset47 <- one_grid_diff_with_bkg_noise(sample_size = 260, num_of_noise_dim = 
 langevitour(dataset47)
 ```
 
-## Dataset 48
+## Dataset 48 (add)
 
 ```{r}
 two_grid_with_bkg_noise <- function(n_value = 10, with_seed = NULL, num_of_noise_dim = 8,
@@ -3488,7 +3488,7 @@ dataset48$sample_size
 langevitour(dataset48$df)
 ```
 
-## Dataset 49
+## Dataset 49 (add)
 
 ```{r}
 traingular_3D_with_noise <- function(sample_size = 150, with_seed = NULL, num_of_noise_dim = 8,
@@ -3546,7 +3546,7 @@ langevitour(dataset49)
 ```
 
 
-## Dataset 50
+## Dataset 50 (add)
 
 ```{r}
 triangular_plane_with_bkg_noise <- function(sample_size = 675, with_seed = NULL, num_of_noise_dim = 8,
@@ -3627,7 +3627,7 @@ dataset50 <- triangular_plane_with_bkg_noise(sample_size = 675, num_of_noise_dim
 langevitour(dataset50)
 ```
 
-## Dataset 51
+## Dataset 51 (clustering)
 
 ```{r}
 two_curvilinear_with_noise <- function(sample_size = 150, with_seed = NULL, num_of_noise_dim = 8,
@@ -3704,7 +3704,7 @@ dataset51 <- two_curvilinear_with_noise(sample_size = 100, num_of_noise_dim = 6,
 langevitour(dataset51)
 ```
 
-## Dataset 52
+## Dataset 52 (clustering)
 
 ```{r}
 two_curvilinear_diff_with_noise <- function(sample_size = 150, with_seed = NULL, num_of_noise_dim = 8,
@@ -3781,7 +3781,7 @@ dataset52 <- two_curvilinear_diff_with_noise(sample_size = 100, num_of_noise_dim
 langevitour(dataset52)
 ```
 
-## Dataset 53
+## Dataset 53 (clustering)
 
 ```{r}
 two_linear_diff_with_noise <- function(sample_size = 150, with_seed = NULL, num_of_noise_dim = 8,
@@ -3852,7 +3852,7 @@ dataset53 <- two_linear_diff_with_noise(sample_size = 150, num_of_noise_dim = 6,
 langevitour(dataset53)
 ```
 
-## Dataset 54
+## Dataset 54 (clustering)
 
 ```{r}
 three_linear_with_noise <- function(sample_size = 150, with_seed = NULL, num_of_noise_dim = 8,
@@ -3924,7 +3924,7 @@ langevitour(dataset54)
 ```
 
 
-## Dataset 55
+## Dataset 55 (clustering)
 
 ```{r}
 three_nonlinear_with_noise <- function(sample_size = 150, with_seed = NULL, num_of_noise_dim = 8,
@@ -3991,7 +3991,7 @@ dataset55 <- three_nonlinear_with_noise(sample_size = 150, num_of_noise_dim = 6,
 langevitour(dataset55)
 ```
 
-## Dataset 56
+## Dataset 56 (clustering)
 
 ```{r}
 
@@ -4057,7 +4057,7 @@ dataset56 <- three_cluster_mirror_with_noise(sample_size = 150, num_of_noise_dim
 langevitour(dataset56)
 ```
 
-## Dataset 57
+## Dataset 57 (remove)
 
 ```{r}
 
@@ -4107,7 +4107,7 @@ dataset57 <- s_curve_with_noise(sample_size = 200, num_of_noise_dim = 6,
 langevitour(dataset57)
 ```
 
-## Dataset 58
+## Dataset 58 (add)
 
 ```{r}
 #Mobius Experiment
@@ -4180,7 +4180,7 @@ dataset58 <- mobius_cluster_with_noise(sample_size = 250, num_of_noise_dim = 6,
 langevitour(dataset58)
 ```
 
-## Dataset 59
+## Dataset 59 (clustering)
 
 ```{r}
 
@@ -4273,7 +4273,7 @@ dataset59 <- four_long_clusters_with_bkg_noise(sample_size = 150, num_of_noise_d
 langevitour(dataset59)
 ```
 
-## Dataset 60
+## Dataset 60 (clustering)
 
 ```{r}
 
@@ -4356,7 +4356,7 @@ dataset60 <- curvy_branching_cluster_with_bkg_noise(sample_size = 200, num_of_no
 langevitour(dataset60)
 ```
 
-## Dataset 61
+## Dataset 61 (add)
 
 ```{r}
 
@@ -4427,7 +4427,7 @@ langevitour(dataset61)
 ```
 
 
-## Dataset 62
+## Dataset 62 (add)
 
 ```{r}
 
@@ -4499,7 +4499,7 @@ dataset62 <- four_diff_long_clutsers_with_noise(sample_size = 500, num_of_noise_
 langevitour(dataset62)
 ```
 
-## Dataset 63
+## Dataset 63 (add)
 
 ```{r}
 
@@ -4563,7 +4563,7 @@ dataset63 <- two_s_curves_with_noise(sample_size = 500, num_of_noise_dim = 5,
 langevitour(dataset63)
 ```
 
-## Dataset 64
+## Dataset 64 (add)
 
 ```{r}
 
@@ -4638,7 +4638,7 @@ dataset64$sample_size
 langevitour(dataset64$df)
 ```
 
-## Dataset 65
+## Dataset 65 (add)
 
 ```{r}
 
@@ -4702,7 +4702,7 @@ dataset65 <- mirror_s_curves_with_noise(sample_size = 600, num_of_noise_dim = 5,
 langevitour(dataset65)
 ```
 
-## Dataset 66
+## Dataset 66 (clustering)
 
 ```{r}
 gaussian_clusters_diff_points <- function(n = 400, cluster_size_vec = c(50, 100, 200, 50), with_seed = NULL, num_clusters = 4, mean_matrix = rbind(c(1,0,0,0,0,0), c(0,1,0,0,0,0), c(0,0,1,0,0,0), c(0,0,0,1,0,0)),
@@ -4823,10 +4823,10 @@ dataset66 <- gaussian_clusters_diff_points(n = 1500, cluster_size_vec = c(450, 3
 langevitour(dataset66)
 ```
 
-## Dataset 67
+## Dataset 67 (clustering)
 
 ```{r}
-cluster_and_curvilinear__with_noise <- function(sample_size = 200, cluster_size_vec = c(50, 150), with_seed = NULL, num_of_noise_dim = 3,
+cluster_and_curvilinear_with_noise <- function(sample_size = 200, cluster_size_vec = c(50, 150), with_seed = NULL, num_of_noise_dim = 3,
     min_noise = -0.05, max_noise = 0.05) {
   # To check the seed is not assigned
   if (!is.null(with_seed)) {
@@ -4881,14 +4881,14 @@ cluster_and_curvilinear__with_noise <- function(sample_size = 200, cluster_size_
 ```
 
 ```{r}
-dataset67 <- cluster_and_curvilinear__with_noise(sample_size = 1500, cluster_size_vec = c(500, 1000), with_seed = NULL, num_of_noise_dim = 3,
+dataset67 <- cluster_and_curvilinear_with_noise(sample_size = 1500, cluster_size_vec = c(500, 1000), with_seed = NULL, num_of_noise_dim = 3,
     min_noise = -0.05, max_noise = 0.05)
 
 
 langevitour(dataset67)
 ```
 
-## Dataset 68
+## Dataset 68 (add)
 
 ```{r}
 one_grid_diff <- function(sample_size = 200, with_seed = NULL, num_of_noise_dim = 2,
@@ -4968,7 +4968,7 @@ dataset68$sample_size
 langevitour(dataset68$df)
 ```
 
-## Dataset 69
+## Dataset 69 (clustering)
 
 ```{r}
 curvy_branching_cluster <- function(sample_size = 200, cluster_size_vec = c(50, 100, 50), with_seed = NULL, num_of_noise_dim = 6,
@@ -5048,7 +5048,7 @@ dataset69 <- curvy_branching_cluster(sample_size = 200, cluster_size_vec = c(50,
 langevitour(dataset69)
 ```
 
-## Dataset 70
+## Dataset 70 (clustering)
 
 ```{r}
 clusters_different_shapes_diff_num_points <- function(sample_size = 400, with_seed = NULL, cluster_size_vec = c(50, 50, 50, 50, 100, 100), num_gussian_clusters = 4, num_non_gaussian_clusters = 2,
@@ -5161,7 +5161,7 @@ dataset70 <- clusters_different_shapes_diff_num_points(sample_size = 1500, with_
 langevitour(dataset70)
 ```
 
-## Dataset 71 
+## Dataset 71 (add)
 
 ```{r}
 sphere_df <- sphere(radius = 1, resolution = 20, num_noise_dims = 3, 
