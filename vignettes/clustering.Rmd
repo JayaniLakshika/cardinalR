@@ -17,8 +17,6 @@ knitr::opts_chunk$set(
 ```{r setup}
 library(cardinalR)
 library(langevitour)
-
-library(MASS)
 library(dplyr)
 ```
 
@@ -5166,21 +5164,8 @@ langevitour(dataset70)
 ## Dataset 71 
 
 ```{r}
-# Define the parameters for the sphere
-radius <- 1  # Radius of the sphere
-resolution <- 50  # Number of vertices to use for the sphere
+sphere_df <- sphere(radius = 1, resolution = 20, num_noise_dims = 3, 
+                    min_noise = -0.05, max_noise = 0.05) |> as.data.frame()
 
-# Generate the coordinates for the sphere
-theta <- seq(0, 2*pi, length.out = resolution)
-phi <- seq(0, pi, length.out = resolution)
-coords <- expand.grid(theta = theta, phi = phi)
-
-# Convert spherical coordinates to Cartesian coordinates
-x <- radius * sin(coords$phi) * cos(coords$theta)
-y <- radius * sin(coords$phi) * sin(coords$theta)
-z <- radius * cos(coords$phi)
-
-sphere_df <- tibble::tibble(x1 = x, x2 = y, x3 = z)
-
-langevitour::langevitour(sphere_df)
+langevitour(sphere_df)
 ```

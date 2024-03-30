@@ -12,15 +12,15 @@ LazyData: true
 URL: https://github.com/JayaniLakshika/cardinalR
 BugReports: https://github.com/JayaniLakshika/cardinalR/issues
 imports:
-    dplyr
-    geozoo
-    mgc
     snedata
-    tibble
-    tidyr
-    MASS
 Suggests: 
     knitr,
     rmarkdown,
-    langevitour
+    langevitour,
+    dplyr,
+    geozoo,
+    mgc,
+    tibble,
+    tidyr
 VignetteBuilder: knitr
+RoxygenNote: 7.3.1
