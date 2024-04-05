@@ -55,16 +55,12 @@ plane <- function(sample_size, coefficient_x_1, coefficient_x_2, coefficient_y_1
 }
 
 
-three_diff_linear_with_noise <- function(sample_size = 150, with_seed = NULL, num_of_noise_dim = 8,
-                                         min_noise = -0.5, max_noise = 0.5) {
-  # To check the seed is not assigned
-  if (!is.null(with_seed)) {
-    set.seed(with_seed)
-  }
+three_diff_linear_with_noise <- function(sample_size = 150, num_of_noise_dim = 8,
+                                         min_noise = -0.05, max_noise = 0.05) {
 
   # To check that the assigned sample_size is divided by three
   if ((sample_size%%3) != 0) {
-    warning("The sample size should be a product of number of clusters.")
+    warning("The sample size should be a product of three.")
     cluster_size <- floor(sample_size/3)
 
   } else {
@@ -174,16 +170,25 @@ four_diff_long_clutsers_with_noise <- function(sample_size = 200, with_seed = NU
 
 }
 
-plane_2D_with_hole <- function(sample_size = 100, with_seed = NULL, num_of_noise_dim = 2, min_noise = 0, max_noise = 1) {
-
-  # To check the seed is not assigned
-  if (!is.null(with_seed)) {
-    set.seed(with_seed)
-  }
+#' Generate 2D Plane with Hole and Noise
+#'
+#' This function generates a dataset representing a 2D plane with a hole in the middle, with added noise.
+#'
+#' @param sample_size The total number of samples to generate.
+#' @param num_noise_dims The number of additional noise dimensions to add to the data.
+#' @param min_noise The minimum value for the noise dimensions.
+#' @param max_noise The maximum value for the noise dimensions.
+#' @return A list containing the 2D plane data with a hole and the sample size.
+#' @export
+#'
+#' @examples
+#' plane_data <- plane_2d_with_hole(sample_size = 100, num_noise_dims = 2,
+#' min_noise = 0, max_noise = 1)
+plane_2d_with_hole <- function(sample_size, num_noise_dims, min_noise, max_noise) {
 
   # To check that the assigned sample_size is divided by four
   if ((sample_size%%4) != 0) {
-    stop("The sample size should be a product of 4.")
+    stop("The sample size should be a product of four.")
 
   } else {
     cluster_size <- sample_size/4
@@ -193,44 +198,26 @@ plane_2D_with_hole <- function(sample_size = 100, with_seed = NULL, num_of_noise
   v <- runif(cluster_size, min = 10, max = 20)
   x <- u + v - 10
   y <- v - u + 8
-
-  df1 <- tibble::tibble(x1 = x, x2 = y)
+  df1 <- matrix(c(x, y), ncol = 2)
 
   anchor <- c(1, 1)
   indices <- rowSums((sweep(df1, 2, anchor, `-`))) > 20
   df1 <- df1[indices, ]
   rownames(df1) <- NULL
 
-  df2 <- tibble::tibble(x1 = -df1$x2 + 26, x2 = df1$x1 - 15)
-  df3 <- tibble::tibble(x1 = df1$x2 + 30, x2 = -df1$x1 + 25)
+  df2 <- matrix(c(-df1[, 2] + 26, df1[, 1] - 15), ncol = 2)
+  df3 <- matrix(c(df1[, 2] + 30, -df1[, 1] + 25), ncol = 2)
 
-  df <- dplyr::bind_rows(df1 - 10, df1 + 10, df2, df3)
+  df <- rbind(df1 - 10, df1 + 10, df2, df3)
 
-  sample_size <- NROW(df)
+  if (num_noise_dims != 0) {
 
-
-  # To generate column names for noise dimensions
-  column_names <- paste0(rep("x", num_of_noise_dim), 3:(3 + num_of_noise_dim))
-
-  # Initialize an empty list to store the vectors with column
-  # values
-  noise_dim_val_list <- list()
-
-  for (j in 1:num_of_noise_dim) {
-    if ((j%%2) == 0) {
-      noise_dim_val_list[[column_names[j]]] <- runif(sample_size,
-                                                     min = min_noise, max = max_noise)
-    } else {
-      noise_dim_val_list[[column_names[j]]] <- (-1) * runif(sample_size,
-                                                            min = min_noise, max = max_noise)
-    }
-
+    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise_dims = num_noise_dims,
+                                min_noise = min_noise, max_noise = max_noise)
+    df <- cbind(df, noise_mat)
 
   }
 
-  df_noise <- tibble::as_tibble(noise_dim_val_list)
-  df <- dplyr::bind_cols(df, df_noise)
-
-  return(list(df = df, sample_size = sample_size))
+  return(list(df = df, sample_size = NROW(df)))
 
 }
