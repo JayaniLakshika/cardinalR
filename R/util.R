@@ -35,3 +35,5 @@ gen_noise_dims <- function(n, num_noise_dims, min_noise, max_noise) {
 
 
 }
+
+utils::globalVariables(c("n"))
