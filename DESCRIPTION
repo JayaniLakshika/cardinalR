@@ -14,8 +14,8 @@ Authors@R: c(
     person("Thiyanga", "S. Talagala", , "ttalagala@sjp.ac.lk", role = "aut",
            comment = c(ORCID = "0000-0002-0656-9789"))
   )
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Description:
+    A collection of simple simulation datasets designed for generating Nonlinear Dimensionality Reduction (NLDR) representations using techniques such as tSNE, UMAP, PHATE, TriMAP, and PaCMAP. These datasets serve as a valuable resource for conducting experiments to better understand the reliability of NLDR representations in various contexts.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true

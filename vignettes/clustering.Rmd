@@ -483,7 +483,7 @@ langevitour(dataset7)
 ```
 
 
-## Dataset 9 (three clusters data with extra noise dimensions) (clustering)
+## Dataset 9 (three clusters data with extra noise dimensions) (remove)
 
 ```{r}
 
@@ -3236,7 +3236,7 @@ dataset45$sample_size
 langevitour(dataset45$df)
 ```
 
-## Dataset 46 (add)
+## Dataset 46 (remove)
 
 ```{r}
 three_grid_with_noise <- function(n_value = 19, with_seed = NULL, num_of_noise_dim = 8,
