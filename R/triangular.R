@@ -1,60 +1,66 @@
-traingular_3D_with_noise <- function(sample_size = 150, with_seed = NULL, num_of_noise_dim = 8,
-                                     min_noise = -0.5, max_noise = 0.5) {
-  # To check the seed is not assigned
-  if (!is.null(with_seed)) {
-    set.seed(with_seed)
-  }
+#' Generate Triangular 3D Datasets with Noise
+#'
+#' This function generates triangular 3D datasets with added noise dimensions.
+#'
+#' @param sample_size The total number of samples to generate.
+#' @param num_noise_dims The number of additional noise dimensions to add to the data.
+#' @param min_noise The minimum value for the noise dimensions.
+#' @param max_noise The maximum value for the noise dimensions.
+#' @return A matrix containing the triangular 3D datasets with added noise.
+#' @export
+#'
+#' @examples
+#' triangular_3d_data <- traingular_3d_with_noise(sample_size = 150, num_noise_dims = 4,
+#' min_noise = -0.05, max_noise = 0.05)
+traingular_3d_with_noise <- function(sample_size, num_noise_dims,
+                                     min_noise, max_noise) {
 
-  trace.point <- runif(3)
-  corner.points <- tibble::tibble(x1 =c(  0,  1, 0.5, 0.5),
-                                  x2 =c(  0,  0,   1, 0.5),
-                                  x3 =c(  0,  0,   0,   1))
-  df <- tibble::tibble(x1 =rep(0,sample_size),
-                       x2 =rep(0,sample_size),
-                       x3 =rep(0,sample_size))
+  trace_point <- stats::runif(3)
+  corner_points <- matrix(c(c(0, 1, 0.5, 0.5), c(0, 0, 1, 0.5), c(0, 0, 0, 1)), ncol =3)
+
+  df <- matrix(c(rep(0,sample_size), rep(0,sample_size), rep(0,sample_size)), ncol =3)
   for(i in 1:sample_size){
-    trace.point    = (corner.points[sample(4,1),]+trace.point)/2
-    df[i,] = trace.point
+    trace_point <- (corner_points[sample(4,1),]+trace_point)/2
+    df[i,] <- trace_point
   }
 
+  if (num_noise_dims != 0) {
 
-  # To generate column names for noise dimensions
-  column_names <- paste0(rep("x", num_of_noise_dim), (NCOL(df) + 1):((NCOL(df) + 1) + num_of_noise_dim))
+    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise_dims = num_noise_dims,
+                                min_noise = min_noise, max_noise = max_noise)
+    df <- cbind(df, noise_mat)
 
-  # Initialize an empty list to store the vectors with column
-  # values
-  noise_dim_val_list <- list()
+    df
 
-  for (j in 1:num_of_noise_dim) {
-    if ((j%%2) == 0) {
-      noise_dim_val_list[[column_names[j]]] <- runif(sample_size,
-                                                     min = min_noise, max = max_noise)
-    } else {
-      noise_dim_val_list[[column_names[j]]] <- (-1) * runif(sample_size,
-                                                            min = min_noise, max = max_noise)
-    }
+  } else {
 
+    df
 
   }
-
-  df_noise <- tibble::as_tibble(noise_dim_val_list)
-  df <- dplyr::bind_cols(df, df_noise)
-
-  df
 
 }
 
 
-triangular_plane_with_bkg_noise <- function(sample_size = 675, with_seed = NULL, num_of_noise_dim = 8,
-                                            min_noise = -0.5, max_noise = 0.5) {
-  # To check the seed is not assigned
-  if (!is.null(with_seed)) {
-    set.seed(with_seed)
-  }
+#' Generate Triangular Plane with Background Noise
+#'
+#' This function generates a triangular plane dataset with background noise dimensions.
+#'
+#' @param sample_size The total number of samples to generate.
+#' @param num_noise_dims The number of additional noise dimensions to add to the data.
+#' @param min_noise The minimum value for the noise dimensions.
+#' @param max_noise The maximum value for the noise dimensions.
+#' @return A matrix containing the triangular plane dataset with background noise.
+#' @export
+#'
+#' @examples
+#' triangular_plane_data <- triangular_plane_with_bkg_noise(sample_size = 675,
+#' num_noise_dims = 3, min_noise = -0.05, max_noise = 0.05)
+triangular_plane_with_bkg_noise <- function(sample_size, num_noise_dims,
+                                            min_noise, max_noise) {
 
   # To check that the assigned sample_size is divided by three
   if ((sample_size%%3) != 0) {
-    warning("The sample size should be a product of number of clusters.")
+    warning("The sample size should be a product of three.")
     cluster_size <- floor(sample_size/3)
 
   } else {
@@ -62,54 +68,32 @@ triangular_plane_with_bkg_noise <- function(sample_size = 675, with_seed = NULL,
   }
 
 
-  trace.point <- runif(2)
-  corner.points <- tibble::tibble(x1 =c(  0,  1, 0.5),
-                                  x2 =c(  0,  0,   1))
-  df1 <- tibble::tibble(x1 =rep(0,cluster_size),
-                        x2 =rep(0,cluster_size))
+  trace_point <- stats::runif(2)
+  corner_points <- matrix(c(c(0, 1, 0.5), c(0, 0, 1)))
+  df1 <- matrix(c(rep(0,sample_size), rep(0,sample_size)), ncol =2)
+
   for(i in 1:cluster_size){
-    trace.point    = (corner.points[sample(3,1),]+trace.point)/2
-    df1[i,] = trace.point
+    trace_point <- (corner_points[sample(3,1),]+trace_point)/2
+    df1[i,] <- trace_point
   }
 
+  if (num_noise_dims != 0) {
 
-  # To generate column names for noise dimensions
-  column_names <- paste0(rep("x", num_of_noise_dim), (NCOL(df1) + 1):((NCOL(df1) + 1) + num_of_noise_dim))
-
-  # Initialize an empty list to store the vectors with column
-  # values
-  noise_dim_val_list <- list()
-
-  for (j in 1:num_of_noise_dim) {
-    if ((j%%2) == 0) {
-      noise_dim_val_list[[column_names[j]]] <- runif(cluster_size,
-                                                     min = min_noise, max = max_noise)
-    } else {
-      noise_dim_val_list[[column_names[j]]] <- (-1) * runif(cluster_size,
-                                                            min = min_noise, max = max_noise)
-    }
-
+    noise_mat <- gen_noise_dims(n = dim(df1)[1], num_noise_dims = num_noise_dims,
+                                min_noise = min_noise, max_noise = max_noise)
+    df1 <- cbind(df1, noise_mat)
 
   }
 
-  df_noise <- tibble::as_tibble(noise_dim_val_list)
-  df1 <- dplyr::bind_cols(df1, df_noise)
-
-  ## To add background noise
-  column_names_bkg <- paste0(rep("x", NCOL(df1)), 1:NCOL(df1))
-
+  ## Generate the bkg noise
   noise_bkg_val_list <- list()
 
   for (j in 1:NCOL(df1)) {
-    noise_bkg_val_list[[column_names_bkg[j]]] <- rnorm(cluster_size, mean = 0.025, sd = 0.5)
-
-
+    noise_bkg_val_list[[j]] <- rnorm(cluster_size, mean = 0.025, sd = 0.5)
   }
 
-  df2 <- tibble::as_tibble(noise_bkg_val_list)
-
-
-  df <- dplyr::bind_rows(df1, df2, -df1)
+  df2 <- matrix(unlist(noise_bkg_val_list), ncol = length(noise_bkg_val_list))
+  df <- rbind(df1, df2, -df1)
 
   df
 

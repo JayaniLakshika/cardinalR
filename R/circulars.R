@@ -1,82 +1,92 @@
-three_circulars_with_noise <- function(sample_size = 300, with_seed = NULL, num_of_noise_dim = 8,
-                                       min_noise = -0.5, max_noise = 0.5) {
-  # To check the seed is not assigned
-  if (!is.null(with_seed)) {
-    set.seed(with_seed)
-  }
+#' Generate Three Circular Clusters with Noise
+#'
+#' This function generates three circular clusters in 4D space with added noise dimensions.
+#'
+#' @param sample_size The total number of samples to generate.
+#' @param num_noise_dims The number of additional noise dimensions to add to the data.
+#' @param min_noise The minimum value for the noise dimensions.
+#' @param max_noise The maximum value for the noise dimensions.
+#' @return A matrix containing the three circular clusters with added noise.
+#' @export
+#'
+#' @examples
+#' circular_clusters_data <- three_circulars_with_noise(sample_size = 300,
+#' num_noise_dims = 4, min_noise = -0.05, max_noise = 0.05)
+three_circulars_with_noise <- function(sample_size, num_noise_dims, min_noise,
+                                       max_noise) {
 
   # To check that the assigned sample_size is divided by three
   if ((sample_size%%3) != 0) {
-    warning("The sample size should be a product of four.")
+    warning("The sample size should be a product of three.")
     cluster_size <- floor(sample_size/3)
 
   } else {
     cluster_size <- sample_size/3
   }
 
-  theta = runif(cluster_size, 0.0,2 * pi)
-  x = cos(theta) + rnorm(cluster_size, 10, 0.03)
-  y = sin(theta) + rnorm(cluster_size, 10, 0.03)
+  theta <- runif(cluster_size, 0.0,2 * pi)
+  x <- cos(theta) + rnorm(cluster_size, 10, 0.03)
+  y <- sin(theta) + rnorm(cluster_size, 10, 0.03)
 
   z <- rep(0, cluster_size) + rnorm(cluster_size, 10, 0.03)
   w <- rep(0, cluster_size) - rnorm(cluster_size, 10, 0.03)
 
-  df1 <- tibble::tibble(x1 = x, x2 = y, x3 = z, x4 = w)
+  df1 <- matrix(c(x, y, z, w), ncol = 4)
 
-  x = 0.5 * cos(theta) + rnorm(cluster_size, 10, 0.03)
-  y = 0.5 * sin(theta) + rnorm(cluster_size, 10, 0.03)
-
-  z <- rep(0, cluster_size) + rnorm(cluster_size, 10, 0.03)
-  w <- rep(0, cluster_size) - rnorm(cluster_size, 10, 0.03)
-
-  df2 <- tibble::tibble(x1 = x, x2 = y, x3 = z, x4 = w)
-
-  x = rnorm(cluster_size, 10, 0.03)
-  y = rnorm(cluster_size, 10, 0.03)
+  x <- 0.5 * cos(theta) + rnorm(cluster_size, 10, 0.03)
+  y <- 0.5 * sin(theta) + rnorm(cluster_size, 10, 0.03)
 
   z <- rep(0, cluster_size) + rnorm(cluster_size, 10, 0.03)
   w <- rep(0, cluster_size) - rnorm(cluster_size, 10, 0.03)
 
-  df3 <- tibble::tibble(x1 = x, x2 = y, x3 = z, x4 = w)
+  df2 <- matrix(c(x, y, z, w), ncol = 4)
 
-  df <- bind_rows(df1, df2, df3)
-  names(df) <- paste0(rep("x", NCOL(df)), 1:NCOL(df))
+  x <- rnorm(cluster_size, 10, 0.03)
+  y <- rnorm(cluster_size, 10, 0.03)
 
-  # To generate column names for noise dimensions
-  column_names <- paste0(rep("x", num_of_noise_dim), (NCOL(df) + 1):((NCOL(df) + 1) + num_of_noise_dim))
+  z <- rep(0, cluster_size) + rnorm(cluster_size, 10, 0.03)
+  w <- rep(0, cluster_size) - rnorm(cluster_size, 10, 0.03)
 
-  # Initialize an empty list to store the vectors with column
-  # values
-  noise_dim_val_list <- list()
+  df3 <- matrix(c(x, y, z, w), ncol = 4)
 
-  for (j in 1:num_of_noise_dim) {
-    if ((j%%2) == 0) {
-      noise_dim_val_list[[column_names[j]]] <- runif(sample_size,
-                                                     min = min_noise, max = max_noise)
-    } else {
-      noise_dim_val_list[[column_names[j]]] <- (-1) * runif(sample_size,
-                                                            min = min_noise, max = max_noise)
-    }
+  df <- rbind(df1, df2, df3)
 
+  if (num_noise_dims != 0) {
+
+    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise_dims = num_noise_dims,
+                                min_noise = min_noise, max_noise = max_noise)
+    df <- cbind(df, noise_mat)
+
+    df
+
+  } else {
+
+    df
 
   }
-
-  df_noise <- tibble::as_tibble(noise_dim_val_list)
-  df <- dplyr::bind_cols(df, df_noise)
-  df
 
 }
 
-cell_cycle_with_noise <- function(sample_size = 300, with_seed = NULL, num_of_noise_dim = 8,
-                                  min_noise = -0.5, max_noise = 0.5) {
-  # To check the seed is not assigned
-  if (!is.null(with_seed)) {
-    set.seed(with_seed)
-  }
+#' Generate Cell Cycle Data with Noise
+#'
+#' This function generates a cell cycle dataset with added noise dimensions.
+#'
+#' @param sample_size The total number of samples to generate.
+#' @param num_noise_dims The number of additional noise dimensions to add to the data.
+#' @param min_noise The minimum value for the noise dimensions.
+#' @param max_noise The maximum value for the noise dimensions.
+#' @return A matrix containing the cell cycle data with added noise.
+#' @export
+#'
+#' @examples
+#' cell_cycle_data <- cell_cycle_with_noise(sample_size = 300,
+#' num_noise_dims = 4, min_noise = -0.05, max_noise = 0.05)
+cell_cycle_with_noise <- function(sample_size, num_noise_dims, min_noise,
+                                  max_noise) {
 
   # To check that the assigned sample_size is divided by three
   if ((sample_size%%3) != 0) {
-    warning("The sample size should be a product of number of clusters.")
+    warning("The sample size should be a product of three.")
     cluster_size <- floor(sample_size/3)
 
   } else {
@@ -87,63 +97,63 @@ cell_cycle_with_noise <- function(sample_size = 300, with_seed = NULL, num_of_no
   r1 <- 2
   r2 <- 1
 
-  theta = runif(cluster_size, 0, 2 * pi)
+  theta <- runif(cluster_size, 0, 2 * pi)
   x <- rep(0, cluster_size)
   y <- r1 * cos(theta)
   z <- r2 * sin(theta)
 
-  df1 <- tibble::tibble(x1=x, x2=y, x3=z)
+  df1 <- matrix(c(x, y, z), ncol = 3)
 
   x <- r2 * cos(theta)
   y <- rep(0, cluster_size)
   z <- r1 * sin(theta)
 
-  df2 <- tibble::tibble(x1=x, x2=y, x3=z)
+  df2 <- matrix(c(x, y, z), ncol = 3)
 
   x <- r1 * cos(theta)
   y <- r2 * sin(theta)
   z <- rep(0, cluster_size)
 
-  df3 <- tibble::tibble(x1=x, x2=y, x3=z)
+  df3 <- matrix(c(x, y, z), ncol = 3)
 
-  df <- bind_rows(df1, df2, df3)
+  df <- rbind(df1, df2, df3)
 
-  # To generate column names for noise dimensions
-  column_names <- paste0(rep("x", num_of_noise_dim), (NCOL(df) + 1):((NCOL(df) + 1) + num_of_noise_dim))
+  if (num_noise_dims != 0) {
 
-  # Initialize an empty list to store the vectors with column
-  # values
-  noise_dim_val_list <- list()
+    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise_dims = num_noise_dims,
+                                min_noise = min_noise, max_noise = max_noise)
+    df <- cbind(df, noise_mat)
 
-  for (j in 1:num_of_noise_dim) {
-    if ((j%%2) == 0) {
-      noise_dim_val_list[[column_names[j]]] <- runif(sample_size,
-                                                     min = min_noise, max = max_noise)
-    } else {
-      noise_dim_val_list[[column_names[j]]] <- (-1) * runif(sample_size,
-                                                            min = min_noise, max = max_noise)
-    }
+    df
 
+  } else {
+
+    df
 
   }
-
-  df_noise <- tibble::as_tibble(noise_dim_val_list)
-  df <- dplyr::bind_cols(df, df_noise)
-
-  df
 
 }
 
-curvy_cell_cycle_with_noise <- function(sample_size = 300, with_seed = NULL, num_of_noise_dim = 8,
-                                        min_noise = -0.5, max_noise = 0.5) {
-  # To check the seed is not assigned
-  if (!is.null(with_seed)) {
-    set.seed(with_seed)
-  }
+#' Generate Curvy Cell Cycle Data with Noise
+#'
+#' This function generates a curvy cell cycle dataset with added noise dimensions.
+#'
+#' @param sample_size The total number of samples to generate.
+#' @param num_noise_dims The number of additional noise dimensions to add to the data.
+#' @param min_noise The minimum value for the noise dimensions.
+#' @param max_noise The maximum value for the noise dimensions.
+#' @return A matrix containing the curvy cell cycle data with added noise.
+#' @export
+#'
+#' @examples
+#' curvy_cell_cycle_data <- curvy_cell_cycle_with_noise(sample_size = 300,
+#' num_noise_dims = 4, min_noise = -0.05, max_noise = 0.05)
+curvy_cell_cycle_with_noise <- function(sample_size, num_noise_dims, min_noise,
+                                        max_noise) {
 
   # To check that the assigned sample_size is divided by three
   if ((sample_size%%3) != 0) {
-    warning("The sample size should be a product of number of clusters.")
+    warning("The sample size should be a product of three.")
     cluster_size <- floor(sample_size/3)
 
   } else {
@@ -153,49 +163,39 @@ curvy_cell_cycle_with_noise <- function(sample_size = 300, with_seed = NULL, num
 
   r = sqrt(3)/3
 
-  theta = runif(cluster_size, 0, 2 * pi)
+  theta <- runif(cluster_size, 0, 2 * pi)
   x <- cos(theta)
   y <- r + sin(theta)
   z <- cos(3 * theta)/3
 
-  df1 <- tibble::tibble(x1=x, x2=y, x3=z)
+  df1 <- matrix(c(x, y, z), ncol = 3)
 
   x <- cos(theta) + 0.5
   y <- sin(theta) - r/2
   z <- cos(3 * theta)/3
 
-  df2 <- tibble::tibble(x1=x, x2=y, x3=z)
+  df2 <- matrix(c(x, y, z), ncol = 3)
 
   x <- cos(theta) - 0.5
   y <- sin(theta) - r/2
   z <- cos(3 * theta)/3
 
-  df3 <- tibble::tibble(x1=x, x2=y, x3=z)
+  df3 <- matrix(c(x, y, z), ncol = 3)
 
-  df <- bind_rows(df1, df2, df3)
+  df <- rbind(df1, df2, df3)
 
-  # To generate column names for noise dimensions
-  column_names <- paste0(rep("x", num_of_noise_dim), (NCOL(df) + 1):((NCOL(df) + 1) + num_of_noise_dim))
+  if (num_noise_dims != 0) {
 
-  # Initialize an empty list to store the vectors with column
-  # values
-  noise_dim_val_list <- list()
+    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise_dims = num_noise_dims,
+                                min_noise = min_noise, max_noise = max_noise)
+    df <- cbind(df, noise_mat)
 
-  for (j in 1:num_of_noise_dim) {
-    if ((j%%2) == 0) {
-      noise_dim_val_list[[column_names[j]]] <- runif(sample_size,
-                                                     min = min_noise, max = max_noise)
-    } else {
-      noise_dim_val_list[[column_names[j]]] <- (-1) * runif(sample_size,
-                                                            min = min_noise, max = max_noise)
-    }
+    df
 
+  } else {
+
+    df
 
   }
-
-  df_noise <- tibble::as_tibble(noise_dim_val_list)
-  df <- dplyr::bind_cols(df, df_noise)
-
-  df
 
 }

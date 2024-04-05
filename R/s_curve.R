@@ -1,24 +1,100 @@
-s_curve <- function(n_samples = 100) {
-  tt <- 3 * pi * stats::runif(n = n_samples, min = -0.5, max = 0.5)
-  x <- sin(tt)
-  y <- 2.0 * stats::runif(n = n_samples)
-  z <- sign(tt) * (cos(tt) - 1)
-  X <- cbind(x, y, z)
+#' Generate S-curve Data
+#'
+#' This function generates S-curve data, which is a commonly used dataset for
+#' testing and visualizing dimensionality reduction algorithms.
+#'
+#' @param sample_size The number of samples to generate.
+#' @param num_noise_dims The number of additional noise dimensions to add to the data.
+#' @param min_noise The minimum value for the noise dimensions.
+#' @param max_noise The maximum value for the noise dimensions.
+#' @return A matrix containing the generated S-curve data.
+#' @export
+#'
+#' @examples
+#' s_curve_data <- s_curve(sample_size = 100, num_noise_dims = 3,
+#' min_noise = -0.5, max_noise = 0.5)
+s_curve <- function(sample_size, num_noise_dims, min_noise, max_noise) {
+  a <- 3 * pi * stats::runif(n = sample_size, min = -0.5, max = 0.5)
+  x <- sin(a)
+  y <- 2.0 * stats::runif(n = sample_size)
+  z <- sign(a) * (cos(a) - 1)
 
-  data.frame(X, stringsAsFactors = FALSE)
+  scurve_mat <- matrix(c(x, y, z), ncol = 3)
+
+  if (num_noise_dims != 0) {
+
+    noise_mat <- gen_noise_dims(n = dim(scurve_mat)[1], num_noise_dims = num_noise_dims,
+                                min_noise = min_noise, max_noise = max_noise)
+    scurve_mat <- cbind(scurve_mat, noise_mat)
+
+    scurve_mat
+
+  } else {
+
+    scurve_mat
+
+  }
 }
 
+#' Generate S-curve Data with a Hole
+#'
+#' This function generates S-curve data with a hole by filtering out samples that
+#' are not close to a specified anchor point.
+#'
+#' @param sample_size The number of samples to generate.
+#' @param num_noise_dims The number of additional noise dimensions to add to the data.
+#' @param min_noise The minimum value for the noise dimensions.
+#' @param max_noise The maximum value for the noise dimensions.
+#' @return A matrix containing the generated S-curve data with a hole.
+#' @export
+#'
+#' @examples
+#' s_curve_hole_data <- s_curve_hole(sample_size = 100, num_noise_dims = 3,
+#' min_noise = -0.5, max_noise = 0.5)
+s_curve_hole <- function(sample_size, num_noise_dims, min_noise, max_noise) {
+  scurve <- s_curve(sample_size = sample_size, num_noise_dims = 0)
 
-two_s_curves_with_noise <- function(sample_size = 200, with_seed = NULL, num_of_noise_dim = 8,
-                                    min_noise = -0.5, max_noise = 0.5) {
-  # To check the seed is not assigned
-  if (!is.null(with_seed)) {
-    set.seed(with_seed)
+  anchor <- c(0, 1, 0)
+  indices <- rowSums((sweep(scurve, 2, anchor, `-`))^2) > 0.3
+  scurve <- scurve[indices, ]
+  rownames(scurve) <- NULL
+
+  if (num_noise_dims != 0) {
+
+    noise_mat <- gen_noise_dims(n = dim(scurve)[1], num_noise_dims = num_noise_dims,
+                                min_noise = min_noise, max_noise = max_noise)
+    scurve <- cbind(scurve, noise_mat)
+
+    scurve
+
+  } else {
+
+    scurve
+
   }
 
-  # To check that the assigned sample_size is divided by three
-  if ((sample_size%%3) != 0) {
-    warning("The sample size should be a product of number of clusters.")
+}
+
+#' Generate Two S-curve Datasets with Noise
+#'
+#' This function generates two S-curve datasets with added noise dimensions.
+#'
+#' @param sample_size The total number of samples to generate (should be divisible by 2).
+#' @param num_noise_dims The number of additional noise dimensions to add to the data.
+#' @param min_noise The minimum value for the noise dimensions.
+#' @param max_noise The maximum value for the noise dimensions.
+#' @return A matrix containing the combined S-curve datasets with added noise.
+#' @export
+#'
+#' @examples
+#' two_s_curve_data <- two_s_curves_with_noise(sample_size = 200, num_noise_dims = 8,
+#' min_noise = -0.5, max_noise = 0.5)
+two_s_curves_with_noise <- function(sample_size, num_noise_dims, min_noise,
+                                    max_noise) {
+
+  # To check that the assigned sample_size is divided by two
+  if ((sample_size%%2) != 0) {
+    warning("The sample size should be a product of two.")
     cluster_size <- floor(sample_size/2)
 
   } else {
@@ -26,90 +102,71 @@ two_s_curves_with_noise <- function(sample_size = 200, with_seed = NULL, num_of_
   }
 
 
-  df1 <- snedata::s_curve(n_samples = cluster_size)
-  df1 <- df1 %>%
-    select(-color)
-  names(df1) <- paste0(rep("x",3), 1:3)
+  df1 <- s_curve(sample_size = sample_size, num_noise_dims = 0)
+  df2 <- matrix(c(-df1[,1] + 5, df1[,2] + 1, df1[,3] + 1), ncol = 3)
 
-  df2 <- tibble::tibble(x1 = -df1$x1 + 5, x2 = df1$x2 + 1, x3 = df1$x3 + 1)
+  df <- rbind(df1, df2)
 
-  df <- dplyr::bind_rows(df1, df2)
+  if (num_noise_dims != 0) {
 
-  # To generate column names for noise dimensions
-  column_names <- paste0(rep("x", num_of_noise_dim), (NCOL(df) + 1):((NCOL(df) + 1) + num_of_noise_dim))
+    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise_dims = num_noise_dims,
+                                min_noise = min_noise, max_noise = max_noise)
+    df <- cbind(df, noise_mat)
 
-  # Initialize an empty list to store the vectors with column
-  # values
-  noise_dim_val_list <- list()
+    df
 
-  for (j in 1:num_of_noise_dim) {
-    if ((j%%2) == 0) {
-      noise_dim_val_list[[column_names[j]]] <- runif(sample_size,
-                                                     min = min_noise, max = max_noise)
-    } else {
-      noise_dim_val_list[[column_names[j]]] <- (-1) * runif(sample_size,
-                                                            min = min_noise, max = max_noise)
-    }
+  } else {
 
+    df
 
   }
-
-  df_noise <- tibble::as_tibble(noise_dim_val_list)
-  df <- dplyr::bind_cols(df, df_noise)
-
-  df
 
 }
 
 
-mirror_s_curves_with_noise <- function(sample_size = 200, with_seed = NULL, num_of_noise_dim = 8,
-                                       min_noise = -0.5, max_noise = 0.5) {
-  # To check the seed is not assigned
-  if (!is.null(with_seed)) {
-    set.seed(with_seed)
-  }
+#' Generate Mirror S-curve Datasets with Noise
+#'
+#' This function generates mirror S-curve datasets with added noise dimensions.
+#'
+#' @param sample_size The total number of samples to generate (should be divisible by 2).
+#' @param num_noise_dims The number of additional noise dimensions to add to the data.
+#' @param min_noise The minimum value for the noise dimensions.
+#' @param max_noise The maximum value for the noise dimensions.
+#' @return A matrix containing the combined mirror S-curve datasets with added noise.
+#' @export
+#'
+#' @examples
+#' mirror_s_curve_data <- mirror_s_curves_with_noise(sample_size = 200, num_noise_dims = 8,
+#' min_noise = -0.5, max_noise = 0.5)
+mirror_s_curves_with_noise <- function(sample_size, num_noise_dims, min_noise,
+                                       max_noise) {
 
-  # To check that the assigned sample_size is divided by three
-  if ((sample_size%%3) != 0) {
-    warning("The sample size should be a product of number of clusters.")
+  # To check that the assigned sample_size is divided by two
+  if ((sample_size%%2) != 0) {
+    warning("The sample size should be a product of two.")
     cluster_size <- floor(sample_size/2)
 
   } else {
     cluster_size <- sample_size/2
   }
 
+  df1 <- s_curve(sample_size = sample_size, num_noise_dims = 0)
+  df2 <- matrix(c(-df1[,1] + 2, df1[,2], df1[,3]), ncol = 3)
 
-  df1 <- snedata::s_curve(n_samples = cluster_size)
-  df1 <- df1 %>%
-    select(-color)
-  names(df1) <- paste0(rep("x",3), 1:3)
+  df <- rbind(df1, df2)
 
-  df2 <- tibble::tibble(x1 = -df1$x1 + 2, x2 = df1$x2, x3 = df1$x3)
+  if (num_noise_dims != 0) {
 
-  df <- dplyr::bind_rows(df1, df2)
+    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise_dims = num_noise_dims,
+                                min_noise = min_noise, max_noise = max_noise)
+    df <- cbind(df, noise_mat)
 
-  # To generate column names for noise dimensions
-  column_names <- paste0(rep("x", num_of_noise_dim), (NCOL(df) + 1):((NCOL(df) + 1) + num_of_noise_dim))
+    df
 
-  # Initialize an empty list to store the vectors with column
-  # values
-  noise_dim_val_list <- list()
+  } else {
 
-  for (j in 1:num_of_noise_dim) {
-    if ((j%%2) == 0) {
-      noise_dim_val_list[[column_names[j]]] <- runif(sample_size,
-                                                     min = min_noise, max = max_noise)
-    } else {
-      noise_dim_val_list[[column_names[j]]] <- (-1) * runif(sample_size,
-                                                            min = min_noise, max = max_noise)
-    }
-
+    df
 
   }
-
-  df_noise <- tibble::as_tibble(noise_dim_val_list)
-  df <- dplyr::bind_cols(df, df_noise)
-
-  df
 
 }
