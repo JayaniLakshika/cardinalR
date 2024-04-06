@@ -483,7 +483,7 @@ langevitour(dataset7)
 ```
 
 
-## Dataset 9 (three clusters data with extra noise dimensions) (remove)
+## Dataset 9 (three clusters data with extra noise dimensions) (add)
 
 ```{r}
 
@@ -690,7 +690,7 @@ langevitour(dataset12)
 ```
 
 
-## Dataset 13 (Roman surface with extra noise dimensions) (remove)
+## Dataset 13 (Roman surface with extra noise dimensions) (add)
 
 ```{r}
 #Mobius Experiment
