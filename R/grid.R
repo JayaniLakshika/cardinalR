@@ -124,8 +124,6 @@ one_grid_diff_with_bkg_noise <- function(sample_size = 260, num_noise_dims = 5,
   }
 
   ## To add background noise
-  column_names_bkg <- paste0(rep("x", NCOL(df1)), 1:NCOL(df1))
-
   noise_bkg_val_list <- list()
 
   for (j in 1:NCOL(df1)) {
@@ -171,8 +169,6 @@ two_grid_with_bkg_noise <- function(n_value, num_noise_dims, min_noise, max_nois
   }
 
   ## To add background noise
-  column_names_bkg <- paste0(rep("x", NCOL(df1)), 1:NCOL(df1))
-
   noise_bkg_val_list <- list()
 
   for (j in 1:NCOL(df1)) {

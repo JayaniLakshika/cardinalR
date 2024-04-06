@@ -89,7 +89,7 @@ triangular_plane_with_bkg_noise <- function(sample_size, num_noise_dims,
   noise_bkg_val_list <- list()
 
   for (j in 1:NCOL(df1)) {
-    noise_bkg_val_list[[j]] <- rnorm(cluster_size, mean = 0.025, sd = 0.5)
+    noise_bkg_val_list[[j]] <- stats::rnorm(cluster_size, mean = 0.025, sd = 0.5)
   }
 
   df2 <- matrix(unlist(noise_bkg_val_list), ncol = length(noise_bkg_val_list))

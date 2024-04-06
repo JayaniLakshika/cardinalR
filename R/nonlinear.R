@@ -94,7 +94,7 @@ nonlinear_2d <- function(sample_size, num_noise_dims, min_noise, max_noise) {
 sine_curve_with_noise <- function(sample_size, num_noise_dims, min_noise,
                                   max_noise) {
 
-  theta = runif(sample_size, 0,1.80 * pi)
+  theta <- stats::runif(sample_size, 0,1.80 * pi)
   x <- theta
   y <- sin(theta)
   df <- matrix(c(x, y), ncol = 2)
@@ -142,8 +142,8 @@ nonlinear_connect_with_noise <- function(sample_size, num_noise_dims, min_noise,
   }
 
   theta = stats::runif(cluster_size, 0,0.80 * pi)
-  x = cos(theta) + rnorm(cluster_size, 10, 0.03)
-  y = sin(theta) + rnorm(cluster_size, 10, 0.03)
+  x = cos(theta) + stats::rnorm(cluster_size, 10, 0.03)
+  y = sin(theta) + stats::rnorm(cluster_size, 10, 0.03)
   z <- rep(0, cluster_size) + stats::rnorm(cluster_size, 10, 0.03)
   w <- rep(0, cluster_size) - stats::rnorm(cluster_size, 10, 0.03)
 
@@ -273,10 +273,10 @@ two_curvy_panckakes_with_noise <- function(sample_size, num_noise_dims, min_nois
     cluster_size <- sample_size/2
   }
 
-  phi <- runif(cluster_size, max = 2*pi)
-  rho <- sqrt(runif(cluster_size))
+  phi <- stats::runif(cluster_size, max = 2*pi)
+  rho <- sqrt(stats::runif(cluster_size))
 
-  theta <- runif(cluster_size, 0,1.80 * pi)
+  theta <- stats::runif(cluster_size, 0,1.80 * pi)
   x <- theta
   y <- sin(theta)
   df1 <- matrix(c(x, y, sqrt(1)*rho*cos(phi) + 4, sqrt(1)*rho*sin(phi) + 4), ncol = 4)

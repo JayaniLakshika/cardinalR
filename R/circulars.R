@@ -24,28 +24,28 @@ three_circulars_with_noise <- function(sample_size, num_noise_dims, min_noise,
     cluster_size <- sample_size/3
   }
 
-  theta <- runif(cluster_size, 0.0,2 * pi)
-  x <- cos(theta) + rnorm(cluster_size, 10, 0.03)
-  y <- sin(theta) + rnorm(cluster_size, 10, 0.03)
+  theta <- stats::runif(cluster_size, 0.0,2 * pi)
+  x <- cos(theta) + stats::rnorm(cluster_size, 10, 0.03)
+  y <- sin(theta) + stats::rnorm(cluster_size, 10, 0.03)
 
-  z <- rep(0, cluster_size) + rnorm(cluster_size, 10, 0.03)
-  w <- rep(0, cluster_size) - rnorm(cluster_size, 10, 0.03)
+  z <- rep(0, cluster_size) + stats::rnorm(cluster_size, 10, 0.03)
+  w <- rep(0, cluster_size) - stats::rnorm(cluster_size, 10, 0.03)
 
   df1 <- matrix(c(x, y, z, w), ncol = 4)
 
-  x <- 0.5 * cos(theta) + rnorm(cluster_size, 10, 0.03)
-  y <- 0.5 * sin(theta) + rnorm(cluster_size, 10, 0.03)
+  x <- 0.5 * cos(theta) + stats::rnorm(cluster_size, 10, 0.03)
+  y <- 0.5 * sin(theta) + stats::rnorm(cluster_size, 10, 0.03)
 
-  z <- rep(0, cluster_size) + rnorm(cluster_size, 10, 0.03)
-  w <- rep(0, cluster_size) - rnorm(cluster_size, 10, 0.03)
+  z <- rep(0, cluster_size) + stats::rnorm(cluster_size, 10, 0.03)
+  w <- rep(0, cluster_size) - stats::rnorm(cluster_size, 10, 0.03)
 
   df2 <- matrix(c(x, y, z, w), ncol = 4)
 
-  x <- rnorm(cluster_size, 10, 0.03)
-  y <- rnorm(cluster_size, 10, 0.03)
+  x <- stats::rnorm(cluster_size, 10, 0.03)
+  y <- stats::rnorm(cluster_size, 10, 0.03)
 
-  z <- rep(0, cluster_size) + rnorm(cluster_size, 10, 0.03)
-  w <- rep(0, cluster_size) - rnorm(cluster_size, 10, 0.03)
+  z <- rep(0, cluster_size) + stats::rnorm(cluster_size, 10, 0.03)
+  w <- rep(0, cluster_size) - stats::rnorm(cluster_size, 10, 0.03)
 
   df3 <- matrix(c(x, y, z, w), ncol = 4)
 
@@ -97,7 +97,7 @@ cell_cycle_with_noise <- function(sample_size, num_noise_dims, min_noise,
   r1 <- 2
   r2 <- 1
 
-  theta <- runif(cluster_size, 0, 2 * pi)
+  theta <- stats::runif(cluster_size, 0, 2 * pi)
   x <- rep(0, cluster_size)
   y <- r1 * cos(theta)
   z <- r2 * sin(theta)
@@ -163,7 +163,7 @@ curvy_cell_cycle_with_noise <- function(sample_size, num_noise_dims, min_noise,
 
   r = sqrt(3)/3
 
-  theta <- runif(cluster_size, 0, 2 * pi)
+  theta <- stats::runif(cluster_size, 0, 2 * pi)
   x <- cos(theta)
   y <- r + sin(theta)
   z <- cos(3 * theta)/3

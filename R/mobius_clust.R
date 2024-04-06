@@ -1,56 +1,142 @@
-mobius_cluster_with_noise <- function(sample_size = 200, with_seed = NULL, num_of_noise_dim = 8,
-                                      min_noise = -0.5, max_noise = 0.5) {
-  # To check the seed is not assigned
-  if (!is.null(with_seed)) {
-    set.seed(with_seed)
+#' Generate a Single Row for a 5-D Mobius Strip
+#'
+#' This function generates a single row of data representing a point on a 5-dimensional Mobius strip.
+#'
+#' @return A vector containing the coordinates of the point on the Mobius strip.
+#' @export
+#'
+#' @examples
+#' mobius_row <- mobius_5d_row()
+mobius_5d_row <- function(){
+
+  ##Generates Angles
+  a <- stats::runif(1, min = 0, max = 2 * pi)
+  a <- c(a, a / 2)
+
+  ##Generates Small Radius
+  radius <- c(1, stats::runif(1, min = -.4, max = .4))
+
+  ##Generates Row of Data
+  mobius <- c(
+    (cos(a[2]) * radius[2] + radius[1]) * cos(a[1]),
+    (cos(a[2]) * radius[2] + radius[1]) * sin(a[1]),
+    sin(a[2]) * radius[2]
+  )
+
+  k <- stats::runif(1, min = 0, max = pi)
+  ## Rot over x axis
+  rot_1 <- matrix(
+    c(
+      0,
+      cos(k),
+      -sin(k),
+      1, 0, 0, 0,
+      sin(k),
+      cos(k)
+    ),
+    ncol = 3, byrow = TRUE
+  )
+  ## Rot over z axis
+  rot_2 <- matrix(
+    c(
+      cos(2 * k),
+      -sin(2 * k),
+      0,
+      sin(2 * k),
+      cos(2 * k),
+      0, 0, 0, 1
+    ),
+    ncol = 3, byrow = TRUE
+  )
+  ## Trans perpendicular to z axis
+  trans <- matrix(c(4 * cos(2 * k), 4 * sin(2 * k), 0), ncol = 1)
+
+  mobius <- rot_2 %*% rot_1 %*% mobius + trans
+
+  mobius
+}
+
+#' Generate a 5-D Mobius Strip
+#'
+#' This function generates a dataset representing a 5-dimensional Mobius strip.
+#'
+#' @param sample_size The number of points to generate for the Mobius strip.
+#' @param num_noise_dims The number of additional noise dimensions to add to the data.
+#' @param min_noise The minimum value for the noise dimensions.
+#' @param max_noise The maximum value for the noise dimensions.
+#' @return A matrix containing the generated Mobius strip.
+#' @export
+#'
+#' @examples
+#' mobius_data <- mobius_5d(sample_size = 100, num_noise_dims = 3,
+#'                          min_noise = -0.05, max_noise = 0.05)
+mobius_5d <- function(sample_size, num_noise_dims, min_noise, max_noise){
+
+  df <- matrix(
+    do.call(
+      "rbind",
+      as.list(
+        replicate(sample_size, mobius_5d_row())
+      )
+    ),
+    ncol = 3,
+    byrow = TRUE
+  )
+
+  if (num_noise_dims != 0) {
+
+    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise_dims = num_noise_dims,
+                                min_noise = min_noise, max_noise = max_noise)
+    df <- cbind(df, noise_mat)
+
+    df
+
+  } else {
+
+    df
+
   }
 
-  mobius <- geozoo::mobius.experiment(p = 5, n = sample_size* 0.80)
+}
 
-  df1 <- tibble::as_tibble(mobius$points)
+#' Generate Mobius Cluster with Noise
+#'
+#' This function generates a dataset consisting of a mobius cluster with added noise.
+#'
+#' @param sample_size The total number of samples to generate.
+#' @param num_noise_dims The number of additional noise dimensions to add to the data.
+#' @param min_noise The minimum value for the noise dimensions.
+#' @param max_noise The maximum value for the noise dimensions.
+#' @return A matrix containing the mobius cluster with added noise.
+#' @export
+#'
+#' @examples
+#' mobius_cluster <- mobius_cluster_with_noise(sample_size = 200, num_noise_dims = 8,
+#'                                             min_noise = -0.05, max_noise = 0.05)
+mobius_cluster_with_noise <- function(sample_size, num_noise_dims, min_noise,
+                                      max_noise) {
 
-  names(df1) <- paste0(rep("x", length(names(df1))), 1: length(names(df1)))
+  df1 <- mobius_5d(sample_size = sample_size * 0.80, num_noise_dims = 0)
 
+  if (num_noise_dims != 0) {
 
-  # To generate column names for noise dimensions
-  column_names <- paste0(rep("x", num_of_noise_dim), (NCOL(df1) + 1):((NCOL(df1) + 1) + num_of_noise_dim))
-
-  # Initialize an empty list to store the vectors with column
-  # values
-  noise_dim_val_list <- list()
-
-  for (j in 1:num_of_noise_dim) {
-    if ((j%%2) == 0) {
-      noise_dim_val_list[[column_names[j]]] <- runif(sample_size* 0.80,
-                                                     min = min_noise, max = max_noise)
-    } else {
-      noise_dim_val_list[[column_names[j]]] <- (-1) * runif(sample_size* 0.80,
-                                                            min = min_noise, max = max_noise)
-    }
-
+    noise_mat <- gen_noise_dims(n = dim(df1)[1], num_noise_dims = num_noise_dims,
+                                min_noise = min_noise, max_noise = max_noise)
+    df1 <- cbind(df1, noise_mat)
 
   }
-
-  df_noise <- tibble::as_tibble(noise_dim_val_list)
-  df1 <- dplyr::bind_cols(df1, df_noise)
 
   ## To add background noise
-  column_names_bkg <- paste0(rep("x", NCOL(df1)), 1:NCOL(df1))
-
   noise_bkg_val_list <- list()
 
   for (j in 1:NCOL(df1)) {
-    noise_bkg_val_list[[column_names_bkg[j]]] <- rnorm(sample_size * 0.20, mean = 0, sd = 0.3)
+    noise_bkg_val_list[[j]] <- stats::rnorm(sample_size * 0.6/2.6, mean = 3, sd = 5)
 
 
   }
 
-  df2 <- tibble::as_tibble(noise_bkg_val_list)
-
-
-  df <- dplyr::bind_rows(df1, df2)
-
-
+  df2 <- matrix(unlist(noise_bkg_val_list), ncol = length(noise_bkg_val_list))
+  df <- rbind(df1, df2)
   df
 
 }

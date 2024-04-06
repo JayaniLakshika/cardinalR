@@ -99,33 +99,15 @@ gaussian_clusters <- function(sample_size, with_seed = NULL, num_clusters,
     # To generate a tibble for a cluster
     df_cluster <- tibble::as_tibble(dim_val_list)
 
-    df <- dplyr::bind_rows(df, df_cluster)
+    df <- rbind(df, df_cluster)
 
   }
 
   if (num_noise_dims != 0) {
 
-    # To generate column names for noise dimensions
-    column_names <- paste0(rep("x", num_noise_dims), (NCOL(df) + 1):((NCOL(df) + 1) + num_noise_dims))
-
-    # Initialize an empty list to store the vectors with column
-    # values
-    noise_dim_val_list <- list()
-
-    for (j in 1:num_noise_dims) {
-      if ((j%%2) == 0) {
-        noise_dim_val_list[[column_names[j]]] <- stats::runif(n,
-                                                       min = min_noise, max = max_noise)
-      } else {
-        noise_dim_val_list[[column_names[j]]] <- (-1) * stats::runif(n,
-                                                              min = min_noise, max = max_noise)
-      }
-
-
-    }
-
-    df_noise <- tibble::as_tibble(noise_dim_val_list)
-    df <- dplyr::bind_cols(df, df_noise)
+    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise_dims = num_noise_dims,
+                                min_noise = min_noise, max_noise = max_noise)
+    df <- cbind(df, noise_mat)
 
     df
 
@@ -192,19 +174,19 @@ clusters_different_shapes <- function(sample_size = 300, with_seed = NULL, num_g
 
     for (j in 1:num_dims) {
 
-      dim_val_list[[column_names[j]]] <- rnorm(cluster_size, mean = mean_val_for_cluster[j],
+      dim_val_list[[column_names[j]]] <- stats::rnorm(cluster_size, mean = mean_val_for_cluster[j],
                                                sd = cluster_sd_gau)
 
     }
     # To generate a tibble for a cluster
     df_gau_cluster <- tibble::as_tibble(dim_val_list)
 
-    df <- bind_rows(df, df_gau_cluster)
+    df <- rbind(df, df_gau_cluster)
 
   }
 
-  phi <- runif(cluster_size, max = 2*pi)
-  rho <- sqrt(runif(cluster_size))
+  phi <- stats::runif(cluster_size, max = 2*pi)
+  rho <- sqrt(stats::runif(cluster_size))
 
   for (i in 1:num_non_gaussian_clusters) {
 
@@ -222,7 +204,7 @@ clusters_different_shapes <- function(sample_size = 300, with_seed = NULL, num_g
         dim_val_list_n[[column_names[j]]] <- sqrt(a)*rho*cos(phi) + b
         ## Surface of poolar coordinate
       } else {
-        dim_val_list_n[[column_names[j]]] <- rnorm(cluster_size, mean = 0,
+        dim_val_list_n[[column_names[j]]] <- stats::rnorm(cluster_size, mean = 0,
                                                    sd = cluster_sd_non_gau)
 
       }
@@ -233,7 +215,7 @@ clusters_different_shapes <- function(sample_size = 300, with_seed = NULL, num_g
     # To generate a tibble for a cluster
     df_non_gau_cluster <- tibble::as_tibble(dim_val_list_n)
 
-    df <- bind_rows(df, df_non_gau_cluster)
+    df <- rbind(df, df_non_gau_cluster)
 
   }
 
@@ -256,56 +238,47 @@ cluster_and_curvilinear__with_noise_and_bkg_noise <- function(sample_size = 260,
     cluster_size <- (sample_size - sample_size * 0.3)/2
   }
 
-  theta = runif(cluster_size, 0.20,0.60 * pi)
-  x = cos(theta) + rnorm(cluster_size, 10, 0.03)
-  y = sin(theta) + rnorm(cluster_size, 10, 0.03)
+  theta = stats::runif(cluster_size, 0.20,0.60 * pi)
+  x = cos(theta) + stats::rnorm(cluster_size, 10, 0.03)
+  y = sin(theta) + stats::rnorm(cluster_size, 10, 0.03)
 
-  z <- rep(0, cluster_size) + rnorm(cluster_size, 10, 0.03)
-  w <- rep(0, cluster_size) - rnorm(cluster_size, 10, 0.03)
+  z <- rep(0, cluster_size) + stats::rnorm(cluster_size, 10, 0.03)
+  w <- rep(0, cluster_size) - stats::rnorm(cluster_size, 10, 0.03)
 
   df1 <- tibble::tibble(x1 = x, x2 = y, x3 = z, x4 = w)
 
-  x = rnorm(cluster_size, 10, 0.05)
-  y = rnorm(cluster_size, 10, 0.05)
+  x = stats::rnorm(cluster_size, 10, 0.05)
+  y = stats::rnorm(cluster_size, 10, 0.05)
 
-  z <- rep(0, cluster_size) + rnorm(cluster_size, 10, 0.05)
-  w <- rep(0, cluster_size) - rnorm(cluster_size, 10, 0.05)
+  z <- rep(0, cluster_size) + stats::rnorm(cluster_size, 10, 0.05)
+  w <- rep(0, cluster_size) - stats::rnorm(cluster_size, 10, 0.05)
 
   df2 <- tibble::tibble(x1 = x, x2 = y, x3 = z, x4 = w)
 
-  x = rnorm(sample_size * 0.3, 11, 0.5)
-  y = rnorm(sample_size * 0.3, 11, 0.5)
+  x = stats::rnorm(sample_size * 0.3, 11, 0.5)
+  y = stats::rnorm(sample_size * 0.3, 11, 0.5)
 
-  z <- rep(0, sample_size * 0.3) + rnorm(sample_size * 0.3, 10, 0.05)
-  w <- rep(0, sample_size * 0.3) - rnorm(sample_size * 0.3, 10, 0.05)
+  z <- rep(0, sample_size * 0.3) + stats::rnorm(sample_size * 0.3, 10, 0.05)
+  w <- rep(0, sample_size * 0.3) - stats::rnorm(sample_size * 0.3, 10, 0.05)
 
   df3 <- tibble::tibble(x1 = x, x2 = y, x3 = z, x4 = w)
 
-  df <- dplyr::bind_rows(df1, df2, df3)
+  df <- rbind(df1, df2, df3)
   names(df) <- paste0(rep("x", NCOL(df)), 1:NCOL(df))
 
-  # To generate column names for noise dimensions
-  column_names <- paste0(rep("x", num_of_noise_dim), (NCOL(df) + 1):((NCOL(df) + 1) + num_of_noise_dim))
+  if (num_noise_dims != 0) {
 
-  # Initialize an empty list to store the vectors with column
-  # values
-  noise_dim_val_list <- list()
+    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise_dims = num_noise_dims,
+                                min_noise = min_noise, max_noise = max_noise)
+    df <- cbind(df, noise_mat)
 
-  for (j in 1:num_of_noise_dim) {
-    if ((j%%2) == 0) {
-      noise_dim_val_list[[column_names[j]]] <- runif(sample_size,
-                                                     min = min_noise, max = max_noise)
-    } else {
-      noise_dim_val_list[[column_names[j]]] <- (-1) * runif(sample_size,
-                                                            min = min_noise, max = max_noise)
-    }
+    df
 
+  } else {
+
+    df
 
   }
-
-  df_noise <- tibble::as_tibble(noise_dim_val_list)
-  df <- dplyr::bind_cols(df, df_noise)
-  df
 
 }
 
@@ -326,9 +299,9 @@ one_doublet_with_noise <- function(sample_size = 110, with_seed = NULL, num_of_n
   }
 
 
-  df1 <- tibble::tibble(x=rnorm(cluster_size, mean = 0, sd = 0.05), y=rnorm(cluster_size, mean = 1, sd = 0.05), z=rnorm(cluster_size, mean = 0, sd = 0.05), w=rnorm(cluster_size, mean = 0, sd = 0.05))
+  df1 <- tibble::tibble(x=stats::rnorm(cluster_size, mean = 0, sd = 0.05), y=stats::rnorm(cluster_size, mean = 1, sd = 0.05), z=stats::rnorm(cluster_size, mean = 0, sd = 0.05), w=stats::rnorm(cluster_size, mean = 0, sd = 0.05))
 
-  df2 <- tibble::tibble(x=rnorm(cluster_size, mean = 1, sd = 0.05), y=rnorm(cluster_size, mean = 0, sd = 0.05), z=rnorm(cluster_size, mean = 0, sd = 0.05), w=rnorm(cluster_size, mean = 0, sd = 0.05))
+  df2 <- tibble::tibble(x=stats::rnorm(cluster_size, mean = 1, sd = 0.05), y=stats::rnorm(cluster_size, mean = 0, sd = 0.05), z=stats::rnorm(cluster_size, mean = 0, sd = 0.05), w=stats::rnorm(cluster_size, mean = 0, sd = 0.05))
 
   df3_new <- (df1 + df2) / 2
   #get a sample of 10
@@ -338,33 +311,23 @@ one_doublet_with_noise <- function(sample_size = 110, with_seed = NULL, num_of_n
   df3 <- df3_new[samp,]
 
 
-  df <- dplyr::bind_rows(df1, df2, df3)
+  df <- rbind(df1, df2, df3)
   df <- df |>
     dplyr::rename(x1 = x, x2 = y, x3 = z, x4 = w)
 
-  # To generate column names for noise dimensions
-  column_names <- paste0(rep("x", num_of_noise_dim), (NCOL(df) + 1):((NCOL(df) + 1) + num_of_noise_dim))
+  if (num_noise_dims != 0) {
 
-  # Initialize an empty list to store the vectors with column
-  # values
-  noise_dim_val_list <- list()
+    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise_dims = num_noise_dims,
+                                min_noise = min_noise, max_noise = max_noise)
+    df <- cbind(df, noise_mat)
 
-  for (j in 1:num_of_noise_dim) {
-    if ((j%%2) == 0) {
-      noise_dim_val_list[[column_names[j]]] <- runif(sample_size,
-                                                     min = min_noise, max = max_noise)
-    } else {
-      noise_dim_val_list[[column_names[j]]] <- (-1) * runif(sample_size,
-                                                            min = min_noise, max = max_noise)
-    }
+    df
 
+  } else {
+
+    df
 
   }
-
-  df_noise <- tibble::as_tibble(noise_dim_val_list)
-  df <- dplyr::bind_cols(df, df_noise)
-
-  df
 
 }
 
@@ -385,21 +348,21 @@ three_doublets_with_noise <- function(sample_size = 210, with_seed = NULL, num_o
   }
 
 
-  df1 <- tibble::tibble(x1=rnorm(cluster_size, mean = 3, sd = 0.05), x2 = rnorm(cluster_size, mean = 1, sd = 0.05), x3=rnorm(cluster_size, mean = 1, sd = 0.05), x4=rnorm(cluster_size, mean = 1, sd = 0.05),
-                        x5=rnorm(cluster_size, mean = 1, sd = 0.05),
-                        x6=rnorm(cluster_size, mean = 1, sd = 0.05),
-                        x7=rnorm(cluster_size, mean = 1, sd = 0.05),
-                        x8=rnorm(cluster_size, mean = 1, sd = 0.05),
-                        x9=rnorm(cluster_size, mean = 1, sd = 0.05),
-                        x10=rnorm(cluster_size, mean = 1, sd = 0.05))
+  df1 <- tibble::tibble(x1=stats::rnorm(cluster_size, mean = 3, sd = 0.05), x2 = stats::rnorm(cluster_size, mean = 1, sd = 0.05), x3=stats::rnorm(cluster_size, mean = 1, sd = 0.05), x4=stats::rnorm(cluster_size, mean = 1, sd = 0.05),
+                        x5=stats::rnorm(cluster_size, mean = 1, sd = 0.05),
+                        x6=stats::rnorm(cluster_size, mean = 1, sd = 0.05),
+                        x7=stats::rnorm(cluster_size, mean = 1, sd = 0.05),
+                        x8=stats::rnorm(cluster_size, mean = 1, sd = 0.05),
+                        x9=stats::rnorm(cluster_size, mean = 1, sd = 0.05),
+                        x10=stats::rnorm(cluster_size, mean = 1, sd = 0.05))
 
-  df2 <- tibble::tibble(x1=rnorm(cluster_size, mean = 1, sd = 0.05), x2=rnorm(cluster_size, mean = 1, sd = 0.05), x3=rnorm(cluster_size, mean = 1, sd = 0.05), x4=rnorm(cluster_size, mean = 1, sd = 0.05),
-                        x5=rnorm(cluster_size, mean = 1, sd = 0.05),
-                        x6=rnorm(cluster_size, mean = 1, sd = 0.05),
-                        x7=rnorm(cluster_size, mean = 1, sd = 0.05),
-                        x8=rnorm(cluster_size, mean = 1, sd = 0.05),
-                        x9=rnorm(cluster_size, mean = 1, sd = 0.05),
-                        x10=rnorm(cluster_size, mean = 1, sd = 0.05))
+  df2 <- tibble::tibble(x1=stats::rnorm(cluster_size, mean = 1, sd = 0.05), x2=stats::rnorm(cluster_size, mean = 1, sd = 0.05), x3=stats::rnorm(cluster_size, mean = 1, sd = 0.05), x4=stats::rnorm(cluster_size, mean = 1, sd = 0.05),
+                        x5=stats::rnorm(cluster_size, mean = 1, sd = 0.05),
+                        x6=stats::rnorm(cluster_size, mean = 1, sd = 0.05),
+                        x7=stats::rnorm(cluster_size, mean = 1, sd = 0.05),
+                        x8=stats::rnorm(cluster_size, mean = 1, sd = 0.05),
+                        x9=stats::rnorm(cluster_size, mean = 1, sd = 0.05),
+                        x10=stats::rnorm(cluster_size, mean = 1, sd = 0.05))
 
   df3_new <- (df1 + df2) / 2
   #get a sample of 10
@@ -408,13 +371,13 @@ three_doublets_with_noise <- function(sample_size = 210, with_seed = NULL, num_o
   #data in the sample
   df3 <- df3_new[samp,]
 
-  df4 <- tibble::tibble(x1=rnorm(cluster_size, mean = 1, sd = 0.05), x2=rnorm(cluster_size, mean = 1, sd = 0.05), x3=rnorm(cluster_size, mean = 1, sd = 0.05), x4=rnorm(cluster_size, mean = 3, sd = 0.05),
-                        x5=rnorm(cluster_size, mean = 1, sd = 0.05),
-                        x6=rnorm(cluster_size, mean = 1, sd = 0.05),
-                        x7=rnorm(cluster_size, mean = 1, sd = 0.05),
-                        x8=rnorm(cluster_size, mean = 1, sd = 0.05),
-                        x9=rnorm(cluster_size, mean = 1, sd = 0.05),
-                        x10=rnorm(cluster_size, mean = 1, sd = 0.05))
+  df4 <- tibble::tibble(x1=stats::rnorm(cluster_size, mean = 1, sd = 0.05), x2=stats::rnorm(cluster_size, mean = 1, sd = 0.05), x3=stats::rnorm(cluster_size, mean = 1, sd = 0.05), x4=stats::rnorm(cluster_size, mean = 3, sd = 0.05),
+                        x5=stats::rnorm(cluster_size, mean = 1, sd = 0.05),
+                        x6=stats::rnorm(cluster_size, mean = 1, sd = 0.05),
+                        x7=stats::rnorm(cluster_size, mean = 1, sd = 0.05),
+                        x8=stats::rnorm(cluster_size, mean = 1, sd = 0.05),
+                        x9=stats::rnorm(cluster_size, mean = 1, sd = 0.05),
+                        x10=stats::rnorm(cluster_size, mean = 1, sd = 0.05))
 
   df5_new <- (df2 + df4) / 2
 
@@ -432,31 +395,21 @@ three_doublets_with_noise <- function(sample_size = 210, with_seed = NULL, num_o
   #data in the sample
   df6 <- df6_new[samp2,]
 
-  df <- bind_rows(df1, df2, df3, df4, df5, df6)
+  df <- rbind(df1, df2, df3, df4, df5, df6)
 
-  # To generate column names for noise dimensions
-  column_names <- paste0(rep("x", num_of_noise_dim), (NCOL(df) + 1):((NCOL(df) + 1) + num_of_noise_dim))
+  if (num_noise_dims != 0) {
 
-  # Initialize an empty list to store the vectors with column
-  # values
-  noise_dim_val_list <- list()
+    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise_dims = num_noise_dims,
+                                min_noise = min_noise, max_noise = max_noise)
+    df <- cbind(df, noise_mat)
 
-  for (j in 1:num_of_noise_dim) {
-    if ((j%%2) == 0) {
-      noise_dim_val_list[[column_names[j]]] <- runif(sample_size,
-                                                     min = min_noise, max = max_noise)
-    } else {
-      noise_dim_val_list[[column_names[j]]] <- (-1) * runif(sample_size,
-                                                            min = min_noise, max = max_noise)
-    }
+    df
 
+  } else {
+
+    df
 
   }
-
-  df_noise <- tibble::as_tibble(noise_dim_val_list)
-  df <- dplyr::bind_cols(df, df_noise)
-
-  df
 
 }
 
@@ -477,15 +430,15 @@ one_doublet_four_clusters_with_noise <- function(sample_size = 210, with_seed = 
   }
 
 
-  df1 <- tibble::tibble(x1=rnorm(cluster_size, mean = 0, sd = 0.05), x2 = rnorm(cluster_size, mean = 0, sd = 0.05), x3=rnorm(cluster_size, mean = 0, sd = 0.05), x4=rnorm(cluster_size, mean = 1, sd = 0.05),
-                        x5=rnorm(cluster_size, mean = 0, sd = 0.05),
-                        x6=rnorm(cluster_size, mean = 0, sd = 0.05),
-                        x7=rnorm(cluster_size, mean = 1, sd = 0.05))
+  df1 <- tibble::tibble(x1=stats::rnorm(cluster_size, mean = 0, sd = 0.05), x2 = stats::rnorm(cluster_size, mean = 0, sd = 0.05), x3=stats::rnorm(cluster_size, mean = 0, sd = 0.05), x4=stats::rnorm(cluster_size, mean = 1, sd = 0.05),
+                        x5=stats::rnorm(cluster_size, mean = 0, sd = 0.05),
+                        x6=stats::rnorm(cluster_size, mean = 0, sd = 0.05),
+                        x7=stats::rnorm(cluster_size, mean = 1, sd = 0.05))
 
-  df2 <- tibble::tibble(x1=rnorm(cluster_size, mean = 0, sd = 0.05), x2=rnorm(cluster_size, mean = 0, sd = 0.05), x3=rnorm(cluster_size, mean = 0, sd = 0.05), x4=rnorm(cluster_size, mean = 0, sd = 0.05),
-                        x5=rnorm(cluster_size, mean = 1, sd = 0.05),
-                        x6=rnorm(cluster_size, mean = 0, sd = 0.05),
-                        x7=rnorm(cluster_size, mean = 0, sd = 0.05))
+  df2 <- tibble::tibble(x1=stats::rnorm(cluster_size, mean = 0, sd = 0.05), x2=stats::rnorm(cluster_size, mean = 0, sd = 0.05), x3=stats::rnorm(cluster_size, mean = 0, sd = 0.05), x4=stats::rnorm(cluster_size, mean = 0, sd = 0.05),
+                        x5=stats::rnorm(cluster_size, mean = 1, sd = 0.05),
+                        x6=stats::rnorm(cluster_size, mean = 0, sd = 0.05),
+                        x7=stats::rnorm(cluster_size, mean = 0, sd = 0.05))
 
   df3_new <- (df1 + df2) / 2
   #get a sample of 10
@@ -494,42 +447,32 @@ one_doublet_four_clusters_with_noise <- function(sample_size = 210, with_seed = 
   #data in the sample
   df3 <- df3_new[samp,]
 
-  df4 <- tibble::tibble(x1=rnorm(cluster_size, mean = 0, sd = 0.05), x2=rnorm(cluster_size, mean = 0, sd = 0.05), x3=rnorm(cluster_size, mean = 1, sd = 0.05), x4=rnorm(cluster_size, mean = 0, sd = 0.05),
-                        x5=rnorm(cluster_size, mean = 0, sd = 0.05),
-                        x6=rnorm(cluster_size, mean = 0, sd = 0.05),
-                        x7=rnorm(cluster_size, mean = 0, sd = 0.05))
+  df4 <- tibble::tibble(x1=stats::rnorm(cluster_size, mean = 0, sd = 0.05), x2=stats::rnorm(cluster_size, mean = 0, sd = 0.05), x3=stats::rnorm(cluster_size, mean = 1, sd = 0.05), x4=stats::rnorm(cluster_size, mean = 0, sd = 0.05),
+                        x5=stats::rnorm(cluster_size, mean = 0, sd = 0.05),
+                        x6=stats::rnorm(cluster_size, mean = 0, sd = 0.05),
+                        x7=stats::rnorm(cluster_size, mean = 0, sd = 0.05))
 
 
-  df5 <- tibble::tibble(x1=rnorm(cluster_size, mean = 0, sd = 0.05), x2=rnorm(cluster_size, mean = 0, sd = 0.05), x3=rnorm(cluster_size, mean = 0, sd = 0.05), x4=rnorm(cluster_size, mean = 0, sd = 0.05),
-                        x5=rnorm(cluster_size, mean = 0, sd = 0.05),
-                        x6=rnorm(cluster_size, mean = 0, sd = 0.05),
-                        x7=rnorm(cluster_size, mean = 0, sd = 0.05))
+  df5 <- tibble::tibble(x1=stats::rnorm(cluster_size, mean = 0, sd = 0.05), x2=stats::rnorm(cluster_size, mean = 0, sd = 0.05), x3=stats::rnorm(cluster_size, mean = 0, sd = 0.05), x4=stats::rnorm(cluster_size, mean = 0, sd = 0.05),
+                        x5=stats::rnorm(cluster_size, mean = 0, sd = 0.05),
+                        x6=stats::rnorm(cluster_size, mean = 0, sd = 0.05),
+                        x7=stats::rnorm(cluster_size, mean = 0, sd = 0.05))
 
-  df <- bind_rows(df1, df2, df3, df4, df5)
+  df <- rbind(df1, df2, df3, df4, df5)
 
-  # To generate column names for noise dimensions
-  column_names <- paste0(rep("x", num_of_noise_dim), (NCOL(df) + 1):((NCOL(df) + 1) + num_of_noise_dim))
+  if (num_noise_dims != 0) {
 
-  # Initialize an empty list to store the vectors with column
-  # values
-  noise_dim_val_list <- list()
+    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise_dims = num_noise_dims,
+                                min_noise = min_noise, max_noise = max_noise)
+    df <- cbind(df, noise_mat)
 
-  for (j in 1:num_of_noise_dim) {
-    if ((j%%2) == 0) {
-      noise_dim_val_list[[column_names[j]]] <- runif(sample_size,
-                                                     min = min_noise, max = max_noise)
-    } else {
-      noise_dim_val_list[[column_names[j]]] <- (-1) * runif(sample_size,
-                                                            min = min_noise, max = max_noise)
-    }
+    df
 
+  } else {
+
+    df
 
   }
-
-  df_noise <- tibble::as_tibble(noise_dim_val_list)
-  df <- dplyr::bind_cols(df, df_noise)
-
-  df
 
 }
 
@@ -550,21 +493,21 @@ one_doublet_dfifferent_var_clusters_with_noise <- function(sample_size = 260, wi
   }
 
 
-  df1 <- tibble::tibble(x1=rnorm(cluster_size, mean = 1, sd = 0.1), x2 = rnorm(cluster_size, mean = 0, sd = 0.08), x3=rnorm(cluster_size, mean = 0, sd = 0.05), x4=rnorm(cluster_size, mean = 1, sd = 0.05),
-                        x5=rnorm(cluster_size, mean = 0, sd = 0.08),
-                        x6=rnorm(cluster_size, mean = 0, sd = 0.08),
-                        x7=rnorm(cluster_size, mean = 1, sd = 0.08),
-                        x8=rnorm(cluster_size, mean = 1, sd = 0.02),
-                        x9=rnorm(cluster_size, mean = 0, sd = 0.02),
-                        x10=rnorm(cluster_size, mean = 0, sd = 0.02))
+  df1 <- tibble::tibble(x1=stats::rnorm(cluster_size, mean = 1, sd = 0.1), x2 = stats::rnorm(cluster_size, mean = 0, sd = 0.08), x3=stats::rnorm(cluster_size, mean = 0, sd = 0.05), x4=stats::rnorm(cluster_size, mean = 1, sd = 0.05),
+                        x5=stats::rnorm(cluster_size, mean = 0, sd = 0.08),
+                        x6=stats::rnorm(cluster_size, mean = 0, sd = 0.08),
+                        x7=stats::rnorm(cluster_size, mean = 1, sd = 0.08),
+                        x8=stats::rnorm(cluster_size, mean = 1, sd = 0.02),
+                        x9=stats::rnorm(cluster_size, mean = 0, sd = 0.02),
+                        x10=stats::rnorm(cluster_size, mean = 0, sd = 0.02))
 
-  df2 <- tibble::tibble(x1=rnorm(cluster_size, mean = 0, sd = 0.02), x2=rnorm(cluster_size, mean = 0, sd = 0.02), x3=rnorm(cluster_size, mean = 0, sd = 0.02), x4=rnorm(cluster_size, mean = 1, sd = 0.05),
-                        x5=rnorm(cluster_size, mean = 1, sd = 0.02),
-                        x6=rnorm(cluster_size, mean = 0, sd = 0.02),
-                        x7=rnorm(cluster_size, mean = 0, sd = 0.02),
-                        x8=rnorm(cluster_size, mean = 1, sd = 0.02),
-                        x9=rnorm(cluster_size, mean = 0, sd = 0.02),
-                        x10=rnorm(cluster_size, mean = 0, sd = 0.02))
+  df2 <- tibble::tibble(x1=stats::rnorm(cluster_size, mean = 0, sd = 0.02), x2=stats::rnorm(cluster_size, mean = 0, sd = 0.02), x3=stats::rnorm(cluster_size, mean = 0, sd = 0.02), x4=stats::rnorm(cluster_size, mean = 1, sd = 0.05),
+                        x5=stats::rnorm(cluster_size, mean = 1, sd = 0.02),
+                        x6=stats::rnorm(cluster_size, mean = 0, sd = 0.02),
+                        x7=stats::rnorm(cluster_size, mean = 0, sd = 0.02),
+                        x8=stats::rnorm(cluster_size, mean = 1, sd = 0.02),
+                        x9=stats::rnorm(cluster_size, mean = 0, sd = 0.02),
+                        x10=stats::rnorm(cluster_size, mean = 0, sd = 0.02))
 
   df3_new <- (df1 + df2) / 2
   #get a sample of 10
@@ -573,31 +516,13 @@ one_doublet_dfifferent_var_clusters_with_noise <- function(sample_size = 260, wi
   #data in the sample
   df3 <- df3_new[samp,]
 
-  df <- bind_rows(df1, df2, df3)
+  df <- rbind(df1, df2, df3)
 
-  if (num_of_noise_dim != 0) {
+  if (num_noise_dims != 0) {
 
-    # To generate column names for noise dimensions
-    column_names <- paste0(rep("x", num_of_noise_dim), (NCOL(df) + 1):((NCOL(df) + 1) + num_of_noise_dim))
-
-    # Initialize an empty list to store the vectors with column
-    # values
-    noise_dim_val_list <- list()
-
-    for (j in 1:num_of_noise_dim) {
-      if ((j%%2) == 0) {
-        noise_dim_val_list[[column_names[j]]] <- runif(sample_size,
-                                                       min = min_noise, max = max_noise)
-      } else {
-        noise_dim_val_list[[column_names[j]]] <- (-1) * runif(sample_size,
-                                                              min = min_noise, max = max_noise)
-      }
-
-
-    }
-
-    df_noise <- tibble::as_tibble(noise_dim_val_list)
-    df <- dplyr::bind_cols(df, df_noise)
+    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise_dims = num_noise_dims,
+                                min_noise = min_noise, max_noise = max_noise)
+    df <- cbind(df, noise_mat)
 
     df
 
@@ -627,31 +552,31 @@ one_doublet_dfifferent_pattern_clusters_with_noise <- function(sample_size = 280
   }
 
 
-  theta = runif(cluster_size, 0.20, 0.60 * pi)
+  theta = stats::runif(cluster_size, 0.20, 0.60 * pi)
 
   df1 <- tibble::tibble(
-    x1 = cos(theta) + rnorm(cluster_size, 1, 0.5),
-    x2 = sin(theta) + rnorm(cluster_size, 1, 0.03),
+    x1 = cos(theta) + stats::rnorm(cluster_size, 1, 0.5),
+    x2 = sin(theta) + stats::rnorm(cluster_size, 1, 0.03),
 
-    x3 = cos(theta) + rnorm(cluster_size, 1, 0.03),
-    x4 = sin(theta) + rnorm(cluster_size, 1, 0.03),
+    x3 = cos(theta) + stats::rnorm(cluster_size, 1, 0.03),
+    x4 = sin(theta) + stats::rnorm(cluster_size, 1, 0.03),
 
-    x5 = cos(theta) + rnorm(cluster_size, 1, 0.03),
-    x6 = sin(theta) + rnorm(cluster_size, 1, 0.03),
+    x5 = cos(theta) + stats::rnorm(cluster_size, 1, 0.03),
+    x6 = sin(theta) + stats::rnorm(cluster_size, 1, 0.03),
 
-    x7 = cos(theta) + rnorm(cluster_size, 1, 0.05),
-    x8 = sin(theta) + rnorm(cluster_size, 1, 0.03),
+    x7 = cos(theta) + stats::rnorm(cluster_size, 1, 0.05),
+    x8 = sin(theta) + stats::rnorm(cluster_size, 1, 0.03),
 
-    x9 = cos(theta) + rnorm(cluster_size, 1, 0.3),
-    x10 = sin(theta) + rnorm(cluster_size, 1, 0.03))
+    x9 = cos(theta) + stats::rnorm(cluster_size, 1, 0.3),
+    x10 = sin(theta) + stats::rnorm(cluster_size, 1, 0.03))
 
-  df2 <- tibble::tibble(x1=rnorm(cluster_size, mean = 1, sd = 0.1), x2 = rnorm(cluster_size, mean = 0, sd = 0.08), x3=rnorm(cluster_size, mean = 0, sd = 0.05), x4=rnorm(cluster_size, mean = 1, sd = 0.05),
-                        x5=rnorm(cluster_size, mean = 0, sd = 0.08),
-                        x6=rnorm(cluster_size, mean = 0, sd = 0.08),
-                        x7=rnorm(cluster_size, mean = 1, sd = 0.08),
-                        x8=rnorm(cluster_size, mean = 1, sd = 0.02),
-                        x9=rnorm(cluster_size, mean = 0, sd = 0.02),
-                        x10=rnorm(cluster_size, mean = 0, sd = 0.02))
+  df2 <- tibble::tibble(x1=stats::rnorm(cluster_size, mean = 1, sd = 0.1), x2 = stats::rnorm(cluster_size, mean = 0, sd = 0.08), x3=stats::rnorm(cluster_size, mean = 0, sd = 0.05), x4=stats::rnorm(cluster_size, mean = 1, sd = 0.05),
+                        x5=stats::rnorm(cluster_size, mean = 0, sd = 0.08),
+                        x6=stats::rnorm(cluster_size, mean = 0, sd = 0.08),
+                        x7=stats::rnorm(cluster_size, mean = 1, sd = 0.08),
+                        x8=stats::rnorm(cluster_size, mean = 1, sd = 0.02),
+                        x9=stats::rnorm(cluster_size, mean = 0, sd = 0.02),
+                        x10=stats::rnorm(cluster_size, mean = 0, sd = 0.02))
 
 
   df3_new <- (df1 + df2) / 2
@@ -661,31 +586,21 @@ one_doublet_dfifferent_pattern_clusters_with_noise <- function(sample_size = 280
   #data in the sample
   df3 <- df3_new[samp,]
 
-  df <- bind_rows(df1, df2, df3)
+  df <- rbind(df1, df2, df3)
 
-  # To generate column names for noise dimensions
-  column_names <- paste0(rep("x", num_of_noise_dim), (NCOL(df) + 1):((NCOL(df) + 1) + num_of_noise_dim))
+  if (num_noise_dims != 0) {
 
-  # Initialize an empty list to store the vectors with column
-  # values
-  noise_dim_val_list <- list()
+    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise_dims = num_noise_dims,
+                                min_noise = min_noise, max_noise = max_noise)
+    df <- cbind(df, noise_mat)
 
-  for (j in 1:num_of_noise_dim) {
-    if ((j%%2) == 0) {
-      noise_dim_val_list[[column_names[j]]] <- runif(sample_size,
-                                                     min = min_noise, max = max_noise)
-    } else {
-      noise_dim_val_list[[column_names[j]]] <- (-1) * runif(sample_size,
-                                                            min = min_noise, max = max_noise)
-    }
+    df
 
+  } else {
+
+    df
 
   }
-
-  df_noise <- tibble::as_tibble(noise_dim_val_list)
-  df <- dplyr::bind_cols(df, df_noise)
-
-  df
 
 }
 
@@ -706,21 +621,21 @@ two_doublets_parallel_with_noise <- function(sample_size = 440, with_seed = NULL
   }
 
 
-  df1 <- tibble::tibble(x1=rnorm(cluster_size, mean = 1, sd = 0.05), x2 = rnorm(cluster_size, mean = 0, sd = 0.05), x3=rnorm(cluster_size, mean = 0, sd = 0.05), x4=rnorm(cluster_size, mean = 1, sd = 0.05),
-                        x5=rnorm(cluster_size, mean = 0, sd = 0.05),
-                        x6=rnorm(cluster_size, mean = 0, sd = 0.05),
-                        x7=rnorm(cluster_size, mean = 1, sd = 0.05),
-                        x8=rnorm(cluster_size, mean = 1, sd = 0.05),
-                        x9=rnorm(cluster_size, mean = 0, sd = 0.05),
-                        x10=rnorm(cluster_size, mean = 0, sd = 0.05))
+  df1 <- tibble::tibble(x1=stats::rnorm(cluster_size, mean = 1, sd = 0.05), x2 = stats::rnorm(cluster_size, mean = 0, sd = 0.05), x3=stats::rnorm(cluster_size, mean = 0, sd = 0.05), x4=stats::rnorm(cluster_size, mean = 1, sd = 0.05),
+                        x5=stats::rnorm(cluster_size, mean = 0, sd = 0.05),
+                        x6=stats::rnorm(cluster_size, mean = 0, sd = 0.05),
+                        x7=stats::rnorm(cluster_size, mean = 1, sd = 0.05),
+                        x8=stats::rnorm(cluster_size, mean = 1, sd = 0.05),
+                        x9=stats::rnorm(cluster_size, mean = 0, sd = 0.05),
+                        x10=stats::rnorm(cluster_size, mean = 0, sd = 0.05))
 
-  df2 <- tibble::tibble(x1=rnorm(cluster_size, mean = 0, sd = 0.05), x2=rnorm(cluster_size, mean = 0, sd = 0.05), x3=rnorm(cluster_size, mean = 0, sd = 0.05), x4=rnorm(cluster_size, mean = 1, sd = 0.05),
-                        x5=rnorm(cluster_size, mean = 1, sd = 0.05),
-                        x6=rnorm(cluster_size, mean = 0, sd = 0.05),
-                        x7=rnorm(cluster_size, mean = 0, sd = 0.05),
-                        x8=rnorm(cluster_size, mean = 1, sd = 0.05),
-                        x9=rnorm(cluster_size, mean = 0, sd = 0.05),
-                        x10=rnorm(cluster_size, mean = 0, sd = 0.05))
+  df2 <- tibble::tibble(x1=stats::rnorm(cluster_size, mean = 0, sd = 0.05), x2=stats::rnorm(cluster_size, mean = 0, sd = 0.05), x3=stats::rnorm(cluster_size, mean = 0, sd = 0.05), x4=stats::rnorm(cluster_size, mean = 1, sd = 0.05),
+                        x5=stats::rnorm(cluster_size, mean = 1, sd = 0.05),
+                        x6=stats::rnorm(cluster_size, mean = 0, sd = 0.05),
+                        x7=stats::rnorm(cluster_size, mean = 0, sd = 0.05),
+                        x8=stats::rnorm(cluster_size, mean = 1, sd = 0.05),
+                        x9=stats::rnorm(cluster_size, mean = 0, sd = 0.05),
+                        x10=stats::rnorm(cluster_size, mean = 0, sd = 0.05))
 
   df3_new <- (df1 + df2) / 2
   #get a sample of 10
@@ -729,21 +644,21 @@ two_doublets_parallel_with_noise <- function(sample_size = 440, with_seed = NULL
   #data in the sample
   df3 <- df3_new[samp,]
 
-  df4 <- tibble::tibble(x1=rnorm(cluster_size, mean = -1, sd = 0.05), x2 = rnorm(cluster_size, mean = 0, sd = 0.05), x3=rnorm(cluster_size, mean = 0, sd = 0.05), x4=rnorm(cluster_size, mean = 1, sd = 0.05),
-                        x5=rnorm(cluster_size, mean = 0, sd = 0.05),
-                        x6=rnorm(cluster_size, mean = 0, sd = 0.05),
-                        x7=rnorm(cluster_size, mean = -1, sd = 0.05),
-                        x8=rnorm(cluster_size, mean = -1, sd = 0.05),
-                        x9=rnorm(cluster_size, mean = 0, sd = 0.05),
-                        x10=rnorm(cluster_size, mean = 0, sd = 0.05))
+  df4 <- tibble::tibble(x1=stats::rnorm(cluster_size, mean = -1, sd = 0.05), x2 = stats::rnorm(cluster_size, mean = 0, sd = 0.05), x3=stats::rnorm(cluster_size, mean = 0, sd = 0.05), x4=stats::rnorm(cluster_size, mean = 1, sd = 0.05),
+                        x5=stats::rnorm(cluster_size, mean = 0, sd = 0.05),
+                        x6=stats::rnorm(cluster_size, mean = 0, sd = 0.05),
+                        x7=stats::rnorm(cluster_size, mean = -1, sd = 0.05),
+                        x8=stats::rnorm(cluster_size, mean = -1, sd = 0.05),
+                        x9=stats::rnorm(cluster_size, mean = 0, sd = 0.05),
+                        x10=stats::rnorm(cluster_size, mean = 0, sd = 0.05))
 
-  df5 <- tibble::tibble(x1=rnorm(cluster_size, mean = 0, sd = 0.05), x2=rnorm(cluster_size, mean = 0, sd = 0.05), x3=rnorm(cluster_size, mean = 0, sd = 0.05), x4=rnorm(cluster_size, mean = -1, sd = 0.05),
-                        x5=rnorm(cluster_size, mean = -1, sd = 0.05),
-                        x6=rnorm(cluster_size, mean = 0, sd = 0.05),
-                        x7=rnorm(cluster_size, mean = 0, sd = 0.05),
-                        x8=rnorm(cluster_size, mean = -1, sd = 0.05),
-                        x9=rnorm(cluster_size, mean = 0, sd = 0.05),
-                        x10=rnorm(cluster_size, mean = 0, sd = 0.05))
+  df5 <- tibble::tibble(x1=stats::rnorm(cluster_size, mean = 0, sd = 0.05), x2=stats::rnorm(cluster_size, mean = 0, sd = 0.05), x3=stats::rnorm(cluster_size, mean = 0, sd = 0.05), x4=stats::rnorm(cluster_size, mean = -1, sd = 0.05),
+                        x5=stats::rnorm(cluster_size, mean = -1, sd = 0.05),
+                        x6=stats::rnorm(cluster_size, mean = 0, sd = 0.05),
+                        x7=stats::rnorm(cluster_size, mean = 0, sd = 0.05),
+                        x8=stats::rnorm(cluster_size, mean = -1, sd = 0.05),
+                        x9=stats::rnorm(cluster_size, mean = 0, sd = 0.05),
+                        x10=stats::rnorm(cluster_size, mean = 0, sd = 0.05))
 
   df6_new <- (df4 + df5) / 2
   #get a sample of 10
@@ -752,31 +667,13 @@ two_doublets_parallel_with_noise <- function(sample_size = 440, with_seed = NULL
   #data in the sample
   df6 <- df6_new[samp1,]
 
-  df <- dplyr::bind_rows(df1, df2, df3, df4, df5, df6)
+  df <- rbind(df1, df2, df3, df4, df5, df6)
 
-  if (num_of_noise_dim != 0) {
+  if (num_noise_dims != 0) {
 
-    # To generate column names for noise dimensions
-    column_names <- paste0(rep("x", num_of_noise_dim), (NCOL(df) + 1):((NCOL(df) + 1) + num_of_noise_dim))
-
-    # Initialize an empty list to store the vectors with column
-    # values
-    noise_dim_val_list <- list()
-
-    for (j in 1:num_of_noise_dim) {
-      if ((j%%2) == 0) {
-        noise_dim_val_list[[column_names[j]]] <- runif(sample_size,
-                                                       min = min_noise, max = max_noise)
-      } else {
-        noise_dim_val_list[[column_names[j]]] <- (-1) * runif(sample_size,
-                                                              min = min_noise, max = max_noise)
-      }
-
-
-    }
-
-    df_noise <- tibble::as_tibble(noise_dim_val_list)
-    df <- dplyr::bind_cols(df, df_noise)
+    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise_dims = num_noise_dims,
+                                min_noise = min_noise, max_noise = max_noise)
+    df <- cbind(df, noise_mat)
 
     df
 
@@ -805,15 +702,15 @@ one_doublets_with_bkg_noise <- function(sample_size = 250, with_seed = NULL, num
   }
 
 
-  df1 <- tibble::tibble(x1=rnorm(cluster_size, mean = 1, sd = 0.05), x2 = rnorm(cluster_size, mean = 0, sd = 0.05), x3=rnorm(cluster_size, mean = 0, sd = 0.05), x4=rnorm(cluster_size, mean = 1, sd = 0.05),
-                        x5=rnorm(cluster_size, mean = 0, sd = 0.05),
-                        x6=rnorm(cluster_size, mean = 0, sd = 0.05),
-                        x7=rnorm(cluster_size, mean = 1, sd = 0.05))
+  df1 <- tibble::tibble(x1=stats::rnorm(cluster_size, mean = 1, sd = 0.05), x2 = stats::rnorm(cluster_size, mean = 0, sd = 0.05), x3=stats::rnorm(cluster_size, mean = 0, sd = 0.05), x4=stats::rnorm(cluster_size, mean = 1, sd = 0.05),
+                        x5=stats::rnorm(cluster_size, mean = 0, sd = 0.05),
+                        x6=stats::rnorm(cluster_size, mean = 0, sd = 0.05),
+                        x7=stats::rnorm(cluster_size, mean = 1, sd = 0.05))
 
-  df2 <- tibble::tibble(x1=rnorm(cluster_size, mean = 0, sd = 0.05), x2=rnorm(cluster_size, mean = 0, sd = 0.05), x3=rnorm(cluster_size, mean = 0, sd = 0.05), x4=rnorm(cluster_size, mean = 1, sd = 0.05),
-                        x5=rnorm(cluster_size, mean = 1, sd = 0.05),
-                        x6=rnorm(cluster_size, mean = 0, sd = 0.05),
-                        x7=rnorm(cluster_size, mean = 0, sd = 0.05))
+  df2 <- tibble::tibble(x1=stats::rnorm(cluster_size, mean = 0, sd = 0.05), x2=stats::rnorm(cluster_size, mean = 0, sd = 0.05), x3=stats::rnorm(cluster_size, mean = 0, sd = 0.05), x4=stats::rnorm(cluster_size, mean = 1, sd = 0.05),
+                        x5=stats::rnorm(cluster_size, mean = 1, sd = 0.05),
+                        x6=stats::rnorm(cluster_size, mean = 0, sd = 0.05),
+                        x7=stats::rnorm(cluster_size, mean = 0, sd = 0.05))
 
   df3_new <- (df1 + df2) / 2
   #get a sample of 10
@@ -822,10 +719,10 @@ one_doublets_with_bkg_noise <- function(sample_size = 250, with_seed = NULL, num
   #data in the sample
   df3 <- df3_new[samp,]
 
-  df4_new <- tibble::tibble(x1=rnorm(cluster_size, mean = 0, sd = 0.2), x2 = rnorm(cluster_size, mean = 0, sd = 0.5), x3=rnorm(cluster_size, mean = 0.5, sd = 0.5), x4=rnorm(cluster_size, mean = 0.2, sd = 0.5),
-                            x5=rnorm(cluster_size, mean = 0.2, sd = 0.3),
-                            x6=rnorm(cluster_size, mean = 0, sd = 0.5),
-                            x7=rnorm(cluster_size, mean = 0, sd = 0.3))
+  df4_new <- tibble::tibble(x1=stats::rnorm(cluster_size, mean = 0, sd = 0.2), x2 = stats::rnorm(cluster_size, mean = 0, sd = 0.5), x3=stats::rnorm(cluster_size, mean = 0.5, sd = 0.5), x4=stats::rnorm(cluster_size, mean = 0.2, sd = 0.5),
+                            x5=stats::rnorm(cluster_size, mean = 0.2, sd = 0.3),
+                            x6=stats::rnorm(cluster_size, mean = 0, sd = 0.5),
+                            x7=stats::rnorm(cluster_size, mean = 0, sd = 0.3))
 
   #get a sample of 10
   samp1 <- sample(nrow(df4_new), cluster_size * 0.30) ## 20% from the original dataset
@@ -833,31 +730,21 @@ one_doublets_with_bkg_noise <- function(sample_size = 250, with_seed = NULL, num
   #data in the sample
   df4 <- df4_new[samp1,]
 
-  df <- bind_rows(df1, df2, df3, df4)
+  df <- rbind(df1, df2, df3, df4)
 
-  # To generate column names for noise dimensions
-  column_names <- paste0(rep("x", num_of_noise_dim), (NCOL(df) + 1):((NCOL(df) + 1) + num_of_noise_dim))
+  if (num_noise_dims != 0) {
 
-  # Initialize an empty list to store the vectors with column
-  # values
-  noise_dim_val_list <- list()
+    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise_dims = num_noise_dims,
+                                min_noise = min_noise, max_noise = max_noise)
+    df <- cbind(df, noise_mat)
 
-  for (j in 1:num_of_noise_dim) {
-    if ((j%%2) == 0) {
-      noise_dim_val_list[[column_names[j]]] <- runif(sample_size,
-                                                     min = min_noise, max = max_noise)
-    } else {
-      noise_dim_val_list[[column_names[j]]] <- (-1) * runif(sample_size,
-                                                            min = min_noise, max = max_noise)
-    }
+    df
 
+  } else {
+
+    df
 
   }
-
-  df_noise <- tibble::as_tibble(noise_dim_val_list)
-  df <- dplyr::bind_cols(df, df_noise)
-
-  df
 
 }
 
@@ -878,51 +765,41 @@ curvy_branching_with_noise <- function(sample_size = 100, with_seed = NULL, num_
   }
 
 
-  theta = runif(cluster_size, 0.20, 0.90 * pi)
+  theta = stats::runif(cluster_size, 0.20, 0.90 * pi)
 
   df1 <- tibble::tibble(
-    x1 = cos(theta) + rnorm(cluster_size, 1, 0.06),
-    x2 = sin(theta) + rnorm(cluster_size, 1, 0.06),
+    x1 = cos(theta) + stats::rnorm(cluster_size, 1, 0.06),
+    x2 = sin(theta) + stats::rnorm(cluster_size, 1, 0.06),
 
-    x3 = cos(theta) + rnorm(cluster_size, 1, 0.06),
-    x4 = sin(theta) + rnorm(cluster_size, 1, 0.06)
+    x3 = cos(theta) + stats::rnorm(cluster_size, 1, 0.06),
+    x4 = sin(theta) + stats::rnorm(cluster_size, 1, 0.06)
   )
 
-  theta1 = runif(cluster_size, 0.20, 0.90 * pi)
+  theta1 = stats::runif(cluster_size, 0.20, 0.90 * pi)
 
   df2 <- tibble::tibble(
-    x1 = cos(-theta1) + rnorm(cluster_size, 1, 0.06),
-    x2 = sin(-theta1) + rnorm(cluster_size, 1, 0.06),
+    x1 = cos(-theta1) + stats::rnorm(cluster_size, 1, 0.06),
+    x2 = sin(-theta1) + stats::rnorm(cluster_size, 1, 0.06),
 
-    x3 = cos(-theta1) + rnorm(cluster_size, 1, 0.06),
-    x4 = sin(-theta1) + rnorm(cluster_size, 1, 0.06)
+    x3 = cos(-theta1) + stats::rnorm(cluster_size, 1, 0.06),
+    x4 = sin(-theta1) + stats::rnorm(cluster_size, 1, 0.06)
   )
 
-  df <- bind_rows(df1, df2)
+  df <- rbind(df1, df2)
 
-  # To generate column names for noise dimensions
-  column_names <- paste0(rep("x", num_of_noise_dim), (NCOL(df) + 1):((NCOL(df) + 1) + num_of_noise_dim))
+  if (num_noise_dims != 0) {
 
-  # Initialize an empty list to store the vectors with column
-  # values
-  noise_dim_val_list <- list()
+    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise_dims = num_noise_dims,
+                                min_noise = min_noise, max_noise = max_noise)
+    df <- cbind(df, noise_mat)
 
-  for (j in 1:num_of_noise_dim) {
-    if ((j%%2) == 0) {
-      noise_dim_val_list[[column_names[j]]] <- runif(sample_size,
-                                                     min = min_noise, max = max_noise)
-    } else {
-      noise_dim_val_list[[column_names[j]]] <- (-1) * runif(sample_size,
-                                                            min = min_noise, max = max_noise)
-    }
+    df
 
+  } else {
+
+    df
 
   }
-
-  df_noise <- tibble::as_tibble(noise_dim_val_list)
-  df <- dplyr::bind_cols(df, df_noise)
-
-  df
 
 }
 
@@ -943,11 +820,8 @@ two_doublets_with_bkg_noise <- function(sample_size = 200, with_seed = NULL, num
     cluster_size <- sample_size/4
   }
 
-
-  df1 <- tibble::tibble(x1=rnorm(cluster_size, mean = 0, sd = 0.05), x2=rnorm(cluster_size, mean = 0, sd = 0.05), x3=rnorm(cluster_size, mean = 0, sd = 0.05), x4=rnorm(cluster_size, mean = 0, sd = 0.05))
-
-
-  df2 <- tibble::tibble(x1=rnorm(cluster_size, mean = 1, sd = 0.05), x2=rnorm(cluster_size, mean = 0, sd = 0.05), x3=rnorm(cluster_size, mean = 0, sd = 0.05), x4=rnorm(cluster_size, mean = 0, sd = 0.05))
+  df1 <- tibble::tibble(x1=stats::rnorm(cluster_size, mean = 0, sd = 0.05), x2=stats::rnorm(cluster_size, mean = 0, sd = 0.05), x3=stats::rnorm(cluster_size, mean = 0, sd = 0.05), x4=stats::rnorm(cluster_size, mean = 0, sd = 0.05))
+  df2 <- tibble::tibble(x1=stats::rnorm(cluster_size, mean = 1, sd = 0.05), x2=stats::rnorm(cluster_size, mean = 0, sd = 0.05), x3=stats::rnorm(cluster_size, mean = 0, sd = 0.05), x4=stats::rnorm(cluster_size, mean = 0, sd = 0.05))
 
   df6_new <- (df1 + df2) / 2
   #get a sample of 10
@@ -957,7 +831,7 @@ two_doublets_with_bkg_noise <- function(sample_size = 200, with_seed = NULL, num
   df6 <- df6_new[samp,]
 
 
-  df3 <- tibble::tibble(x1=rnorm(cluster_size, mean = 0, sd = 0.05), x2=rnorm(cluster_size, mean = 1, sd = 0.05), x3=rnorm(cluster_size, mean = 0, sd = 0.05), x4=rnorm(cluster_size, mean = 0, sd = 0.05))
+  df3 <- tibble::tibble(x1=stats::rnorm(cluster_size, mean = 0, sd = 0.05), x2=stats::rnorm(cluster_size, mean = 1, sd = 0.05), x3=stats::rnorm(cluster_size, mean = 0, sd = 0.05), x4=stats::rnorm(cluster_size, mean = 0, sd = 0.05))
 
   df7_new <- (df1 + df3) / 2
   #get a sample of 10
@@ -966,34 +840,24 @@ two_doublets_with_bkg_noise <- function(sample_size = 200, with_seed = NULL, num
   #data in the sample
   df7 <- df7_new[samp,]
 
-  df4 <- tibble::tibble(x1=rnorm(cluster_size * 0.6, mean = 0, sd = 0.5), x2=rnorm(cluster_size * 0.6, mean = 0, sd = 0.5), x3=rnorm(cluster_size * 0.6, mean = 0, sd = 0.5), x4=rnorm(cluster_size * 0.6, mean = 0, sd = 0.5))
+  df4 <- tibble::tibble(x1=stats::rnorm(cluster_size * 0.6, mean = 0, sd = 0.5), x2=stats::rnorm(cluster_size * 0.6, mean = 0, sd = 0.5), x3=stats::rnorm(cluster_size * 0.6, mean = 0, sd = 0.5), x4=stats::rnorm(cluster_size * 0.6, mean = 0, sd = 0.5))
 
 
-  df <- bind_rows(df1, df2, df3, df6, df7, df4)
+  df <- rbind(df1, df2, df3, df6, df7, df4)
 
-  # To generate column names for noise dimensions
-  column_names <- paste0(rep("x", num_of_noise_dim), (NCOL(df) + 1):((NCOL(df) + 1) + num_of_noise_dim))
+  if (num_noise_dims != 0) {
 
-  # Initialize an empty list to store the vectors with column
-  # values
-  noise_dim_val_list <- list()
+    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise_dims = num_noise_dims,
+                                min_noise = min_noise, max_noise = max_noise)
+    df <- cbind(df, noise_mat)
 
-  for (j in 1:num_of_noise_dim) {
-    if ((j%%2) == 0) {
-      noise_dim_val_list[[column_names[j]]] <- runif(sample_size,
-                                                     min = min_noise, max = max_noise)
-    } else {
-      noise_dim_val_list[[column_names[j]]] <- (-1) * runif(sample_size,
-                                                            min = min_noise, max = max_noise)
-    }
+    df
 
+  } else {
+
+    df
 
   }
-
-  df_noise <- tibble::as_tibble(noise_dim_val_list)
-  df <- dplyr::bind_cols(df, df_noise)
-
-  df
 
 }
 
@@ -1015,50 +879,37 @@ two_nonlinear_with_noise <- function(sample_size = 200, with_seed = NULL, num_of
   }
 
 
-  x <- runif(cluster_size, -8, 1.5)
-  y <- -(exp(x) + runif(cluster_size, 0, 1)) + runif(cluster_size, 0, 0.7)
+  x <- stats::runif(cluster_size, -8, 1.5)
+  y <- -(exp(x) + stats::runif(cluster_size, 0, 1)) + stats::runif(cluster_size, 0, 0.7)
 
-  z <- -(exp(x) + runif(cluster_size, 0, 1)) + runif(cluster_size, 0, 0.7)
-  w <- -(exp(x) + runif(cluster_size, 0, 1)) + runif(cluster_size, 0, 0.7)
+  z <- -(exp(x) + stats::runif(cluster_size, 0, 1)) + stats::runif(cluster_size, 0, 0.7)
+  w <- -(exp(x) + stats::runif(cluster_size, 0, 1)) + stats::runif(cluster_size, 0, 0.7)
 
   df1 <- tibble::tibble(x1 = x, x2 = y, x3 = z, x4 = w)
 
-  x <- runif(cluster_size, -8, 1.5)
-  y <- 3 - (exp(x) + runif(cluster_size, 0, 1)) + runif(cluster_size, 0, 0.7)
+  x <- stats::runif(cluster_size, -8, 1.5)
+  y <- 3 - (exp(x) + stats::runif(cluster_size, 0, 1)) + stats::runif(cluster_size, 0, 0.7)
 
-  z <- 3 - (exp(x) + runif(cluster_size, 0, 1)) + runif(cluster_size, 0, 0.7)
-  w <- 3 - (exp(x) + runif(cluster_size, 0, 1)) + runif(cluster_size, 0, 0.7)
+  z <- 3 - (exp(x) + stats::runif(cluster_size, 0, 1)) + stats::runif(cluster_size, 0, 0.7)
+  w <- 3 - (exp(x) + stats::runif(cluster_size, 0, 1)) + stats::runif(cluster_size, 0, 0.7)
 
   df2 <- tibble::tibble(x1 = x, x2 = y, x3 = z, x4 = w)
 
-  df <- bind_rows(df1, df2)
+  df <- rbind(df1, df2)
 
+  if (num_noise_dims != 0) {
 
+    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise_dims = num_noise_dims,
+                                min_noise = min_noise, max_noise = max_noise)
+    df <- cbind(df, noise_mat)
 
+    df
 
-  # To generate column names for noise dimensions
-  column_names <- paste0(rep("x", num_of_noise_dim), (NCOL(df) + 1):((NCOL(df) + 1) + num_of_noise_dim))
+  } else {
 
-  # Initialize an empty list to store the vectors with column
-  # values
-  noise_dim_val_list <- list()
-
-  for (j in 1:num_of_noise_dim) {
-    if ((j%%2) == 0) {
-      noise_dim_val_list[[column_names[j]]] <- runif(sample_size,
-                                                     min = min_noise, max = max_noise)
-    } else {
-      noise_dim_val_list[[column_names[j]]] <- (-1) * runif(sample_size,
-                                                            min = min_noise, max = max_noise)
-    }
-
+    df
 
   }
-
-  df_noise <- tibble::as_tibble(noise_dim_val_list)
-  df <- dplyr::bind_cols(df, df_noise)
-
-  df
 
 }
 
@@ -1079,52 +930,42 @@ two_curvilinear_with_noise <- function(sample_size = 150, with_seed = NULL, num_
   }
 
 
-  theta = runif(cluster_size, 0.20, 0.90 * pi)
+  theta = stats::runif(cluster_size, 0.20, 0.90 * pi)
 
   df1 <- tibble::tibble(
-    x1 = cos(theta) + rnorm(cluster_size, 1, 0.06),
-    x2 = sin(theta) + rnorm(cluster_size, 1, 0.06),
+    x1 = cos(theta) + stats::rnorm(cluster_size, 1, 0.06),
+    x2 = sin(theta) + stats::rnorm(cluster_size, 1, 0.06),
 
-    x3 = cos(theta) + rnorm(cluster_size, 1, 0.06),
-    x4 = sin(theta) + rnorm(cluster_size, 1, 0.06)
+    x3 = cos(theta) + stats::rnorm(cluster_size, 1, 0.06),
+    x4 = sin(theta) + stats::rnorm(cluster_size, 1, 0.06)
   )
 
-  theta1 = runif(cluster_size, 0.20, 0.90 * pi)
+  theta1 = stats::runif(cluster_size, 0.20, 0.90 * pi)
 
   df2 <- tibble::tibble(
-    x1 = 1 + cos(theta1) + rnorm(cluster_size, 1, 0.06),
-    x2 = 1 + sin(theta1) + rnorm(cluster_size, 1, 0.06),
+    x1 = 1 + cos(theta1) + stats::rnorm(cluster_size, 1, 0.06),
+    x2 = 1 + sin(theta1) + stats::rnorm(cluster_size, 1, 0.06),
 
-    x3 = 1 + cos(theta1) + rnorm(cluster_size, 1, 0.06),
-    x4 = 1 + sin(theta1) + rnorm(cluster_size, 1, 0.06)
+    x3 = 1 + cos(theta1) + stats::rnorm(cluster_size, 1, 0.06),
+    x4 = 1 + sin(theta1) + stats::rnorm(cluster_size, 1, 0.06)
   )
 
-  df <- bind_rows(df1, df2)
+  df <- rbind(df1, df2)
 
 
-  # To generate column names for noise dimensions
-  column_names <- paste0(rep("x", num_of_noise_dim), (NCOL(df) + 1):((NCOL(df) + 1) + num_of_noise_dim))
+  if (num_noise_dims != 0) {
 
-  # Initialize an empty list to store the vectors with column
-  # values
-  noise_dim_val_list <- list()
+    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise_dims = num_noise_dims,
+                                min_noise = min_noise, max_noise = max_noise)
+    df <- cbind(df, noise_mat)
 
-  for (j in 1:num_of_noise_dim) {
-    if ((j%%2) == 0) {
-      noise_dim_val_list[[column_names[j]]] <- runif(sample_size,
-                                                     min = min_noise, max = max_noise)
-    } else {
-      noise_dim_val_list[[column_names[j]]] <- (-1) * runif(sample_size,
-                                                            min = min_noise, max = max_noise)
-    }
+    df
 
+  } else {
+
+    df
 
   }
-
-  df_noise <- tibble::as_tibble(noise_dim_val_list)
-  df <- dplyr::bind_cols(df, df_noise)
-
-  df
 
 }
 
@@ -1145,52 +986,41 @@ two_curvilinear_diff_with_noise <- function(sample_size = 150, with_seed = NULL,
   }
 
 
-  theta = runif(cluster_size, 0.40, 0.70 * pi)
+  theta = stats::runif(cluster_size, 0.40, 0.70 * pi)
 
   df1 <- tibble::tibble(
-    x1 = cos(theta) + rnorm(cluster_size, 1, 0.06),
-    x2 = sin(theta) + rnorm(cluster_size, 1, 0.06),
+    x1 = cos(theta) + stats::rnorm(cluster_size, 1, 0.06),
+    x2 = sin(theta) + stats::rnorm(cluster_size, 1, 0.06),
 
-    x3 = cos(theta) + rnorm(cluster_size, 1, 0.06),
-    x4 = sin(theta) + rnorm(cluster_size, 1, 0.06)
+    x3 = cos(theta) + stats::rnorm(cluster_size, 1, 0.06),
+    x4 = sin(theta) + stats::rnorm(cluster_size, 1, 0.06)
   )
 
-  theta1 = runif(cluster_size, 0.20, 0.90 * pi)
+  theta1 = stats::runif(cluster_size, 0.20, 0.90 * pi)
 
   df2 <- tibble::tibble(
-    x1 = 1 + cos(theta1) + rnorm(cluster_size, 1, 0.06),
-    x2 = 1 + sin(theta1) + rnorm(cluster_size, 1, 0.06),
+    x1 = 1 + cos(theta1) + stats::rnorm(cluster_size, 1, 0.06),
+    x2 = 1 + sin(theta1) + stats::rnorm(cluster_size, 1, 0.06),
 
-    x3 = cos(theta1) + rnorm(cluster_size, 1, 0.06),
-    x4 = sin(theta1) + rnorm(cluster_size, 1, 0.06)
+    x3 = cos(theta1) + stats::rnorm(cluster_size, 1, 0.06),
+    x4 = sin(theta1) + stats::rnorm(cluster_size, 1, 0.06)
   )
 
-  df <- bind_rows(df1, df2)
+  df <- rbind(df1, df2)
 
+  if (num_noise_dims != 0) {
 
-  # To generate column names for noise dimensions
-  column_names <- paste0(rep("x", num_of_noise_dim), (NCOL(df) + 1):((NCOL(df) + 1) + num_of_noise_dim))
+    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise_dims = num_noise_dims,
+                                min_noise = min_noise, max_noise = max_noise)
+    df <- cbind(df, noise_mat)
 
-  # Initialize an empty list to store the vectors with column
-  # values
-  noise_dim_val_list <- list()
+    df
 
-  for (j in 1:num_of_noise_dim) {
-    if ((j%%2) == 0) {
-      noise_dim_val_list[[column_names[j]]] <- runif(sample_size,
-                                                     min = min_noise, max = max_noise)
-    } else {
-      noise_dim_val_list[[column_names[j]]] <- (-1) * runif(sample_size,
-                                                            min = min_noise, max = max_noise)
-    }
+  } else {
 
+    df
 
   }
-
-  df_noise <- tibble::as_tibble(noise_dim_val_list)
-  df <- dplyr::bind_cols(df, df_noise)
-
-  df
 
 }
 
@@ -1223,34 +1053,24 @@ two_linear_diff_with_noise <- function(sample_size = 150, with_seed = NULL, num_
   df_2_split_3$x <- df_2_split_3$x + 10
   df_2_split_3$y <- df_2_split_3$y + 10
 
-  df <- dplyr::bind_rows(df_2_split_1, df_2_split[[2]], df_2_split_3) %>%
+  df <- rbind(df_2_split_1, df_2_split[[2]], df_2_split_3) %>%
     dplyr::select(-color)
 
   names(df) <- paste0(rep("x",2), 1:2)
 
-  # To generate column names for noise dimensions
-  column_names <- paste0(rep("x", num_of_noise_dim), (NCOL(df) + 1):((NCOL(df) + 1) + num_of_noise_dim))
+  if (num_noise_dims != 0) {
 
-  # Initialize an empty list to store the vectors with column
-  # values
-  noise_dim_val_list <- list()
+    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise_dims = num_noise_dims,
+                                min_noise = min_noise, max_noise = max_noise)
+    df <- cbind(df, noise_mat)
 
-  for (j in 1:num_of_noise_dim) {
-    if ((j%%2) == 0) {
-      noise_dim_val_list[[column_names[j]]] <- runif(sample_size,
-                                                     min = min_noise, max = max_noise)
-    } else {
-      noise_dim_val_list[[column_names[j]]] <- (-1) * runif(sample_size,
-                                                            min = min_noise, max = max_noise)
-    }
+    df
 
+  } else {
+
+    df
 
   }
-
-  df_noise <- tibble::as_tibble(noise_dim_val_list)
-  df <- dplyr::bind_cols(df, df_noise)
-
-  df
 
 }
 
@@ -1284,34 +1104,24 @@ three_linear_with_noise <- function(sample_size = 150, with_seed = NULL, num_of_
   df_2_split_3$x <- df_2_split_3$x - 10
   df_2_split_3$y <- df_2_split_3$y + 10
 
-  df <- dplyr::bind_rows(df_2_split_1, df_2_split[[2]], df_2_split_3) %>%
+  df <- rbind(df_2_split_1, df_2_split[[2]], df_2_split_3) %>%
     dplyr::select(-color)
 
   names(df) <- paste0(rep("x",2), 1:2)
 
-  # To generate column names for noise dimensions
-  column_names <- paste0(rep("x", num_of_noise_dim), (NCOL(df) + 1):((NCOL(df) + 1) + num_of_noise_dim))
+  if (num_noise_dims != 0) {
 
-  # Initialize an empty list to store the vectors with column
-  # values
-  noise_dim_val_list <- list()
+    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise_dims = num_noise_dims,
+                                min_noise = min_noise, max_noise = max_noise)
+    df <- cbind(df, noise_mat)
 
-  for (j in 1:num_of_noise_dim) {
-    if ((j%%2) == 0) {
-      noise_dim_val_list[[column_names[j]]] <- runif(sample_size,
-                                                     min = min_noise, max = max_noise)
-    } else {
-      noise_dim_val_list[[column_names[j]]] <- (-1) * runif(sample_size,
-                                                            min = min_noise, max = max_noise)
-    }
+    df
 
+  } else {
+
+    df
 
   }
-
-  df_noise <- tibble::as_tibble(noise_dim_val_list)
-  df <- dplyr::bind_cols(df, df_noise)
-
-  df
 
 }
 
@@ -1332,10 +1142,10 @@ three_nonlinear_with_noise <- function(sample_size = 150, with_seed = NULL, num_
   }
 
 
-  phi <- runif(cluster_size, max = 2*pi)
-  rho <- sqrt(runif(cluster_size))
+  phi <- stats::runif(cluster_size, max = 2*pi)
+  rho <- sqrt(stats::runif(cluster_size))
 
-  theta = runif(cluster_size, 0,1.80 * pi)
+  theta = stats::runif(cluster_size, 0,1.80 * pi)
   x = theta
   y = sin(theta)
 
@@ -1343,31 +1153,21 @@ three_nonlinear_with_noise <- function(sample_size = 150, with_seed = NULL, num_
   df2 <- tibble::tibble(x1=x+1, x2=y+1, x3=sqrt(1)*rho*cos(phi) + 6, x4=sqrt(1)*rho*sin(phi) + 6)
   df3 <- tibble::tibble(x1=x-1, x2=y-1, x3=sqrt(1)*rho*cos(phi) + 8, x4=sqrt(1)*rho*sin(phi) + 8)
 
-  df <- bind_rows(df1, df2, df3)
+  df <- rbind(df1, df2, df3)
 
-  # To generate column names for noise dimensions
-  column_names <- paste0(rep("x", num_of_noise_dim), (NCOL(df) + 1):((NCOL(df) + 1) + num_of_noise_dim))
+  if (num_noise_dims != 0) {
 
-  # Initialize an empty list to store the vectors with column
-  # values
-  noise_dim_val_list <- list()
+    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise_dims = num_noise_dims,
+                                min_noise = min_noise, max_noise = max_noise)
+    df <- cbind(df, noise_mat)
 
-  for (j in 1:num_of_noise_dim) {
-    if ((j%%2) == 0) {
-      noise_dim_val_list[[column_names[j]]] <- runif(sample_size,
-                                                     min = min_noise, max = max_noise)
-    } else {
-      noise_dim_val_list[[column_names[j]]] <- (-1) * runif(sample_size,
-                                                            min = min_noise, max = max_noise)
-    }
+    df
 
+  } else {
+
+    df
 
   }
-
-  df_noise <- tibble::as_tibble(noise_dim_val_list)
-  df <- dplyr::bind_cols(df, df_noise)
-
-  df
 
 }
 
@@ -1388,40 +1188,30 @@ three_cluster_mirror_with_noise <- function(sample_size = 150, with_seed = NULL,
   }
 
 
-  df1 <- tibble::tibble(x1=rnorm(cluster_size, mean = 0, sd = 0.05), x2=rnorm(cluster_size, mean = 0, sd = 0.05), x3=rnorm(cluster_size, mean = 0, sd = 0.05), x4=rnorm(cluster_size, mean = 0, sd = 0.05))
+  df1 <- tibble::tibble(x1=stats::rnorm(cluster_size, mean = 0, sd = 0.05), x2=stats::rnorm(cluster_size, mean = 0, sd = 0.05), x3=stats::rnorm(cluster_size, mean = 0, sd = 0.05), x4=stats::rnorm(cluster_size, mean = 0, sd = 0.05))
 
-  df2 <- tibble::tibble(x1=rnorm(cluster_size, mean = 1, sd = 0.05), x2=rnorm(cluster_size, mean = 0, sd = 0.05), x3=rnorm(cluster_size, mean = 0, sd = 0.05), x4=rnorm(cluster_size, mean = 0, sd = 0.05))
+  df2 <- tibble::tibble(x1=stats::rnorm(cluster_size, mean = 1, sd = 0.05), x2=stats::rnorm(cluster_size, mean = 0, sd = 0.05), x3=stats::rnorm(cluster_size, mean = 0, sd = 0.05), x4=stats::rnorm(cluster_size, mean = 0, sd = 0.05))
 
-  df3 <- tibble::tibble(x1=rnorm(cluster_size, mean = 0, sd = 0.05), x2=rnorm(cluster_size, mean = 1, sd = 0.05), x3=rnorm(cluster_size, mean = 0, sd = 0.05), x4=rnorm(cluster_size, mean = 0, sd = 0.05))
+  df3 <- tibble::tibble(x1=stats::rnorm(cluster_size, mean = 0, sd = 0.05), x2=stats::rnorm(cluster_size, mean = 1, sd = 0.05), x3=stats::rnorm(cluster_size, mean = 0, sd = 0.05), x4=stats::rnorm(cluster_size, mean = 0, sd = 0.05))
 
-  df_1 <- bind_rows(df1, df2, df3)
+  df_1 <- rbind(df1, df2, df3)
 
   df_2 <- df_1 + 2
-  df <- bind_rows(df_1, df_2)
+  df <- rbind(df_1, df_2)
 
-  # To generate column names for noise dimensions
-  column_names <- paste0(rep("x", num_of_noise_dim), (NCOL(df) + 1):((NCOL(df) + 1) + num_of_noise_dim))
+  if (num_noise_dims != 0) {
 
-  # Initialize an empty list to store the vectors with column
-  # values
-  noise_dim_val_list <- list()
+    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise_dims = num_noise_dims,
+                                min_noise = min_noise, max_noise = max_noise)
+    df <- cbind(df, noise_mat)
 
-  for (j in 1:num_of_noise_dim) {
-    if ((j%%2) == 0) {
-      noise_dim_val_list[[column_names[j]]] <- runif(sample_size,
-                                                     min = min_noise, max = max_noise)
-    } else {
-      noise_dim_val_list[[column_names[j]]] <- (-1) * runif(sample_size,
-                                                            min = min_noise, max = max_noise)
-    }
+    df
 
+  } else {
+
+    df
 
   }
-
-  df_noise <- tibble::as_tibble(noise_dim_val_list)
-  df <- dplyr::bind_cols(df, df_noise)
-
-  df
 
 }
 
@@ -1458,33 +1248,19 @@ four_long_clusters_with_bkg_noise <- function(sample_size = 200, with_seed = NUL
   df_2_split_4$x <- df_2_split_4$x + 20
   df_2_split_4$y <- df_2_split_4$y + 30
 
-  df1 <- bind_rows(df_2_split_1, df_2_split[[2]], df_2_split_3, df_2_split_4) %>%
+  df1 <- rbind(df_2_split_1, df_2_split[[2]], df_2_split_3, df_2_split_4) %>%
     select(-color)
 
   names(df1) <- paste0(rep("x",2), 1:2)
 
 
-  # To generate column names for noise dimensions
-  column_names <- paste0(rep("x", num_of_noise_dim), (NCOL(df1) + 1):((NCOL(df1) + 1) + num_of_noise_dim))
+  if (num_noise_dims != 0) {
 
-  # Initialize an empty list to store the vectors with column
-  # values
-  noise_dim_val_list <- list()
-
-  for (j in 1:num_of_noise_dim) {
-    if ((j%%2) == 0) {
-      noise_dim_val_list[[column_names[j]]] <- runif(cluster_size * 4,
-                                                     min = min_noise, max = max_noise)
-    } else {
-      noise_dim_val_list[[column_names[j]]] <- (-1) * runif(cluster_size * 4,
-                                                            min = min_noise, max = max_noise)
-    }
-
+    noise_mat <- gen_noise_dims(n = dim(df1)[1], num_noise_dims = num_noise_dims,
+                                min_noise = min_noise, max_noise = max_noise)
+    df1 <- cbind(df1, noise_mat)
 
   }
-
-  df_noise <- tibble::as_tibble(noise_dim_val_list)
-  df1 <- dplyr::bind_cols(df1, df_noise)
 
   ## To add background noise
   column_names_bkg <- paste0(rep("x", NCOL(df1)), 1:NCOL(df1))
@@ -1492,7 +1268,7 @@ four_long_clusters_with_bkg_noise <- function(sample_size = 200, with_seed = NUL
   noise_bkg_val_list <- list()
 
   for (j in 1:NCOL(df1)) {
-    noise_bkg_val_list[[column_names_bkg[j]]] <- rnorm(cluster_size, mean = 0, sd = 10)
+    noise_bkg_val_list[[column_names_bkg[j]]] <- stats::rnorm(cluster_size, mean = 0, sd = 10)
 
 
   }
@@ -1500,7 +1276,7 @@ four_long_clusters_with_bkg_noise <- function(sample_size = 200, with_seed = NUL
   df2 <- tibble::as_tibble(noise_bkg_val_list)
 
 
-  df <- dplyr::bind_rows(df1, df2)
+  df <- rbind(df1, df2)
 
   df
 
@@ -1524,57 +1300,47 @@ curvy_branching_cluster_with_bkg_noise <- function(sample_size = 200, with_seed 
   }
 
 
-  theta = runif(cluster_size, 0.20, 0.90 * pi)
+  theta = stats::runif(cluster_size, 0.20, 0.90 * pi)
 
   df1 <- tibble::tibble(
-    x1 = cos(theta) + rnorm(cluster_size, 1, 0.06),
-    x2 = sin(theta) + rnorm(cluster_size, 1, 0.06),
+    x1 = cos(theta) + stats::rnorm(cluster_size, 1, 0.06),
+    x2 = sin(theta) + stats::rnorm(cluster_size, 1, 0.06),
 
-    x3 = cos(theta) + rnorm(cluster_size, 1, 0.06),
-    x4 = sin(theta) + rnorm(cluster_size, 1, 0.06)
+    x3 = cos(theta) + stats::rnorm(cluster_size, 1, 0.06),
+    x4 = sin(theta) + stats::rnorm(cluster_size, 1, 0.06)
   )
 
-  theta1 = runif(cluster_size, 0.20, 0.90 * pi)
+  theta1 = stats::runif(cluster_size, 0.20, 0.90 * pi)
 
   df2 <- tibble::tibble(
-    x1 = cos(-theta1) + rnorm(cluster_size, 1, 0.06),
-    x2 = sin(-theta1) + rnorm(cluster_size, 1, 0.06),
+    x1 = cos(-theta1) + stats::rnorm(cluster_size, 1, 0.06),
+    x2 = sin(-theta1) + stats::rnorm(cluster_size, 1, 0.06),
 
-    x3 = cos(-theta1) + rnorm(cluster_size, 1, 0.06),
-    x4 = sin(-theta1) + rnorm(cluster_size, 1, 0.06)
+    x3 = cos(-theta1) + stats::rnorm(cluster_size, 1, 0.06),
+    x4 = sin(-theta1) + stats::rnorm(cluster_size, 1, 0.06)
   )
 
 
-  df3 <- tibble::tibble(x1 = rnorm(cluster_size, mean = 1, sd = 0.08), x2 = rnorm(cluster_size, mean = 1, sd = 0.08), x3=rnorm(cluster_size, mean = 1, sd = 0.08), x4=rnorm(cluster_size, mean = 1, sd = 0.08))
+  df3 <- tibble::tibble(x1 = stats::rnorm(cluster_size, mean = 1, sd = 0.08), x2 = stats::rnorm(cluster_size, mean = 1, sd = 0.08), x3=stats::rnorm(cluster_size, mean = 1, sd = 0.08), x4=stats::rnorm(cluster_size, mean = 1, sd = 0.08))
 
-  df4 <- tibble::tibble(x1 = rnorm(cluster_size, mean = 1, sd = 1), x2 = rnorm(cluster_size, mean = 1, sd = 1), x3=rnorm(cluster_size, mean = 1, sd = 1), x4=rnorm(cluster_size, mean = 1, sd = 1))
+  df4 <- tibble::tibble(x1 = stats::rnorm(cluster_size, mean = 1, sd = 1), x2 = stats::rnorm(cluster_size, mean = 1, sd = 1), x3=stats::rnorm(cluster_size, mean = 1, sd = 1), x4=stats::rnorm(cluster_size, mean = 1, sd = 1))
 
 
-  df <- bind_rows(df1, df2, df3, df4)
+  df <- rbind(df1, df2, df3, df4)
 
-  # To generate column names for noise dimensions
-  column_names <- paste0(rep("x", num_of_noise_dim), (NCOL(df) + 1):((NCOL(df) + 1) + num_of_noise_dim))
+  if (num_noise_dims != 0) {
 
-  # Initialize an empty list to store the vectors with column
-  # values
-  noise_dim_val_list <- list()
+    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise_dims = num_noise_dims,
+                                min_noise = min_noise, max_noise = max_noise)
+    df <- cbind(df, noise_mat)
 
-  for (j in 1:num_of_noise_dim) {
-    if ((j%%2) == 0) {
-      noise_dim_val_list[[column_names[j]]] <- runif(sample_size,
-                                                     min = min_noise, max = max_noise)
-    } else {
-      noise_dim_val_list[[column_names[j]]] <- (-1) * runif(sample_size,
-                                                            min = min_noise, max = max_noise)
-    }
+    df
 
+  } else {
+
+    df
 
   }
-
-  df_noise <- tibble::as_tibble(noise_dim_val_list)
-  df <- dplyr::bind_cols(df, df_noise)
-
-  df
 
 }
 
@@ -1656,155 +1422,178 @@ gaussian_clusters_diff_points <- function(n = 400, cluster_size_vec = c(50, 100,
     # To generate a tibble for a cluster
     df_cluster <- tibble::as_tibble(dim_val_list)
 
-    df <- dplyr::bind_rows(df, df_cluster)
+    df <- rbind(df, df_cluster)
 
   }
 
-  # To generate column names for noise dimensions
-  column_names <- paste0(rep("x", num_noise_dims), (NCOL(df) + 1):((NCOL(df) + 1) + num_noise_dims))
+  if (num_noise_dims != 0) {
 
-  # Initialize an empty list to store the vectors with column
-  # values
-  noise_dim_val_list <- list()
+    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise_dims = num_noise_dims,
+                                min_noise = min_noise, max_noise = max_noise)
+    df <- cbind(df, noise_mat)
 
-  for (j in 1:num_noise_dims) {
-    if ((j%%2) == 0) {
-      noise_dim_val_list[[column_names[j]]] <- runif(n,
-                                                     min = min_noise, max = max_noise)
-    } else {
-      noise_dim_val_list[[column_names[j]]] <- (-1) * runif(n,
-                                                            min = min_noise, max = max_noise)
-    }
+    df
 
+  } else {
+
+    df
 
   }
-
-  df_noise <- tibble::as_tibble(noise_dim_val_list)
-  df <- dplyr::bind_cols(df, df_noise)
-
-  df
 
 }
 
-cluster_and_curvilinear_with_noise <- function(sample_size = 200, cluster_size_vec = c(50, 150), with_seed = NULL, num_of_noise_dim = 3,
-                                               min_noise = -0.05, max_noise = 0.05) {
-  # To check the seed is not assigned
-  if (!is.null(with_seed)) {
-    set.seed(with_seed)
-  }
+#' Generate Cluster and Curvilinear Data with Noise
+#'
+#' This function generates data with two clusters, one following a curvilinear pattern and the other distributed randomly.
+#'
+#' @param sample_size The total number of data points to be generated.
+#' @param cluster_size_vec A vector specifying the number of points for each cluster.
+#'                         If not provided, the sample_size is divided equally
+#'                         between the two clusters.
+#' @param num_noise_dims The number of additional noise dimensions to be generated.
+#' @param min_noise The minimum value for the noise added to the data points.
+#' @param max_noise The maximum value for the noise added to the data points.
+#'
+#' @return A matrix containing the generated data, with each row representing a data point.
+#' @export
+#'
+#' @examples
+#'
+#' # Generate cluster and curvilinear data with custom parameters
+#' data <- cluster_and_curvilinear_with_noise(sample_size = 300,
+#' cluster_size_vec = c(100, 200), num_noise_dims = 3, min_noise = -0.05,
+#' max_noise = 0.05)
+cluster_and_curvilinear_with_noise <- function(sample_size, cluster_size_vec = NULL,
+                                               num_noise_dims, min_noise, max_noise) {
 
+  ## If the number of points for each cluster is not defined
+  if (is.null(cluster_size_vec)) {
 
-  theta = runif(cluster_size_vec[1], 0.20,0.60 * pi)
-  x = cos(theta) + rnorm(cluster_size_vec[1], 10, 0.03)
-  y = sin(theta) + rnorm(cluster_size_vec[1], 10, 0.03)
+    # To check that the assigned sample_size is divided by two
+    if ((sample_size%%2) != 0) {
+      warning("The sample size should be a product of two.")
+      cluster_size <- floor(sample_size/2)
+      cluster_size_vec <- append(cluster_size, (sample_size - cluster_size))
 
-  z <- rep(0, cluster_size_vec[1]) + rnorm(cluster_size_vec[1], 10, 0.03)
-  w <- rep(0, cluster_size_vec[1]) - rnorm(cluster_size_vec[1], 10, 0.03)
-
-  df1 <- tibble::tibble(x1 = x, x2 = y, x3 = z, x4 = w)
-
-  x = rnorm(cluster_size_vec[2], 10, 0.05)
-  y = rnorm(cluster_size_vec[2], 10, 0.05)
-
-  z <- rep(0, cluster_size_vec[2]) + rnorm(cluster_size_vec[2], 10, 0.05)
-  w <- rep(0, cluster_size_vec[2]) - rnorm(cluster_size_vec[2], 10, 0.05)
-
-  df2 <- tibble::tibble(x1 = x, x2 = y, x3 = z, x4 = w)
-
-  df <- dplyr::bind_rows(df1, df2)
-  names(df) <- paste0(rep("x", NCOL(df)), 1:NCOL(df))
-
-  # To generate column names for noise dimensions
-  column_names <- paste0(rep("x", num_of_noise_dim), (NCOL(df) + 1):((NCOL(df) + 1) + num_of_noise_dim))
-
-  # Initialize an empty list to store the vectors with column
-  # values
-  noise_dim_val_list <- list()
-
-  for (j in 1:num_of_noise_dim) {
-    if ((j%%2) == 0) {
-      noise_dim_val_list[[column_names[j]]] <- runif(sample_size,
-                                                     min = min_noise, max = max_noise)
     } else {
-      noise_dim_val_list[[column_names[j]]] <- (-1) * runif(sample_size,
-                                                            min = min_noise, max = max_noise)
+      cluster_size <- sample_size/2
+      cluster_size_vec <- rep(cluster_size, 2)
     }
 
-
   }
 
-  df_noise <- tibble::as_tibble(noise_dim_val_list)
-  df <- dplyr::bind_cols(df, df_noise)
-  df
+  theta = stats::runif(cluster_size_vec[1], 0.20,0.60 * pi)
+  x = cos(theta) + stats::rnorm(cluster_size_vec[1], 10, 0.03)
+  y = sin(theta) + stats::rnorm(cluster_size_vec[1], 10, 0.03)
+  z <- rep(0, cluster_size_vec[1]) + stats::rnorm(cluster_size_vec[1], 10, 0.03)
+  w <- rep(0, cluster_size_vec[1]) - stats::rnorm(cluster_size_vec[1], 10, 0.03)
+
+  df1 <- matrix(c(x, y, z, w), ncol = 4)
+
+  x = stats::rnorm(cluster_size_vec[2], 10, 0.05)
+  y = stats::rnorm(cluster_size_vec[2], 10, 0.05)
+  z <- rep(0, cluster_size_vec[2]) + stats::rnorm(cluster_size_vec[2], 10, 0.05)
+  w <- rep(0, cluster_size_vec[2]) - stats::rnorm(cluster_size_vec[2], 10, 0.05)
+
+  df2 <- matrix(c(x, y, z, w), ncol = 4)
+
+  df <- rbind(df1, df2)
+
+  if (num_noise_dims != 0) {
+
+    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise_dims = num_noise_dims,
+                                min_noise = min_noise, max_noise = max_noise)
+    df <- cbind(df, noise_mat)
+
+    df
+
+  } else {
+
+    df
+
+  }
 
 }
 
-curvy_branching_cluster <- function(sample_size = 200, cluster_size_vec = c(50, 100, 50), with_seed = NULL, num_of_noise_dim = 6,
-                                    min_noise = -0.05, max_noise = 0.05) {
-  # To check the seed is not assigned
-  if (!is.null(with_seed)) {
-    set.seed(with_seed)
-  }
+#' Generate Curvy Branching Cluster Data
+#'
+#' This function generates curvy branching cluster data with three clusters of different shapes.
+#'
+#' @param sample_size The total number of data points to be generated.
+#' @param cluster_size_vec A vector specifying the number of points for each cluster.
+#'                         If not provided, the sample_size is divided equally
+#'                         among the clusters.
+#' @param num_noise_dims The number of additional noise dimensions to be generated.
+#' @param min_noise The minimum value for the noise added to the data points.
+#' @param max_noise The maximum value for the noise added to the data points.
+#'
+#' @return A matrix containing the generated data, with each row representing a data point.
+#' @export
+#'
+#' @examples
+#'
+#' # Generate curvy branching cluster data with custom parameters
+#' data <- curvy_branching_cluster(sample_size = 300, cluster_size_vec = c(100, 150, 50),
+#' num_noise_dims = 6, min_noise = -0.05, max_noise = 0.05)
+curvy_branching_cluster <- function(sample_size, cluster_size_vec = NULL,
+                                    num_noise_dims, min_noise, max_noise) {
+  ## If the number of points for each cluster is not defined
+  if (is.null(cluster_size_vec)) {
 
-  # # To check that the assigned sample_size is divided by three
-  # if ((sample_size%%3) != 0) {
-  #   stop("The sample size should be a product of 4.")
-  #
-  # } else {
-  #   cluster_size <- sample_size/3
-  # }
+    # To check that the assigned sample_size is divided by three
+    if ((sample_size%%3) != 0) {
+      warning("The sample size should be a product of three.")
+      cluster_size <- floor(sample_size/3)
+      cluster_size_vec <- append(rep(cluster_size, 2), (sample_size - cluster_size * 2))
 
-
-  theta <- runif(cluster_size_vec[1], 0.20, 0.90 * pi)
-
-  df1 <- tibble::tibble(
-    x1 = cos(theta) + rnorm(cluster_size_vec[1], 1, 0.06),
-    x2 = sin(theta) + rnorm(cluster_size_vec[1], 1, 0.06),
-
-    x3 = cos(theta) + rnorm(cluster_size_vec[1], 1, 0.06),
-    x4 = sin(theta) + rnorm(cluster_size_vec[1], 1, 0.06)
-  )
-
-  theta1 <- runif(cluster_size_vec[3], 0.20, 0.90 * pi)
-
-  df2 <- tibble::tibble(
-    x1 = cos(-theta1) + rnorm(cluster_size_vec[3], 1, 0.06),
-    x2 = sin(-theta1) + rnorm(cluster_size_vec[3], 1, 0.06),
-
-    x3 = cos(-theta1) + rnorm(cluster_size_vec[3], 1, 0.06),
-    x4 = sin(-theta1) + rnorm(cluster_size_vec[3], 1, 0.06)
-  )
-
-
-  df3 <- tibble::tibble(x1 = rnorm(cluster_size_vec[2], mean = 1, sd = 0.08), x2 = rnorm(cluster_size_vec[2], mean = 1, sd = 0.08), x3=rnorm(cluster_size_vec[2], mean = 1, sd = 0.08), x4=rnorm(cluster_size_vec[2], mean = 1, sd = 0.08))
-
-
-
-  df <- dplyr::bind_rows(df1, df2, df3)
-
-  # To generate column names for noise dimensions
-  column_names <- paste0(rep("x", num_of_noise_dim), (NCOL(df) + 1):((NCOL(df) + 1) + num_of_noise_dim))
-
-  # Initialize an empty list to store the vectors with column
-  # values
-  noise_dim_val_list <- list()
-
-  for (j in 1:num_of_noise_dim) {
-    if ((j%%2) == 0) {
-      noise_dim_val_list[[column_names[j]]] <- runif(sample_size,
-                                                     min = min_noise, max = max_noise)
     } else {
-      noise_dim_val_list[[column_names[j]]] <- (-1) * runif(sample_size,
-                                                            min = min_noise, max = max_noise)
+      cluster_size <- sample_size/3
+      cluster_size_vec <- rep(cluster_size, 3)
     }
 
+  }
+
+  theta <- stats::runif(cluster_size_vec[1], 0.20, 0.90 * pi)
+
+  df1 <- matrix(c(
+    cos(theta) + stats::rnorm(cluster_size_vec[1], 1, 0.06),
+    sin(theta) + stats::rnorm(cluster_size_vec[1], 1, 0.06),
+    cos(theta) + stats::rnorm(cluster_size_vec[1], 1, 0.06),
+    sin(theta) + stats::rnorm(cluster_size_vec[1], 1, 0.06)
+  ), ncol = 4)
+
+
+  theta1 <- stats::runif(cluster_size_vec[3], 0.20, 0.90 * pi)
+
+  df2 <- matrix(c(
+    cos(-theta1) + stats::rnorm(cluster_size_vec[3], 1, 0.06),
+    sin(-theta1) + stats::rnorm(cluster_size_vec[3], 1, 0.06),
+    cos(-theta1) + stats::rnorm(cluster_size_vec[3], 1, 0.06),
+    sin(-theta1) + stats::rnorm(cluster_size_vec[3], 1, 0.06)
+  ), ncol = 4)
+
+  df3 <- matrix(c(stats::rnorm(cluster_size_vec[2], mean = 1, sd = 0.08),
+                  stats::rnorm(cluster_size_vec[2], mean = 1, sd = 0.08),
+                  stats::rnorm(cluster_size_vec[2], mean = 1, sd = 0.08),
+                  stats::rnorm(cluster_size_vec[2], mean = 1, sd = 0.08)),
+                ncol = 4)
+
+  df <- rbind(df1, df2, df3)
+
+  if (num_noise_dims != 0) {
+
+    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise_dims = num_noise_dims,
+                                min_noise = min_noise, max_noise = max_noise)
+    df <- cbind(df, noise_mat)
+
+    df
+
+  } else {
+
+    df
 
   }
 
-  df_noise <- tibble::as_tibble(noise_dim_val_list)
-  df <- dplyr::bind_cols(df, df_noise)
-
-  df
 
 }
 
@@ -1819,8 +1608,6 @@ clusters_different_shapes_diff_num_points <- function(sample_size = 400, with_se
   }
 
   num_clusters <- num_gussian_clusters + num_non_gaussian_clusters
-
-
 
   ## Generate Gaussian clusters
 
@@ -1857,23 +1644,21 @@ clusters_different_shapes_diff_num_points <- function(sample_size = 400, with_se
 
     for (j in 1:num_dims) {
 
-      dim_val_list[[column_names[j]]] <- rnorm(cluster_size_vec[i], mean = mean_val_for_cluster[j],
+      dim_val_list[[column_names[j]]] <- stats::rnorm(cluster_size_vec[i], mean = mean_val_for_cluster[j],
                                                sd = cluster_sd_gau)
 
     }
     # To generate a tibble for a cluster
     df_gau_cluster <- tibble::as_tibble(dim_val_list)
 
-    df <- dplyr::bind_rows(df, df_gau_cluster)
+    df <- rbind(df, df_gau_cluster)
 
   }
 
-
-
   for (i in 1:num_non_gaussian_clusters) {
 
-    phi <- runif(cluster_size_vec[(num_clusters - i)], max = 2*pi)
-    rho <- sqrt(runif(cluster_size_vec[(num_clusters - i)]))
+    phi <- stats::runif(cluster_size_vec[(num_clusters - i)], max = 2*pi)
+    rho <- sqrt(stats::runif(cluster_size_vec[(num_clusters - i)]))
 
     # To filter the mean values for specific cluster
     presence_of_elipse_cluster <- mean_val_grid_non_gau |>
@@ -1889,7 +1674,7 @@ clusters_different_shapes_diff_num_points <- function(sample_size = 400, with_se
         dim_val_list_n[[column_names[j]]] <- sqrt(a)*rho*cos(phi) + b
         ## Surface of poolar coordinate
       } else {
-        dim_val_list_n[[column_names[j]]] <- rnorm(cluster_size_vec[(num_clusters - i)], mean = 0,
+        dim_val_list_n[[column_names[j]]] <- stats::rnorm(cluster_size_vec[(num_clusters - i)], mean = 0,
                                                    sd = cluster_sd_non_gau)
 
       }
@@ -1900,7 +1685,7 @@ clusters_different_shapes_diff_num_points <- function(sample_size = 400, with_se
     # To generate a tibble for a cluster
     df_non_gau_cluster <- tibble::as_tibble(dim_val_list_n)
 
-    df <- dplyr::bind_rows(df, df_non_gau_cluster)
+    df <- rbind(df, df_non_gau_cluster)
 
   }
 
