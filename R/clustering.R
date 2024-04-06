@@ -1987,3 +1987,57 @@ curvy_branching_cluster <- function(sample_size, cluster_size_vec = NULL,
 }
 
 
+#' Generate three clusters of data points with optional noise.
+#'
+#' This function generates three clusters of data points along with optional noise.
+#'
+#' @param sample_size Total number of data points to generate, should be a multiple of three.
+#' @param num_dims Number of dimensions for each data point.
+#' @param num_noise_dims Number of additional noise dimensions to add to the data.
+#' @param min_noise Minimum value for the noise added to the data.
+#' @param max_noise Maximum value for the noise added to the data.
+#'
+#' @return A matrix containing the generated data points with or without added noise.
+#'
+#' @examples
+#' three_clusters_data_with_noise(sample_size = 100, num_dims = 7,
+#' num_noise_dims = 4, min_noise = -0.05, max_noise = 0.05)
+#'
+#' @export
+three_clusters_data_with_noise <- function(sample_size, num_dims, num_noise_dims,
+                                           min_noise, max_noise) {
+
+  # To check that the assigned sample_size is divided by three
+  if ((sample_size %% 3) != 0) {
+    warning("The sample size should be a product of three.")
+    cluster_size <- floor(sample_size/3)
+
+  } else {
+    cluster_size <- sample_size/3
+  }
+
+  df1 <- matrix(stats::rnorm(cluster_size * num_dims, sd = 1), ncol = num_dims)
+
+  df2 <- matrix(stats::rnorm(cluster_size * num_dims, sd = 1), ncol = num_dims)
+  df2[, 1] <- df2[, 1] + 10
+
+  df3 <- matrix(stats::rnorm(cluster_size * num_dims, sd = 1), ncol = num_dims)
+  df3[, 1] <- df3[, 1] + 50
+
+  df <- rbind(df1, df2, df3)
+
+  if (num_noise_dims != 0) {
+
+    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise_dims = num_noise_dims,
+                                min_noise = min_noise, max_noise = max_noise)
+    df <- cbind(df, noise_mat)
+
+    df
+
+  } else {
+
+    df
+
+  }
+
+}
