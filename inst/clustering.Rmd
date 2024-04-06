@@ -1786,7 +1786,7 @@ dataset28 <- two_curvy_panckakes_with_noise(sample_size = 300, num_of_noise_dim 
 langevitour(dataset28)
 ```
 
-## Dataset 29 (remove)
+## Dataset 29 (add)
 
 ```{r}
 small_big_sphere_with_noise <- function(sample_size = 390, with_seed = NULL, num_of_noise_dim = 8,
