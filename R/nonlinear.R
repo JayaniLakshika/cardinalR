@@ -314,7 +314,7 @@ two_curvy_panckakes_with_noise <- function(sample_size, num_noise_dims, min_nois
 #' @examples
 #' two_curvilinear_data_with_noise <- two_curvilinear_data_with_noise(sample_size = 250,
 #' num_noise_dims = 8, min_noise = -0.05, max_noise = 0.05)
-two_curvilinear_data_with_noise <- function(sample_size, num_noise_dims,min_noise,
+two_curvilinear_data_with_noise <- function(sample_size, num_noise_dims, min_noise,
                                             max_noise) {
 
   # To check that the assigned sample_size is divided by two
@@ -363,4 +363,43 @@ two_curvilinear_data_with_noise <- function(sample_size, num_noise_dims,min_nois
 
   }
 
+}
+
+#' Generate Swiss Roll Data
+#'
+#' This function generates data points in the shape of a Swiss roll.
+#'
+#' @param sample_size The total number of data points to be generated.
+#' @param num_noise_dims The number of additional noise dimensions to be generated.
+#' @param min_noise The minimum value for the noise added to the data points.
+#' @param max_noise The maximum value for the noise added to the data points.
+#'
+#' @return A matrix containing the generated Swiss roll data points.
+#' @export
+#'
+#' @examples
+#'
+#' # Generate Swiss roll data with noise with custom parameters
+#' data <- swiss_roll(sample_size = 200, num_noise_dims = 4,
+#' min_noise = -0.05, max_noise = 0.05)
+swiss_roll <- function(sample_size, num_noise_dims, min_noise, max_noise) {
+  phi <- stats::runif(sample_size, min = 1.5 * pi, max = 4.5 * pi)
+  x <- phi * cos(phi)
+  y <- phi * sin(phi)
+  z <- stats::runif(sample_size, max = 10)
+  df <- matrix(c(x, y, z), ncol = 3)
+
+  if (num_noise_dims != 0) {
+
+    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise_dims = num_noise_dims,
+                                min_noise = min_noise, max_noise = max_noise)
+    df <- cbind(df, noise_mat)
+
+    df
+
+  } else {
+
+    df
+
+  }
 }

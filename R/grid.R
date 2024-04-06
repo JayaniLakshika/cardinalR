@@ -233,3 +233,57 @@ one_grid_diff <- function(sample_size, num_noise_dims, min_noise, max_noise) {
   return(list(df = df, sample_size = NROW(df)))
 
 }
+
+#' Generate Three Grid Data with Noise
+#'
+#' This function generates three grid data with noise.
+#'
+#' @param n_value The number of grid points along each dimension.
+#' @param num_noise_dims The number of additional noise dimensions to be generated.
+#' @param min_noise The minimum value for the noise added to the data points.
+#' @param max_noise The maximum value for the noise added to the data points.
+#'
+#' @return A list containing the generated data matrix (`df`) and the total sample size.
+#' @export
+#'
+#' @examples
+#'
+#' # Generate grid data with noise with custom parameters
+#' data <- three_grid_with_noise(n_value = 19, num_noise_dims = 4,
+#'  min_noise = -0.05, max_noise = 0.05)
+three_grid_with_noise <- function(n_value = 19, num_noise_dims = 4,
+                                  min_noise = -0.05, max_noise = 0.05) {
+
+  df1 <- grid_data(nx = n_value, ny = n_value, num_noise_dims = 0)
+  df1 <- cbind(df1, stats::runif(NROW(df1), -0.01, 0.01),
+               stats::runif(NROW(df1), -0.01, 0.01))
+
+  df2 <- grid_data(nx = n_value, ny = n_value, num_noise_dims = 0)
+  df2 <- cbind(df2, stats::runif(NROW(df2), -0.01, 0.01),
+               stats::runif(NROW(df2), -0.01, 0.01))
+  df2 <- df2[, c(1, 3, 2, 4)]
+
+  df3 <- grid_data(nx = n_value, ny = n_value, num_noise_dims = 0)
+  df3 <- cbind(df3, stats::runif(NROW(df3), -0.01, 0.01),
+               stats::runif(NROW(df3), -0.01, 0.01))
+  df3 <- df3[, c(1, 3, 4, 2)]
+
+  df <- rbind(df1, df2, df3)
+
+  if (num_noise_dims != 0) {
+
+    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise_dims = num_noise_dims,
+                                min_noise = min_noise, max_noise = max_noise)
+    df <- cbind(df, noise_mat)
+
+    df
+
+  } else {
+
+    df
+
+  }
+
+  return(list(df = df, sample_size = NROW(df)))
+
+}

@@ -199,3 +199,60 @@ curvy_cell_cycle_with_noise <- function(sample_size, num_noise_dims, min_noise,
   }
 
 }
+
+#' Generate Linked Data
+#'
+#' This function generates linked data points.
+#'
+#' @param sample_size The total number of data points to be generated. Should be a product of two.
+#' @param num_noise_dims The number of additional noise dimensions to be generated.
+#' @param min_noise The minimum value for the noise added to the data points.
+#' @param max_noise The maximum value for the noise added to the data points.
+#'
+#' @return A matrix containing the generated linked data points.
+#' @export
+#'
+#' @examples
+#'
+#' # Generate linked data with noise with custom parameters
+#' data <- link_data(sample_size = 200, num_noise_dims = 4,
+#' min_noise = -0.05, max_noise = 0.05)
+link_data <- function(sample_size, num_noise_dims, min_noise, max_noise) {
+
+  # To check that the assigned sample_size is divided by two
+  if ((sample_size%%2) != 0) {
+    warning("The sample size should be a product of two.")
+    cluster_size <- floor(sample_size/2)
+
+  } else {
+    cluster_size <- sample_size/2
+  }
+
+  theta <- (0:(cluster_size - 1)) * (2 * pi / cluster_size)
+  cs <- cos(.4)
+  sn <- sin(.4)
+
+  df1 <- matrix(c(cos(theta),
+                  cs * sin(theta),
+                  -sn * sin(theta)), ncol = 3)
+
+  df2 <- matrix(c(1 + cos(theta),
+                  sn * sin(theta),
+                  cs * sin(theta)), ncol = 3)
+
+  df <- rbind(df1, df2)
+
+  if (num_noise_dims != 0) {
+
+    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise_dims = num_noise_dims,
+                                min_noise = min_noise, max_noise = max_noise)
+    df <- cbind(df, noise_mat)
+
+    df
+
+  } else {
+
+    df
+
+  }
+}

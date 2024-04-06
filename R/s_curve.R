@@ -170,3 +170,52 @@ mirror_s_curves_with_noise <- function(sample_size, num_noise_dims, min_noise,
   }
 
 }
+
+
+#' Generate Two S-Curve Data with Noise
+#'
+#' This function generates two S-curve data with noise.
+#'
+#' @param sample_size The total number of data points to be generated.
+#' @param num_noise_dims The number of additional noise dimensions to be generated.
+#' @param min_noise The minimum value for the noise added to the data points.
+#' @param max_noise The maximum value for the noise added to the data points.
+#'
+#' @return A list containing the generated data matrix (`df`) and the total sample size.
+#' @export
+#'
+#' @examples
+#'
+#' # Generate two S-curve data with noise with custom parameters
+#' data <- two_s_curve_hole_with_noise(sample_size = 200, num_noise_dims = 8,
+#' min_noise = -0.05, max_noise = 0.05)
+two_s_curve_hole_with_noise <- function(sample_size = 200, num_noise_dims = 8,
+                                        min_noise = -0.05, max_noise = 0.05) {
+
+  # To check that the assigned sample_size is divided by two
+  if ((sample_size%%2) != 0) {
+    warning("The sample size should be a product of two.")
+    cluster_size <- floor(sample_size/2)
+
+  } else {
+    cluster_size <- sample_size/2
+  }
+
+  ## S curve with a hole
+  df1 <- s_curve(sample_size = cluster_size, num_noise_dims = 0)
+  df2 <- df1 + 1
+
+  df <- rbind(df1, df2)
+
+  if (num_noise_dims != 0) {
+
+    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise_dims = num_noise_dims,
+                                min_noise = min_noise, max_noise = max_noise)
+    df <- cbind(df, noise_mat)
+
+  }
+
+
+  return(list(df = df, sample_size = NROW(df)))
+
+}

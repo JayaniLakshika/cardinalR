@@ -6,7 +6,6 @@
 \usage{
 gaussian_clusters(
   sample_size,
-  with_seed = NULL,
   num_clusters,
   mean_matrix,
   var_vec,
@@ -17,36 +16,35 @@ gaussian_clusters(
 )
 }
 \arguments{
-\item{sample_size}{The number of data points to generate.}
-
-\item{with_seed}{Optional seed value for reproducibility.}
+\item{sample_size}{The total number of data points to be generated.}
 
 \item{num_clusters}{The number of clusters to generate.}
 
-\item{mean_matrix}{A matrix specifying the means for each cluster.
-Each row corresponds to a cluster, and each column corresponds to a dimension.}
+\item{mean_matrix}{A matrix where each row represents the mean vector for a cluster.}
 
-\item{var_vec}{A vector specifying the variance for each dimension.}
+\item{var_vec}{A vector specifying the variance for each cluster.}
 
-\item{num_dims}{The number of dimensions for the data.}
+\item{num_dims}{The number of effective dimensions for the data points.}
 
-\item{num_noise_dims}{The number of additional noise dimensions to add.}
+\item{num_noise_dims}{The number of additional noise dimensions to be generated.}
 
-\item{min_noise}{The minimum value for noise generation.}
+\item{min_noise}{The minimum value for the noise added to the data points.}
 
-\item{max_noise}{The maximum value for noise generation.}
+\item{max_noise}{The maximum value for the noise added to the data points.}
 }
 \value{
-A data frame containing the synthetic data with Gaussian clusters.
+A matrix containing the generated Gaussian clusters.
 }
 \description{
-This function generates synthetic data with Gaussian clusters.
+Generate Gaussian Clusters
+}
+\details{
+This function generates Gaussian clusters with specified parameters.
 }
 \examples{
 
-gaussian_clusters(sample_size = 300, with_seed = NULL, num_clusters = 5,
+gaussian_clusters(sample_size = 300, num_clusters = 5,
 mean_matrix = rbind(c(1,0,0,0), c(0,1,0,0), c(0,0,1,0),
 c(0,0,0,1), c(0,0,0,0)), var_vec = c(0.05, 0.05, 0.05, 0.05, 0.05),
-num_dims = 4, num_noise_dims = 0, min_noise = -0.05, max_noise = 0.05)
-
+num_dims = 4, num_noise_dims = 2, min_noise = -0.05, max_noise = 0.05)
 }

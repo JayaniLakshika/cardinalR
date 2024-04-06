@@ -4,25 +4,45 @@
 \alias{three_grid_with_noise}
 \title{Generate Three Grids with Noise}
 \usage{
-three_grid_with_noise(n_value, num_noise_dims, min_noise, max_noise)
+three_grid_with_noise(
+  n_value = 19,
+  num_noise_dims = 4,
+  min_noise = -0.05,
+  max_noise = 0.05
+)
+
+three_grid_with_noise(
+  n_value = 19,
+  num_noise_dims = 4,
+  min_noise = -0.05,
+  max_noise = 0.05
+)
 }
 \arguments{
-\item{n_value}{The number of grid points along the x and y axes for each grid.}
+\item{n_value}{The number of grid points along each dimension.}
 
-\item{num_noise_dims}{The number of additional noise dimensions to add to the data.}
+\item{num_noise_dims}{The number of additional noise dimensions to be generated.}
 
-\item{min_noise}{The minimum value for the noise dimensions.}
+\item{min_noise}{The minimum value for the noise added to the data points.}
 
-\item{max_noise}{The maximum value for the noise dimensions.}
+\item{max_noise}{The maximum value for the noise added to the data points.}
 }
 \value{
 A list containing three grid datasets with added noise and the sample
  size of each dataset.
+
+A list containing the generated data matrix (`df`) and the total sample size.
 }
 \description{
 This function generates three grid datasets with noise dimensions.
+
+This function generates three grid data with noise.
 }
 \examples{
 three_grids <- three_grid_with_noise(n_value = 19, num_noise_dims = 4,
 min_noise = -0.05, max_noise = 0.05)
+
+# Generate grid data with noise with custom parameters
+data <- three_grid_with_noise(n_value = 19, num_noise_dims = 4,
+ min_noise = -0.05, max_noise = 0.05)
 }

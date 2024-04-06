@@ -21,7 +21,7 @@ library(dplyr)
 ```
 
 ```{r}
-gau_data <- gaussian_clusters(sample_size = 300, with_seed = NULL, num_clusters = 5, 
+gau_data <- gaussian_clusters(sample_size = 300, num_clusters = 5, 
                   mean_matrix = rbind(c(1,0,0,0), c(0,1,0,0), c(0,0,1,0), 
                                       c(0,0,0,1), c(0,0,0,0)), 
                   var_vec = c(0.05, 0.05, 0.05, 0.05, 0.05), 
@@ -837,7 +837,7 @@ dataset15 <- conic_spiral_with_noise(sample_size = 300, num_of_noise_dim = 3,
 langevitour(dataset15)
 ```
 
-## Dataset 16 (S curve with a hole and extra noise dimensions) (remove)
+## Dataset 16 (S curve with a hole and extra noise dimensions) (add)
 
 ```{r}
 s_curve_data_hole_with_noise <- function(sample_size = 100, with_seed = NULL, num_of_noise_dim = 8,
@@ -892,7 +892,7 @@ s_curve_data_hole_with_noise(sample_size = 300, num_of_noise_dim = 3,
 langevitour(dataset16)
 ```
 
-## Dataset 17 (remove)
+## Dataset 17 (add)
 
 ```{r}
 long_cluster_with_noise <- function(sample_size = 100, with_seed = NULL, num_of_noise_dim = 8,
@@ -1279,7 +1279,7 @@ dataset21 <- cluster_and_curvilinear__with_noise_and_bkg_noise(sample_size = 260
 langevitour(dataset21)
 ```
 
-## Dataset 22 (remove)
+## Dataset 22 (add)
 
 ```{r}
 link_data_with_noise <- function(sample_size = 100, with_seed = NULL, num_of_noise_dim = 8,
@@ -1338,7 +1338,7 @@ dataset22 <- link_data_with_noise(sample_size = 300, num_of_noise_dim = 3,
 langevitour(dataset22)
 ```
 
-## Dataset 23 (remove)
+## Dataset 23 (add)
 
 ```{r}
 swiss_roll_with_noise <- function(sample_size = 100, with_seed = NULL, num_of_noise_dim = 8,
@@ -2330,7 +2330,7 @@ dataset34 <- two_curvilinear_data_with_noise(sample_size = 500, num_of_noise_dim
 langevitour(dataset34)
 ```
 
-## Dataset 35 (remove)
+## Dataset 35 (add)
 
 ```{r}
 
@@ -3176,7 +3176,7 @@ dataset44 <- two_nonlinear_with_noise(sample_size = 200, num_of_noise_dim = 6,
 langevitour(dataset44)
 ```
 
-## Dataset 45 (remove)
+## Dataset 45 (add)
 
 ```{r}
 two_s_curve_hole_with_noise <- function(sample_size = 200, with_seed = NULL, num_of_noise_dim = 8,
@@ -3236,7 +3236,7 @@ dataset45$sample_size
 langevitour(dataset45$df)
 ```
 
-## Dataset 46 (remove)
+## Dataset 46 (add)
 
 ```{r}
 three_grid_with_noise <- function(n_value = 19, with_seed = NULL, num_of_noise_dim = 8,
@@ -4057,7 +4057,7 @@ dataset56 <- three_cluster_mirror_with_noise(sample_size = 150, num_of_noise_dim
 langevitour(dataset56)
 ```
 
-## Dataset 57 (remove)
+## Dataset 57 (add)
 
 ```{r}
 
