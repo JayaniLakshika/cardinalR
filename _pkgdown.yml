@@ -1,4 +1,123 @@
-url: ~
+url: https://jayanilakshika.github.io/cardinalR/
 template:
   bootstrap: 5
+
+reference:
+- title: "Clustering data"
+  desc: The clustering datasets.
+  contents:
+  - gaussian_clusters
+  - gaussian_clusters_diff_points
+  - clusters_different_shapes
+  - clusters_different_shapes_diff_num_points
+  - cluster_and_curvilinear__with_noise_and_bkg_noise
+  - one_doublet_with_noise
+  - three_doublets_with_noise
+  - one_doublet_four_clusters_with_noise
+  - one_doublet_dfifferent_var_clusters_with_noise
+  - one_doublet_dfifferent_pattern_clusters_with_noise
+  - two_doublets_parallel_with_noise
+  - one_doublets_with_bkg_noise
+  - two_doublets_with_bkg_noise
+  - two_nonlinear_with_noise
+  - two_curvilinear_with_noise
+  - two_curvilinear_diff_with_noise
+  - three_clusters_data_with_noise
+  - three_nonlinear_with_noise
+  - three_cluster_mirror_with_noise
+  - cluster_and_curvilinear_with_noise
+- title: "Branching data"
+  desc: The branching datasets.
+  contents:
+  - curvy_tree_with_noise
+  - tree_with_noise
+  - seven_branching_data_with_noise
+  - four_branching_data_with_noise
+  - eight_branching_data_with_noise
+  - curvy_branching_cluster
+  - curvy_branching_cluster_with_bkg_noise
+  - curvy_branching_with_noise
+- title: "Circular data"
+  desc: The circular datasets.
+  contents:
+  - three_circulars_with_noise
+  - cell_cycle_with_noise
+  - curvy_cell_cycle_with_noise
+  - link_data
+- title: "Grid data"
+  desc: The grid datasets.
+  contents:
+  - grid_data
+  - three_grid_with_noise
+  - one_grid_diff_with_bkg_noise
+  - two_grid_with_bkg_noise
+  - one_grid_diff
+  - three_grid_with_noise
+- title: "Triangular data"
+  desc: The triangular datasets.
+  contents:
+  - traingular_3d_with_noise
+  - triangular_plane_with_bkg_noise
+- title: "Sphere data"
+  desc: The sphere datasets.
+  contents:
+  - sphere
+  - small_big_sphere_with_noise
+- title: "S-curve data"
+  desc: The S-curve datasets.
+  contents:
+  - s_curve
+  - s_curve_hole
+  - two_s_curves_with_noise
+  - mirror_s_curves_with_noise
+  - two_s_curve_hole_with_noise
+- title: "Nonlinear data"
+  desc: The nonlinear datasets.
+  contents:
+  - nonlinear_2d
+  - curvilinear_2d
+  - sine_curve_with_noise
+  - nonlinear_connect_with_noise
+  - two_curvilinear_data_with_noise
+  - swiss_roll
+  - nonlinear_mirror_with_noise
+  - two_curvy_panckakes_with_noise
+- title: "Linear data"
+  desc: The linear datasets.
+  contents:
+  - plane
+  - long_cluster_data
+  - three_diff_linear_with_noise
+  - four_diff_long_clutsers_with_noise
+  - plane_2d_with_hole
+  - four_long_clusters_with_bkg_noise
+  - three_linear_with_noise
+  - two_linear_diff_with_noise
+- title: "Mobius data"
+  desc: The mobius datasets.
+  contents:
+  - mobius_5d_row
+  - mobius_5d
+  - mobius_cluster_with_noise
+- title: "Additional high-dimensional data"
+  desc: Additional high-dimensional datasets.
+  contents:
+  - conic_spiral_3d_row
+  - conic_spiral_with_noise
+  - dini_surface_3d_row
+  - dini_surface_with_noise
+  - roman_surface_3d_row
+  - roman_surface_with_noise
+  - spiral_with_noise
+  - torus_3d_row
+  - torus_with_noise
+  - cube_3d_with_noise
+- title: "Add noise dimensions"
+  desc: Generate additional noise dimensions.
+  contents:
+  - gen_noise_dims
+
+
+
+
 
