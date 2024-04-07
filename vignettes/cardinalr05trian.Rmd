@@ -1,0 +1,38 @@
+---
+title: "Triangular data"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Triangular data}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(cardinalR)
+library(langevitour)
+```
+
+```{r}
+train_3d_data <- traingular_3d_with_noise(sample_size = 512, num_noise_dims = 2, 
+                         min_noise = -0.05, max_noise = 0.05)
+
+colnames(train_3d_data) <- paste0("x", 1:NCOL(train_3d_data))
+
+langevitour(train_3d_data, pointSize = 2)
+```
+
+```{r}
+train_data <- triangular_plane_with_bkg_noise(sample_size = 675, num_noise_dims = 2, 
+                                min_noise = -0.05, max_noise = 0.05)
+
+colnames(train_data) <- paste0("x", 1:NCOL(train_data))
+
+langevitour(train_data, pointSize = 2)
+```

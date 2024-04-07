@@ -1,0 +1,40 @@
+---
+title: "Sphere data"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Sphere data}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(cardinalR)
+library(langevitour)
+```
+
+```{r}
+sphere_data <- sphere(radius = 1, resolution = 20, num_noise_dims = 2, 
+                      min_noise = -0.05, max_noise = 0.05)
+
+colnames(sphere_data) <- paste0("x", 1:NCOL(sphere_data))
+
+langevitour(sphere_data, pointSize = 2)
+```
+
+```{r}
+diff_sphere_data <- small_big_sphere_with_noise(sample_size = 650, 
+                                                num_noise_dims = 2, 
+                                                min_noise = -0.05, max_noise = 0.05)
+
+colnames(diff_sphere_data) <- paste0("x", 1:NCOL(diff_sphere_data))
+
+langevitour(diff_sphere_data, pointSize = 2)
+```
+

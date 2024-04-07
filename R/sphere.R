@@ -12,7 +12,8 @@
 #'
 #' @examples
 #' # Generate coordinates for a sphere with radius 1 and resolution 100
-#' sphere(radius = 1, resolution = 20, num_noise_dims = 3, min_noise = -0.05, max_noise = 0.05)
+#' sphere(radius = 1, resolution = 20, num_noise_dims = 3, min_noise = -0.05,
+#' max_noise = 0.05)
 #'
 #' @export
 sphere <- function(radius, resolution, num_noise_dims, min_noise, max_noise) {

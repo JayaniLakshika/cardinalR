@@ -414,3 +414,224 @@ eight_branching_data_with_noise <- function(sample_size, num_noise_dims, min_noi
   }
 
 }
+
+#' Generate Curvy Branching Cluster Data
+#'
+#' This function generates curvy branching cluster data with three clusters of different shapes.
+#'
+#' @param sample_size The total number of data points to be generated.
+#' @param cluster_size_vec A vector specifying the number of points for each cluster.
+#'                         If not provided, the sample_size is divided equally
+#'                         among the clusters.
+#' @param num_noise_dims The number of additional noise dimensions to be generated.
+#' @param min_noise The minimum value for the noise added to the data points.
+#' @param max_noise The maximum value for the noise added to the data points.
+#'
+#' @return A matrix containing the generated data, with each row representing a data point.
+#' @export
+#'
+#' @examples
+#'
+#' # Generate curvy branching cluster data with custom parameters
+#' data <- curvy_branching_cluster(sample_size = 300, cluster_size_vec = c(100, 150, 50),
+#' num_noise_dims = 6, min_noise = -0.05, max_noise = 0.05)
+curvy_branching_cluster <- function(sample_size, cluster_size_vec = NULL,
+                                    num_noise_dims, min_noise, max_noise) {
+  ## If the number of points for each cluster is not defined
+  if (is.null(cluster_size_vec)) {
+
+    # To check that the assigned sample_size is divided by three
+    if ((sample_size%%3) != 0) {
+      warning("The sample size should be a product of three.")
+      cluster_size <- floor(sample_size/3)
+      cluster_size_vec <- append(rep(cluster_size, 2), (sample_size - cluster_size * 2))
+
+    } else {
+      cluster_size <- sample_size/3
+      cluster_size_vec <- rep(cluster_size, 3)
+    }
+
+  }
+
+  theta <- stats::runif(cluster_size_vec[1], 0.20, 0.90 * pi)
+
+  df1 <- matrix(c(
+    cos(theta) + stats::rnorm(cluster_size_vec[1], 1, 0.06),
+    sin(theta) + stats::rnorm(cluster_size_vec[1], 1, 0.06),
+    cos(theta) + stats::rnorm(cluster_size_vec[1], 1, 0.06),
+    sin(theta) + stats::rnorm(cluster_size_vec[1], 1, 0.06)
+  ), ncol = 4)
+
+
+  theta1 <- stats::runif(cluster_size_vec[3], 0.20, 0.90 * pi)
+
+  df2 <- matrix(c(
+    cos(-theta1) + stats::rnorm(cluster_size_vec[3], 1, 0.06),
+    sin(-theta1) + stats::rnorm(cluster_size_vec[3], 1, 0.06),
+    cos(-theta1) + stats::rnorm(cluster_size_vec[3], 1, 0.06),
+    sin(-theta1) + stats::rnorm(cluster_size_vec[3], 1, 0.06)
+  ), ncol = 4)
+
+  df3 <- matrix(c(stats::rnorm(cluster_size_vec[2], mean = 1, sd = 0.08),
+                  stats::rnorm(cluster_size_vec[2], mean = 1, sd = 0.08),
+                  stats::rnorm(cluster_size_vec[2], mean = 1, sd = 0.08),
+                  stats::rnorm(cluster_size_vec[2], mean = 1, sd = 0.08)),
+                ncol = 4)
+
+  df <- rbind(df1, df2, df3)
+
+  if (num_noise_dims != 0) {
+
+    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise_dims = num_noise_dims,
+                                min_noise = min_noise, max_noise = max_noise)
+    df <- cbind(df, noise_mat)
+
+    df
+
+  } else {
+
+    df
+
+  }
+
+
+}
+
+#' Generate Curvy Branching Cluster Data with Background Noise
+#'
+#' This function generates data with four clusters, two of which follow a curvilinear pattern and the other two are distributed randomly.
+#'
+#' @param sample_size The total number of data points to be generated.
+#' @param num_noise_dims The number of additional noise dimensions to be generated.
+#' @param min_noise The minimum value for the noise added to the data points.
+#' @param max_noise The maximum value for the noise added to the data points.
+#'
+#' @return A matrix containing the generated data, with each row representing a data point.
+#' @export
+#'
+#' @examples
+#'
+#' # Generate curvy branching cluster data with background noise with custom parameters
+#' data <- curvy_branching_cluster_with_bkg_noise(sample_size = 400, num_noise_dims = 10,
+#' min_noise = -0.5, max_noise = 0.5)
+curvy_branching_cluster_with_bkg_noise <- function(sample_size, num_noise_dims,
+                                                   min_noise, max_noise) {
+
+  # To check that the assigned sample_size is divided by three
+  if ((sample_size%%4) != 0) {
+    warning("The sample size should be a product of number of clusters.")
+    cluster_size <- floor(sample_size/4)
+
+  } else {
+    cluster_size <- sample_size/4
+  }
+
+
+  theta <- stats::runif(cluster_size, 0.20, 0.90 * pi)
+
+  df1 <- matrix(c(
+    cos(theta) + stats::rnorm(cluster_size, 1, 0.06),
+    sin(theta) + stats::rnorm(cluster_size, 1, 0.06),
+    cos(theta) + stats::rnorm(cluster_size, 1, 0.06),
+    sin(theta) + stats::rnorm(cluster_size, 1, 0.06)
+  ), ncol = 4)
+
+  theta1 <- stats::runif(cluster_size, 0.20, 0.90 * pi)
+
+  df2 <- matrix(c( cos(-theta1) + stats::rnorm(cluster_size, 1, 0.06),
+                   sin(-theta1) + stats::rnorm(cluster_size, 1, 0.06),
+                   cos(-theta1) + stats::rnorm(cluster_size, 1, 0.06),
+                   sin(-theta1) + stats::rnorm(cluster_size, 1, 0.06)), ncol = 4)
+
+  df3 <- matrix(c(stats::rnorm(cluster_size, mean = 1, sd = 0.08),
+                  stats::rnorm(cluster_size, mean = 1, sd = 0.08),
+                  stats::rnorm(cluster_size, mean = 1, sd = 0.08),
+                  stats::rnorm(cluster_size, mean = 1, sd = 0.08)), ncol = 4)
+
+  df4 <- matrix(c(stats::rnorm(cluster_size, mean = 1, sd = 1),
+                  stats::rnorm(cluster_size, mean = 1, sd = 1),
+                  stats::rnorm(cluster_size, mean = 1, sd = 1),
+                  stats::rnorm(cluster_size, mean = 1, sd = 1)), ncol = 4)
+
+  df <- rbind(df1, df2, df3, df4)
+
+  if (num_noise_dims != 0) {
+
+    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise_dims = num_noise_dims,
+                                min_noise = min_noise, max_noise = max_noise)
+    df <- cbind(df, noise_mat)
+
+    df
+
+  } else {
+
+    df
+
+  }
+
+}
+
+#' Generate Curvy Branching Clusters with Noise
+#'
+#' This function generates data with curvy branching clusters along with added noise.
+#'
+#' @param sample_size The total number of data points to be generated.
+#' @param num_noise_dims The number of additional noise dimensions to be generated.
+#' @param min_noise The minimum value for the noise added to the data points.
+#' @param max_noise The maximum value for the noise added to the data points.
+#'
+#' @return A matrix containing the generated data, with each row representing a data point.
+#' @export
+#'
+#' @examples
+#'
+#' # Generate curvy branching clusters with noise with custom parameters
+#' data <- curvy_branching_with_noise(sample_size = 200, num_noise_dims = 8,
+#' min_noise = -0.05, max_noise = 0.05)
+curvy_branching_with_noise <- function(sample_size, num_noise_dims, min_noise,
+                                       max_noise) {
+
+  # To check that the assigned sample_size is divided by two
+  if ((sample_size%%2) != 0) {
+    warning("The sample size should be a product of two.")
+    cluster_size <- floor(sample_size/2)
+
+  } else {
+    cluster_size <- sample_size/2
+  }
+
+  theta <- stats::runif(cluster_size, 0.20, 0.90 * pi)
+
+  df1 <- matrix(c(
+    cos(theta) + stats::rnorm(cluster_size, 1, 0.06),
+    sin(theta) + stats::rnorm(cluster_size, 1, 0.06),
+    cos(theta) + stats::rnorm(cluster_size, 1, 0.06),
+    sin(theta) + stats::rnorm(cluster_size, 1, 0.06)
+  ), ncol = 4)
+
+  theta1 <- stats::runif(cluster_size, 0.20, 0.90 * pi)
+
+  df2 <- matrix(c(
+    cos(-theta1) + stats::rnorm(cluster_size, 1, 0.06),
+    sin(-theta1) + stats::rnorm(cluster_size, 1, 0.06),
+    cos(-theta1) + stats::rnorm(cluster_size, 1, 0.06),
+    sin(-theta1) + stats::rnorm(cluster_size, 1, 0.06)
+  ), ncol = 4)
+
+  df <- rbind(df1, df2)
+
+  if (num_noise_dims != 0) {
+
+    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise_dims = num_noise_dims,
+                                min_noise = min_noise, max_noise = max_noise)
+    df <- cbind(df, noise_mat)
+
+    df
+
+  } else {
+
+    df
+
+  }
+
+}

@@ -1,0 +1,76 @@
+---
+title: "High-dimensional objects data"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{High-dimensional objects data}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(cardinalR)
+library(langevitour)
+```
+
+```{r}
+conic_data <- conic_spiral_with_noise(sample_size = 300, num_noise_dims = 2,
+min_noise = -0.05, max_noise = 0.05)
+
+colnames(conic_data) <- paste0("x", 1:NCOL(conic_data))
+
+langevitour(conic_data, pointSize = 2)
+```
+
+```{r}
+dini_data <- dini_surface_with_noise(sample_size = 300, num_noise_dims = 2,
+min_noise = -0.05, max_noise = 0.05)
+
+colnames(dini_data) <- paste0("x", 1:NCOL(dini_data))
+
+langevitour(dini_data, pointSize = 2)
+```
+
+```{r}
+roman_data <- roman_surface_with_noise(sample_size = 300, num_noise_dims = 2,
+min_noise = -0.05, max_noise = 0.05)
+
+colnames(roman_data) <- paste0("x", 1:NCOL(roman_data))
+
+langevitour(roman_data, pointSize = 2)
+```
+
+```{r}
+spiral_data <- spiral_with_noise(sample_size = 300, num_dims = 10, num_noise_dims = 2,
+min_noise = -0.05, max_noise = 0.05)
+
+colnames(spiral_data) <- paste0("x", 1:NCOL(spiral_data))
+
+langevitour(spiral_data, pointSize = 2)
+```
+
+```{r}
+torus_data <- torus_with_noise(sample_size = 300, num_noise_dims = 2,
+min_noise = -0.05, max_noise = 0.05)
+
+colnames(torus_data) <- paste0("x", 1:NCOL(torus_data))
+
+langevitour(torus_data, pointSize = 2)
+```
+
+```{r}
+cube_data <- cube_3d_with_noise(num_of_effective_dims = 3, num_noise_dims = 2,
+min_noise = -0.01, max_noise = 0.01)
+
+cube_data$sample_size
+
+colnames(cube_data$df) <- paste0("x", 1:NCOL(cube_data$df))
+
+langevitour(cube_data$df, pointSize = 2)
+```

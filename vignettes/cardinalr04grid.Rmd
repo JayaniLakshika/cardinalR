@@ -1,0 +1,73 @@
+---
+title: "Grid data"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Grid data}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(cardinalR)
+library(langevitour)
+```
+
+```{r}
+grd_data <- grid_data(nx = 10, ny = 10, num_noise_dims = 2, min_noise = -0.05, max_noise = 0.05)
+
+colnames(grd_data) <- paste0("x", 1:NCOL(grd_data))
+
+langevitour(grd_data, pointSize = 2)
+```
+
+```{r}
+three_grd_data <- three_grid_with_noise(n_value = 19, num_noise_dims = 2, min_noise = -0.05, max_noise = 0.05)
+three_grd_data$sample_size
+
+colnames(three_grd_data$df) <- paste0("x", 1:NCOL(three_grd_data$df))
+
+langevitour(three_grd_data$df, pointSize = 2)
+```
+
+```{r}
+one_grdbkg_data <- one_grid_diff_with_bkg_noise(sample_size = 585, num_noise_dims = 2, min_noise = -0.05, max_noise = 0.05)
+
+colnames(one_grdbkg_data) <- paste0("x", 1:NCOL(one_grdbkg_data))
+
+langevitour(one_grdbkg_data, pointSize = 2)
+```
+
+```{r}
+two_grd_data <- two_grid_with_bkg_noise(n_value = 15, num_noise_dims = 2, min_noise = -0.05, max_noise = 0.05)
+two_grd_data$sample_size
+
+colnames(two_grd_data$df) <- paste0("x", 1:NCOL(two_grd_data$df))
+
+langevitour(two_grd_data$df, pointSize = 2)
+```
+
+```{r}
+one_grddiff_data <- one_grid_diff(sample_size = 512, num_noise_dims = 2, min_noise = -0.05, max_noise = 0.05)
+one_grddiff_data$sample_size
+
+colnames(one_grddiff_data$df) <- paste0("x", 1:NCOL(one_grddiff_data$df))
+
+langevitour(one_grddiff_data$df, pointSize = 2)
+```
+
+```{r}
+three_grdnoise_data <- three_grid_with_noise(n_value = 19, num_noise_dims = 2, min_noise = -0.05, max_noise = 0.05)
+
+three_grdnoise_data$sample_size
+
+colnames(three_grdnoise_data$df) <- paste0("x", 1:NCOL(three_grdnoise_data$df))
+
+langevitour(three_grdnoise_data$df, pointSize = 2)
+```

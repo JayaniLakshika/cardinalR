@@ -266,3 +266,186 @@ plane_2d_with_hole <- function(sample_size, num_noise_dims, min_noise, max_noise
   return(list(df = df, sample_size = NROW(df)))
 
 }
+
+#' Generate Four Long Clusters with Background Noise
+#'
+#' This function generates data with four long clusters along with background noise.
+#'
+#' @param sample_size The total number of data points to be generated.
+#' @param num_noise_dims The number of additional noise dimensions to be generated.
+#' @param min_noise The minimum value for the noise added to the data points.
+#' @param max_noise The maximum value for the noise added to the data points.
+#'
+#' @return A matrix containing the generated data, with each row representing a data point.
+#' @export
+#'
+#' @examples
+#' # Generate four long clusters with background noise with custom parameters
+#' data <- four_long_clusters_with_bkg_noise(sample_size = 400, num_noise_dims = 4,
+#' min_noise = -0.05, max_noise = 0.05)
+four_long_clusters_with_bkg_noise <- function(sample_size, num_noise_dims,
+                                              min_noise, max_noise) {
+
+  # To check that the assigned sample_size is divided by five
+  if ((sample_size%%5) != 0) {
+    warning("The sample size should be a product of five.")
+    cluster_size <- floor(sample_size/5)
+
+  } else {
+    cluster_size <- sample_size/5
+  }
+
+  x <- 0:(cluster_size - 1) + 0.03 * cluster_size * stats::rnorm(cluster_size)
+  y <- 0:(cluster_size - 1) + 0.03 * cluster_size * stats::rnorm(cluster_size)
+  df_1 <- matrix(c(x, y), ncol = 2)
+  df1 <- matrix(c(df_1[, 1] - 20, df_1[, 2] - 20), ncol = 2)
+
+  x <- 0:(cluster_size - 1) + 0.03 * cluster_size * stats::rnorm(cluster_size) + cluster_size / 5
+  y <- 0:(cluster_size - 1) + 0.03 * cluster_size * stats::rnorm(cluster_size) - cluster_size / 5
+  df_2 <- matrix(c(x, y), ncol = 2)
+
+  df3 <- matrix(c(df_1[, 1] - 10, df_1[, 2] + 10), ncol = 2)
+  df4 <- matrix(c(df_1[, 1] + 20, df_1[, 2] + 30), ncol = 2)
+
+  df1 <- rbind(df1, df_2, df3, df4)
+
+  if (num_noise_dims != 0) {
+
+    noise_mat <- gen_noise_dims(n = dim(df1)[1], num_noise_dims = num_noise_dims,
+                                min_noise = min_noise, max_noise = max_noise)
+    df1 <- cbind(df1, noise_mat)
+
+  }
+
+  ## To add background noise
+  noise_bkg_val_list <- list()
+
+  for (j in 1:NCOL(df1)) {
+    noise_bkg_val_list[[j]] <- stats::rnorm(cluster_size, mean = 0, sd = 10)
+
+
+  }
+
+  df2 <- matrix(unlist(noise_bkg_val_list), ncol = length(noise_bkg_val_list))
+
+  df <- rbind(df1, df2)
+
+  df
+
+}
+
+#' Generate Three Linear Clusters with Noise
+#'
+#' This function generates data with three linear clusters, along with added noise.
+#'
+#' @param sample_size The total number of data points to be generated.
+#' @param num_noise_dims The number of additional noise dimensions to be generated.
+#' @param min_noise The minimum value for the noise added to the data points.
+#' @param max_noise The maximum value for the noise added to the data points.
+#'
+#' @return A matrix containing the generated data, with each row representing a data point.
+#' @export
+#'
+#' @examples
+#'
+#' # Generate three linear clusters with noise with custom parameters
+#' data <- three_linear_with_noise(sample_size = 300, num_noise_dims = 4,
+#' min_noise = -0.05, max_noise = 0.05)
+three_linear_with_noise <- function(sample_size, num_noise_dims, min_noise,
+                                    max_noise) {
+
+  # To check that the assigned sample_size is divided by three
+  if ((sample_size%%3) != 0) {
+    warning("The sample size should be a product of three.")
+    cluster_size <- floor(sample_size/3)
+
+  } else {
+    cluster_size <- sample_size/3
+  }
+
+  x <- 0:(cluster_size - 1) + 0.03 * cluster_size * stats::rnorm(cluster_size)
+  y <- 0:(cluster_size - 1) + 0.03 * cluster_size * stats::rnorm(cluster_size)
+  df_1 <- matrix(c(x, y), ncol = 2)
+  df1 <- matrix(c(df_1[, 1] - 20, df_1[, 2] - 20), ncol = 2)
+
+  x <- 0:(cluster_size - 1) + 0.03 * cluster_size * stats::rnorm(cluster_size) + cluster_size / 5
+  y <- 0:(cluster_size - 1) + 0.03 * cluster_size * stats::rnorm(cluster_size) - cluster_size / 5
+  df2 <- matrix(c(x, y), ncol = 2)
+
+  df3 <- matrix(c(df_1[, 1] - 10, df_1[, 2] + 10), ncol = 2)
+
+  df <- rbind(df1, df2, df3)
+
+  if (num_noise_dims != 0) {
+
+    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise_dims = num_noise_dims,
+                                min_noise = min_noise, max_noise = max_noise)
+    df <- cbind(df, noise_mat)
+
+    df
+
+  } else {
+
+    df
+
+  }
+
+}
+
+#' Generate Two Linear Differentiated Clusters with Noise
+#'
+#' This function generates data with two linear clusters that are differentiated from each other, along with added noise.
+#'
+#' @param sample_size The total number of data points to be generated.
+#' @param num_noise_dims The number of additional noise dimensions to be generated.
+#' @param min_noise The minimum value for the noise added to the data points.
+#' @param max_noise The maximum value for the noise added to the data points.
+#'
+#' @return A matrix containing the generated data, with each row representing a data point.
+#' @export
+#'
+#' @examples
+#'
+#' # Generate two linear differentiated clusters with noise with custom parameters
+#' data <- two_linear_diff_with_noise(sample_size = 300, num_noise_dims = 4,
+#' min_noise = -0.05, max_noise = 0.05)
+two_linear_diff_with_noise <- function(sample_size, num_noise_dims, min_noise,
+                                       max_noise) {
+
+  # To check that the assigned sample_size is divided by three
+  if ((sample_size%%3) != 0) {
+    warning("The sample size should be a product of three.")
+    cluster_size <- floor(sample_size/3)
+
+  } else {
+    cluster_size <- sample_size/3
+  }
+
+
+  x <- 0:(cluster_size - 1) + 0.03 * cluster_size * stats::rnorm(cluster_size)
+  y <- 0:(cluster_size - 1) + 0.03 * cluster_size * stats::rnorm(cluster_size)
+  df_1 <- matrix(c(x, y), ncol = 2)
+  df1 <- matrix(c(df_1[, 1] - 20, df_1[, 2] - 20), ncol = 2)
+
+  x <- 0:(cluster_size - 1) + 0.03 * cluster_size * stats::rnorm(cluster_size) + cluster_size / 5
+  y <- 0:(cluster_size - 1) + 0.03 * cluster_size * stats::rnorm(cluster_size) - cluster_size / 5
+  df2 <- matrix(c(x, y), ncol = 2)
+  df3 <- matrix(c(df_1[, 1] + 10, df_1[, 2] + 10), ncol = 2)
+
+  df <- rbind(df1, df2, df3)
+
+  if (num_noise_dims != 0) {
+
+    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise_dims = num_noise_dims,
+                                min_noise = min_noise, max_noise = max_noise)
+    df <- cbind(df, noise_mat)
+
+    df
+
+  } else {
+
+    df
+
+  }
+
+}
