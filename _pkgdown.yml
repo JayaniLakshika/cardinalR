@@ -1,6 +1,7 @@
 url: https://jayanilakshika.github.io/cardinalR/
 template:
   bootstrap: 5
+  bootswatch: litera
 
 reference:
 - title: "Clustering data"
