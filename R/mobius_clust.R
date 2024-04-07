@@ -130,7 +130,7 @@ mobius_cluster_with_noise <- function(sample_size, num_noise_dims, min_noise,
   noise_bkg_val_list <- list()
 
   for (j in 1:NCOL(df1)) {
-    noise_bkg_val_list[[j]] <- stats::rnorm(sample_size * 0.6/2.6, mean = 3, sd = 5)
+    noise_bkg_val_list[[j]] <- stats::rnorm(sample_size * 0.20, mean = 0, sd = 0.3)
 
 
   }

@@ -18,11 +18,11 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of cardinalR is to ...
+The `cardinalR` provides functionality for generating various high-dimensional datasets.
 
 ## Installation
 
-You can install the development version of cardinalR from [GitHub](https://github.com/) with:
+You can install the development version of `cardinalR` from [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("devtools")
@@ -30,4 +30,34 @@ devtools::install_github("JayaniLakshika/cardinalR")
 ```
 
 ## Example
+
+```{r}
+library(cardinalR)
+```
+
+```{r}
+mobius_clust_data <-  mobius_cluster_with_noise(sample_size = 500, num_noise_dims = 2, 
+                         min_noise = -0.05, max_noise = 0.05)
+
+head(mobius_clust_data, 5)
+```
+
+<table style="width:100%">
+  <tr>
+    <td align="center"><img src="man/figures/mobius_1.png" height="100" alt="" /></td>
+    <td align="center"><img src="man/figures/mobius_2.png" height="100" alt="" /></td>
+    <td align="center"><img src="man/figures/mobius_3.png" height="100" alt="" /></td>
+  </tr>
+</table>
+
+
+You can find the high-dimensional view [here](https://youtu.be/731aZxDifCs).
+
+## About the name
+
+**C**ollection of v**ar**ious high-**d**imens**i**o**nal** data structures in **R**
+
+## Copyright
+
+This package is licensed under the [MIT license](https://github.com/JayaniLakshika/cardinalR/tree/main?tab=MIT-2-ov-file). 
 

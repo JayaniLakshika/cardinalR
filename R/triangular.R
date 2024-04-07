@@ -69,7 +69,7 @@ triangular_plane_with_bkg_noise <- function(sample_size, num_noise_dims,
 
 
   trace_point <- stats::runif(2)
-  corner_points <- matrix(c(c(0, 1, 0.5), c(0, 0, 1)))
+  corner_points <- matrix(c(c(0, 1, 0.5), c(0, 0, 1)), ncol= 2)
   df1 <- matrix(c(rep(0,sample_size), rep(0,sample_size)), ncol =2)
 
   for(i in 1:cluster_size){
