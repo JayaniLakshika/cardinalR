@@ -127,15 +127,7 @@ mobius_cluster_with_noise <- function(sample_size, num_noise_dims, min_noise,
   }
 
   ## To add background noise
-  noise_bkg_val_list <- list()
-
-  for (j in 1:NCOL(df1)) {
-    noise_bkg_val_list[[j]] <- stats::rnorm(sample_size * 0.20, mean = 0, sd = 0.3)
-
-
-  }
-
-  df2 <- matrix(unlist(noise_bkg_val_list), ncol = length(noise_bkg_val_list))
+  df2 <- gen_bkg_noise(n = sample_size * 0.20, num_dims = NCOL(df1), mean = 0, sd = 0.3)
   df <- rbind(df1, df2)
   df
 

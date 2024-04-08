@@ -85,14 +85,8 @@ triangular_plane_with_bkg_noise <- function(sample_size, num_noise_dims,
 
   }
 
-  ## Generate the bkg noise
-  noise_bkg_val_list <- list()
+  df2 <- gen_bkg_noise(n = cluster_size, num_dims = NCOL(df1), mean = 0.025, sd = 0.5)
 
-  for (j in 1:NCOL(df1)) {
-    noise_bkg_val_list[[j]] <- stats::rnorm(cluster_size, mean = 0.025, sd = 0.5)
-  }
-
-  df2 <- matrix(unlist(noise_bkg_val_list), ncol = length(noise_bkg_val_list))
   df <- rbind(df1, df2, -df1)
 
   df

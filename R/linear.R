@@ -317,16 +317,7 @@ four_long_clusters_with_bkg_noise <- function(sample_size, num_noise_dims,
 
   }
 
-  ## To add background noise
-  noise_bkg_val_list <- list()
-
-  for (j in 1:NCOL(df1)) {
-    noise_bkg_val_list[[j]] <- stats::rnorm(cluster_size, mean = 0, sd = 10)
-
-
-  }
-
-  df2 <- matrix(unlist(noise_bkg_val_list), ncol = length(noise_bkg_val_list))
+  df2 <- gen_bkg_noise(n = cluster_size, num_dims = NCOL(df1), mean = 0, sd = 10)
 
   df <- rbind(df1, df2)
 

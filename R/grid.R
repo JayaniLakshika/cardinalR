@@ -123,16 +123,7 @@ one_grid_diff_with_bkg_noise <- function(sample_size = 260, num_noise_dims = 5,
 
   }
 
-  ## To add background noise
-  noise_bkg_val_list <- list()
-
-  for (j in 1:NCOL(df1)) {
-    noise_bkg_val_list[[j]] <- stats::rnorm(sample_size * 0.6/2.6, mean = 3, sd = 5)
-
-
-  }
-
-  df2 <- matrix(unlist(noise_bkg_val_list), ncol = length(noise_bkg_val_list))
+  df2 <- gen_bkg_noise(n = sample_size * 0.6/2.6, num_dims = NCOL(df1), mean = 3, sd = 5)
   df <- rbind(df1, df2)
   df
 
@@ -168,16 +159,7 @@ two_grid_with_bkg_noise <- function(n_value, num_noise_dims, min_noise, max_nois
 
   }
 
-  ## To add background noise
-  noise_bkg_val_list <- list()
-
-  for (j in 1:NCOL(df1)) {
-    noise_bkg_val_list[[j]] <- stats::rnorm(sample_size * 0.6/2.6, mean = 3, sd = 5)
-
-
-  }
-
-  df2 <- matrix(unlist(noise_bkg_val_list), ncol = length(noise_bkg_val_list))
+  df2 <- gen_bkg_noise(n = sample_size * 0.6/2.6, num_dims = NCOL(df1), mean = 3, sd = 5)
   df <- rbind(df1, df2)
 
   return(list(df = df, sample_size = sample_size))
