@@ -117,6 +117,7 @@ reference:
   desc: Generate additional noise dimensions.
   contents:
   - gen_noise_dims
+  - gen_bkg_noise
 
 
 

@@ -36,4 +36,39 @@ gen_noise_dims <- function(n, num_noise_dims, min_noise, max_noise) {
 
 }
 
+#' Generate Background Noise Data
+#'
+#' This function generates background noise data with specified parameters such as
+#' the number of samples, number of dimensions, mean, and standard deviation.
+#'
+#' @param n Number of samples to generate.
+#' @param num_dims Number of dimensions (columns) of the data.
+#' @param mean Mean of the normal distribution used to generate noise (default is 0).
+#' @param sd Standard deviation of the normal distribution used to generate noise (default is 1).
+#'
+#' @return A matrix containing the generated background noise data, with
+#' \code{n} rows and \code{num_dims} columns.
+#'
+#' @examples
+#'
+#' # Generate background noise with custom mean and standard deviation
+#' gen_bkg_noise(n = 100, num_dims = 10, mean = 5, sd = 2)
+#'
+#' @export
+gen_bkg_noise <- function(n, num_dims, mean, sd) {
+
+  # Initialize an empty list to store the vectors
+  noise_bkg_val_list <- list()
+
+  for (j in 1:num_dims) {
+    noise_bkg_val_list[[j]] <- stats::rnorm(n, mean = mean, sd = sd)
+  }
+
+  bkg_mat <- matrix(unlist(noise_bkg_val_list), ncol = length(noise_bkg_val_list))
+
+  return(bkg_mat)
+
+
+}
+
 utils::globalVariables(c("n"))
