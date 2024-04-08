@@ -13,7 +13,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# cardinalR <img src="man/figures/logo.png" align="right" height="139" alt="" />
+# cardinalR <img src="man/figures/logo.png" align="right" height="250" alt="" />
 
 <!-- badges: start -->
 <!-- badges: end -->
