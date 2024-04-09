@@ -30,14 +30,14 @@ reference:
 - title: "Branching data"
   desc: The branching datasets.
   contents:
-  - curvy_tree_with_noise
-  - tree_with_noise
-  - seven_branching_data_with_noise
-  - four_branching_data_with_noise
-  - eight_branching_data_with_noise
-  - curvy_branching_cluster
-  - curvy_branching_cluster_with_bkg_noise
-  - curvy_branching_with_noise
+  - curvy_tree
+  - tree
+  - seven_branch
+  - four_branch
+  - eight_branch
+  - curvy_branch_clust
+  - curvy_branch_clust_bkg
+  - curvy_branch
 - title: "Circular data"
   desc: The circular datasets.
   contents:

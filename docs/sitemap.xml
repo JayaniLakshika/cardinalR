@@ -109,6 +109,15 @@
     <loc>https://jayanilakshika.github.io/cardinalR/reference/curvilinear_2d.html</loc>
   </url>
   <url>
+    <loc>https://jayanilakshika.github.io/cardinalR/reference/curvy_branch.html</loc>
+  </url>
+  <url>
+    <loc>https://jayanilakshika.github.io/cardinalR/reference/curvy_branch_clust.html</loc>
+  </url>
+  <url>
+    <loc>https://jayanilakshika.github.io/cardinalR/reference/curvy_branch_clust_bkg.html</loc>
+  </url>
+  <url>
     <loc>https://jayanilakshika.github.io/cardinalR/reference/curvy_branching_cluster.html</loc>
   </url>
   <url>
@@ -121,6 +130,9 @@
     <loc>https://jayanilakshika.github.io/cardinalR/reference/curvy_cell_cycle_with_noise.html</loc>
   </url>
   <url>
+    <loc>https://jayanilakshika.github.io/cardinalR/reference/curvy_tree.html</loc>
+  </url>
+  <url>
     <loc>https://jayanilakshika.github.io/cardinalR/reference/curvy_tree_with_noise.html</loc>
   </url>
   <url>
@@ -130,7 +142,13 @@
     <loc>https://jayanilakshika.github.io/cardinalR/reference/dini_surface_with_noise.html</loc>
   </url>
   <url>
+    <loc>https://jayanilakshika.github.io/cardinalR/reference/eight_branch.html</loc>
+  </url>
+  <url>
     <loc>https://jayanilakshika.github.io/cardinalR/reference/eight_branching_data_with_noise.html</loc>
+  </url>
+  <url>
+    <loc>https://jayanilakshika.github.io/cardinalR/reference/four_branch.html</loc>
   </url>
   <url>
     <loc>https://jayanilakshika.github.io/cardinalR/reference/four_branching_data_with_noise.html</loc>
@@ -226,6 +244,9 @@
     <loc>https://jayanilakshika.github.io/cardinalR/reference/s_curve_hole.html</loc>
   </url>
   <url>
+    <loc>https://jayanilakshika.github.io/cardinalR/reference/seven_branch.html</loc>
+  </url>
+  <url>
     <loc>https://jayanilakshika.github.io/cardinalR/reference/seven_branching_data_with_noise.html</loc>
   </url>
   <url>
@@ -275,6 +296,9 @@
   </url>
   <url>
     <loc>https://jayanilakshika.github.io/cardinalR/reference/traingular_3d_with_noise.html</loc>
+  </url>
+  <url>
+    <loc>https://jayanilakshika.github.io/cardinalR/reference/tree.html</loc>
   </url>
   <url>
     <loc>https://jayanilakshika.github.io/cardinalR/reference/tree_with_noise.html</loc>
