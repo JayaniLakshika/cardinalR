@@ -4,16 +4,16 @@
 \alias{mobius_5d}
 \title{Generate a 5-D Mobius Strip}
 \usage{
-mobius_5d(sample_size, num_noise_dims, min_noise, max_noise)
+mobius_5d(n, num_noise, min_n, max_n)
 }
 \arguments{
-\item{sample_size}{The number of points to generate for the Mobius strip.}
+\item{n}{The number of points to generate for the Mobius strip.}
 
-\item{num_noise_dims}{The number of additional noise dimensions to add to the data.}
+\item{num_noise}{The number of additional noise dimensions to add to the data.}
 
-\item{min_noise}{The minimum value for the noise dimensions.}
+\item{min_n}{The minimum value for the noise dimensions.}
 
-\item{max_noise}{The maximum value for the noise dimensions.}
+\item{max_n}{The maximum value for the noise dimensions.}
 }
 \value{
 A matrix containing the generated Mobius strip.
@@ -22,6 +22,6 @@ A matrix containing the generated Mobius strip.
 This function generates a dataset representing a 5-dimensional Mobius strip.
 }
 \examples{
-mobius_data <- mobius_5d(sample_size = 100, num_noise_dims = 3,
-                         min_noise = -0.05, max_noise = 0.05)
+mobius_data <- mobius_5d(n = 100, num_noise = 3,
+                         min_n = -0.05, max_n = 0.05)
 }

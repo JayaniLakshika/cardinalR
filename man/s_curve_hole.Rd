@@ -4,16 +4,16 @@
 \alias{s_curve_hole}
 \title{Generate S-curve Data with a Hole}
 \usage{
-s_curve_hole(sample_size, num_noise_dims, min_noise, max_noise)
+s_curve_hole(n, num_noise, min_n, max_n)
 }
 \arguments{
-\item{sample_size}{The number of samples to generate.}
+\item{n}{The number of samples to generate.}
 
-\item{num_noise_dims}{The number of additional noise dimensions to add to the data.}
+\item{num_noise}{The number of additional noise dimensions to add to the data.}
 
-\item{min_noise}{The minimum value for the noise dimensions.}
+\item{min_n}{The minimum value for the noise dimensions.}
 
-\item{max_noise}{The maximum value for the noise dimensions.}
+\item{max_n}{The maximum value for the noise dimensions.}
 }
 \value{
 A matrix containing the generated S-curve data with a hole.
@@ -23,6 +23,6 @@ This function generates S-curve data with a hole by filtering out samples that
 are not close to a specified anchor point.
 }
 \examples{
-s_curve_hole_data <- s_curve_hole(sample_size = 100, num_noise_dims = 3,
-min_noise = -0.5, max_noise = 0.5)
+s_curve_hole_data <- s_curve_hole(n = 100, num_noise = 3,
+min_n = -0.5, max_n = 0.5)
 }

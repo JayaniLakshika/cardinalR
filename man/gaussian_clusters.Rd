@@ -5,18 +5,18 @@
 \title{Generate synthetic data with Gaussian clusters}
 \usage{
 gaussian_clusters(
-  sample_size,
+  n,
   num_clusters,
   mean_matrix,
   var_vec,
   num_dims,
-  num_noise_dims,
-  min_noise,
-  max_noise
+  num_noise,
+  min_n,
+  max_n
 )
 }
 \arguments{
-\item{sample_size}{The total number of data points to be generated.}
+\item{n}{The total number of data points to be generated.}
 
 \item{num_clusters}{The number of clusters to generate.}
 
@@ -26,11 +26,11 @@ gaussian_clusters(
 
 \item{num_dims}{The number of effective dimensions for the data points.}
 
-\item{num_noise_dims}{The number of additional noise dimensions to be generated.}
+\item{num_noise}{The number of additional noise dimensions to be generated.}
 
-\item{min_noise}{The minimum value for the noise added to the data points.}
+\item{min_n}{The minimum value for the noise added to the data points.}
 
-\item{max_noise}{The maximum value for the noise added to the data points.}
+\item{max_n}{The maximum value for the noise added to the data points.}
 }
 \value{
 A matrix containing the generated Gaussian clusters.
@@ -43,8 +43,8 @@ This function generates Gaussian clusters with specified parameters.
 }
 \examples{
 
-gaussian_clusters(sample_size = 300, num_clusters = 5,
+gaussian_clusters(n = 300, num_clusters = 5,
 mean_matrix = rbind(c(1,0,0,0), c(0,1,0,0), c(0,0,1,0),
 c(0,0,0,1), c(0,0,0,0)), var_vec = c(0.05, 0.05, 0.05, 0.05, 0.05),
-num_dims = 4, num_noise_dims = 2, min_noise = -0.05, max_noise = 0.05)
+num_dims = 4, num_noise = 2, min_n = -0.05, max_n = 0.05)
 }

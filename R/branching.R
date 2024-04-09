@@ -2,26 +2,26 @@
 #'
 #' This function generates a dataset representing a curvy tree structure, with added noise.
 #'
-#' @param sample_size The total number of samples to generate.
-#' @param num_noise_dims The number of additional noise dimensions to add to the data.
-#' @param min_noise The minimum value for the noise dimensions.
-#' @param max_noise The maximum value for the noise dimensions.
+#' @param n The total number of samples to generate.
+#' @param num_noise The number of additional noise dimensions to add to the data.
+#' @param min_n The minimum value for the noise dimensions.
+#' @param max_n The maximum value for the noise dimensions.
 #' @return A matrix containing the curvy tree data with added noise.
 #' @export
 #'
 #' @examples
-#' tree_data <- curvy_tree_with_noise(sample_size = 300, num_noise_dims = 8,
-#'                                    min_noise = -0.05, max_noise = 0.05)
-curvy_tree_with_noise <- function(sample_size, num_noise_dims, min_noise,
-                                  max_noise) {
+#' tree_data <- curvy_tree_with_noise(n = 300, num_noise = 8,
+#'                                    min_n = -0.05, max_n = 0.05)
+curvy_tree_with_noise <- function(n, num_noise, min_n,
+                                  max_n) {
 
-  # To check that the assigned sample_size is divided by three
-  if ((sample_size%%3) != 0) {
+  # To check that the assigned n is divided by three
+  if ((n%%3) != 0) {
     warning("The sample size should be a product of three.")
-    cluster_size <- floor(sample_size/3)
+    cluster_size <- floor(n/3)
 
   } else {
-    cluster_size <- sample_size/3
+    cluster_size <- n/3
   }
 
 
@@ -48,10 +48,10 @@ curvy_tree_with_noise <- function(sample_size, num_noise_dims, min_noise,
 
   df <- rbind(df1, df2, df3)
 
-  if (num_noise_dims != 0) {
+  if (num_noise != 0) {
 
-    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise_dims = num_noise_dims,
-                                min_noise = min_noise, max_noise = max_noise)
+    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise = num_noise,
+                                min_n = min_n, max_n = max_n)
     df <- cbind(df, noise_mat)
 
     df
@@ -68,25 +68,25 @@ curvy_tree_with_noise <- function(sample_size, num_noise_dims, min_noise,
 #'
 #' This function generates a dataset representing a tree-like structure, with added noise.
 #'
-#' @param sample_size The total number of samples to generate.
-#' @param num_noise_dims The number of additional noise dimensions to add to the data.
-#' @param min_noise The minimum value for the noise dimensions.
-#' @param max_noise The maximum value for the noise dimensions.
+#' @param n The total number of samples to generate.
+#' @param num_noise The number of additional noise dimensions to add to the data.
+#' @param min_n The minimum value for the noise dimensions.
+#' @param max_n The maximum value for the noise dimensions.
 #' @return A matrix containing the tree-like data with added noise.
 #' @export
 #'
 #' @examples
-#' tree_data <- tree_with_noise(sample_size = 300, num_noise_dims = 8,
-#'                              min_noise = -0.05, max_noise = 0.05)
-tree_with_noise <- function(sample_size, num_noise_dims, min_noise, max_noise) {
+#' tree_data <- tree_with_noise(n = 300, num_noise = 8,
+#'                              min_n = -0.05, max_n = 0.05)
+tree_with_noise <- function(n, num_noise, min_n, max_n) {
 
-  # To check that the assigned sample_size is divided by five
-  if ((sample_size%%5) != 0) {
+  # To check that the assigned n is divided by five
+  if ((n%%5) != 0) {
     warning("The sample size should be a product of five.")
-    cluster_size <- floor(sample_size/5)
+    cluster_size <- floor(n/5)
 
   } else {
-    cluster_size <- sample_size/5
+    cluster_size <- n/5
   }
 
 
@@ -127,10 +127,10 @@ tree_with_noise <- function(sample_size, num_noise_dims, min_noise, max_noise) {
 
   df <- rbind(df1, df2, df3, df4, df5)
 
-  if (num_noise_dims != 0) {
+  if (num_noise != 0) {
 
-    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise_dims = num_noise_dims,
-                                min_noise = min_noise, max_noise = max_noise)
+    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise = num_noise,
+                                min_n = min_n, max_n = max_n)
     df <- cbind(df, noise_mat)
 
     df
@@ -147,26 +147,26 @@ tree_with_noise <- function(sample_size, num_noise_dims, min_noise, max_noise) {
 #'
 #' This function generates a dataset representing seven branches with added noise.
 #'
-#' @param sample_size The total number of samples to generate.
-#' @param num_noise_dims The number of additional noise dimensions to add to the data.
-#' @param min_noise The minimum value for the noise dimensions.
-#' @param max_noise The maximum value for the noise dimensions.
+#' @param n The total number of samples to generate.
+#' @param num_noise The number of additional noise dimensions to add to the data.
+#' @param min_n The minimum value for the noise dimensions.
+#' @param max_n The maximum value for the noise dimensions.
 #' @return A matrix containing the seven-branching data with added noise.
 #' @export
 #'
 #' @examples
-#' seven_branching_data <- seven_branching_data_with_noise(sample_size = 210,
-#' num_noise_dims = 8, min_noise = -0.05, max_noise = 0.05)
-seven_branching_data_with_noise <- function(sample_size, num_noise_dims, min_noise,
-                                            max_noise) {
+#' seven_branching_data <- seven_branching_data_with_noise(n = 210,
+#' num_noise = 8, min_n = -0.05, max_n = 0.05)
+seven_branching_data_with_noise <- function(n, num_noise, min_n,
+                                            max_n) {
 
-  # To check that the assigned sample_size is divided by seven
-  if ((sample_size%%7) != 0) {
+  # To check that the assigned n is divided by seven
+  if ((n%%7) != 0) {
     warning("The sample size should be a product of seven.")
-    cluster_size <- floor(sample_size/7)
+    cluster_size <- floor(n/7)
 
   } else {
-    cluster_size <- sample_size/7
+    cluster_size <- n/7
   }
 
   x <- stats::runif(cluster_size, -2, 2)
@@ -220,10 +220,10 @@ seven_branching_data_with_noise <- function(sample_size, num_noise_dims, min_noi
 
   df <- rbind(df1, df2, df3, df4, df5, df6, df7)
 
-  if (num_noise_dims != 0) {
+  if (num_noise != 0) {
 
-    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise_dims = num_noise_dims,
-                                min_noise = min_noise, max_noise = max_noise)
+    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise = num_noise,
+                                min_n = min_n, max_n = max_n)
     df <- cbind(df, noise_mat)
 
     df
@@ -240,26 +240,26 @@ seven_branching_data_with_noise <- function(sample_size, num_noise_dims, min_noi
 #'
 #' This function generates a dataset representing four branches with added noise.
 #'
-#' @param sample_size The total number of samples to generate.
-#' @param num_noise_dims The number of additional noise dimensions to add to the data.
-#' @param min_noise The minimum value for the noise dimensions.
-#' @param max_noise The maximum value for the noise dimensions.
+#' @param n The total number of samples to generate.
+#' @param num_noise The number of additional noise dimensions to add to the data.
+#' @param min_n The minimum value for the noise dimensions.
+#' @param max_n The maximum value for the noise dimensions.
 #' @return A matrix containing the four-branching data with added noise.
 #' @export
 #'
 #' @examples
-#' four_branching_data <- four_branching_data_with_noise(sample_size = 400,
-#' num_noise_dims = 8, min_noise = -0.05, max_noise = 0.05)
-four_branching_data_with_noise <- function(sample_size, num_noise_dims, min_noise,
-                                           max_noise) {
+#' four_branching_data <- four_branching_data_with_noise(n = 400,
+#' num_noise = 8, min_n = -0.05, max_n = 0.05)
+four_branching_data_with_noise <- function(n, num_noise, min_n,
+                                           max_n) {
 
-  # To check that the assigned sample_size is divided by four
-  if (((sample_size - sample_size * 0.1)%%4) != 0) {
+  # To check that the assigned n is divided by four
+  if (((n - n * 0.1)%%4) != 0) {
     warning("The sample size should be a product of four.")
-    cluster_size <- floor((sample_size - sample_size * 0.1)/4)
+    cluster_size <- floor((n - n * 0.1)/4)
 
   } else {
-    cluster_size <- (sample_size - sample_size * 0.1)/4
+    cluster_size <- (n - n * 0.1)/4
   }
 
   x <- stats::runif(cluster_size, -5, 1)
@@ -290,19 +290,19 @@ four_branching_data_with_noise <- function(sample_size, num_noise_dims, min_nois
 
   df4 <- matrix(c(x, y, z, w), ncol = 4)
 
-  x <- stats::runif(sample_size * 0.1, -5, 0)
-  y <- stats::runif(sample_size * 0.1, 0, 0.8) + stats::runif(sample_size * 0.1, 0, 0.8)
-  z <- rep(0, sample_size * 0.1) + stats::rnorm(sample_size * 0.1, 10, 0.03)
-  w <- rep(0, sample_size * 0.1) - stats::rnorm(sample_size * 0.1, 10, 0.03)
+  x <- stats::runif(n * 0.1, -5, 0)
+  y <- stats::runif(n * 0.1, 0, 0.8) + stats::runif(n * 0.1, 0, 0.8)
+  z <- rep(0, n * 0.1) + stats::rnorm(n * 0.1, 10, 0.03)
+  w <- rep(0, n * 0.1) - stats::rnorm(n * 0.1, 10, 0.03)
 
   df5 <- matrix(c(x, y, z, w), ncol = 4)
 
   df <- rbind(df1, df2, df3, df4, df5)
 
-  if (num_noise_dims != 0) {
+  if (num_noise != 0) {
 
-    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise_dims = num_noise_dims,
-                                min_noise = min_noise, max_noise = max_noise)
+    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise = num_noise,
+                                min_n = min_n, max_n = max_n)
     df <- cbind(df, noise_mat)
 
     df
@@ -319,26 +319,26 @@ four_branching_data_with_noise <- function(sample_size, num_noise_dims, min_nois
 #'
 #' This function generates a dataset representing eight branching patterns, with added noise.
 #'
-#' @param sample_size The total number of samples to generate.
-#' @param num_noise_dims The number of additional noise dimensions to add to the data.
-#' @param min_noise The minimum value for the noise dimensions.
-#' @param max_noise The maximum value for the noise dimensions.
+#' @param n The total number of samples to generate.
+#' @param num_noise The number of additional noise dimensions to add to the data.
+#' @param min_n The minimum value for the noise dimensions.
+#' @param max_n The maximum value for the noise dimensions.
 #' @return A matrix containing the eight branching data with added noise.
 #' @export
 #'
 #' @examples
-#' branching_data <- eight_branching_data_with_noise(sample_size = 400,
-#' num_noise_dims = 8, min_noise = -0.05, max_noise = 0.05)
-eight_branching_data_with_noise <- function(sample_size, num_noise_dims, min_noise,
-                                            max_noise) {
+#' branching_data <- eight_branching_data_with_noise(n = 400,
+#' num_noise = 8, min_n = -0.05, max_n = 0.05)
+eight_branching_data_with_noise <- function(n, num_noise, min_n,
+                                            max_n) {
 
-  # To check that the assigned sample_size is divided by eight
-  if ((sample_size%%8) != 0) {
+  # To check that the assigned n is divided by eight
+  if ((n%%8) != 0) {
     warning("The sample size should be a product of eight.")
-    cluster_size <- floor(sample_size/8)
+    cluster_size <- floor(n/8)
 
   } else {
-    cluster_size <- sample_size/8
+    cluster_size <- n/8
   }
 
   x <- stats::runif(cluster_size, -1, 2)
@@ -399,10 +399,10 @@ eight_branching_data_with_noise <- function(sample_size, num_noise_dims, min_noi
 
   df <- rbind(df1, df2, df3, df4, df5, df6, df7, df8)
 
-  if (num_noise_dims != 0) {
+  if (num_noise != 0) {
 
-    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise_dims = num_noise_dims,
-                                min_noise = min_noise, max_noise = max_noise)
+    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise = num_noise,
+                                min_n = min_n, max_n = max_n)
     df <- cbind(df, noise_mat)
 
     df
@@ -419,13 +419,13 @@ eight_branching_data_with_noise <- function(sample_size, num_noise_dims, min_noi
 #'
 #' This function generates curvy branching cluster data with three clusters of different shapes.
 #'
-#' @param sample_size The total number of data points to be generated.
+#' @param n The total number of data points to be generated.
 #' @param cluster_size_vec A vector specifying the number of points for each cluster.
-#'                         If not provided, the sample_size is divided equally
+#'                         If not provided, the n is divided equally
 #'                         among the clusters.
-#' @param num_noise_dims The number of additional noise dimensions to be generated.
-#' @param min_noise The minimum value for the noise added to the data points.
-#' @param max_noise The maximum value for the noise added to the data points.
+#' @param num_noise The number of additional noise dimensions to be generated.
+#' @param min_n The minimum value for the noise added to the data points.
+#' @param max_n The maximum value for the noise added to the data points.
 #'
 #' @return A matrix containing the generated data, with each row representing a data point.
 #' @export
@@ -433,21 +433,21 @@ eight_branching_data_with_noise <- function(sample_size, num_noise_dims, min_noi
 #' @examples
 #'
 #' # Generate curvy branching cluster data with custom parameters
-#' data <- curvy_branching_cluster(sample_size = 300, cluster_size_vec = c(100, 150, 50),
-#' num_noise_dims = 6, min_noise = -0.05, max_noise = 0.05)
-curvy_branching_cluster <- function(sample_size, cluster_size_vec = NULL,
-                                    num_noise_dims, min_noise, max_noise) {
+#' data <- curvy_branching_cluster(n = 300, cluster_size_vec = c(100, 150, 50),
+#' num_noise = 6, min_n = -0.05, max_n = 0.05)
+curvy_branching_cluster <- function(n, cluster_size_vec = NULL,
+                                    num_noise, min_n, max_n) {
   ## If the number of points for each cluster is not defined
   if (is.null(cluster_size_vec)) {
 
-    # To check that the assigned sample_size is divided by three
-    if ((sample_size%%3) != 0) {
+    # To check that the assigned n is divided by three
+    if ((n%%3) != 0) {
       warning("The sample size should be a product of three.")
-      cluster_size <- floor(sample_size/3)
-      cluster_size_vec <- append(rep(cluster_size, 2), (sample_size - cluster_size * 2))
+      cluster_size <- floor(n/3)
+      cluster_size_vec <- append(rep(cluster_size, 2), (n - cluster_size * 2))
 
     } else {
-      cluster_size <- sample_size/3
+      cluster_size <- n/3
       cluster_size_vec <- rep(cluster_size, 3)
     }
 
@@ -480,10 +480,10 @@ curvy_branching_cluster <- function(sample_size, cluster_size_vec = NULL,
 
   df <- rbind(df1, df2, df3)
 
-  if (num_noise_dims != 0) {
+  if (num_noise != 0) {
 
-    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise_dims = num_noise_dims,
-                                min_noise = min_noise, max_noise = max_noise)
+    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise = num_noise,
+                                min_n = min_n, max_n = max_n)
     df <- cbind(df, noise_mat)
 
     df
@@ -501,10 +501,10 @@ curvy_branching_cluster <- function(sample_size, cluster_size_vec = NULL,
 #'
 #' This function generates data with four clusters, two of which follow a curvilinear pattern and the other two are distributed randomly.
 #'
-#' @param sample_size The total number of data points to be generated.
-#' @param num_noise_dims The number of additional noise dimensions to be generated.
-#' @param min_noise The minimum value for the noise added to the data points.
-#' @param max_noise The maximum value for the noise added to the data points.
+#' @param n The total number of data points to be generated.
+#' @param num_noise The number of additional noise dimensions to be generated.
+#' @param min_n The minimum value for the noise added to the data points.
+#' @param max_n The maximum value for the noise added to the data points.
 #'
 #' @return A matrix containing the generated data, with each row representing a data point.
 #' @export
@@ -512,18 +512,18 @@ curvy_branching_cluster <- function(sample_size, cluster_size_vec = NULL,
 #' @examples
 #'
 #' # Generate curvy branching cluster data with background noise with custom parameters
-#' data <- curvy_branching_cluster_with_bkg_noise(sample_size = 400, num_noise_dims = 10,
-#' min_noise = -0.5, max_noise = 0.5)
-curvy_branching_cluster_with_bkg_noise <- function(sample_size, num_noise_dims,
-                                                   min_noise, max_noise) {
+#' data <- curvy_branching_cluster_with_bkg_noise(n = 400, num_noise = 10,
+#' min_n = -0.5, max_n = 0.5)
+curvy_branching_cluster_with_bkg_noise <- function(n, num_noise,
+                                                   min_n, max_n) {
 
-  # To check that the assigned sample_size is divided by three
-  if ((sample_size%%4) != 0) {
+  # To check that the assigned n is divided by three
+  if ((n%%4) != 0) {
     warning("The sample size should be a product of number of clusters.")
-    cluster_size <- floor(sample_size/4)
+    cluster_size <- floor(n/4)
 
   } else {
-    cluster_size <- sample_size/4
+    cluster_size <- n/4
   }
 
 
@@ -555,10 +555,10 @@ curvy_branching_cluster_with_bkg_noise <- function(sample_size, num_noise_dims,
 
   df <- rbind(df1, df2, df3, df4)
 
-  if (num_noise_dims != 0) {
+  if (num_noise != 0) {
 
-    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise_dims = num_noise_dims,
-                                min_noise = min_noise, max_noise = max_noise)
+    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise = num_noise,
+                                min_n = min_n, max_n = max_n)
     df <- cbind(df, noise_mat)
 
     df
@@ -575,10 +575,10 @@ curvy_branching_cluster_with_bkg_noise <- function(sample_size, num_noise_dims,
 #'
 #' This function generates data with curvy branching clusters along with added noise.
 #'
-#' @param sample_size The total number of data points to be generated.
-#' @param num_noise_dims The number of additional noise dimensions to be generated.
-#' @param min_noise The minimum value for the noise added to the data points.
-#' @param max_noise The maximum value for the noise added to the data points.
+#' @param n The total number of data points to be generated.
+#' @param num_noise The number of additional noise dimensions to be generated.
+#' @param min_n The minimum value for the noise added to the data points.
+#' @param max_n The maximum value for the noise added to the data points.
 #'
 #' @return A matrix containing the generated data, with each row representing a data point.
 #' @export
@@ -586,18 +586,18 @@ curvy_branching_cluster_with_bkg_noise <- function(sample_size, num_noise_dims,
 #' @examples
 #'
 #' # Generate curvy branching clusters with noise with custom parameters
-#' data <- curvy_branching_with_noise(sample_size = 200, num_noise_dims = 8,
-#' min_noise = -0.05, max_noise = 0.05)
-curvy_branching_with_noise <- function(sample_size, num_noise_dims, min_noise,
-                                       max_noise) {
+#' data <- curvy_branching_with_noise(n = 200, num_noise = 8,
+#' min_n = -0.05, max_n = 0.05)
+curvy_branching_with_noise <- function(n, num_noise, min_n,
+                                       max_n) {
 
-  # To check that the assigned sample_size is divided by two
-  if ((sample_size%%2) != 0) {
+  # To check that the assigned n is divided by two
+  if ((n%%2) != 0) {
     warning("The sample size should be a product of two.")
-    cluster_size <- floor(sample_size/2)
+    cluster_size <- floor(n/2)
 
   } else {
-    cluster_size <- sample_size/2
+    cluster_size <- n/2
   }
 
   theta <- stats::runif(cluster_size, 0.20, 0.90 * pi)
@@ -620,10 +620,10 @@ curvy_branching_with_noise <- function(sample_size, num_noise_dims, min_noise,
 
   df <- rbind(df1, df2)
 
-  if (num_noise_dims != 0) {
+  if (num_noise != 0) {
 
-    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise_dims = num_noise_dims,
-                                min_noise = min_noise, max_noise = max_noise)
+    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise = num_noise,
+                                min_n = min_n, max_n = max_n)
     df <- cbind(df, noise_mat)
 
     df

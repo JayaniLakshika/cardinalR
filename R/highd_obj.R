@@ -29,35 +29,35 @@ conic_spiral_3d_row <- function(a, b, c, w) {
 #'
 #' This function generates data points along a conic spiral curve with optional noise.
 #'
-#' @param sample_size Total number of data points to generate.
-#' @param num_noise_dims Number of additional noise dimensions to add to the data.
-#' @param min_noise Minimum value for the noise added to the data.
-#' @param max_noise Maximum value for the noise added to the data.
+#' @param n Total number of data points to generate.
+#' @param num_noise Number of additional noise dimensions to add to the data.
+#' @param min_n Minimum value for the noise added to the data.
+#' @param max_n Maximum value for the noise added to the data.
 #'
 #' @return A matrix containing the generated data points with or without added noise.
 #'
 #' @examples
-#' conic_spiral_with_noise(sample_size = 100, num_noise_dims = 4,
-#' min_noise = -0.05, max_noise = 0.05)
+#' conic_spiral_with_noise(n = 100, num_noise = 4,
+#' min_n = -0.05, max_n = 0.05)
 #'
 #' @export
-conic_spiral_with_noise <- function(sample_size, num_noise_dims, min_noise,
-                                    max_noise) {
+conic_spiral_with_noise <- function(n, num_noise, min_n,
+                                    max_n) {
 
   df <- matrix(
     do.call(
       "rbind",
       as.list(
-        replicate(sample_size, conic_spiral_3d_row(a = .2, b = 1, c = .1, w = 2))
+        replicate(n, conic_spiral_3d_row(a = .2, b = 1, c = .1, w = 2))
       )
     ),
     ncol = 3, byrow = TRUE
   )
 
-  if (num_noise_dims != 0) {
+  if (num_noise != 0) {
 
-    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise_dims = num_noise_dims,
-                                min_noise = min_noise, max_noise = max_noise)
+    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise = num_noise,
+                                min_n = min_n, max_n = max_n)
     df <- cbind(df, noise_mat)
 
     df
@@ -96,35 +96,35 @@ dini_surface_3d_row <- function(a = 1, b = 1) {
 #'
 #' This function generates points sampled from the Dini surface along with optional noise.
 #'
-#' @param sample_size Total number of data points to generate.
-#' @param num_noise_dims Number of additional noise dimensions to add to the data.
-#' @param min_noise Minimum value for the noise added to the data.
-#' @param max_noise Maximum value for the noise added to the data.
+#' @param n Total number of data points to generate.
+#' @param num_noise Number of additional noise dimensions to add to the data.
+#' @param min_n Minimum value for the noise added to the data.
+#' @param max_n Maximum value for the noise added to the data.
 #'
 #' @return A matrix containing the generated data points with or without added noise.
 #'
 #' @examples
-#' dini_surface_with_noise(sample_size = 100, num_noise_dims = 4,
-#' min_noise = -0.05, max_noise = 0.05)
+#' dini_surface_with_noise(n = 100, num_noise = 4,
+#' min_n = -0.05, max_n = 0.05)
 #'
 #' @export
-dini_surface_with_noise <- function(sample_size, num_noise_dims, min_noise,
-                                    max_noise) {
+dini_surface_with_noise <- function(n, num_noise, min_n,
+                                    max_n) {
 
   df <- matrix(
     do.call(
       "rbind",
       as.list(
-        replicate(sample_size, dini_surface_3d_row(a = 1, b = 1))
+        replicate(n, dini_surface_3d_row(a = 1, b = 1))
       )
     ),
     ncol = 3, byrow = TRUE
   )
 
-  if (num_noise_dims != 0) {
+  if (num_noise != 0) {
 
-    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise_dims = num_noise_dims,
-                                min_noise = min_noise, max_noise = max_noise)
+    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise = num_noise,
+                                min_n = min_n, max_n = max_n)
     df <- cbind(df, noise_mat)
 
     df
@@ -162,35 +162,35 @@ roman_surface_3d_row <- function(a = 1) {
 #'
 #' This function generates data points on a Roman surface with optional noise.
 #'
-#' @param sample_size Total number of data points to generate.
-#' @param num_noise_dims Number of additional noise dimensions to add to the data.
-#' @param min_noise Minimum value for the noise added to the data.
-#' @param max_noise Maximum value for the noise added to the data.
+#' @param n Total number of data points to generate.
+#' @param num_noise Number of additional noise dimensions to add to the data.
+#' @param min_n Minimum value for the noise added to the data.
+#' @param max_n Maximum value for the noise added to the data.
 #'
 #' @return A matrix containing the generated data points with or without added noise.
 #'
 #' @examples
-#' roman_surface_with_noise(sample_size = 100, num_noise_dims = 8,
-#' min_noise = -0.05, max_noise = 0.05)
+#' roman_surface_with_noise(n = 100, num_noise = 8,
+#' min_n = -0.05, max_n = 0.05)
 #'
 #' @export
-roman_surface_with_noise <- function(sample_size, num_noise_dims, min_noise,
-                                     max_noise) {
+roman_surface_with_noise <- function(n, num_noise, min_n,
+                                     max_n) {
 
   df <- matrix(
     do.call(
       "rbind",
       as.list(
-        replicate(sample_size, roman_surface_3d_row(a = 1))
+        replicate(n, roman_surface_3d_row(a = 1))
       )
     ),
     ncol = 3, byrow = TRUE
   )
 
-  if (num_noise_dims != 0) {
+  if (num_noise != 0) {
 
-    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise_dims = num_noise_dims,
-                                min_noise = min_noise, max_noise = max_noise)
+    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise = num_noise,
+                                min_n = min_n, max_n = max_n)
     df <- cbind(df, noise_mat)
 
     df
@@ -207,24 +207,24 @@ roman_surface_with_noise <- function(sample_size, num_noise_dims, min_noise,
 #'
 #' This function generates a dataset arranged in a spiral pattern with optional noise.
 #'
-#' @param sample_size Total number of data points to generate.
+#' @param n Total number of data points to generate.
 #' @param num_dims Number of effective dimensions for each data point.
-#' @param num_noise_dims Number of additional noise dimensions to add to the data.
-#' @param min_noise Minimum value for the noise added to the data.
-#' @param max_noise Maximum value for the noise added to the data.
+#' @param num_noise Number of additional noise dimensions to add to the data.
+#' @param min_n Minimum value for the noise added to the data.
+#' @param max_n Maximum value for the noise added to the data.
 #'
 #' @return A matrix containing the generated data points with or without added noise.
 #'
 #' @examples
-#' spiral_with_noise(sample_size = 100, num_dims = 10, num_noise_dims = 4,
-#' min_noise = -0.05, max_noise = 0.05)
+#' spiral_with_noise(n = 100, num_dims = 10, num_noise = 4,
+#' min_n = -0.05, max_n = 0.05)
 #'
 #' @export
-spiral_with_noise <- function(sample_size, num_dims, num_noise_dims, min_noise,
-                              max_noise) {
+spiral_with_noise <- function(n, num_dims, num_noise, min_n,
+                              max_n) {
 
-  u <- array(stats::runif(n=(sample_size*1), min=0, max=5), dim=c(sample_size, 1))
-  df <- array(cos(pi*u), dim=c(sample_size, num_dims))
+  u <- array(stats::runif(n=(n*1), min=0, max=5), dim=c(n, 1))
+  df <- array(cos(pi*u), dim=c(n, num_dims))
   y <- u*sin(pi*u)
   if (num_dims > 1) {
     for (i in 1:(num_dims-1)) {
@@ -233,10 +233,10 @@ spiral_with_noise <- function(sample_size, num_dims, num_noise_dims, min_noise,
   }
   df[, num_dims] <- u*df[, num_dims, drop=FALSE]
 
-  if (num_noise_dims != 0) {
+  if (num_noise != 0) {
 
-    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise_dims = num_noise_dims,
-                                min_noise = min_noise, max_noise = max_noise)
+    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise = num_noise,
+                                min_n = min_n, max_n = max_n)
     df <- cbind(df, noise_mat)
 
     df
@@ -288,35 +288,35 @@ torus_3d_row <- function(radius) {
 #'
 #' This function generates a torus-shaped dataset along with optional noise.
 #'
-#' @param sample_size Total number of data points to generate.
-#' @param num_noise_dims Number of additional noise dimensions to add to the data.
-#' @param min_noise Minimum value for the noise added to the data.
-#' @param max_noise Maximum value for the noise added to the data.
+#' @param n Total number of data points to generate.
+#' @param num_noise Number of additional noise dimensions to add to the data.
+#' @param min_n Minimum value for the noise added to the data.
+#' @param max_n Maximum value for the noise added to the data.
 #'
 #' @return A matrix containing the generated torus-shaped data points with or without added noise.
 #'
 #' @examples
-#' torus_with_noise(sample_size = 100, num_noise_dims = 4,
-#' min_noise = -0.05, max_noise = 0.05)
+#' torus_with_noise(n = 100, num_noise = 4,
+#' min_n = -0.05, max_n = 0.05)
 #'
 #' @export
-torus_with_noise <- function(sample_size, num_noise_dims, min_noise, max_noise) {
+torus_with_noise <- function(n, num_noise, min_n, max_n) {
 
   df <- matrix(
     do.call(
       "rbind",
       as.list(
-        replicate(sample_size, torus_3d_row(radius = 2 ^ (1:0)))
+        replicate(n, torus_3d_row(radius = 2 ^ (1:0)))
       )
     ),
     ncol = 3, byrow = TRUE
   )
 
 
-  if (num_noise_dims != 0) {
+  if (num_noise != 0) {
 
-    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise_dims = num_noise_dims,
-                                min_noise = min_noise, max_noise = max_noise)
+    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise = num_noise,
+                                min_n = min_n, max_n = max_n)
     df <- cbind(df, noise_mat)
 
     df
@@ -334,28 +334,28 @@ torus_with_noise <- function(sample_size, num_noise_dims, min_noise, max_noise) 
 #' This function generates a 3D cube along with optional noise.
 #'
 #' @param num_of_effective_dims Number of effective dimensions (default is 3 for a 3D cube).
-#' @param num_noise_dims Number of additional noise dimensions to add to the data.
-#' @param min_noise Minimum value for the noise added to the data.
-#' @param max_noise Maximum value for the noise added to the data.
+#' @param num_noise Number of additional noise dimensions to add to the data.
+#' @param min_n Minimum value for the noise added to the data.
+#' @param max_n Maximum value for the noise added to the data.
 #'
 #' @return A list containing the generated data matrix and the sample size.
 #'
 #' @examples
-#' cube_3d_with_noise(num_of_effective_dims = 3, num_noise_dims = 2,
-#' min_noise = -0.01, max_noise = 0.01)
+#' cube_3d_with_noise(num_of_effective_dims = 3, num_noise = 2,
+#' min_n = -0.01, max_n = 0.01)
 #'
 #' @export
-cube_3d_with_noise <- function(num_of_effective_dims, num_noise_dims, min_noise,
-                               max_noise) {
+cube_3d_with_noise <- function(num_of_effective_dims, num_noise, min_n,
+                               max_n) {
 
   df1 <- do.call(expand.grid, rep(list(c( (0:11) / 11)), num_of_effective_dims))
   df2 <- do.call(expand.grid, rep(list(c(0, 1)), num_of_effective_dims))
   df <- unique(rbind(as.matrix(df1), as.matrix(df2)))
 
-  if (num_noise_dims != 0) {
+  if (num_noise != 0) {
 
-    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise_dims = num_noise_dims,
-                                min_noise = min_noise, max_noise = max_noise)
+    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise = num_noise,
+                                min_n = min_n, max_n = max_n)
     df <- cbind(df, noise_mat)
 
     df
@@ -366,6 +366,6 @@ cube_3d_with_noise <- function(num_of_effective_dims, num_noise_dims, min_noise,
 
   }
 
-  return(list(df = df, sample_size = NROW(df)))
+  return(list(df = df, n = NROW(df)))
 
 }

@@ -4,18 +4,18 @@
 \alias{sphere}
 \title{Generate Coordinates for a Sphere}
 \usage{
-sphere(radius, resolution, num_noise_dims, min_noise, max_noise)
+sphere(radius, resolution, num_noise, min_n, max_n)
 }
 \arguments{
 \item{radius}{The radius of the sphere.}
 
 \item{resolution}{The number of points used to approximate the surface of the sphere.}
 
-\item{num_noise_dims}{The number of additional noise dimensions to add to the coordinates.}
+\item{num_noise}{The number of additional noise dimensions to add to the coordinates.}
 
-\item{min_noise}{The minimum value for the random noise added to the coordinates.}
+\item{min_n}{The minimum value for the random noise added to the coordinates.}
 
-\item{max_noise}{The maximum value for the random noise added to the coordinates.}
+\item{max_n}{The maximum value for the random noise added to the coordinates.}
 }
 \value{
 A matrix containing the Cartesian coordinates of the points on the sphere.
@@ -25,7 +25,7 @@ This function generates the coordinates for a sphere in three-dimensional space.
 }
 \examples{
 # Generate coordinates for a sphere with radius 1 and resolution 100
-sphere(radius = 1, resolution = 20, num_noise_dims = 3, min_noise = -0.05,
-max_noise = 0.05)
+sphere(radius = 1, resolution = 20, num_noise = 3, min_n = -0.05,
+max_n = 0.05)
 
 }

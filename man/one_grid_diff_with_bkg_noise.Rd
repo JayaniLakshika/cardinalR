@@ -5,20 +5,20 @@
 \title{Generate One Grid with Different Values and Background Noise}
 \usage{
 one_grid_diff_with_bkg_noise(
-  sample_size = 260,
-  num_noise_dims = 5,
-  min_noise = -0.05,
-  max_noise = 0.05
+  n = 260,
+  num_noise = 5,
+  min_n = -0.05,
+  max_n = 0.05
 )
 }
 \arguments{
-\item{sample_size}{The total number of samples, including the background noise.}
+\item{n}{The total number of samples, including the background noise.}
 
-\item{num_noise_dims}{The number of additional noise dimensions to add to the data.}
+\item{num_noise}{The number of additional noise dimensions to add to the data.}
 
-\item{min_noise}{The minimum value for the noise dimensions.}
+\item{min_n}{The minimum value for the noise dimensions.}
 
-\item{max_noise}{The maximum value for the noise dimensions.}
+\item{max_n}{The maximum value for the noise dimensions.}
 }
 \value{
 A list containing the grid dataset with different values and background noise.
@@ -27,6 +27,6 @@ A list containing the grid dataset with different values and background noise.
 This function generates a grid dataset with different values and background noise.
 }
 \examples{
-one_grid_diff_with_bkg_noise <- one_grid_diff_with_bkg_noise(sample_size = 260,
-num_noise_dims = 5, min_noise = -0.05, max_noise = 0.05)
+one_grid_diff_with_bkg_noise <- one_grid_diff_with_bkg_noise(n = 260,
+num_noise = 5, min_n = -0.05, max_n = 0.05)
 }

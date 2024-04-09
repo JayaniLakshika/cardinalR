@@ -2,26 +2,26 @@
 #'
 #' This function generates three circular clusters in 4D space with added noise dimensions.
 #'
-#' @param sample_size The total number of samples to generate.
-#' @param num_noise_dims The number of additional noise dimensions to add to the data.
-#' @param min_noise The minimum value for the noise dimensions.
-#' @param max_noise The maximum value for the noise dimensions.
+#' @param n The total number of samples to generate.
+#' @param num_noise The number of additional noise dimensions to add to the data.
+#' @param min_n The minimum value for the noise dimensions.
+#' @param max_n The maximum value for the noise dimensions.
 #' @return A matrix containing the three circular clusters with added noise.
 #' @export
 #'
 #' @examples
-#' circular_clusters_data <- three_circulars_with_noise(sample_size = 300,
-#' num_noise_dims = 4, min_noise = -0.05, max_noise = 0.05)
-three_circulars_with_noise <- function(sample_size, num_noise_dims, min_noise,
-                                       max_noise) {
+#' circular_clusters_data <- three_circulars_with_noise(n = 300,
+#' num_noise = 4, min_n = -0.05, max_n = 0.05)
+three_circulars_with_noise <- function(n, num_noise, min_n,
+                                       max_n) {
 
-  # To check that the assigned sample_size is divided by three
-  if ((sample_size%%3) != 0) {
+  # To check that the assigned n is divided by three
+  if ((n%%3) != 0) {
     warning("The sample size should be a product of three.")
-    cluster_size <- floor(sample_size/3)
+    cluster_size <- floor(n/3)
 
   } else {
-    cluster_size <- sample_size/3
+    cluster_size <- n/3
   }
 
   theta <- stats::runif(cluster_size, 0.0,2 * pi)
@@ -51,10 +51,10 @@ three_circulars_with_noise <- function(sample_size, num_noise_dims, min_noise,
 
   df <- rbind(df1, df2, df3)
 
-  if (num_noise_dims != 0) {
+  if (num_noise != 0) {
 
-    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise_dims = num_noise_dims,
-                                min_noise = min_noise, max_noise = max_noise)
+    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise = num_noise,
+                                min_n = min_n, max_n = max_n)
     df <- cbind(df, noise_mat)
 
     df
@@ -71,26 +71,26 @@ three_circulars_with_noise <- function(sample_size, num_noise_dims, min_noise,
 #'
 #' This function generates a cell cycle dataset with added noise dimensions.
 #'
-#' @param sample_size The total number of samples to generate.
-#' @param num_noise_dims The number of additional noise dimensions to add to the data.
-#' @param min_noise The minimum value for the noise dimensions.
-#' @param max_noise The maximum value for the noise dimensions.
+#' @param n The total number of samples to generate.
+#' @param num_noise The number of additional noise dimensions to add to the data.
+#' @param min_n The minimum value for the noise dimensions.
+#' @param max_n The maximum value for the noise dimensions.
 #' @return A matrix containing the cell cycle data with added noise.
 #' @export
 #'
 #' @examples
-#' cell_cycle_data <- cell_cycle_with_noise(sample_size = 300,
-#' num_noise_dims = 4, min_noise = -0.05, max_noise = 0.05)
-cell_cycle_with_noise <- function(sample_size, num_noise_dims, min_noise,
-                                  max_noise) {
+#' cell_cycle_data <- cell_cycle_with_noise(n = 300,
+#' num_noise = 4, min_n = -0.05, max_n = 0.05)
+cell_cycle_with_noise <- function(n, num_noise, min_n,
+                                  max_n) {
 
-  # To check that the assigned sample_size is divided by three
-  if ((sample_size%%3) != 0) {
+  # To check that the assigned n is divided by three
+  if ((n%%3) != 0) {
     warning("The sample size should be a product of three.")
-    cluster_size <- floor(sample_size/3)
+    cluster_size <- floor(n/3)
 
   } else {
-    cluster_size <- sample_size/3
+    cluster_size <- n/3
   }
 
 
@@ -118,10 +118,10 @@ cell_cycle_with_noise <- function(sample_size, num_noise_dims, min_noise,
 
   df <- rbind(df1, df2, df3)
 
-  if (num_noise_dims != 0) {
+  if (num_noise != 0) {
 
-    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise_dims = num_noise_dims,
-                                min_noise = min_noise, max_noise = max_noise)
+    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise = num_noise,
+                                min_n = min_n, max_n = max_n)
     df <- cbind(df, noise_mat)
 
     df
@@ -138,26 +138,26 @@ cell_cycle_with_noise <- function(sample_size, num_noise_dims, min_noise,
 #'
 #' This function generates a curvy cell cycle dataset with added noise dimensions.
 #'
-#' @param sample_size The total number of samples to generate.
-#' @param num_noise_dims The number of additional noise dimensions to add to the data.
-#' @param min_noise The minimum value for the noise dimensions.
-#' @param max_noise The maximum value for the noise dimensions.
+#' @param n The total number of samples to generate.
+#' @param num_noise The number of additional noise dimensions to add to the data.
+#' @param min_n The minimum value for the noise dimensions.
+#' @param max_n The maximum value for the noise dimensions.
 #' @return A matrix containing the curvy cell cycle data with added noise.
 #' @export
 #'
 #' @examples
-#' curvy_cell_cycle_data <- curvy_cell_cycle_with_noise(sample_size = 300,
-#' num_noise_dims = 4, min_noise = -0.05, max_noise = 0.05)
-curvy_cell_cycle_with_noise <- function(sample_size, num_noise_dims, min_noise,
-                                        max_noise) {
+#' curvy_cell_cycle_data <- curvy_cell_cycle_with_noise(n = 300,
+#' num_noise = 4, min_n = -0.05, max_n = 0.05)
+curvy_cell_cycle_with_noise <- function(n, num_noise, min_n,
+                                        max_n) {
 
-  # To check that the assigned sample_size is divided by three
-  if ((sample_size%%3) != 0) {
+  # To check that the assigned n is divided by three
+  if ((n%%3) != 0) {
     warning("The sample size should be a product of three.")
-    cluster_size <- floor(sample_size/3)
+    cluster_size <- floor(n/3)
 
   } else {
-    cluster_size <- sample_size/3
+    cluster_size <- n/3
   }
 
 
@@ -184,10 +184,10 @@ curvy_cell_cycle_with_noise <- function(sample_size, num_noise_dims, min_noise,
 
   df <- rbind(df1, df2, df3)
 
-  if (num_noise_dims != 0) {
+  if (num_noise != 0) {
 
-    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise_dims = num_noise_dims,
-                                min_noise = min_noise, max_noise = max_noise)
+    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise = num_noise,
+                                min_n = min_n, max_n = max_n)
     df <- cbind(df, noise_mat)
 
     df
@@ -204,10 +204,10 @@ curvy_cell_cycle_with_noise <- function(sample_size, num_noise_dims, min_noise,
 #'
 #' This function generates linked data points.
 #'
-#' @param sample_size The total number of data points to be generated. Should be a product of two.
-#' @param num_noise_dims The number of additional noise dimensions to be generated.
-#' @param min_noise The minimum value for the noise added to the data points.
-#' @param max_noise The maximum value for the noise added to the data points.
+#' @param n The total number of data points to be generated. Should be a product of two.
+#' @param num_noise The number of additional noise dimensions to be generated.
+#' @param min_n The minimum value for the noise added to the data points.
+#' @param max_n The maximum value for the noise added to the data points.
 #'
 #' @return A matrix containing the generated linked data points.
 #' @export
@@ -215,17 +215,17 @@ curvy_cell_cycle_with_noise <- function(sample_size, num_noise_dims, min_noise,
 #' @examples
 #'
 #' # Generate linked data with noise with custom parameters
-#' data <- link_data(sample_size = 200, num_noise_dims = 4,
-#' min_noise = -0.05, max_noise = 0.05)
-link_data <- function(sample_size, num_noise_dims, min_noise, max_noise) {
+#' data <- link_data(n = 200, num_noise = 4,
+#' min_n = -0.05, max_n = 0.05)
+link_data <- function(n, num_noise, min_n, max_n) {
 
-  # To check that the assigned sample_size is divided by two
-  if ((sample_size%%2) != 0) {
+  # To check that the assigned n is divided by two
+  if ((n%%2) != 0) {
     warning("The sample size should be a product of two.")
-    cluster_size <- floor(sample_size/2)
+    cluster_size <- floor(n/2)
 
   } else {
-    cluster_size <- sample_size/2
+    cluster_size <- n/2
   }
 
   theta <- (0:(cluster_size - 1)) * (2 * pi / cluster_size)
@@ -242,10 +242,10 @@ link_data <- function(sample_size, num_noise_dims, min_noise, max_noise) {
 
   df <- rbind(df1, df2)
 
-  if (num_noise_dims != 0) {
+  if (num_noise != 0) {
 
-    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise_dims = num_noise_dims,
-                                min_noise = min_noise, max_noise = max_noise)
+    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise = num_noise,
+                                min_n = min_n, max_n = max_n)
     df <- cbind(df, noise_mat)
 
     df

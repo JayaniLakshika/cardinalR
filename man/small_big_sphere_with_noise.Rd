@@ -4,16 +4,16 @@
 \alias{small_big_sphere_with_noise}
 \title{Generate data representing small spheres within a larger encompassing sphere with added noise.}
 \usage{
-small_big_sphere_with_noise(sample_size, num_noise_dims, min_noise, max_noise)
+small_big_sphere_with_noise(n, num_noise, min_n, max_n)
 }
 \arguments{
-\item{sample_size}{Total number of data points to generate, should be a multiple of 13.}
+\item{n}{Total number of data points to generate, should be a multiple of 13.}
 
-\item{num_noise_dims}{Number of additional noise dimensions to add to the data.}
+\item{num_noise}{Number of additional noise dimensions to add to the data.}
 
-\item{min_noise}{Minimum value for the noise added to the data.}
+\item{min_n}{Minimum value for the noise added to the data.}
 
-\item{max_noise}{Maximum value for the noise added to the data.}
+\item{max_n}{Maximum value for the noise added to the data.}
 }
 \value{
 A matrix containing the generated data points with or without added noise.
@@ -23,7 +23,7 @@ This function generates data points representing small spheres within a larger e
 and adds noise to the data if specified.
 }
 \examples{
-small_big_sphere_with_noise(sample_size = 390, num_noise_dims = 4,
-min_noise = -0.05, max_noise = 0.05)
+small_big_sphere_with_noise(n = 390, num_noise = 4,
+min_n = -0.05, max_n = 0.05)
 
 }

@@ -4,16 +4,16 @@
 \alias{three_diff_linear_with_noise}
 \title{Generate Three Different Linear Data with Noise}
 \usage{
-three_diff_linear_with_noise(sample_size, num_noise_dims, min_noise, max_noise)
+three_diff_linear_with_noise(n, num_noise, min_n, max_n)
 }
 \arguments{
-\item{sample_size}{The total number of samples to generate.}
+\item{n}{The total number of samples to generate.}
 
-\item{num_noise_dims}{The number of additional noise dimensions to add to the data.}
+\item{num_noise}{The number of additional noise dimensions to add to the data.}
 
-\item{min_noise}{The minimum value for the noise dimensions.}
+\item{min_n}{The minimum value for the noise dimensions.}
 
-\item{max_noise}{The maximum value for the noise dimensions.}
+\item{max_n}{The maximum value for the noise dimensions.}
 }
 \value{
 A matrix containing the three different linear data with added noise.
@@ -22,6 +22,6 @@ A matrix containing the three different linear data with added noise.
 This function generates a dataset consisting of three different linear patterns with added noise.
 }
 \examples{
-three_diff_linear <- three_diff_linear_with_noise(sample_size = 150,
-num_noise_dims = 8, min_noise = -0.05, max_noise = 0.05)
+three_diff_linear <- three_diff_linear_with_noise(n = 150,
+num_noise = 8, min_n = -0.05, max_n = 0.05)
 }

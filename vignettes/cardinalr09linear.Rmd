@@ -20,9 +20,9 @@ library(langevitour)
 ```
 
 ```{r}
-plane_2d_data <- plane(sample_size = 300, coefficient_x_1 = 1, coefficient_x_2 = 1, coefficient_y_1 = -1, coefficient_y_2 = 1, intercept_x = -10, intercept_y = 8, 
-u_min = 10, u_max = 30, v_min = 10, v_max = 20, num_noise_dims = 2, 
-min_noise = 0, max_noise = 1)
+plane_2d_data <- plane(n = 300, coefficient_x_1 = 1, coefficient_x_2 = 1, coefficient_y_1 = -1, coefficient_y_2 = 1, intercept_x = -10, intercept_y = 8, 
+u_min = 10, u_max = 30, v_min = 10, v_max = 20, num_noise = 2, 
+min_n = 0, max_n = 1)
 
 colnames(plane_2d_data) <- paste0("x", 1:NCOL(plane_2d_data))
 
@@ -30,9 +30,9 @@ langevitour(plane_2d_data, pointSize = 2)
 ```
 
 ```{r}
-long_clust_data <- long_cluster_data(sample_size = 200, 
-                                     num_noise_dims = 2, min_noise = -0.05, 
-                                     max_noise = 0.05)
+long_clust_data <- long_cluster_data(n = 200, 
+                                     num_noise = 2, min_n = -0.05, 
+                                     max_n = 0.05)
 
 colnames(long_clust_data) <- paste0("x", 1:NCOL(long_clust_data))
 
@@ -40,9 +40,9 @@ langevitour(long_clust_data, pointSize = 2)
 ```
 
 ```{r}
-three_lin_data <- three_diff_linear_with_noise(sample_size = 300, 
-                                               num_noise_dims = 2, 
-                                               min_noise = -0.05, max_noise = 0.05)
+three_lin_data <- three_diff_linear_with_noise(n = 300, 
+                                               num_noise = 2, 
+                                               min_n = -0.05, max_n = 0.05)
 
 colnames(three_lin_data) <- paste0("x", 1:NCOL(three_lin_data))
 
@@ -50,9 +50,9 @@ langevitour(three_lin_data, pointSize = 2)
 ```
 
 ```{r}
-four_lin_data <- four_diff_long_clutsers_with_noise(sample_size = 500, 
-                                                    num_noise_dims = 2, 
-                                                    min_noise = -0.05, max_noise = 0.05)
+four_lin_data <- four_diff_long_clutsers_with_noise(n = 500, 
+                                                    num_noise = 2, 
+                                                    min_n = -0.05, max_n = 0.05)
 
 colnames(four_lin_data) <- paste0("x", 1:NCOL(four_lin_data))
 
@@ -60,9 +60,9 @@ langevitour(four_lin_data, pointSize = 2)
 ```
 
 ```{r}
-plane_2dh_data <- plane_2d_with_hole(sample_size = 600, num_noise_dims = 2, 
-                                     min_noise = 0, max_noise = 1)
-plane_2dh_data$sample_size
+plane_2dh_data <- plane_2d_with_hole(n = 600, num_noise = 2, 
+                                     min_n = 0, max_n = 1)
+plane_2dh_data$n
 
 colnames(plane_2dh_data$df) <- paste0("x", 1:NCOL(plane_2dh_data$df))
 
@@ -70,10 +70,10 @@ langevitour(plane_2dh_data$df, pointSize = 2)
 ```
 
 ```{r}
-four_linbkg_data <- four_long_clusters_with_bkg_noise(sample_size = 165, 
-                                                      num_noise_dims = 2, 
-                                                      min_noise = -0.05, 
-                                                      max_noise = 0.05)
+four_linbkg_data <- four_long_clusters_with_bkg_noise(n = 165, 
+                                                      num_noise = 2, 
+                                                      min_n = -0.05, 
+                                                      max_n = 0.05)
 
 colnames(four_linbkg_data) <- paste0("x", 1:NCOL(four_linbkg_data))
 
@@ -81,9 +81,9 @@ langevitour(four_linbkg_data, pointSize = 2)
 ```
 
 ```{r}
-three_linn_data <- three_linear_with_noise(sample_size = 300, 
-                                           num_noise_dims = 2, 
-                                           min_noise = -0.05, max_noise = 0.05)
+three_linn_data <- three_linear_with_noise(n = 300, 
+                                           num_noise = 2, 
+                                           min_n = -0.05, max_n = 0.05)
 
 colnames(three_linn_data) <- paste0("x", 1:NCOL(three_linn_data))
 
@@ -91,9 +91,9 @@ langevitour(three_linn_data, pointSize = 2)
 ```
 
 ```{r}
-two_linn_data <- two_linear_diff_with_noise(sample_size = 216, 
-                                           num_noise_dims = 2, 
-                                           min_noise = -0.05, max_noise = 0.05)
+two_linn_data <- two_linear_diff_with_noise(n = 216, 
+                                           num_noise = 2, 
+                                           min_n = -0.05, max_n = 0.05)
 
 colnames(two_linn_data) <- paste0("x", 1:NCOL(two_linn_data))
 

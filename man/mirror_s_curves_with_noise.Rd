@@ -4,16 +4,16 @@
 \alias{mirror_s_curves_with_noise}
 \title{Generate Mirror S-curve Datasets with Noise}
 \usage{
-mirror_s_curves_with_noise(sample_size, num_noise_dims, min_noise, max_noise)
+mirror_s_curves_with_noise(n, num_noise, min_n, max_n)
 }
 \arguments{
-\item{sample_size}{The total number of samples to generate (should be divisible by 2).}
+\item{n}{The total number of samples to generate (should be divisible by 2).}
 
-\item{num_noise_dims}{The number of additional noise dimensions to add to the data.}
+\item{num_noise}{The number of additional noise dimensions to add to the data.}
 
-\item{min_noise}{The minimum value for the noise dimensions.}
+\item{min_n}{The minimum value for the noise dimensions.}
 
-\item{max_noise}{The maximum value for the noise dimensions.}
+\item{max_n}{The maximum value for the noise dimensions.}
 }
 \value{
 A matrix containing the combined mirror S-curve datasets with added noise.
@@ -22,6 +22,6 @@ A matrix containing the combined mirror S-curve datasets with added noise.
 This function generates mirror S-curve datasets with added noise dimensions.
 }
 \examples{
-mirror_s_curve_data <- mirror_s_curves_with_noise(sample_size = 200, num_noise_dims = 8,
-min_noise = -0.5, max_noise = 0.5)
+mirror_s_curve_data <- mirror_s_curves_with_noise(n = 200, num_noise = 8,
+min_n = -0.5, max_n = 0.5)
 }

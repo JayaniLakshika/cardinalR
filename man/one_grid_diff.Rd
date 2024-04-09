@@ -4,16 +4,16 @@
 \alias{one_grid_diff}
 \title{Generate One Grid with Different Offset}
 \usage{
-one_grid_diff(sample_size, num_noise_dims, min_noise, max_noise)
+one_grid_diff(n, num_noise, min_n, max_n)
 }
 \arguments{
-\item{sample_size}{The total number of samples in the dataset.}
+\item{n}{The total number of samples in the dataset.}
 
-\item{num_noise_dims}{The number of additional noise dimensions to add to the data.}
+\item{num_noise}{The number of additional noise dimensions to add to the data.}
 
-\item{min_noise}{The minimum value for the noise dimensions.}
+\item{min_n}{The minimum value for the noise dimensions.}
 
-\item{max_noise}{The maximum value for the noise dimensions.}
+\item{max_n}{The maximum value for the noise dimensions.}
 }
 \value{
 A list containing the grid dataset with different offsets and the sample size.
@@ -22,6 +22,6 @@ A list containing the grid dataset with different offsets and the sample size.
 This function generates a single grid dataset with a different offset.
 }
 \examples{
-one_grid_diff <- one_grid_diff(sample_size = 200, num_noise_dims = 2,
-min_noise = -0.05, max_noise = 0.05)
+one_grid_diff <- one_grid_diff(n = 200, num_noise = 2,
+min_n = -0.05, max_n = 0.05)
 }

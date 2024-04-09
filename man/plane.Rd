@@ -5,7 +5,7 @@
 \title{Generate points on a plane in 2D space}
 \usage{
 plane(
-  sample_size,
+  n,
   coefficient_x_1,
   coefficient_x_2,
   coefficient_y_1,
@@ -16,13 +16,13 @@ plane(
   u_max,
   v_min,
   v_max,
-  num_noise_dims,
-  min_noise,
-  max_noise
+  num_noise,
+  min_n,
+  max_n
 )
 }
 \arguments{
-\item{sample_size}{The number of points to generate.}
+\item{n}{The number of points to generate.}
 
 \item{coefficient_x_1}{The coefficient of the first parameter in the x-dimension equation.}
 
@@ -44,11 +44,11 @@ plane(
 
 \item{v_max}{The maximum value for the second parameter (v) range.}
 
-\item{num_noise_dims}{The number of noise dimensions to add to the generated points.}
+\item{num_noise}{The number of noise dimensions to add to the generated points.}
 
-\item{min_noise}{The minimum value for the noise dimensions.}
+\item{min_n}{The minimum value for the noise dimensions.}
 
-\item{max_noise}{The maximum value for the noise dimensions.}
+\item{max_n}{The maximum value for the noise dimensions.}
 }
 \value{
 A matrix containing the generated points on the plane.
@@ -58,9 +58,9 @@ This function generates points on a plane in 3D space based on the provided coef
 intercepts, and ranges for the parameters.
 }
 \examples{
-plane_points <- plane(sample_size = 100, coefficient_x_1 = 1, coefficient_x_2 = 1,
+plane_points <- plane(n = 100, coefficient_x_1 = 1, coefficient_x_2 = 1,
                      coefficient_y_1 = -1, coefficient_y_2 = 1, intercept_x = -10,
                      intercept_y = 8, u_min = 10, u_max = 30, v_min = 10, v_max = 20,
-                     num_noise_dims = 2, min_noise = 0, max_noise = 1)
+                     num_noise = 2, min_n = 0, max_n = 1)
 
 }

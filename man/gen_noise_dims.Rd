@@ -4,16 +4,16 @@
 \alias{gen_noise_dims}
 \title{Generate Random Noise Dimensions}
 \usage{
-gen_noise_dims(n, num_noise_dims, min_noise, max_noise)
+gen_noise_dims(n, num_noise, min_n, max_n)
 }
 \arguments{
 \item{n}{The number of observations for which to generate noise dimensions.}
 
-\item{num_noise_dims}{The number of noise dimensions to generate.}
+\item{num_noise}{The number of noise dimensions to generate.}
 
-\item{min_noise}{The minimum value for the random noise.}
+\item{min_n}{The minimum value for the random noise.}
 
-\item{max_noise}{The maximum value for the random noise.}
+\item{max_n}{The maximum value for the random noise.}
 }
 \value{
 A matrix containing the generated random noise dimensions.
@@ -23,6 +23,6 @@ This function generates random noise dimensions to be added to the coordinates o
 }
 \examples{
 # Generate random noise dimensions with 3 dimensions, minimum value -1, and maximum value 1
-gen_noise_dims(n = 50, num_noise_dims = 3, min_noise = -1, max_noise = 1)
+gen_noise_dims(n = 50, num_noise = 3, min_n = -1, max_n = 1)
 
 }

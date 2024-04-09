@@ -4,16 +4,16 @@
 \alias{roman_surface_with_noise}
 \title{Generate data points on a Roman surface with optional noise.}
 \usage{
-roman_surface_with_noise(sample_size, num_noise_dims, min_noise, max_noise)
+roman_surface_with_noise(n, num_noise, min_n, max_n)
 }
 \arguments{
-\item{sample_size}{Total number of data points to generate.}
+\item{n}{Total number of data points to generate.}
 
-\item{num_noise_dims}{Number of additional noise dimensions to add to the data.}
+\item{num_noise}{Number of additional noise dimensions to add to the data.}
 
-\item{min_noise}{Minimum value for the noise added to the data.}
+\item{min_n}{Minimum value for the noise added to the data.}
 
-\item{max_noise}{Maximum value for the noise added to the data.}
+\item{max_n}{Maximum value for the noise added to the data.}
 }
 \value{
 A matrix containing the generated data points with or without added noise.
@@ -22,7 +22,7 @@ A matrix containing the generated data points with or without added noise.
 This function generates data points on a Roman surface with optional noise.
 }
 \examples{
-roman_surface_with_noise(sample_size = 100, num_noise_dims = 8,
-min_noise = -0.05, max_noise = 0.05)
+roman_surface_with_noise(n = 100, num_noise = 8,
+min_n = -0.05, max_n = 0.05)
 
 }

@@ -5,7 +5,7 @@
 \title{Generate Clusters with Different Shapes}
 \usage{
 clusters_different_shapes(
-  sample_size,
+  n,
   num_gussian_clusters,
   num_non_gaussian_clusters,
   cluster_sd_gau,
@@ -16,7 +16,7 @@ clusters_different_shapes(
 )
 }
 \arguments{
-\item{sample_size}{The total number of data points to be generated.}
+\item{n}{The total number of data points to be generated.}
 
 \item{num_gussian_clusters}{The number of Gaussian clusters to generate.}
 
@@ -40,7 +40,7 @@ This function generates clusters with different shapes, including both Gaussian 
 }
 \examples{
 # Generate clusters with default parameters
-data <- clusters_different_shapes(sample_size = 300, num_gussian_clusters = 4,
+data <- clusters_different_shapes(n = 300, num_gussian_clusters = 4,
 num_non_gaussian_clusters = 2, cluster_sd_gau = 0.05, cluster_sd_non_gau = 0.1,
 num_dims = 7, a = 2, b = 4)
 }

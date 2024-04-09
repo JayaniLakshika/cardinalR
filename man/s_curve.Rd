@@ -4,16 +4,16 @@
 \alias{s_curve}
 \title{Generate S-curve Data}
 \usage{
-s_curve(sample_size, num_noise_dims, min_noise, max_noise)
+s_curve(n, num_noise, min_n, max_n)
 }
 \arguments{
-\item{sample_size}{The number of samples to generate.}
+\item{n}{The number of samples to generate.}
 
-\item{num_noise_dims}{The number of additional noise dimensions to add to the data.}
+\item{num_noise}{The number of additional noise dimensions to add to the data.}
 
-\item{min_noise}{The minimum value for the noise dimensions.}
+\item{min_n}{The minimum value for the noise dimensions.}
 
-\item{max_noise}{The maximum value for the noise dimensions.}
+\item{max_n}{The maximum value for the noise dimensions.}
 }
 \value{
 A matrix containing the generated S-curve data.
@@ -23,6 +23,6 @@ This function generates S-curve data, which is a commonly used dataset for
 testing and visualizing dimensionality reduction algorithms.
 }
 \examples{
-s_curve_data <- s_curve(sample_size = 100, num_noise_dims = 3,
-min_noise = -0.5, max_noise = 0.5)
+s_curve_data <- s_curve(n = 100, num_noise = 3,
+min_n = -0.5, max_n = 0.5)
 }

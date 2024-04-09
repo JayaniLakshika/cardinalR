@@ -5,25 +5,25 @@
 \title{Generate Cluster and Curvilinear Data with Noise}
 \usage{
 cluster_and_curvilinear_with_noise(
-  sample_size,
+  n,
   cluster_size_vec = NULL,
-  num_noise_dims,
-  min_noise,
-  max_noise
+  num_noise,
+  min_n,
+  max_n
 )
 }
 \arguments{
-\item{sample_size}{The total number of data points to be generated.}
+\item{n}{The total number of data points to be generated.}
 
 \item{cluster_size_vec}{A vector specifying the number of points for each cluster.
-If not provided, the sample_size is divided equally
+If not provided, the n is divided equally
 between the two clusters.}
 
-\item{num_noise_dims}{The number of additional noise dimensions to be generated.}
+\item{num_noise}{The number of additional noise dimensions to be generated.}
 
-\item{min_noise}{The minimum value for the noise added to the data points.}
+\item{min_n}{The minimum value for the noise added to the data points.}
 
-\item{max_noise}{The maximum value for the noise added to the data points.}
+\item{max_n}{The maximum value for the noise added to the data points.}
 }
 \value{
 A matrix containing the generated data, with each row representing a data point.
@@ -34,7 +34,7 @@ This function generates data with two clusters, one following a curvilinear patt
 \examples{
 
 # Generate cluster and curvilinear data with custom parameters
-data <- cluster_and_curvilinear_with_noise(sample_size = 300,
-cluster_size_vec = c(100, 200), num_noise_dims = 3, min_noise = -0.05,
-max_noise = 0.05)
+data <- cluster_and_curvilinear_with_noise(n = 300,
+cluster_size_vec = c(100, 200), num_noise = 3, min_n = -0.05,
+max_n = 0.05)
 }

@@ -5,19 +5,19 @@
 \title{Generate Gaussian Clusters with Different Points}
 \usage{
 gaussian_clusters_diff_points(
-  sample_size,
+  n,
   cluster_size_vec,
   num_clusters,
   mean_matrix,
   var_vec,
   num_dims,
-  num_noise_dims,
-  min_noise,
-  max_noise
+  num_noise,
+  min_n,
+  max_n
 )
 }
 \arguments{
-\item{sample_size}{The total number of data points to be generated.}
+\item{n}{The total number of data points to be generated.}
 
 \item{cluster_size_vec}{A vector specifying the number of points in each cluster.}
 
@@ -29,11 +29,11 @@ gaussian_clusters_diff_points(
 
 \item{num_dims}{The number of effective dimensions for the data points.}
 
-\item{num_noise_dims}{The number of additional noise dimensions to be generated.}
+\item{num_noise}{The number of additional noise dimensions to be generated.}
 
-\item{min_noise}{The minimum value for the noise added to the data points.}
+\item{min_n}{The minimum value for the noise added to the data points.}
 
-\item{max_noise}{The maximum value for the noise added to the data points.}
+\item{max_n}{The maximum value for the noise added to the data points.}
 }
 \value{
 A matrix containing the generated Gaussian clusters with different points.
@@ -44,11 +44,11 @@ This function generates Gaussian clusters with different numbers of points per c
 \examples{
 
 # Generate Gaussian clusters with custom parameters
-data <- gaussian_clusters_diff_points(sample_size = 400, cluster_size_vec = c(50, 100, 200, 50),
+data <- gaussian_clusters_diff_points(n = 400, cluster_size_vec = c(50, 100, 200, 50),
                                       num_clusters = 4, mean_matrix =
                                       rbind(c(1,0,0,0,0,0), c(0,1,0,0,0,0),
                                       c(0,0,1,0,0,0), c(0,0,0,1,0,0)),
                                       var_vec = c(0.02, 0.05, 0.06, 0.1),
-                                      num_dims = 6, num_noise_dims = 4,
-                                      min_noise = -0.05, max_noise = 0.05)
+                                      num_dims = 6, num_noise = 4,
+                                      min_n = -0.05, max_n = 0.05)
 }

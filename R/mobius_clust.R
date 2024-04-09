@@ -60,33 +60,33 @@ mobius_5d_row <- function(){
 #'
 #' This function generates a dataset representing a 5-dimensional Mobius strip.
 #'
-#' @param sample_size The number of points to generate for the Mobius strip.
-#' @param num_noise_dims The number of additional noise dimensions to add to the data.
-#' @param min_noise The minimum value for the noise dimensions.
-#' @param max_noise The maximum value for the noise dimensions.
+#' @param n The number of points to generate for the Mobius strip.
+#' @param num_noise The number of additional noise dimensions to add to the data.
+#' @param min_n The minimum value for the noise dimensions.
+#' @param max_n The maximum value for the noise dimensions.
 #' @return A matrix containing the generated Mobius strip.
 #' @export
 #'
 #' @examples
-#' mobius_data <- mobius_5d(sample_size = 100, num_noise_dims = 3,
-#'                          min_noise = -0.05, max_noise = 0.05)
-mobius_5d <- function(sample_size, num_noise_dims, min_noise, max_noise){
+#' mobius_data <- mobius_5d(n = 100, num_noise = 3,
+#'                          min_n = -0.05, max_n = 0.05)
+mobius_5d <- function(n, num_noise, min_n, max_n){
 
   df <- matrix(
     do.call(
       "rbind",
       as.list(
-        replicate(sample_size, mobius_5d_row())
+        replicate(n, mobius_5d_row())
       )
     ),
     ncol = 3,
     byrow = TRUE
   )
 
-  if (num_noise_dims != 0) {
+  if (num_noise != 0) {
 
-    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise_dims = num_noise_dims,
-                                min_noise = min_noise, max_noise = max_noise)
+    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise = num_noise,
+                                min_n = min_n, max_n = max_n)
     df <- cbind(df, noise_mat)
 
     df
@@ -103,31 +103,31 @@ mobius_5d <- function(sample_size, num_noise_dims, min_noise, max_noise){
 #'
 #' This function generates a dataset consisting of a mobius cluster with added noise.
 #'
-#' @param sample_size The total number of samples to generate.
-#' @param num_noise_dims The number of additional noise dimensions to add to the data.
-#' @param min_noise The minimum value for the noise dimensions.
-#' @param max_noise The maximum value for the noise dimensions.
+#' @param n The total number of samples to generate.
+#' @param num_noise The number of additional noise dimensions to add to the data.
+#' @param min_n The minimum value for the noise dimensions.
+#' @param max_n The maximum value for the noise dimensions.
 #' @return A matrix containing the mobius cluster with added noise.
 #' @export
 #'
 #' @examples
-#' mobius_cluster <- mobius_cluster_with_noise(sample_size = 200, num_noise_dims = 8,
-#'                                             min_noise = -0.05, max_noise = 0.05)
-mobius_cluster_with_noise <- function(sample_size, num_noise_dims, min_noise,
-                                      max_noise) {
+#' mobius_cluster <- mobius_cluster_with_noise(n = 200, num_noise = 8,
+#'                                             min_n = -0.05, max_n = 0.05)
+mobius_cluster_with_noise <- function(n, num_noise, min_n,
+                                      max_n) {
 
-  df1 <- mobius_5d(sample_size = sample_size * 0.80, num_noise_dims = 0)
+  df1 <- mobius_5d(n = n * 0.80, num_noise = 0)
 
-  if (num_noise_dims != 0) {
+  if (num_noise != 0) {
 
-    noise_mat <- gen_noise_dims(n = dim(df1)[1], num_noise_dims = num_noise_dims,
-                                min_noise = min_noise, max_noise = max_noise)
+    noise_mat <- gen_noise_dims(n = dim(df1)[1], num_noise = num_noise,
+                                min_n = min_n, max_n = max_n)
     df1 <- cbind(df1, noise_mat)
 
   }
 
   ## To add background noise
-  df2 <- gen_bkg_noise(n = sample_size * 0.20, num_dims = NCOL(df1), mean = 0, sd = 0.3)
+  df2 <- gen_bkg_noise(n = n * 0.20, num_dims = NCOL(df1), mean = 0, sd = 0.3)
   df <- rbind(df1, df2)
   df
 

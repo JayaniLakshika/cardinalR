@@ -5,7 +5,7 @@
 \title{Generate Clusters with Different Shapes and Different Number of Points}
 \usage{
 clusters_different_shapes_diff_num_points(
-  sample_size,
+  n,
   cluster_size_vec,
   num_gussian_clusters,
   num_non_gaussian_clusters,
@@ -17,7 +17,7 @@ clusters_different_shapes_diff_num_points(
 )
 }
 \arguments{
-\item{sample_size}{The total number of data points to be generated.}
+\item{n}{The total number of data points to be generated.}
 
 \item{cluster_size_vec}{A vector specifying the number of points for each cluster.}
 
@@ -45,7 +45,7 @@ with different numbers of points in each cluster.
 }
 \examples{
 # Generate clusters with default parameters
-data <- clusters_different_shapes_diff_num_points(sample_size = 400,
+data <- clusters_different_shapes_diff_num_points(n = 400,
 cluster_size_vec = c(50, 50, 50, 50, 100, 100), num_gussian_clusters = 4,
 num_non_gaussian_clusters = 2, cluster_sd_gau = 0.05, cluster_sd_non_gau = 0.1,
 num_dims = 7, a = 2, b = 4)

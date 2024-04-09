@@ -4,21 +4,16 @@
 \alias{curvy_branching_cluster_with_bkg_noise}
 \title{Generate Curvy Branching Cluster Data with Background Noise}
 \usage{
-curvy_branching_cluster_with_bkg_noise(
-  sample_size,
-  num_noise_dims,
-  min_noise,
-  max_noise
-)
+curvy_branching_cluster_with_bkg_noise(n, num_noise, min_n, max_n)
 }
 \arguments{
-\item{sample_size}{The total number of data points to be generated.}
+\item{n}{The total number of data points to be generated.}
 
-\item{num_noise_dims}{The number of additional noise dimensions to be generated.}
+\item{num_noise}{The number of additional noise dimensions to be generated.}
 
-\item{min_noise}{The minimum value for the noise added to the data points.}
+\item{min_n}{The minimum value for the noise added to the data points.}
 
-\item{max_noise}{The maximum value for the noise added to the data points.}
+\item{max_n}{The maximum value for the noise added to the data points.}
 }
 \value{
 A matrix containing the generated data, with each row representing a data point.
@@ -29,6 +24,6 @@ This function generates data with four clusters, two of which follow a curviline
 \examples{
 
 # Generate curvy branching cluster data with background noise with custom parameters
-data <- curvy_branching_cluster_with_bkg_noise(sample_size = 400, num_noise_dims = 10,
-min_noise = -0.5, max_noise = 0.5)
+data <- curvy_branching_cluster_with_bkg_noise(n = 400, num_noise = 10,
+min_n = -0.5, max_n = 0.5)
 }

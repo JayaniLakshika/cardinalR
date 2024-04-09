@@ -4,21 +4,16 @@
 \alias{seven_branching_data_with_noise}
 \title{Generate Seven-Branching Data with Noise}
 \usage{
-seven_branching_data_with_noise(
-  sample_size,
-  num_noise_dims,
-  min_noise,
-  max_noise
-)
+seven_branching_data_with_noise(n, num_noise, min_n, max_n)
 }
 \arguments{
-\item{sample_size}{The total number of samples to generate.}
+\item{n}{The total number of samples to generate.}
 
-\item{num_noise_dims}{The number of additional noise dimensions to add to the data.}
+\item{num_noise}{The number of additional noise dimensions to add to the data.}
 
-\item{min_noise}{The minimum value for the noise dimensions.}
+\item{min_n}{The minimum value for the noise dimensions.}
 
-\item{max_noise}{The maximum value for the noise dimensions.}
+\item{max_n}{The maximum value for the noise dimensions.}
 }
 \value{
 A matrix containing the seven-branching data with added noise.
@@ -27,6 +22,6 @@ A matrix containing the seven-branching data with added noise.
 This function generates a dataset representing seven branches with added noise.
 }
 \examples{
-seven_branching_data <- seven_branching_data_with_noise(sample_size = 210,
-num_noise_dims = 8, min_noise = -0.05, max_noise = 0.05)
+seven_branching_data <- seven_branching_data_with_noise(n = 210,
+num_noise = 8, min_n = -0.05, max_n = 0.05)
 }

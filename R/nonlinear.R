@@ -2,29 +2,29 @@
 #'
 #' This function generates points on a curvilinear 2D manifold based on a nonlinear equation.
 #'
-#' @param sample_size The number of points to generate.
-#' @param num_noise_dims The number of noise dimensions to add to the generated points.
-#' @param min_noise The minimum value for the noise dimensions.
-#' @param max_noise The maximum value for the noise dimensions.
+#' @param n The number of points to generate.
+#' @param num_noise The number of noise dimensions to add to the generated points.
+#' @param min_n The minimum value for the noise dimensions.
+#' @param max_n The maximum value for the noise dimensions.
 #'
 #' @return A matrix containing the generated points on the curvilinear 2D manifold.
 #'
 #' @examples
-#' curvilinear_points <- curvilinear_2d(sample_size = 100, num_noise_dims = 2,
-#'                                      min_noise = -1, max_noise = 1)
+#' curvilinear_points <- curvilinear_2d(n = 100, num_noise = 2,
+#'                                      min_n = -1, max_n = 1)
 #'
 #' @export
-curvilinear_2d <- function(sample_size, num_noise_dims, min_noise, max_noise){
+curvilinear_2d <- function(n, num_noise, min_n, max_n){
 
-  x <- stats::runif(sample_size, 0, 2)
-  y <- -(x^3 + stats::runif(sample_size, 0, 3)) + stats::runif(sample_size, 0, 0.5)
+  x <- stats::runif(n, 0, 2)
+  y <- -(x^3 + stats::runif(n, 0, 3)) + stats::runif(n, 0, 0.5)
 
   curvilinear_mat <- matrix(c(x, y), ncol = 2)
 
-  if (num_noise_dims != 0) {
+  if (num_noise != 0) {
 
-    noise_mat <- gen_noise_dims(n = dim(curvilinear_mat)[1], num_noise_dims = num_noise_dims,
-                                min_noise = min_noise, max_noise = max_noise)
+    noise_mat <- gen_noise_dims(n = dim(curvilinear_mat)[1], num_noise = num_noise,
+                                min_n = min_n, max_n = max_n)
     curvilinear_mat <- cbind(curvilinear_mat, noise_mat)
 
     curvilinear_mat
@@ -41,30 +41,30 @@ curvilinear_2d <- function(sample_size, num_noise_dims, min_noise, max_noise){
 #'
 #' This function generates points on a nonlinear 2D manifold based on a given equation.
 #'
-#' @param sample_size The number of points to generate.
-#' @param num_noise_dims The number of noise dimensions to add to the generated points.
-#' @param min_noise The minimum value for the noise dimensions.
-#' @param max_noise The maximum value for the noise dimensions.
+#' @param n The number of points to generate.
+#' @param num_noise The number of noise dimensions to add to the generated points.
+#' @param min_n The minimum value for the noise dimensions.
+#' @param max_n The maximum value for the noise dimensions.
 #'
 #' @return A matrix containing the generated points on the nonlinear 2D manifold.
 #'
 #' @examples
-#' nonlinear_points <- nonlinear_2d(sample_size = 100, num_noise_dims = 2,
-#'                                  min_noise = -1, max_noise = 1)
+#' nonlinear_points <- nonlinear_2d(n = 100, num_noise = 2,
+#'                                  min_n = -1, max_n = 1)
 #'
 #' @export
-nonlinear_2d <- function(sample_size, num_noise_dims, min_noise, max_noise) {
+nonlinear_2d <- function(n, num_noise, min_n, max_n) {
 
-  theta = stats::runif(sample_size, 0.2, 0.6 * pi)
-  x = cos(theta) + stats::rnorm(sample_size, 10, 0.03)
-  y = sin(theta) + stats::rnorm(sample_size, 10, 0.03)
+  theta = stats::runif(n, 0.2, 0.6 * pi)
+  x = cos(theta) + stats::rnorm(n, 10, 0.03)
+  y = sin(theta) + stats::rnorm(n, 10, 0.03)
 
   nonlinear_mat <- matrix(c(x, y), ncol = 2)
 
-  if (num_noise_dims != 0) {
+  if (num_noise != 0) {
 
-    noise_mat <- gen_noise_dims(n = dim(nonlinear_mat)[1], num_noise_dims = num_noise_dims,
-                                min_noise = min_noise, max_noise = max_noise)
+    noise_mat <- gen_noise_dims(n = dim(nonlinear_mat)[1], num_noise = num_noise,
+                                min_n = min_n, max_n = max_n)
     nonlinear_mat <- cbind(nonlinear_mat, noise_mat)
 
     nonlinear_mat
@@ -81,28 +81,28 @@ nonlinear_2d <- function(sample_size, num_noise_dims, min_noise, max_noise) {
 #'
 #' This function generates a dataset representing a sine curve with added noise.
 #'
-#' @param sample_size The number of samples to generate.
-#' @param num_noise_dims The number of additional noise dimensions to add to the data.
-#' @param min_noise The minimum value for the noise dimensions.
-#' @param max_noise The maximum value for the noise dimensions.
+#' @param n The number of samples to generate.
+#' @param num_noise The number of additional noise dimensions to add to the data.
+#' @param min_n The minimum value for the noise dimensions.
+#' @param max_n The maximum value for the noise dimensions.
 #' @return A matrix containing the sine curve data with noise.
 #' @export
 #'
 #' @examples
-#' sine_curve_with_noise <- sine_curve_with_noise(sample_size = 100, num_noise_dims = 8,
-#'                                                min_noise = -0.05, max_noise = 0.05)
-sine_curve_with_noise <- function(sample_size, num_noise_dims, min_noise,
-                                  max_noise) {
+#' sine_curve_with_noise <- sine_curve_with_noise(n = 100, num_noise = 8,
+#'                                                min_n = -0.05, max_n = 0.05)
+sine_curve_with_noise <- function(n, num_noise, min_n,
+                                  max_n) {
 
-  theta <- stats::runif(sample_size, 0,1.80 * pi)
+  theta <- stats::runif(n, 0,1.80 * pi)
   x <- theta
   y <- sin(theta)
   df <- matrix(c(x, y), ncol = 2)
 
-  if (num_noise_dims != 0) {
+  if (num_noise != 0) {
 
-    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise_dims = num_noise_dims,
-                                min_noise = min_noise, max_noise = max_noise)
+    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise = num_noise,
+                                min_n = min_n, max_n = max_n)
     df <- cbind(df, noise_mat)
 
     df
@@ -119,26 +119,26 @@ sine_curve_with_noise <- function(sample_size, num_noise_dims, min_noise,
 #'
 #' This function generates a dataset representing nonlinear connected clusters with added noise.
 #'
-#' @param sample_size The total number of samples to generate.
-#' @param num_noise_dims The number of additional noise dimensions to add to the data.
-#' @param min_noise The minimum value for the noise dimensions.
-#' @param max_noise The maximum value for the noise dimensions.
+#' @param n The total number of samples to generate.
+#' @param num_noise The number of additional noise dimensions to add to the data.
+#' @param min_n The minimum value for the noise dimensions.
+#' @param max_n The maximum value for the noise dimensions.
 #' @return A matrix containing the nonlinear connected data with noise.
 #' @export
 #'
 #' @examples
-#' nonlinear_connect_with_noise <- nonlinear_connect_with_noise(sample_size = 400,
-#' num_noise_dims = 8, min_noise = -0.05, max_noise = 0.05)
-nonlinear_connect_with_noise <- function(sample_size, num_noise_dims, min_noise,
-                                         max_noise) {
+#' nonlinear_connect_with_noise <- nonlinear_connect_with_noise(n = 400,
+#' num_noise = 8, min_n = -0.05, max_n = 0.05)
+nonlinear_connect_with_noise <- function(n, num_noise, min_n,
+                                         max_n) {
 
-  # To check that the assigned sample_size is divided by three
-  if ((sample_size%%4) != 0) {
+  # To check that the assigned n is divided by three
+  if ((n%%4) != 0) {
     warning("The sample size should be a product of four.")
-    cluster_size <- floor(sample_size/4)
+    cluster_size <- floor(n/4)
 
   } else {
-    cluster_size <- sample_size/4
+    cluster_size <- n/4
   }
 
   theta = stats::runif(cluster_size, 0,0.80 * pi)
@@ -172,10 +172,10 @@ nonlinear_connect_with_noise <- function(sample_size, num_noise_dims, min_noise,
 
   df <- rbind(df1, df2, df3, df4)
 
-  if (num_noise_dims != 0) {
+  if (num_noise != 0) {
 
-    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise_dims = num_noise_dims,
-                                min_noise = min_noise, max_noise = max_noise)
+    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise = num_noise,
+                                min_n = min_n, max_n = max_n)
     df <- cbind(df, noise_mat)
 
     df
@@ -193,26 +193,26 @@ nonlinear_connect_with_noise <- function(sample_size, num_noise_dims, min_noise,
 #'
 #' This function generates a dataset representing two mirror-image clusters with added noise.
 #'
-#' @param sample_size The total number of samples to generate.
-#' @param num_noise_dims The number of additional noise dimensions to add to the data.
-#' @param min_noise The minimum value for the noise dimensions.
-#' @param max_noise The maximum value for the noise dimensions.
+#' @param n The total number of samples to generate.
+#' @param num_noise The number of additional noise dimensions to add to the data.
+#' @param min_n The minimum value for the noise dimensions.
+#' @param max_n The maximum value for the noise dimensions.
 #' @return A matrix containing the nonlinear mirror data with noise.
 #' @export
 #'
 #' @examples
-#' nonlinear_mirror_with_noise <- nonlinear_mirror_with_noise(sample_size = 400,
-#' num_noise_dims = 8, min_noise = -0.05, max_noise = 0.05)
-nonlinear_mirror_with_noise <- function(sample_size, num_noise_dims, min_noise,
-                                        max_noise) {
+#' nonlinear_mirror_with_noise <- nonlinear_mirror_with_noise(n = 400,
+#' num_noise = 8, min_n = -0.05, max_n = 0.05)
+nonlinear_mirror_with_noise <- function(n, num_noise, min_n,
+                                        max_n) {
 
-  # To check that the assigned sample_size is divided by two
-  if ((sample_size%%2) != 0) {
+  # To check that the assigned n is divided by two
+  if ((n%%2) != 0) {
     warning("The sample size should be a product of two.")
-    cluster_size <- floor(sample_size/2)
+    cluster_size <- floor(n/2)
 
   } else {
-    cluster_size <- sample_size/2
+    cluster_size <- n/2
   }
 
   x <- stats::runif(cluster_size, -8, 1.5)
@@ -231,10 +231,10 @@ nonlinear_mirror_with_noise <- function(sample_size, num_noise_dims, min_noise,
 
   df <- rbind(df1, df2)
 
-  if (num_noise_dims != 0) {
+  if (num_noise != 0) {
 
-    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise_dims = num_noise_dims,
-                                min_noise = min_noise, max_noise = max_noise)
+    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise = num_noise,
+                                min_n = min_n, max_n = max_n)
     df <- cbind(df, noise_mat)
 
     df
@@ -251,26 +251,26 @@ nonlinear_mirror_with_noise <- function(sample_size, num_noise_dims, min_noise,
 #'
 #' This function generates a dataset representing two curvy pancake-shaped clusters with added noise.
 #'
-#' @param sample_size The total number of samples to generate.
-#' @param num_noise_dims The number of additional noise dimensions to add to the data.
-#' @param min_noise The minimum value for the noise dimensions.
-#' @param max_noise The maximum value for the noise dimensions.
+#' @param n The total number of samples to generate.
+#' @param num_noise The number of additional noise dimensions to add to the data.
+#' @param min_n The minimum value for the noise dimensions.
+#' @param max_n The maximum value for the noise dimensions.
 #' @return A matrix containing the two curvy pancakes data with noise.
 #' @export
 #'
 #' @examples
-#' two_curvy_panckakes_with_noise <- two_curvy_panckakes_with_noise(sample_size = 300,
-#' num_noise_dims = 8, min_noise = -0.05, max_noise = 0.05)
-two_curvy_panckakes_with_noise <- function(sample_size, num_noise_dims, min_noise,
-                                           max_noise) {
+#' two_curvy_panckakes_with_noise <- two_curvy_panckakes_with_noise(n = 300,
+#' num_noise = 8, min_n = -0.05, max_n = 0.05)
+two_curvy_panckakes_with_noise <- function(n, num_noise, min_n,
+                                           max_n) {
 
-  # To check that the assigned sample_size is divided by two
-  if ((sample_size%%2) != 0) {
+  # To check that the assigned n is divided by two
+  if ((n%%2) != 0) {
     warning("The sample size should be a product of two.")
-    cluster_size <- floor(sample_size/2)
+    cluster_size <- floor(n/2)
 
   } else {
-    cluster_size <- sample_size/2
+    cluster_size <- n/2
   }
 
   phi <- stats::runif(cluster_size, max = 2*pi)
@@ -284,10 +284,10 @@ two_curvy_panckakes_with_noise <- function(sample_size, num_noise_dims, min_nois
 
   df <- rbind(df1, df2)
 
-  if (num_noise_dims != 0) {
+  if (num_noise != 0) {
 
-    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise_dims = num_noise_dims,
-                                min_noise = min_noise, max_noise = max_noise)
+    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise = num_noise,
+                                min_n = min_n, max_n = max_n)
     df <- cbind(df, noise_mat)
 
     df
@@ -304,26 +304,26 @@ two_curvy_panckakes_with_noise <- function(sample_size, num_noise_dims, min_nois
 #'
 #' This function generates a dataset representing two curvilinear clusters with added noise.
 #'
-#' @param sample_size The total number of samples to generate.
-#' @param num_noise_dims The number of additional noise dimensions to add to the data.
-#' @param min_noise The minimum value for the noise dimensions.
-#' @param max_noise The maximum value for the noise dimensions.
+#' @param n The total number of samples to generate.
+#' @param num_noise The number of additional noise dimensions to add to the data.
+#' @param min_n The minimum value for the noise dimensions.
+#' @param max_n The maximum value for the noise dimensions.
 #' @return A matrix containing the two curvilinear data with noise.
 #' @export
 #'
 #' @examples
-#' two_curvilinear_data_with_noise <- two_curvilinear_data_with_noise(sample_size = 250,
-#' num_noise_dims = 8, min_noise = -0.05, max_noise = 0.05)
-two_curvilinear_data_with_noise <- function(sample_size, num_noise_dims, min_noise,
-                                            max_noise) {
+#' two_curvilinear_data_with_noise <- two_curvilinear_data_with_noise(n = 250,
+#' num_noise = 8, min_n = -0.05, max_n = 0.05)
+two_curvilinear_data_with_noise <- function(n, num_noise, min_n,
+                                            max_n) {
 
-  # To check that the assigned sample_size is divided by two
-  if (((sample_size - sample_size * 0.2)%%2) != 0) {
+  # To check that the assigned n is divided by two
+  if (((n - n * 0.2)%%2) != 0) {
     warning("The sample size should be a product of two.")
-    cluster_size <- floor((sample_size - sample_size * 0.2)/2)
+    cluster_size <- floor((n - n * 0.2)/2)
 
   } else {
-    cluster_size <- (sample_size - sample_size * 0.2)/2
+    cluster_size <- (n - n * 0.2)/2
   }
 
   x <- stats::runif(cluster_size, -2, -0.5)
@@ -340,19 +340,19 @@ two_curvilinear_data_with_noise <- function(sample_size, num_noise_dims, min_noi
 
   df2 <- matrix(c(x, y, z, w), ncol = 4)
 
-  x <- stats::rnorm(sample_size * 0.2, mean = 0, sd = 0.4)
-  y <- stats::rnorm(sample_size * 0.2, mean = 1.5, sd = 0.5)
-  z <- rep(0, sample_size * 0.2) + stats::rnorm(sample_size * 0.2, 10, 0.03)
-  w <- rep(0, sample_size * 0.2) - stats::rnorm(sample_size * 0.2, 10, 0.03)
+  x <- stats::rnorm(n * 0.2, mean = 0, sd = 0.4)
+  y <- stats::rnorm(n * 0.2, mean = 1.5, sd = 0.5)
+  z <- rep(0, n * 0.2) + stats::rnorm(n * 0.2, 10, 0.03)
+  w <- rep(0, n * 0.2) - stats::rnorm(n * 0.2, 10, 0.03)
 
   df3 <- matrix(c(x, y, z, w), ncol = 4)
 
   df <- rbind(df1, df2, df3)
 
-  if (num_noise_dims != 0) {
+  if (num_noise != 0) {
 
-    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise_dims = num_noise_dims,
-                                min_noise = min_noise, max_noise = max_noise)
+    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise = num_noise,
+                                min_n = min_n, max_n = max_n)
     df <- cbind(df, noise_mat)
 
     df
@@ -369,10 +369,10 @@ two_curvilinear_data_with_noise <- function(sample_size, num_noise_dims, min_noi
 #'
 #' This function generates data points in the shape of a Swiss roll.
 #'
-#' @param sample_size The total number of data points to be generated.
-#' @param num_noise_dims The number of additional noise dimensions to be generated.
-#' @param min_noise The minimum value for the noise added to the data points.
-#' @param max_noise The maximum value for the noise added to the data points.
+#' @param n The total number of data points to be generated.
+#' @param num_noise The number of additional noise dimensions to be generated.
+#' @param min_n The minimum value for the noise added to the data points.
+#' @param max_n The maximum value for the noise added to the data points.
 #'
 #' @return A matrix containing the generated Swiss roll data points.
 #' @export
@@ -380,19 +380,19 @@ two_curvilinear_data_with_noise <- function(sample_size, num_noise_dims, min_noi
 #' @examples
 #'
 #' # Generate Swiss roll data with noise with custom parameters
-#' data <- swiss_roll(sample_size = 200, num_noise_dims = 4,
-#' min_noise = -0.05, max_noise = 0.05)
-swiss_roll <- function(sample_size, num_noise_dims, min_noise, max_noise) {
-  phi <- stats::runif(sample_size, min = 1.5 * pi, max = 4.5 * pi)
+#' data <- swiss_roll(n = 200, num_noise = 4,
+#' min_n = -0.05, max_n = 0.05)
+swiss_roll <- function(n, num_noise, min_n, max_n) {
+  phi <- stats::runif(n, min = 1.5 * pi, max = 4.5 * pi)
   x <- phi * cos(phi)
   y <- phi * sin(phi)
-  z <- stats::runif(sample_size, max = 10)
+  z <- stats::runif(n, max = 10)
   df <- matrix(c(x, y, z), ncol = 3)
 
-  if (num_noise_dims != 0) {
+  if (num_noise != 0) {
 
-    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise_dims = num_noise_dims,
-                                min_noise = min_noise, max_noise = max_noise)
+    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise = num_noise,
+                                min_n = min_n, max_n = max_n)
     df <- cbind(df, noise_mat)
 
     df

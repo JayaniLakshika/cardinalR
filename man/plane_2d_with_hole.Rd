@@ -4,16 +4,16 @@
 \alias{plane_2d_with_hole}
 \title{Generate 2D Plane with Hole and Noise}
 \usage{
-plane_2d_with_hole(sample_size, num_noise_dims, min_noise, max_noise)
+plane_2d_with_hole(n, num_noise, min_n, max_n)
 }
 \arguments{
-\item{sample_size}{The total number of samples to generate.}
+\item{n}{The total number of samples to generate.}
 
-\item{num_noise_dims}{The number of additional noise dimensions to add to the data.}
+\item{num_noise}{The number of additional noise dimensions to add to the data.}
 
-\item{min_noise}{The minimum value for the noise dimensions.}
+\item{min_n}{The minimum value for the noise dimensions.}
 
-\item{max_noise}{The maximum value for the noise dimensions.}
+\item{max_n}{The maximum value for the noise dimensions.}
 }
 \value{
 A list containing the 2D plane data with a hole and the sample size.
@@ -22,6 +22,6 @@ A list containing the 2D plane data with a hole and the sample size.
 This function generates a dataset representing a 2D plane with a hole in the middle, with added noise.
 }
 \examples{
-plane_data <- plane_2d_with_hole(sample_size = 100, num_noise_dims = 2,
-min_noise = 0, max_noise = 1)
+plane_data <- plane_2d_with_hole(n = 100, num_noise = 2,
+min_n = 0, max_n = 1)
 }

@@ -4,16 +4,16 @@
 \alias{nonlinear_2d}
 \title{Generate points on a nonlinear 2D manifold}
 \usage{
-nonlinear_2d(sample_size, num_noise_dims, min_noise, max_noise)
+nonlinear_2d(n, num_noise, min_n, max_n)
 }
 \arguments{
-\item{sample_size}{The number of points to generate.}
+\item{n}{The number of points to generate.}
 
-\item{num_noise_dims}{The number of noise dimensions to add to the generated points.}
+\item{num_noise}{The number of noise dimensions to add to the generated points.}
 
-\item{min_noise}{The minimum value for the noise dimensions.}
+\item{min_n}{The minimum value for the noise dimensions.}
 
-\item{max_noise}{The maximum value for the noise dimensions.}
+\item{max_n}{The maximum value for the noise dimensions.}
 }
 \value{
 A matrix containing the generated points on the nonlinear 2D manifold.
@@ -22,7 +22,7 @@ A matrix containing the generated points on the nonlinear 2D manifold.
 This function generates points on a nonlinear 2D manifold based on a given equation.
 }
 \examples{
-nonlinear_points <- nonlinear_2d(sample_size = 100, num_noise_dims = 2,
-                                 min_noise = -1, max_noise = 1)
+nonlinear_points <- nonlinear_2d(n = 100, num_noise = 2,
+                                 min_n = -1, max_n = 1)
 
 }

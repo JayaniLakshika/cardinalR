@@ -4,18 +4,18 @@
 \alias{grid_data}
 \title{Generate Grid Data with Noise}
 \usage{
-grid_data(nx, ny, num_noise_dims, min_noise, max_noise)
+grid_data(nx, ny, num_noise, min_n, max_n)
 }
 \arguments{
 \item{nx}{The number of grid points along the x axis.}
 
 \item{ny}{The number of grid points along the y axis.}
 
-\item{num_noise_dims}{The number of additional noise dimensions to add to the data.}
+\item{num_noise}{The number of additional noise dimensions to add to the data.}
 
-\item{min_noise}{The minimum value for the noise dimensions.}
+\item{min_n}{The minimum value for the noise dimensions.}
 
-\item{max_noise}{The maximum value for the noise dimensions.}
+\item{max_n}{The maximum value for the noise dimensions.}
 }
 \value{
 A matrix containing the grid data with added noise.
@@ -24,6 +24,6 @@ A matrix containing the grid data with added noise.
 This function generates a grid dataset with specified grid points along the x and y axes, and optionally adds noise dimensions.
 }
 \examples{
-grid_data <- grid_data(nx = 10, ny = 10, num_noise_dims = 2,
-min_noise = -0.05, max_noise = 0.05)
+grid_data <- grid_data(nx = 10, ny = 10, num_noise = 2,
+min_n = -0.05, max_n = 0.05)
 }

@@ -4,26 +4,20 @@
 \alias{curvy_branching_cluster}
 \title{Generate Curvy Branching Cluster Data}
 \usage{
-curvy_branching_cluster(
-  sample_size,
-  cluster_size_vec = NULL,
-  num_noise_dims,
-  min_noise,
-  max_noise
-)
+curvy_branching_cluster(n, cluster_size_vec = NULL, num_noise, min_n, max_n)
 }
 \arguments{
-\item{sample_size}{The total number of data points to be generated.}
+\item{n}{The total number of data points to be generated.}
 
 \item{cluster_size_vec}{A vector specifying the number of points for each cluster.
-If not provided, the sample_size is divided equally
+If not provided, the n is divided equally
 among the clusters.}
 
-\item{num_noise_dims}{The number of additional noise dimensions to be generated.}
+\item{num_noise}{The number of additional noise dimensions to be generated.}
 
-\item{min_noise}{The minimum value for the noise added to the data points.}
+\item{min_n}{The minimum value for the noise added to the data points.}
 
-\item{max_noise}{The maximum value for the noise added to the data points.}
+\item{max_n}{The maximum value for the noise added to the data points.}
 }
 \value{
 A matrix containing the generated data, with each row representing a data point.
@@ -34,6 +28,6 @@ This function generates curvy branching cluster data with three clusters of diff
 \examples{
 
 # Generate curvy branching cluster data with custom parameters
-data <- curvy_branching_cluster(sample_size = 300, cluster_size_vec = c(100, 150, 50),
-num_noise_dims = 6, min_noise = -0.05, max_noise = 0.05)
+data <- curvy_branching_cluster(n = 300, cluster_size_vec = c(100, 150, 50),
+num_noise = 6, min_n = -0.05, max_n = 0.05)
 }

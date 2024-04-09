@@ -20,8 +20,8 @@ library(langevitour)
 ```
 
 ```{r}
-mobius_data <- mobius_5d(sample_size = 300, num_noise_dims = 2, 
-          min_noise = -0.05, max_noise = 0.05)
+mobius_data <- mobius_5d(n = 300, num_noise = 2, 
+          min_n = -0.05, max_n = 0.05)
 
 colnames(mobius_data) <- paste0("x", 1:NCOL(mobius_data))
 
@@ -29,8 +29,8 @@ langevitour(mobius_data, pointSize = 2)
 ```
 
 ```{r}
-mobius_clust_data <- mobius_cluster_with_noise(sample_size = 500, 
-num_noise_dims = 2, min_noise = -0.05, max_noise = 0.05)
+mobius_clust_data <- mobius_cluster_with_noise(n = 500, 
+num_noise = 2, min_n = -0.05, max_n = 0.05)
 
 colnames(mobius_clust_data) <- paste0("x", 1:NCOL(mobius_clust_data))
 

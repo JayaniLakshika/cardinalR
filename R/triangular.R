@@ -2,32 +2,32 @@
 #'
 #' This function generates triangular 3D datasets with added noise dimensions.
 #'
-#' @param sample_size The total number of samples to generate.
-#' @param num_noise_dims The number of additional noise dimensions to add to the data.
-#' @param min_noise The minimum value for the noise dimensions.
-#' @param max_noise The maximum value for the noise dimensions.
+#' @param n The total number of samples to generate.
+#' @param num_noise The number of additional noise dimensions to add to the data.
+#' @param min_n The minimum value for the noise dimensions.
+#' @param max_n The maximum value for the noise dimensions.
 #' @return A matrix containing the triangular 3D datasets with added noise.
 #' @export
 #'
 #' @examples
-#' triangular_3d_data <- traingular_3d_with_noise(sample_size = 150, num_noise_dims = 4,
-#' min_noise = -0.05, max_noise = 0.05)
-traingular_3d_with_noise <- function(sample_size, num_noise_dims,
-                                     min_noise, max_noise) {
+#' triangular_3d_data <- traingular_3d_with_noise(n = 150, num_noise = 4,
+#' min_n = -0.05, max_n = 0.05)
+traingular_3d_with_noise <- function(n, num_noise,
+                                     min_n, max_n) {
 
   trace_point <- stats::runif(3)
   corner_points <- matrix(c(c(0, 1, 0.5, 0.5), c(0, 0, 1, 0.5), c(0, 0, 0, 1)), ncol =3)
 
-  df <- matrix(c(rep(0,sample_size), rep(0,sample_size), rep(0,sample_size)), ncol =3)
-  for(i in 1:sample_size){
+  df <- matrix(c(rep(0,n), rep(0,n), rep(0,n)), ncol =3)
+  for(i in 1:n){
     trace_point <- (corner_points[sample(4,1),]+trace_point)/2
     df[i,] <- trace_point
   }
 
-  if (num_noise_dims != 0) {
+  if (num_noise != 0) {
 
-    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise_dims = num_noise_dims,
-                                min_noise = min_noise, max_noise = max_noise)
+    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise = num_noise,
+                                min_n = min_n, max_n = max_n)
     df <- cbind(df, noise_mat)
 
     df
@@ -45,42 +45,42 @@ traingular_3d_with_noise <- function(sample_size, num_noise_dims,
 #'
 #' This function generates a triangular plane dataset with background noise dimensions.
 #'
-#' @param sample_size The total number of samples to generate.
-#' @param num_noise_dims The number of additional noise dimensions to add to the data.
-#' @param min_noise The minimum value for the noise dimensions.
-#' @param max_noise The maximum value for the noise dimensions.
+#' @param n The total number of samples to generate.
+#' @param num_noise The number of additional noise dimensions to add to the data.
+#' @param min_n The minimum value for the noise dimensions.
+#' @param max_n The maximum value for the noise dimensions.
 #' @return A matrix containing the triangular plane dataset with background noise.
 #' @export
 #'
 #' @examples
-#' triangular_plane_data <- triangular_plane_with_bkg_noise(sample_size = 675,
-#' num_noise_dims = 3, min_noise = -0.05, max_noise = 0.05)
-triangular_plane_with_bkg_noise <- function(sample_size, num_noise_dims,
-                                            min_noise, max_noise) {
+#' triangular_plane_data <- triangular_plane_with_bkg_noise(n = 675,
+#' num_noise = 3, min_n = -0.05, max_n = 0.05)
+triangular_plane_with_bkg_noise <- function(n, num_noise,
+                                            min_n, max_n) {
 
-  # To check that the assigned sample_size is divided by three
-  if ((sample_size%%3) != 0) {
+  # To check that the assigned n is divided by three
+  if ((n%%3) != 0) {
     warning("The sample size should be a product of three.")
-    cluster_size <- floor(sample_size/3)
+    cluster_size <- floor(n/3)
 
   } else {
-    cluster_size <- sample_size/3
+    cluster_size <- n/3
   }
 
 
   trace_point <- stats::runif(2)
   corner_points <- matrix(c(c(0, 1, 0.5), c(0, 0, 1)), ncol= 2)
-  df1 <- matrix(c(rep(0,sample_size), rep(0,sample_size)), ncol =2)
+  df1 <- matrix(c(rep(0,n), rep(0,n)), ncol =2)
 
   for(i in 1:cluster_size){
     trace_point <- (corner_points[sample(3,1),]+trace_point)/2
     df1[i,] <- trace_point
   }
 
-  if (num_noise_dims != 0) {
+  if (num_noise != 0) {
 
-    noise_mat <- gen_noise_dims(n = dim(df1)[1], num_noise_dims = num_noise_dims,
-                                min_noise = min_noise, max_noise = max_noise)
+    noise_mat <- gen_noise_dims(n = dim(df1)[1], num_noise = num_noise,
+                                min_n = min_n, max_n = max_n)
     df1 <- cbind(df1, noise_mat)
 
   }

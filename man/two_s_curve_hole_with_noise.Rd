@@ -5,20 +5,20 @@
 \title{Generate Two S-Curve Data with Noise}
 \usage{
 two_s_curve_hole_with_noise(
-  sample_size = 200,
-  num_noise_dims = 8,
-  min_noise = -0.05,
-  max_noise = 0.05
+  n = 200,
+  num_noise = 8,
+  min_n = -0.05,
+  max_n = 0.05
 )
 }
 \arguments{
-\item{sample_size}{The total number of data points to be generated.}
+\item{n}{The total number of data points to be generated.}
 
-\item{num_noise_dims}{The number of additional noise dimensions to be generated.}
+\item{num_noise}{The number of additional noise dimensions to be generated.}
 
-\item{min_noise}{The minimum value for the noise added to the data points.}
+\item{min_n}{The minimum value for the noise added to the data points.}
 
-\item{max_noise}{The maximum value for the noise added to the data points.}
+\item{max_n}{The maximum value for the noise added to the data points.}
 }
 \value{
 A list containing the generated data matrix (`df`) and the total sample size.
@@ -29,6 +29,6 @@ This function generates two S-curve data with noise.
 \examples{
 
 # Generate two S-curve data with noise with custom parameters
-data <- two_s_curve_hole_with_noise(sample_size = 200, num_noise_dims = 8,
-min_noise = -0.05, max_noise = 0.05)
+data <- two_s_curve_hole_with_noise(n = 200, num_noise = 8,
+min_n = -0.05, max_n = 0.05)
 }

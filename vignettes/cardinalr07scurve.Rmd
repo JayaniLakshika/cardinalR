@@ -20,8 +20,8 @@ library(langevitour)
 ```
 
 ```{r}
-scurve_data <- s_curve(sample_size = 500, num_noise_dims = 2, 
-        min_noise = -0.05, max_noise = 0.05)
+scurve_data <- s_curve(n = 500, num_noise = 2, 
+        min_n = -0.05, max_n = 0.05)
 
 colnames(scurve_data) <- paste0("x", 1:NCOL(scurve_data))
 
@@ -29,8 +29,8 @@ langevitour(scurve_data, pointSize = 2)
 ```
 
 ```{r}
-scurve_hole_data <- s_curve_hole(sample_size = 500, num_noise_dims = 2, 
-             min_noise = -0.05, max_noise = 0.05)
+scurve_hole_data <- s_curve_hole(n = 500, num_noise = 2, 
+             min_n = -0.05, max_n = 0.05)
 
 colnames(scurve_hole_data) <- paste0("x", 1:NCOL(scurve_hole_data))
 
@@ -38,8 +38,8 @@ langevitour(scurve_hole_data, pointSize = 2)
 ```
 
 ```{r}
-two_scurve_data <- two_s_curves_with_noise(sample_size = 500, num_noise_dims = 2, 
-                        min_noise = -0.05, max_noise = 0.05)
+two_scurve_data <- two_s_curves_with_noise(n = 500, num_noise = 2, 
+                        min_n = -0.05, max_n = 0.05)
 
 colnames(two_scurve_data) <- paste0("x", 1:NCOL(two_scurve_data))
 
@@ -47,8 +47,8 @@ langevitour(two_scurve_data, pointSize = 2)
 ```
 
 ```{r}
-mirror_scurve_data <- mirror_s_curves_with_noise(sample_size = 500, num_noise_dims = 2, 
-                           min_noise = -0.05, max_noise = 0.05)
+mirror_scurve_data <- mirror_s_curves_with_noise(n = 500, num_noise = 2, 
+                           min_n = -0.05, max_n = 0.05)
 
 colnames(mirror_scurve_data) <- paste0("x", 1:NCOL(mirror_scurve_data))
 
@@ -56,9 +56,9 @@ langevitour(mirror_scurve_data, pointSize = 2)
 ```
 
 ```{r}
-two_scurveh_data <- two_s_curve_hole_with_noise(sample_size = 500, num_noise_dims = 2, 
-                            min_noise = -0.05, max_noise = 0.05)
-two_scurveh_data$sample_size
+two_scurveh_data <- two_s_curve_hole_with_noise(n = 500, num_noise = 2, 
+                            min_n = -0.05, max_n = 0.05)
+two_scurveh_data$n
 
 colnames(two_scurveh_data$df) <- paste0("x", 1:NCOL(two_scurveh_data$df))
 

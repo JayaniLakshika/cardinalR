@@ -20,8 +20,8 @@ library(langevitour)
 ```
 
 ```{r}
-sphere_data <- sphere(radius = 1, resolution = 20, num_noise_dims = 2, 
-                      min_noise = -0.05, max_noise = 0.05)
+sphere_data <- sphere(radius = 1, resolution = 20, num_noise = 2, 
+                      min_n = -0.05, max_n = 0.05)
 
 colnames(sphere_data) <- paste0("x", 1:NCOL(sphere_data))
 
@@ -29,9 +29,9 @@ langevitour(sphere_data, pointSize = 2)
 ```
 
 ```{r}
-diff_sphere_data <- small_big_sphere_with_noise(sample_size = 650, 
-                                                num_noise_dims = 2, 
-                                                min_noise = -0.05, max_noise = 0.05)
+diff_sphere_data <- small_big_sphere_with_noise(n = 650, 
+                                                num_noise = 2, 
+                                                min_n = -0.05, max_n = 0.05)
 
 colnames(diff_sphere_data) <- paste0("x", 1:NCOL(diff_sphere_data))
 

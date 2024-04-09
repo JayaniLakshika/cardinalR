@@ -3,7 +3,7 @@
 #' This function generates points on a plane in 3D space based on the provided coefficients,
 #' intercepts, and ranges for the parameters.
 #'
-#' @param sample_size The number of points to generate.
+#' @param n The number of points to generate.
 #' @param coefficient_x_1 The coefficient of the first parameter in the x-dimension equation.
 #' @param coefficient_x_2 The coefficient of the second parameter in the x-dimension equation.
 #' @param coefficient_y_1 The coefficient of the first parameter in the y-dimension equation.
@@ -14,34 +14,34 @@
 #' @param u_max The maximum value for the first parameter (u) range.
 #' @param v_min The minimum value for the second parameter (v) range.
 #' @param v_max The maximum value for the second parameter (v) range.
-#' @param num_noise_dims The number of noise dimensions to add to the generated points.
-#' @param min_noise The minimum value for the noise dimensions.
-#' @param max_noise The maximum value for the noise dimensions.
+#' @param num_noise The number of noise dimensions to add to the generated points.
+#' @param min_n The minimum value for the noise dimensions.
+#' @param max_n The maximum value for the noise dimensions.
 #'
 #' @return A matrix containing the generated points on the plane.
 #'
 #' @examples
-#' plane_points <- plane(sample_size = 100, coefficient_x_1 = 1, coefficient_x_2 = 1,
+#' plane_points <- plane(n = 100, coefficient_x_1 = 1, coefficient_x_2 = 1,
 #'                      coefficient_y_1 = -1, coefficient_y_2 = 1, intercept_x = -10,
 #'                      intercept_y = 8, u_min = 10, u_max = 30, v_min = 10, v_max = 20,
-#'                      num_noise_dims = 2, min_noise = 0, max_noise = 1)
+#'                      num_noise = 2, min_n = 0, max_n = 1)
 #'
 #' @export
-plane <- function(sample_size, coefficient_x_1, coefficient_x_2, coefficient_y_1,
+plane <- function(n, coefficient_x_1, coefficient_x_2, coefficient_y_1,
                   coefficient_y_2, intercept_x, intercept_y, u_min, u_max, v_min,
-                  v_max, num_noise_dims, min_noise, max_noise) {
+                  v_max, num_noise, min_n, max_n) {
 
-  u <- stats::runif(sample_size, min = u_min, max = u_max)
-  v <- stats::runif(sample_size, min = v_min, max = v_max)
+  u <- stats::runif(n, min = u_min, max = u_max)
+  v <- stats::runif(n, min = v_min, max = v_max)
   x <- coefficient_x_1 * u + coefficient_x_2 * v + intercept_x
   y <- coefficient_y_1 * u + coefficient_y_2 * v + intercept_y
 
   plane_mat <- matrix(c(x, y), ncol = 2)
 
-  if (num_noise_dims != 0) {
+  if (num_noise != 0) {
 
-    noise_mat <- gen_noise_dims(n = dim(plane_mat)[1], num_noise_dims = num_noise_dims,
-                                min_noise = min_noise, max_noise = max_noise)
+    noise_mat <- gen_noise_dims(n = dim(plane_mat)[1], num_noise = num_noise,
+                                min_n = min_n, max_n = max_n)
     plane_mat <- cbind(plane_mat, noise_mat)
 
     plane_mat
@@ -58,25 +58,25 @@ plane <- function(sample_size, coefficient_x_1, coefficient_x_2, coefficient_y_1
 #'
 #' This function generates a dataset consisting of two long clusters with added noise.
 #'
-#' @param sample_size The total number of samples to generate.
-#' @param num_noise_dims The number of additional noise dimensions to add to the data.
-#' @param min_noise The minimum value for the noise dimensions.
-#' @param max_noise The maximum value for the noise dimensions.
+#' @param n The total number of samples to generate.
+#' @param num_noise The number of additional noise dimensions to add to the data.
+#' @param min_n The minimum value for the noise dimensions.
+#' @param max_n The maximum value for the noise dimensions.
 #' @return A matrix containing the long cluster data with added noise.
 #' @export
 #'
 #' @examples
-#' long_cluster <- long_cluster_data(sample_size = 200, num_noise_dims = 8,
-#'                                   min_noise = -0.05, max_noise = 0.05)
-long_cluster_data <- function(sample_size, num_noise_dims, min_noise, max_noise) {
+#' long_cluster <- long_cluster_data(n = 200, num_noise = 8,
+#'                                   min_n = -0.05, max_n = 0.05)
+long_cluster_data <- function(n, num_noise, min_n, max_n) {
 
-  # To check that the assigned sample_size is divided by two
-  if ((sample_size%%2) != 0) {
+  # To check that the assigned n is divided by two
+  if ((n%%2) != 0) {
     warning("The sample size should be a product of two.")
-    cluster_size <- floor(sample_size/2)
+    cluster_size <- floor(n/2)
 
   } else {
-    cluster_size <- sample_size/2
+    cluster_size <- n/2
   }
 
   x <- 0:(cluster_size - 1) + 0.03 * cluster_size * stats::rnorm(cluster_size)
@@ -89,10 +89,10 @@ long_cluster_data <- function(sample_size, num_noise_dims, min_noise, max_noise)
 
   df <- rbind(df1, df2)
 
-  if (num_noise_dims != 0) {
+  if (num_noise != 0) {
 
-    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise_dims = num_noise_dims,
-                                min_noise = min_noise, max_noise = max_noise)
+    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise = num_noise,
+                                min_n = min_n, max_n = max_n)
     df <- cbind(df, noise_mat)
 
     df
@@ -109,26 +109,26 @@ long_cluster_data <- function(sample_size, num_noise_dims, min_noise, max_noise)
 #'
 #' This function generates a dataset consisting of three different linear patterns with added noise.
 #'
-#' @param sample_size The total number of samples to generate.
-#' @param num_noise_dims The number of additional noise dimensions to add to the data.
-#' @param min_noise The minimum value for the noise dimensions.
-#' @param max_noise The maximum value for the noise dimensions.
+#' @param n The total number of samples to generate.
+#' @param num_noise The number of additional noise dimensions to add to the data.
+#' @param min_n The minimum value for the noise dimensions.
+#' @param max_n The maximum value for the noise dimensions.
 #' @return A matrix containing the three different linear data with added noise.
 #' @export
 #'
 #' @examples
-#' three_diff_linear <- three_diff_linear_with_noise(sample_size = 150,
-#' num_noise_dims = 8, min_noise = -0.05, max_noise = 0.05)
-three_diff_linear_with_noise <- function(sample_size, num_noise_dims, min_noise,
-                                         max_noise) {
+#' three_diff_linear <- three_diff_linear_with_noise(n = 150,
+#' num_noise = 8, min_n = -0.05, max_n = 0.05)
+three_diff_linear_with_noise <- function(n, num_noise, min_n,
+                                         max_n) {
 
-  # To check that the assigned sample_size is divided by three
-  if ((sample_size%%3) != 0) {
+  # To check that the assigned n is divided by three
+  if ((n%%3) != 0) {
     warning("The sample size should be a product of three.")
-    cluster_size <- floor(sample_size/3)
+    cluster_size <- floor(n/3)
 
   } else {
-    cluster_size <- sample_size/3
+    cluster_size <- n/3
   }
 
   x <- 0:(cluster_size - 1) + 0.03 * cluster_size * stats::rnorm(cluster_size)
@@ -144,10 +144,10 @@ three_diff_linear_with_noise <- function(sample_size, num_noise_dims, min_noise,
 
   df <- rbind(df1, df2, df3)
 
-  if (num_noise_dims != 0) {
+  if (num_noise != 0) {
 
-    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise_dims = num_noise_dims,
-                                min_noise = min_noise, max_noise = max_noise)
+    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise = num_noise,
+                                min_n = min_n, max_n = max_n)
     df <- cbind(df, noise_mat)
 
     df
@@ -164,26 +164,26 @@ three_diff_linear_with_noise <- function(sample_size, num_noise_dims, min_noise,
 #'
 #' This function generates a dataset consisting of four different long clusters with added noise.
 #'
-#' @param sample_size The total number of samples to generate.
-#' @param num_noise_dims The number of additional noise dimensions to add to the data.
-#' @param min_noise The minimum value for the noise dimensions.
-#' @param max_noise The maximum value for the noise dimensions.
+#' @param n The total number of samples to generate.
+#' @param num_noise The number of additional noise dimensions to add to the data.
+#' @param min_n The minimum value for the noise dimensions.
+#' @param max_n The maximum value for the noise dimensions.
 #' @return A matrix containing the four different long clusters with added noise.
 #' @export
 #'
 #' @examples
-#' four_diff_long_clusters <- four_diff_long_clutsers_with_noise(sample_size = 200,
-#' num_noise_dims = 8, min_noise = -0.05, max_noise = 0.05)
-four_diff_long_clutsers_with_noise <- function(sample_size, num_noise_dims,
-                                               min_noise, max_noise) {
+#' four_diff_long_clusters <- four_diff_long_clutsers_with_noise(n = 200,
+#' num_noise = 8, min_n = -0.05, max_n = 0.05)
+four_diff_long_clutsers_with_noise <- function(n, num_noise,
+                                               min_n, max_n) {
 
-  # To check that the assigned sample_size is divided by four
-  if ((sample_size%%4) != 0) {
+  # To check that the assigned n is divided by four
+  if ((n%%4) != 0) {
     warning("The sample size should be a product of four.")
-    cluster_size <- floor(sample_size/4)
+    cluster_size <- floor(n/4)
 
   } else {
-    cluster_size <- sample_size/4
+    cluster_size <- n/4
   }
 
   x <- 0:(cluster_size - 1) + 0.03 * cluster_size * stats::rnorm(cluster_size)
@@ -199,10 +199,10 @@ four_diff_long_clutsers_with_noise <- function(sample_size, num_noise_dims,
 
   df <- rbind(df1, df2, df3, df4)
 
-  if (num_noise_dims != 0) {
+  if (num_noise != 0) {
 
-    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise_dims = num_noise_dims,
-                                min_noise = min_noise, max_noise = max_noise)
+    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise = num_noise,
+                                min_n = min_n, max_n = max_n)
     df <- cbind(df, noise_mat)
 
     df
@@ -219,24 +219,24 @@ four_diff_long_clutsers_with_noise <- function(sample_size, num_noise_dims,
 #'
 #' This function generates a dataset representing a 2D plane with a hole in the middle, with added noise.
 #'
-#' @param sample_size The total number of samples to generate.
-#' @param num_noise_dims The number of additional noise dimensions to add to the data.
-#' @param min_noise The minimum value for the noise dimensions.
-#' @param max_noise The maximum value for the noise dimensions.
+#' @param n The total number of samples to generate.
+#' @param num_noise The number of additional noise dimensions to add to the data.
+#' @param min_n The minimum value for the noise dimensions.
+#' @param max_n The maximum value for the noise dimensions.
 #' @return A list containing the 2D plane data with a hole and the sample size.
 #' @export
 #'
 #' @examples
-#' plane_data <- plane_2d_with_hole(sample_size = 100, num_noise_dims = 2,
-#' min_noise = 0, max_noise = 1)
-plane_2d_with_hole <- function(sample_size, num_noise_dims, min_noise, max_noise) {
+#' plane_data <- plane_2d_with_hole(n = 100, num_noise = 2,
+#' min_n = 0, max_n = 1)
+plane_2d_with_hole <- function(n, num_noise, min_n, max_n) {
 
-  # To check that the assigned sample_size is divided by four
-  if ((sample_size%%4) != 0) {
+  # To check that the assigned n is divided by four
+  if ((n%%4) != 0) {
     stop("The sample size should be a product of four.")
 
   } else {
-    cluster_size <- sample_size/4
+    cluster_size <- n/4
   }
 
   u <- stats::runif(cluster_size, min = 10, max = 30)
@@ -255,15 +255,15 @@ plane_2d_with_hole <- function(sample_size, num_noise_dims, min_noise, max_noise
 
   df <- rbind(df1 - 10, df1 + 10, df2, df3)
 
-  if (num_noise_dims != 0) {
+  if (num_noise != 0) {
 
-    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise_dims = num_noise_dims,
-                                min_noise = min_noise, max_noise = max_noise)
+    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise = num_noise,
+                                min_n = min_n, max_n = max_n)
     df <- cbind(df, noise_mat)
 
   }
 
-  return(list(df = df, sample_size = NROW(df)))
+  return(list(df = df, n = NROW(df)))
 
 }
 
@@ -271,28 +271,28 @@ plane_2d_with_hole <- function(sample_size, num_noise_dims, min_noise, max_noise
 #'
 #' This function generates data with four long clusters along with background noise.
 #'
-#' @param sample_size The total number of data points to be generated.
-#' @param num_noise_dims The number of additional noise dimensions to be generated.
-#' @param min_noise The minimum value for the noise added to the data points.
-#' @param max_noise The maximum value for the noise added to the data points.
+#' @param n The total number of data points to be generated.
+#' @param num_noise The number of additional noise dimensions to be generated.
+#' @param min_n The minimum value for the noise added to the data points.
+#' @param max_n The maximum value for the noise added to the data points.
 #'
 #' @return A matrix containing the generated data, with each row representing a data point.
 #' @export
 #'
 #' @examples
 #' # Generate four long clusters with background noise with custom parameters
-#' data <- four_long_clusters_with_bkg_noise(sample_size = 400, num_noise_dims = 4,
-#' min_noise = -0.05, max_noise = 0.05)
-four_long_clusters_with_bkg_noise <- function(sample_size, num_noise_dims,
-                                              min_noise, max_noise) {
+#' data <- four_long_clusters_with_bkg_noise(n = 400, num_noise = 4,
+#' min_n = -0.05, max_n = 0.05)
+four_long_clusters_with_bkg_noise <- function(n, num_noise,
+                                              min_n, max_n) {
 
-  # To check that the assigned sample_size is divided by five
-  if ((sample_size%%5) != 0) {
+  # To check that the assigned n is divided by five
+  if ((n%%5) != 0) {
     warning("The sample size should be a product of five.")
-    cluster_size <- floor(sample_size/5)
+    cluster_size <- floor(n/5)
 
   } else {
-    cluster_size <- sample_size/5
+    cluster_size <- n/5
   }
 
   x <- 0:(cluster_size - 1) + 0.03 * cluster_size * stats::rnorm(cluster_size)
@@ -309,10 +309,10 @@ four_long_clusters_with_bkg_noise <- function(sample_size, num_noise_dims,
 
   df1 <- rbind(df1, df_2, df3, df4)
 
-  if (num_noise_dims != 0) {
+  if (num_noise != 0) {
 
-    noise_mat <- gen_noise_dims(n = dim(df1)[1], num_noise_dims = num_noise_dims,
-                                min_noise = min_noise, max_noise = max_noise)
+    noise_mat <- gen_noise_dims(n = dim(df1)[1], num_noise = num_noise,
+                                min_n = min_n, max_n = max_n)
     df1 <- cbind(df1, noise_mat)
 
   }
@@ -329,10 +329,10 @@ four_long_clusters_with_bkg_noise <- function(sample_size, num_noise_dims,
 #'
 #' This function generates data with three linear clusters, along with added noise.
 #'
-#' @param sample_size The total number of data points to be generated.
-#' @param num_noise_dims The number of additional noise dimensions to be generated.
-#' @param min_noise The minimum value for the noise added to the data points.
-#' @param max_noise The maximum value for the noise added to the data points.
+#' @param n The total number of data points to be generated.
+#' @param num_noise The number of additional noise dimensions to be generated.
+#' @param min_n The minimum value for the noise added to the data points.
+#' @param max_n The maximum value for the noise added to the data points.
 #'
 #' @return A matrix containing the generated data, with each row representing a data point.
 #' @export
@@ -340,18 +340,18 @@ four_long_clusters_with_bkg_noise <- function(sample_size, num_noise_dims,
 #' @examples
 #'
 #' # Generate three linear clusters with noise with custom parameters
-#' data <- three_linear_with_noise(sample_size = 300, num_noise_dims = 4,
-#' min_noise = -0.05, max_noise = 0.05)
-three_linear_with_noise <- function(sample_size, num_noise_dims, min_noise,
-                                    max_noise) {
+#' data <- three_linear_with_noise(n = 300, num_noise = 4,
+#' min_n = -0.05, max_n = 0.05)
+three_linear_with_noise <- function(n, num_noise, min_n,
+                                    max_n) {
 
-  # To check that the assigned sample_size is divided by three
-  if ((sample_size%%3) != 0) {
+  # To check that the assigned n is divided by three
+  if ((n%%3) != 0) {
     warning("The sample size should be a product of three.")
-    cluster_size <- floor(sample_size/3)
+    cluster_size <- floor(n/3)
 
   } else {
-    cluster_size <- sample_size/3
+    cluster_size <- n/3
   }
 
   x <- 0:(cluster_size - 1) + 0.03 * cluster_size * stats::rnorm(cluster_size)
@@ -367,10 +367,10 @@ three_linear_with_noise <- function(sample_size, num_noise_dims, min_noise,
 
   df <- rbind(df1, df2, df3)
 
-  if (num_noise_dims != 0) {
+  if (num_noise != 0) {
 
-    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise_dims = num_noise_dims,
-                                min_noise = min_noise, max_noise = max_noise)
+    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise = num_noise,
+                                min_n = min_n, max_n = max_n)
     df <- cbind(df, noise_mat)
 
     df
@@ -387,10 +387,10 @@ three_linear_with_noise <- function(sample_size, num_noise_dims, min_noise,
 #'
 #' This function generates data with two linear clusters that are differentiated from each other, along with added noise.
 #'
-#' @param sample_size The total number of data points to be generated.
-#' @param num_noise_dims The number of additional noise dimensions to be generated.
-#' @param min_noise The minimum value for the noise added to the data points.
-#' @param max_noise The maximum value for the noise added to the data points.
+#' @param n The total number of data points to be generated.
+#' @param num_noise The number of additional noise dimensions to be generated.
+#' @param min_n The minimum value for the noise added to the data points.
+#' @param max_n The maximum value for the noise added to the data points.
 #'
 #' @return A matrix containing the generated data, with each row representing a data point.
 #' @export
@@ -398,18 +398,18 @@ three_linear_with_noise <- function(sample_size, num_noise_dims, min_noise,
 #' @examples
 #'
 #' # Generate two linear differentiated clusters with noise with custom parameters
-#' data <- two_linear_diff_with_noise(sample_size = 300, num_noise_dims = 4,
-#' min_noise = -0.05, max_noise = 0.05)
-two_linear_diff_with_noise <- function(sample_size, num_noise_dims, min_noise,
-                                       max_noise) {
+#' data <- two_linear_diff_with_noise(n = 300, num_noise = 4,
+#' min_n = -0.05, max_n = 0.05)
+two_linear_diff_with_noise <- function(n, num_noise, min_n,
+                                       max_n) {
 
-  # To check that the assigned sample_size is divided by three
-  if ((sample_size%%3) != 0) {
+  # To check that the assigned n is divided by three
+  if ((n%%3) != 0) {
     warning("The sample size should be a product of three.")
-    cluster_size <- floor(sample_size/3)
+    cluster_size <- floor(n/3)
 
   } else {
-    cluster_size <- sample_size/3
+    cluster_size <- n/3
   }
 
 
@@ -425,10 +425,10 @@ two_linear_diff_with_noise <- function(sample_size, num_noise_dims, min_noise,
 
   df <- rbind(df1, df2, df3)
 
-  if (num_noise_dims != 0) {
+  if (num_noise != 0) {
 
-    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise_dims = num_noise_dims,
-                                min_noise = min_noise, max_noise = max_noise)
+    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise = num_noise,
+                                min_n = min_n, max_n = max_n)
     df <- cbind(df, noise_mat)
 
     df

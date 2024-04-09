@@ -4,19 +4,19 @@
 #'
 #' @param radius The radius of the sphere.
 #' @param resolution The number of points used to approximate the surface of the sphere.
-#' @param num_noise_dims The number of additional noise dimensions to add to the coordinates.
-#' @param min_noise The minimum value for the random noise added to the coordinates.
-#' @param max_noise The maximum value for the random noise added to the coordinates.
+#' @param num_noise The number of additional noise dimensions to add to the coordinates.
+#' @param min_n The minimum value for the random noise added to the coordinates.
+#' @param max_n The maximum value for the random noise added to the coordinates.
 #'
 #' @return A matrix containing the Cartesian coordinates of the points on the sphere.
 #'
 #' @examples
 #' # Generate coordinates for a sphere with radius 1 and resolution 100
-#' sphere(radius = 1, resolution = 20, num_noise_dims = 3, min_noise = -0.05,
-#' max_noise = 0.05)
+#' sphere(radius = 1, resolution = 20, num_noise = 3, min_n = -0.05,
+#' max_n = 0.05)
 #'
 #' @export
-sphere <- function(radius, resolution, num_noise_dims, min_noise, max_noise) {
+sphere <- function(radius, resolution, num_noise, min_n, max_n) {
 
   # Generate the coordinates for the sphere
   theta <- seq(0, 2*pi, length.out = resolution)
@@ -30,10 +30,10 @@ sphere <- function(radius, resolution, num_noise_dims, min_noise, max_noise) {
 
   sphere_mat <- matrix(c(x, y, z), ncol = 3)
 
-  if (num_noise_dims != 0) {
+  if (num_noise != 0) {
 
-    noise_mat <- gen_noise_dims(n = dim(sphere_mat)[1], num_noise_dims = num_noise_dims,
-                                min_noise = min_noise, max_noise = max_noise)
+    noise_mat <- gen_noise_dims(n = dim(sphere_mat)[1], num_noise = num_noise,
+                                min_n = min_n, max_n = max_n)
     sphere_mat <- cbind(sphere_mat, noise_mat)
 
     sphere_mat
@@ -51,28 +51,28 @@ sphere <- function(radius, resolution, num_noise_dims, min_noise, max_noise) {
 #' This function generates data points representing small spheres within a larger encompassing sphere
 #' and adds noise to the data if specified.
 #'
-#' @param sample_size Total number of data points to generate, should be a multiple of 13.
-#' @param num_noise_dims Number of additional noise dimensions to add to the data.
-#' @param min_noise Minimum value for the noise added to the data.
-#' @param max_noise Maximum value for the noise added to the data.
+#' @param n Total number of data points to generate, should be a multiple of 13.
+#' @param num_noise Number of additional noise dimensions to add to the data.
+#' @param min_n Minimum value for the noise added to the data.
+#' @param max_n Maximum value for the noise added to the data.
 #'
 #' @return A matrix containing the generated data points with or without added noise.
 #'
 #' @examples
-#' small_big_sphere_with_noise(sample_size = 390, num_noise_dims = 4,
-#' min_noise = -0.05, max_noise = 0.05)
+#' small_big_sphere_with_noise(n = 390, num_noise = 4,
+#' min_n = -0.05, max_n = 0.05)
 #'
 #' @export
-small_big_sphere_with_noise <- function(sample_size, num_noise_dims, min_noise,
-                                        max_noise) {
+small_big_sphere_with_noise <- function(n, num_noise, min_n,
+                                        max_n) {
 
-  # To check that the assigned sample_size is divided by thirteen
-  if ((sample_size%%13) != 0) {
+  # To check that the assigned n is divided by thirteen
+  if ((n%%13) != 0) {
     warning("The sample size should be a product of thirteen.")
-    small_sphere_sample_size <- floor(sample_size/13)
+    small_sphere_sample_size <- floor(n/13)
 
   } else {
-    small_sphere_sample_size <- sample_size/13
+    small_sphere_sample_size <- n/13
   }
 
   m <- matrix(stats::rnorm(n = small_sphere_sample_size * 4), nrow = small_sphere_sample_size, ncol = 4)
@@ -94,10 +94,10 @@ small_big_sphere_with_noise <- function(sample_size, num_noise_dims, min_noise,
 
   df <- rbind(do.call(rbind, small_spheres), big_sphere)
 
-  if (num_noise_dims != 0) {
+  if (num_noise != 0) {
 
-    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise_dims = num_noise_dims,
-                                min_noise = min_noise, max_noise = max_noise)
+    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise = num_noise,
+                                min_n = min_n, max_n = max_n)
     df <- cbind(df, noise_mat)
 
     df
