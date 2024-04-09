@@ -41,10 +41,10 @@ reference:
 - title: "Circular data"
   desc: The circular datasets.
   contents:
-  - three_circulars_with_noise
-  - cell_cycle_with_noise
-  - curvy_cell_cycle_with_noise
-  - link_data
+  - three_circulars
+  - cell_cycle
+  - curvy_cycle
+  - two_circulars
 - title: "Grid data"
   desc: The grid datasets.
   contents:
