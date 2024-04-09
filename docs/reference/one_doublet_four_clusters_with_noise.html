@@ -67,29 +67,24 @@ four clusters, along with added background noise.</p>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">one_doublet_four_clusters_with_noise</span><span class="op">(</span></span>
-<span>  <span class="va">sample_size</span>,</span>
-<span>  <span class="va">num_noise_dims</span>,</span>
-<span>  <span class="va">min_noise</span>,</span>
-<span>  <span class="va">max_noise</span></span>
-<span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">one_doublet_four_clusters_with_noise</span><span class="op">(</span><span class="va">n</span>, <span class="va">num_noise</span>, <span class="va">min_n</span>, <span class="va">max_n</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
-    <dl><dt>sample_size</dt>
+    <dl><dt>n</dt>
 <dd><p>The total number of data points to be generated.</p></dd>
 
 
-<dt>num_noise_dims</dt>
+<dt>num_noise</dt>
 <dd><p>The number of additional noise dimensions to be generated.</p></dd>
 
 
-<dt>min_noise</dt>
+<dt>min_n</dt>
 <dd><p>The minimum value for the noise added to the data points.</p></dd>
 
 
-<dt>max_noise</dt>
+<dt>max_n</dt>
 <dd><p>The maximum value for the noise added to the data points.</p></dd>
 
 </dl></div>
@@ -104,8 +99,8 @@ four clusters, along with added background noise.</p>
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Generate doublets with four clusters and noise with custom parameters</span></span></span>
-<span class="r-in"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu">one_doublet_four_clusters_with_noise</span><span class="op">(</span>sample_size <span class="op">=</span> <span class="fl">440</span>, num_noise_dims <span class="op">=</span> <span class="fl">4</span>,</span></span>
-<span class="r-in"><span>min_noise <span class="op">=</span> <span class="op">-</span><span class="fl">0.05</span>, max_noise <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu">one_doublet_four_clusters_with_noise</span><span class="op">(</span>n <span class="op">=</span> <span class="fl">440</span>, num_noise <span class="op">=</span> <span class="fl">4</span>,</span></span>
+<span class="r-in"><span>min_n <span class="op">=</span> <span class="op">-</span><span class="fl">0.05</span>, max_n <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

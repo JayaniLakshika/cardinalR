@@ -20,7 +20,7 @@ library(langevitour)
 ```
 
 ```{r}
-curvy_tree_data <- curvy_tree_with_noise(n = 720, 
+curvy_tree_data <- curvy_tree(n = 720, 
 num_noise = 2, min_n = -0.05, max_n = 0.05)
 
 colnames(curvy_tree_data) <- paste0("x", 1:NCOL(curvy_tree_data))
@@ -29,7 +29,7 @@ langevitour(curvy_tree_data, pointSize = 2)
 ```
 
 ```{r}
-tree_data <- tree_with_noise(n = 490, num_noise = 2, 
+tree_data <- tree(n = 490, num_noise = 2, 
 min_n = -0.05, max_n = 0.05)
 
 colnames(tree_data) <- paste0("x", 1:NCOL(tree_data))
@@ -38,7 +38,7 @@ langevitour(tree_data, pointSize = 2)
 ```
 
 ```{r}
-seven_branch_data <- seven_branching_data_with_noise(n = 490, 
+seven_branch_data <- seven_branch(n = 490, 
 num_noise = 2, min_n = -0.05, max_n = 0.05)
 
 colnames(seven_branch_data) <- paste0("x", 1:NCOL(seven_branch_data))
@@ -47,7 +47,7 @@ langevitour(seven_branch_data, pointSize = 2)
 ```
 
 ```{r}
-four_branch_data <- four_branching_data_with_noise(n = 880, 
+four_branch_data <- four_branch(n = 880, 
 num_noise = 2, min_n = -0.05, max_n = 0.05)
 
 colnames(four_branch_data) <- paste0("x", 1:NCOL(four_branch_data))
@@ -56,7 +56,7 @@ langevitour(four_branch_data, pointSize = 2)
 ```
 
 ```{r}
-eight_branch_data <- eight_branching_data_with_noise(n = 600, 
+eight_branch_data <- eight_branch(n = 600, 
 num_noise = 2, min_n = -0.05, max_n = 0.05)
 
 colnames(eight_branch_data) <- paste0("x", 1:NCOL(eight_branch_data))
@@ -65,8 +65,8 @@ langevitour(eight_branch_data, pointSize = 2)
 ```
 
 ```{r}
-curvy_clust_data <- curvy_branching_cluster(n = 500, 
-cluster_size_vec = c(200, 150, 150), num_noise = 2, 
+curvy_clust_data <- curvy_branch_clust(n = 500, 
+clust_vec = c(200, 150, 150), num_noise = 2, 
 min_n = -0.05, max_n = 0.05)
 
 colnames(curvy_clust_data) <- paste0("x", 1:NCOL(curvy_clust_data))
@@ -75,7 +75,7 @@ langevitour(curvy_clust_data, pointSize = 2)
 ```
 
 ```{r}
-curvy_branchingbkg_data <- curvy_branching_cluster_with_bkg_noise(n = 500, num_noise = 2, min_n = -0.5, max_n = 0.5)
+curvy_branchingbkg_data <- curvy_branch_clust_bkg(n = 500, num_noise = 2, min_n = -0.05, max_n = 0.05)
 
 colnames(curvy_branchingbkg_data) <- paste0("x", 1:NCOL(curvy_branchingbkg_data))
 
@@ -83,7 +83,7 @@ langevitour(curvy_branchingbkg_data, pointSize = 2)
 ```
 
 ```{r}
-curvy_branching_data <- curvy_branching_with_noise(n = 500, 
+curvy_branching_data <- curvy_branch(n = 500, 
 num_noise = 2, min_n = -0.05, max_n = 0.05)
 
 colnames(curvy_branching_data) <- paste0("x", 1:NCOL(curvy_branching_data))

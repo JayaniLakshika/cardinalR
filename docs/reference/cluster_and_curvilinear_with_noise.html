@@ -65,35 +65,35 @@
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">cluster_and_curvilinear_with_noise</span><span class="op">(</span></span>
-<span>  <span class="va">sample_size</span>,</span>
+<span>  <span class="va">n</span>,</span>
 <span>  cluster_size_vec <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  <span class="va">num_noise_dims</span>,</span>
-<span>  <span class="va">min_noise</span>,</span>
-<span>  <span class="va">max_noise</span></span>
+<span>  <span class="va">num_noise</span>,</span>
+<span>  <span class="va">min_n</span>,</span>
+<span>  <span class="va">max_n</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
-    <dl><dt>sample_size</dt>
+    <dl><dt>n</dt>
 <dd><p>The total number of data points to be generated.</p></dd>
 
 
 <dt>cluster_size_vec</dt>
 <dd><p>A vector specifying the number of points for each cluster.
-If not provided, the sample_size is divided equally
+If not provided, the n is divided equally
 between the two clusters.</p></dd>
 
 
-<dt>num_noise_dims</dt>
+<dt>num_noise</dt>
 <dd><p>The number of additional noise dimensions to be generated.</p></dd>
 
 
-<dt>min_noise</dt>
+<dt>min_n</dt>
 <dd><p>The minimum value for the noise added to the data points.</p></dd>
 
 
-<dt>max_noise</dt>
+<dt>max_n</dt>
 <dd><p>The maximum value for the noise added to the data points.</p></dd>
 
 </dl></div>
@@ -108,9 +108,9 @@ between the two clusters.</p></dd>
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Generate cluster and curvilinear data with custom parameters</span></span></span>
-<span class="r-in"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu">cluster_and_curvilinear_with_noise</span><span class="op">(</span>sample_size <span class="op">=</span> <span class="fl">300</span>,</span></span>
-<span class="r-in"><span>cluster_size_vec <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">100</span>, <span class="fl">200</span><span class="op">)</span>, num_noise_dims <span class="op">=</span> <span class="fl">3</span>, min_noise <span class="op">=</span> <span class="op">-</span><span class="fl">0.05</span>,</span></span>
-<span class="r-in"><span>max_noise <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu">cluster_and_curvilinear_with_noise</span><span class="op">(</span>n <span class="op">=</span> <span class="fl">300</span>,</span></span>
+<span class="r-in"><span>cluster_size_vec <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">100</span>, <span class="fl">200</span><span class="op">)</span>, num_noise <span class="op">=</span> <span class="fl">3</span>, min_n <span class="op">=</span> <span class="op">-</span><span class="fl">0.05</span>,</span></span>
+<span class="r-in"><span>max_n <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

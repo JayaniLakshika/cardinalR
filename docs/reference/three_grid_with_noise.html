@@ -67,19 +67,9 @@ This function generates three grid data with noise."><meta property="og:image" c
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">three_grid_with_noise</span><span class="op">(</span></span>
-<span>  n_value <span class="op">=</span> <span class="fl">19</span>,</span>
-<span>  num_noise_dims <span class="op">=</span> <span class="fl">4</span>,</span>
-<span>  min_noise <span class="op">=</span> <span class="op">-</span><span class="fl">0.05</span>,</span>
-<span>  max_noise <span class="op">=</span> <span class="fl">0.05</span></span>
-<span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">three_grid_with_noise</span><span class="op">(</span>n_value <span class="op">=</span> <span class="fl">19</span>, num_noise <span class="op">=</span> <span class="fl">4</span>, min_n <span class="op">=</span> <span class="op">-</span><span class="fl">0.05</span>, max_n <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">three_grid_with_noise</span><span class="op">(</span></span>
-<span>  n_value <span class="op">=</span> <span class="fl">19</span>,</span>
-<span>  num_noise_dims <span class="op">=</span> <span class="fl">4</span>,</span>
-<span>  min_noise <span class="op">=</span> <span class="op">-</span><span class="fl">0.05</span>,</span>
-<span>  max_noise <span class="op">=</span> <span class="fl">0.05</span></span>
-<span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">three_grid_with_noise</span><span class="op">(</span>n_value <span class="op">=</span> <span class="fl">19</span>, num_noise <span class="op">=</span> <span class="fl">4</span>, min_n <span class="op">=</span> <span class="op">-</span><span class="fl">0.05</span>, max_n <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -88,15 +78,15 @@ This function generates three grid data with noise."><meta property="og:image" c
 <dd><p>The number of grid points along each dimension.</p></dd>
 
 
-<dt>num_noise_dims</dt>
+<dt>num_noise</dt>
 <dd><p>The number of additional noise dimensions to be generated.</p></dd>
 
 
-<dt>min_noise</dt>
+<dt>min_n</dt>
 <dd><p>The minimum value for the noise added to the data points.</p></dd>
 
 
-<dt>max_noise</dt>
+<dt>max_n</dt>
 <dd><p>The maximum value for the noise added to the data points.</p></dd>
 
 </dl></div>
@@ -113,12 +103,12 @@ This function generates three grid data with noise."><meta property="og:image" c
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">three_grids</span> <span class="op">&lt;-</span> <span class="fu">three_grid_with_noise</span><span class="op">(</span>n_value <span class="op">=</span> <span class="fl">19</span>, num_noise_dims <span class="op">=</span> <span class="fl">4</span>,</span></span>
-<span class="r-in"><span>min_noise <span class="op">=</span> <span class="op">-</span><span class="fl">0.05</span>, max_noise <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">three_grids</span> <span class="op">&lt;-</span> <span class="fu">three_grid_with_noise</span><span class="op">(</span>n_value <span class="op">=</span> <span class="fl">19</span>, num_noise <span class="op">=</span> <span class="fl">4</span>,</span></span>
+<span class="r-in"><span>min_n <span class="op">=</span> <span class="op">-</span><span class="fl">0.05</span>, max_n <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Generate grid data with noise with custom parameters</span></span></span>
-<span class="r-in"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu">three_grid_with_noise</span><span class="op">(</span>n_value <span class="op">=</span> <span class="fl">19</span>, num_noise_dims <span class="op">=</span> <span class="fl">4</span>,</span></span>
-<span class="r-in"><span> min_noise <span class="op">=</span> <span class="op">-</span><span class="fl">0.05</span>, max_noise <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu">three_grid_with_noise</span><span class="op">(</span>n_value <span class="op">=</span> <span class="fl">19</span>, num_noise <span class="op">=</span> <span class="fl">4</span>,</span></span>
+<span class="r-in"><span> min_n <span class="op">=</span> <span class="op">-</span><span class="fl">0.05</span>, max_n <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

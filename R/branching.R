@@ -10,9 +10,9 @@
 #' @export
 #'
 #' @examples
-#' tree_data <- curvy_tree_with_noise(n = 300, num_noise = 8,
+#' tree_data <- curvy_tree(n = 300, num_noise = 8,
 #'                                    min_n = -0.05, max_n = 0.05)
-curvy_tree_with_noise <- function(n, num_noise, min_n,
+curvy_tree <- function(n, num_noise, min_n,
                                   max_n) {
 
   # To check that the assigned n is divided by three
@@ -76,9 +76,9 @@ curvy_tree_with_noise <- function(n, num_noise, min_n,
 #' @export
 #'
 #' @examples
-#' tree_data <- tree_with_noise(n = 300, num_noise = 8,
+#' tree_data <- tree(n = 300, num_noise = 8,
 #'                              min_n = -0.05, max_n = 0.05)
-tree_with_noise <- function(n, num_noise, min_n, max_n) {
+tree <- function(n, num_noise, min_n, max_n) {
 
   # To check that the assigned n is divided by five
   if ((n%%5) != 0) {
@@ -155,9 +155,9 @@ tree_with_noise <- function(n, num_noise, min_n, max_n) {
 #' @export
 #'
 #' @examples
-#' seven_branching_data <- seven_branching_data_with_noise(n = 210,
+#' seven_branching_data <- seven_branch(n = 210,
 #' num_noise = 8, min_n = -0.05, max_n = 0.05)
-seven_branching_data_with_noise <- function(n, num_noise, min_n,
+seven_branch <- function(n, num_noise, min_n,
                                             max_n) {
 
   # To check that the assigned n is divided by seven
@@ -248,9 +248,9 @@ seven_branching_data_with_noise <- function(n, num_noise, min_n,
 #' @export
 #'
 #' @examples
-#' four_branching_data <- four_branching_data_with_noise(n = 400,
+#' four_branching_data <- four_branch(n = 400,
 #' num_noise = 8, min_n = -0.05, max_n = 0.05)
-four_branching_data_with_noise <- function(n, num_noise, min_n,
+four_branch <- function(n, num_noise, min_n,
                                            max_n) {
 
   # To check that the assigned n is divided by four
@@ -327,9 +327,9 @@ four_branching_data_with_noise <- function(n, num_noise, min_n,
 #' @export
 #'
 #' @examples
-#' branching_data <- eight_branching_data_with_noise(n = 400,
+#' branching_data <- eight_branch(n = 400,
 #' num_noise = 8, min_n = -0.05, max_n = 0.05)
-eight_branching_data_with_noise <- function(n, num_noise, min_n,
+eight_branch <- function(n, num_noise, min_n,
                                             max_n) {
 
   # To check that the assigned n is divided by eight
@@ -420,7 +420,7 @@ eight_branching_data_with_noise <- function(n, num_noise, min_n,
 #' This function generates curvy branching cluster data with three clusters of different shapes.
 #'
 #' @param n The total number of data points to be generated.
-#' @param cluster_size_vec A vector specifying the number of points for each cluster.
+#' @param clust_vec A vector specifying the number of points for each cluster.
 #'                         If not provided, the n is divided equally
 #'                         among the clusters.
 #' @param num_noise The number of additional noise dimensions to be generated.
@@ -433,49 +433,49 @@ eight_branching_data_with_noise <- function(n, num_noise, min_n,
 #' @examples
 #'
 #' # Generate curvy branching cluster data with custom parameters
-#' data <- curvy_branching_cluster(n = 300, cluster_size_vec = c(100, 150, 50),
+#' data <- curvy_branch_clust(n = 300, clust_vec = c(100, 150, 50),
 #' num_noise = 6, min_n = -0.05, max_n = 0.05)
-curvy_branching_cluster <- function(n, cluster_size_vec = NULL,
+curvy_branch_clust <- function(n, clust_vec = NULL,
                                     num_noise, min_n, max_n) {
   ## If the number of points for each cluster is not defined
-  if (is.null(cluster_size_vec)) {
+  if (is.null(clust_vec)) {
 
     # To check that the assigned n is divided by three
     if ((n%%3) != 0) {
       warning("The sample size should be a product of three.")
       cluster_size <- floor(n/3)
-      cluster_size_vec <- append(rep(cluster_size, 2), (n - cluster_size * 2))
+      clust_vec <- append(rep(cluster_size, 2), (n - cluster_size * 2))
 
     } else {
       cluster_size <- n/3
-      cluster_size_vec <- rep(cluster_size, 3)
+      clust_vec <- rep(cluster_size, 3)
     }
 
   }
 
-  theta <- stats::runif(cluster_size_vec[1], 0.20, 0.90 * pi)
+  theta <- stats::runif(clust_vec[1], 0.20, 0.90 * pi)
 
   df1 <- matrix(c(
-    cos(theta) + stats::rnorm(cluster_size_vec[1], 1, 0.06),
-    sin(theta) + stats::rnorm(cluster_size_vec[1], 1, 0.06),
-    cos(theta) + stats::rnorm(cluster_size_vec[1], 1, 0.06),
-    sin(theta) + stats::rnorm(cluster_size_vec[1], 1, 0.06)
+    cos(theta) + stats::rnorm(clust_vec[1], 1, 0.06),
+    sin(theta) + stats::rnorm(clust_vec[1], 1, 0.06),
+    cos(theta) + stats::rnorm(clust_vec[1], 1, 0.06),
+    sin(theta) + stats::rnorm(clust_vec[1], 1, 0.06)
   ), ncol = 4)
 
 
-  theta1 <- stats::runif(cluster_size_vec[3], 0.20, 0.90 * pi)
+  theta1 <- stats::runif(clust_vec[3], 0.20, 0.90 * pi)
 
   df2 <- matrix(c(
-    cos(-theta1) + stats::rnorm(cluster_size_vec[3], 1, 0.06),
-    sin(-theta1) + stats::rnorm(cluster_size_vec[3], 1, 0.06),
-    cos(-theta1) + stats::rnorm(cluster_size_vec[3], 1, 0.06),
-    sin(-theta1) + stats::rnorm(cluster_size_vec[3], 1, 0.06)
+    cos(-theta1) + stats::rnorm(clust_vec[3], 1, 0.06),
+    sin(-theta1) + stats::rnorm(clust_vec[3], 1, 0.06),
+    cos(-theta1) + stats::rnorm(clust_vec[3], 1, 0.06),
+    sin(-theta1) + stats::rnorm(clust_vec[3], 1, 0.06)
   ), ncol = 4)
 
-  df3 <- matrix(c(stats::rnorm(cluster_size_vec[2], mean = 1, sd = 0.08),
-                  stats::rnorm(cluster_size_vec[2], mean = 1, sd = 0.08),
-                  stats::rnorm(cluster_size_vec[2], mean = 1, sd = 0.08),
-                  stats::rnorm(cluster_size_vec[2], mean = 1, sd = 0.08)),
+  df3 <- matrix(c(stats::rnorm(clust_vec[2], mean = 1, sd = 0.08),
+                  stats::rnorm(clust_vec[2], mean = 1, sd = 0.08),
+                  stats::rnorm(clust_vec[2], mean = 1, sd = 0.08),
+                  stats::rnorm(clust_vec[2], mean = 1, sd = 0.08)),
                 ncol = 4)
 
   df <- rbind(df1, df2, df3)
@@ -512,9 +512,9 @@ curvy_branching_cluster <- function(n, cluster_size_vec = NULL,
 #' @examples
 #'
 #' # Generate curvy branching cluster data with background noise with custom parameters
-#' data <- curvy_branching_cluster_with_bkg_noise(n = 400, num_noise = 10,
+#' data <- curvy_branch_clust_bkg(n = 400, num_noise = 10,
 #' min_n = -0.5, max_n = 0.5)
-curvy_branching_cluster_with_bkg_noise <- function(n, num_noise,
+curvy_branch_clust_bkg <- function(n, num_noise,
                                                    min_n, max_n) {
 
   # To check that the assigned n is divided by three
@@ -586,9 +586,9 @@ curvy_branching_cluster_with_bkg_noise <- function(n, num_noise,
 #' @examples
 #'
 #' # Generate curvy branching clusters with noise with custom parameters
-#' data <- curvy_branching_with_noise(n = 200, num_noise = 8,
+#' data <- curvy_branch(n = 200, num_noise = 8,
 #' min_n = -0.05, max_n = 0.05)
-curvy_branching_with_noise <- function(n, num_noise, min_n,
+curvy_branch <- function(n, num_noise, min_n,
                                        max_n) {
 
   # To check that the assigned n is divided by two
