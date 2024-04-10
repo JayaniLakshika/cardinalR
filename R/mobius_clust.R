@@ -111,9 +111,9 @@ mobius_5d <- function(n, num_noise, min_n, max_n){
 #' @export
 #'
 #' @examples
-#' mobius_cluster <- mobius_cluster_with_noise(n = 200, num_noise = 8,
+#' mobius_cluster <- mobius_clust(n = 200, num_noise = 8,
 #'                                             min_n = -0.05, max_n = 0.05)
-mobius_cluster_with_noise <- function(n, num_noise, min_n,
+mobius_clust <- function(n, num_noise, min_n,
                                       max_n) {
 
   df1 <- mobius_5d(n = n * 0.80, num_noise = 0)

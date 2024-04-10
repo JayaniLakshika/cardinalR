@@ -48,17 +48,16 @@ reference:
 - title: "Grid data"
   desc: The grid datasets.
   contents:
-  - grid_data
-  - three_grid_with_noise
+  - one_grid
+  - three_grid
   - one_grid_diff_with_bkg_noise
   - two_grid_with_bkg_noise
   - one_grid_diff
-  - three_grid_with_noise
 - title: "Triangular data"
   desc: The triangular datasets.
   contents:
-  - traingular_3d_with_noise
-  - triangular_plane_with_bkg_noise
+  - tri_3d
+  - tri_plane_bkg
 - title: "Sphere data"
   desc: The sphere datasets.
   contents:
@@ -99,7 +98,7 @@ reference:
   contents:
   - mobius_5d_row
   - mobius_5d
-  - mobius_cluster_with_noise
+  - mobius_clust
 - title: "Additional high-dimensional data"
   desc: Additional high-dimensional datasets.
   contents:

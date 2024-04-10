@@ -20,7 +20,7 @@ library(langevitour)
 ```
 
 ```{r}
-grd_data <- grid_data(nx = 10, ny = 10, num_noise = 2, min_n = -0.05, max_n = 0.05)
+grd_data <- one_grid(nx = 10, ny = 10, num_noise = 2, min_n = -0.05, max_n = 0.05)
 
 colnames(grd_data) <- paste0("x", 1:NCOL(grd_data))
 
@@ -28,7 +28,7 @@ langevitour(grd_data, pointSize = 2)
 ```
 
 ```{r}
-three_grd_data <- three_grid_with_noise(n_value = 19, num_noise = 2, min_n = -0.05, max_n = 0.05)
+three_grd_data <- three_grid(n_value = 19, num_noise = 2, min_n = -0.05, max_n = 0.05)
 three_grd_data$n
 
 colnames(three_grd_data$df) <- paste0("x", 1:NCOL(three_grd_data$df))
@@ -60,14 +60,4 @@ one_grddiff_data$n
 colnames(one_grddiff_data$df) <- paste0("x", 1:NCOL(one_grddiff_data$df))
 
 langevitour(one_grddiff_data$df, pointSize = 2)
-```
-
-```{r}
-three_grdnoise_data <- three_grid_with_noise(n_value = 19, num_noise = 2, min_n = -0.05, max_n = 0.05)
-
-three_grdnoise_data$n
-
-colnames(three_grdnoise_data$df) <- paste0("x", 1:NCOL(three_grdnoise_data$df))
-
-langevitour(three_grdnoise_data$df, pointSize = 2)
 ```

@@ -11,9 +11,9 @@
 #' @export
 #'
 #' @examples
-#' grid_data <- grid_data(nx = 10, ny = 10, num_noise = 2,
+#' one_grid <- one_grid(nx = 10, ny = 10, num_noise = 2,
 #' min_n = -0.05, max_n = 0.05)
-grid_data <- function(nx, ny, num_noise, min_n, max_n) {
+one_grid <- function(nx, ny, num_noise, min_n, max_n) {
   df <- expand.grid(1:nx, 1:ny)
   df_mat <- matrix(c(df$Var1, df$Var2), ncol = 2)
 
@@ -45,18 +45,18 @@ grid_data <- function(nx, ny, num_noise, min_n, max_n) {
 #' @export
 #'
 #' @examples
-#' three_grids <- three_grid_with_noise(n_value = 19, num_noise = 4,
+#' three_grids <- three_grid(n_value = 19, num_noise = 4,
 #' min_n = -0.05, max_n = 0.05)
-three_grid_with_noise <- function(n_value, num_noise, min_n, max_n) {
+three_grid <- function(n_value, num_noise, min_n, max_n) {
 
-  df1 <- grid_data(nx = n_value, ny = n_value, num_noise = 0)
+  df1 <- one_grid(nx = n_value, ny = n_value, num_noise = 0)
   df1 <- cbind(df1, stats::runif(NROW(df1), -0.01, 0.01), stats::runif(NROW(df1), -0.01, 0.01))
 
-  df2 <- grid_data(nx = n_value, ny = n_value, num_noise = 0)
+  df2 <- one_grid(nx = n_value, ny = n_value, num_noise = 0)
   df2 <- cbind(df2, stats::runif(NROW(df2), -0.01, 0.01), stats::runif(NROW(df2), -0.01, 0.01))
   df2 <- df2[, c(1, 3, 2, 4)]
 
-  df3 <- grid_data(nx = n_value, ny = n_value, num_noise = 0)
+  df3 <- one_grid(nx = n_value, ny = n_value, num_noise = 0)
   df3 <- cbind(df3, stats::runif(NROW(df3), -0.01, 0.01), stats::runif(NROW(df3), -0.01, 0.01))
   df3 <- df3[, c(1, 3, 4, 2)]
 
@@ -110,7 +110,7 @@ one_grid_diff_with_bkg_noise <- function(n = 260, num_noise = 5,
 
   }
 
-  df1 <- grid_data(nx = n_value, ny = n_value, num_noise = 0)
+  df1 <- one_grid(nx = n_value, ny = n_value, num_noise = 0)
   df2 <- df1 + 3
   df1 <- rbind(df1, df2)
 
@@ -145,7 +145,7 @@ one_grid_diff_with_bkg_noise <- function(n = 260, num_noise = 5,
 #'                                                   min_n = -0.05, max_n = 0.05)
 two_grid_with_bkg_noise <- function(n_value, num_noise, min_n, max_n) {
 
-  df1 <- grid_data(nx = n_value, ny = n_value, num_noise = 0)
+  df1 <- one_grid(nx = n_value, ny = n_value, num_noise = 0)
   df3 <- df1 + 5
   df1 <- rbind(df1, df3)
 
@@ -200,7 +200,7 @@ one_grid_diff <- function(n, num_noise, min_n, max_n) {
 
   }
 
-  df1 <- grid_data(nx = n_value, ny = n_value, num_noise = 0)
+  df1 <- one_grid(nx = n_value, ny = n_value, num_noise = 0)
   df2 <- df1 + 3
   df <- rbind(df1, df2)
 
@@ -209,60 +209,6 @@ one_grid_diff <- function(n, num_noise, min_n, max_n) {
     noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise = num_noise,
                                 min_n = min_n, max_n = max_n)
     df <- cbind(df, noise_mat)
-
-  }
-
-  return(list(df = df, n = NROW(df)))
-
-}
-
-#' Generate Three Grid Data with Noise
-#'
-#' This function generates three grid data with noise.
-#'
-#' @param n_value The number of grid points along each dimension.
-#' @param num_noise The number of additional noise dimensions to be generated.
-#' @param min_n The minimum value for the noise added to the data points.
-#' @param max_n The maximum value for the noise added to the data points.
-#'
-#' @return A list containing the generated data matrix (`df`) and the total sample size.
-#' @export
-#'
-#' @examples
-#'
-#' # Generate grid data with noise with custom parameters
-#' data <- three_grid_with_noise(n_value = 19, num_noise = 4,
-#'  min_n = -0.05, max_n = 0.05)
-three_grid_with_noise <- function(n_value = 19, num_noise = 4,
-                                  min_n = -0.05, max_n = 0.05) {
-
-  df1 <- grid_data(nx = n_value, ny = n_value, num_noise = 0)
-  df1 <- cbind(df1, stats::runif(NROW(df1), -0.01, 0.01),
-               stats::runif(NROW(df1), -0.01, 0.01))
-
-  df2 <- grid_data(nx = n_value, ny = n_value, num_noise = 0)
-  df2 <- cbind(df2, stats::runif(NROW(df2), -0.01, 0.01),
-               stats::runif(NROW(df2), -0.01, 0.01))
-  df2 <- df2[, c(1, 3, 2, 4)]
-
-  df3 <- grid_data(nx = n_value, ny = n_value, num_noise = 0)
-  df3 <- cbind(df3, stats::runif(NROW(df3), -0.01, 0.01),
-               stats::runif(NROW(df3), -0.01, 0.01))
-  df3 <- df3[, c(1, 3, 4, 2)]
-
-  df <- rbind(df1, df2, df3)
-
-  if (num_noise != 0) {
-
-    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise = num_noise,
-                                min_n = min_n, max_n = max_n)
-    df <- cbind(df, noise_mat)
-
-    df
-
-  } else {
-
-    df
 
   }
 
