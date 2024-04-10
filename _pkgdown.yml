@@ -66,11 +66,11 @@ reference:
 - title: "S-curve data"
   desc: The S-curve datasets.
   contents:
-  - s_curve
-  - s_curve_hole
-  - two_s_curves_with_noise
-  - mirror_s_curves_with_noise
-  - two_s_curve_hole_with_noise
+  - scurve
+  - scurve_hole
+  - two_scurves
+  - mirror_scurves
+  - two_scurve_hole
 - title: "Nonlinear data"
   desc: The nonlinear datasets.
   contents:

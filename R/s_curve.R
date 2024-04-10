@@ -11,9 +11,9 @@
 #' @export
 #'
 #' @examples
-#' s_curve_data <- s_curve(n = 100, num_noise = 3,
+#' s_curve_data <- scurve(n = 100, num_noise = 3,
 #' min_n = -0.5, max_n = 0.5)
-s_curve <- function(n, num_noise, min_n, max_n) {
+scurve <- function(n, num_noise, min_n, max_n) {
   a <- 3 * pi * stats::runif(n = n, min = -0.5, max = 0.5)
   x <- sin(a)
   y <- 2.0 * stats::runif(n = n)
@@ -49,10 +49,10 @@ s_curve <- function(n, num_noise, min_n, max_n) {
 #' @export
 #'
 #' @examples
-#' s_curve_hole_data <- s_curve_hole(n = 100, num_noise = 3,
+#' s_curve_hole_data <- scurve_hole(n = 100, num_noise = 3,
 #' min_n = -0.5, max_n = 0.5)
-s_curve_hole <- function(n, num_noise, min_n, max_n) {
-  scurve <- s_curve(n = n, num_noise = 0)
+scurve_hole <- function(n, num_noise, min_n, max_n) {
+  scurve <- scurve(n = n, num_noise = 0)
 
   anchor <- c(0, 1, 0)
   indices <- rowSums((sweep(scurve, 2, anchor, `-`))^2) > 0.3
@@ -87,9 +87,9 @@ s_curve_hole <- function(n, num_noise, min_n, max_n) {
 #' @export
 #'
 #' @examples
-#' two_s_curve_data <- two_s_curves_with_noise(n = 200, num_noise = 8,
+#' two_s_curve_data <- two_scurves(n = 200, num_noise = 8,
 #' min_n = -0.5, max_n = 0.5)
-two_s_curves_with_noise <- function(n, num_noise, min_n,
+two_scurves <- function(n, num_noise, min_n,
                                     max_n) {
 
   # To check that the assigned n is divided by two
@@ -102,7 +102,7 @@ two_s_curves_with_noise <- function(n, num_noise, min_n,
   }
 
 
-  df1 <- s_curve(n = n, num_noise = 0)
+  df1 <- scurve(n = n, num_noise = 0)
   df2 <- matrix(c(-df1[,1] + 5, df1[,2] + 1, df1[,3] + 1), ncol = 3)
 
   df <- rbind(df1, df2)
@@ -136,9 +136,9 @@ two_s_curves_with_noise <- function(n, num_noise, min_n,
 #' @export
 #'
 #' @examples
-#' mirror_s_curve_data <- mirror_s_curves_with_noise(n = 200, num_noise = 8,
+#' mirror_s_curve_data <- mirror_scurves(n = 200, num_noise = 8,
 #' min_n = -0.5, max_n = 0.5)
-mirror_s_curves_with_noise <- function(n, num_noise, min_n,
+mirror_scurves <- function(n, num_noise, min_n,
                                        max_n) {
 
   # To check that the assigned n is divided by two
@@ -150,7 +150,7 @@ mirror_s_curves_with_noise <- function(n, num_noise, min_n,
     cluster_size <- n/2
   }
 
-  df1 <- s_curve(n = n, num_noise = 0)
+  df1 <- scurve(n = n, num_noise = 0)
   df2 <- matrix(c(-df1[,1] + 2, df1[,2], df1[,3]), ncol = 3)
 
   df <- rbind(df1, df2)
@@ -187,9 +187,9 @@ mirror_s_curves_with_noise <- function(n, num_noise, min_n,
 #' @examples
 #'
 #' # Generate two S-curve data with noise with custom parameters
-#' data <- two_s_curve_hole_with_noise(n = 200, num_noise = 8,
+#' data <- two_scurve_hole(n = 200, num_noise = 8,
 #' min_n = -0.05, max_n = 0.05)
-two_s_curve_hole_with_noise <- function(n = 200, num_noise = 8,
+two_scurve_hole <- function(n = 200, num_noise = 8,
                                         min_n = -0.05, max_n = 0.05) {
 
   # To check that the assigned n is divided by two
@@ -202,7 +202,7 @@ two_s_curve_hole_with_noise <- function(n = 200, num_noise = 8,
   }
 
   ## S curve with a hole
-  df1 <- s_curve(n = cluster_size, num_noise = 0)
+  df1 <- scurve(n = cluster_size, num_noise = 0)
   df2 <- df1 + 1
 
   df <- rbind(df1, df2)
