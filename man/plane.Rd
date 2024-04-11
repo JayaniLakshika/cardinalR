@@ -6,10 +6,10 @@
 \usage{
 plane(
   n,
-  coefficient_x_1,
-  coefficient_x_2,
-  coefficient_y_1,
-  coefficient_y_2,
+  coef_x1,
+  coef_x2,
+  coef_y1,
+  coef_y2,
   intercept_x,
   intercept_y,
   u_min,
@@ -24,13 +24,13 @@ plane(
 \arguments{
 \item{n}{The number of points to generate.}
 
-\item{coefficient_x_1}{The coefficient of the first parameter in the x-dimension equation.}
+\item{coef_x1}{The coefficient of the first parameter in the x-dimension equation.}
 
-\item{coefficient_x_2}{The coefficient of the second parameter in the x-dimension equation.}
+\item{coef_x2}{The coefficient of the second parameter in the x-dimension equation.}
 
-\item{coefficient_y_1}{The coefficient of the first parameter in the y-dimension equation.}
+\item{coef_y1}{The coefficient of the first parameter in the y-dimension equation.}
 
-\item{coefficient_y_2}{The coefficient of the second parameter in the y-dimension equation.}
+\item{coef_y2}{The coefficient of the second parameter in the y-dimension equation.}
 
 \item{intercept_x}{The intercept for the x-dimension equation.}
 
@@ -58,8 +58,8 @@ This function generates points on a plane in 3D space based on the provided coef
 intercepts, and ranges for the parameters.
 }
 \examples{
-plane_points <- plane(n = 100, coefficient_x_1 = 1, coefficient_x_2 = 1,
-                     coefficient_y_1 = -1, coefficient_y_2 = 1, intercept_x = -10,
+plane_points <- plane(n = 100, coef_x1 = 1, coef_x2 = 1,
+                     coef_y1 = -1, coef_y2 = 1, intercept_x = -10,
                      intercept_y = 8, u_min = 10, u_max = 30, v_min = 10, v_max = 20,
                      num_noise = 2, min_n = 0, max_n = 1)
 

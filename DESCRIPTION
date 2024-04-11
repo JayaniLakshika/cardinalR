@@ -15,7 +15,7 @@ Authors@R: c(
            comment = c(ORCID = "0000-0002-0656-9789"))
   )
 Description:
-    A collection of simple simulation datasets designed for generating Nonlinear Dimensionality Reduction (NLDR) representations using techniques such as tSNE, UMAP, PHATE, TriMAP, and PaCMAP. These datasets serve as a valuable resource for conducting experiments to better understand the reliability of NLDR representations in various contexts.
+    A collection of simple simulation datasets designed for generating Nonlinear Dimensionality Reduction (NLDR) representations techniques such as tSNE, UMAP, PHATE, TriMAP, and PaCMAP. These datasets serve as a valuable resource for conducting experiments to better understand the reliability of NLDR representations in various contexts.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true

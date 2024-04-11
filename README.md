@@ -3,11 +3,9 @@
 
 # cardinalR <img src="man/figures/logo.png" align="right" height="250" width="auto" alt="" />
 
-<!-- badges: start -->
-<!-- badges: end -->
-
-The `cardinalR` provides functionality for generating various
-high-dimensional datasets.
+The `cardinalR` provides functionality for generating simulation
+high-dimensional datasets for use in various Nonlinear dimensionality
+reduction techniques.
 
 ## Installation
 
@@ -26,16 +24,16 @@ library(cardinalR)
 ```
 
 ``` r
-mobius_clust_data <-  mobius_cluster_with_noise(sample_size = 500, num_noise_dims = 2, 
-                         min_noise = -0.05, max_noise = 0.05)
+mobius_clust_data <-  mobius_clust(n = 500, num_noise = 2, min_n = -0.05, 
+                                   max_n = 0.05)
 
 head(mobius_clust_data, 5)
-#>            [,1]      [,2]        [,3]        [,4]        [,5]
-#> [1,]  3.6190498 -3.212243  0.07545382  0.04050106  0.03858323
-#> [2,]  0.7685641 -4.293308 -0.32906750 -0.03478474 -0.02713460
-#> [3,]  2.1550013 -4.222857 -0.39926915  0.03916184  0.01308043
-#> [4,]  1.4419803  3.710829 -0.03566859 -0.02257588 -0.02419622
-#> [5,] -3.8336371  1.199429 -0.43352123  0.02474006  0.03636155
+#>             [,1]      [,2]        [,3]        [,4]         [,5]
+#> [1,]  4.14938980  1.314429  0.43507573 -0.04438254 -0.005752487
+#> [2,]  0.43150826  4.084147 -0.03339845  0.04392610 -0.037474740
+#> [3,] -0.05899146 -3.861268  0.15298222 -0.03167411 -0.026738660
+#> [4,]  2.62806362 -1.797529  0.30105461 -0.04480876 -0.005235957
+#> [5,] -2.70225381  2.682575 -0.63236840 -0.03620112  0.035464684
 ```
 
 <table style="width:100%">

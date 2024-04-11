@@ -62,7 +62,7 @@ reference:
   desc: The sphere datasets.
   contents:
   - sphere
-  - small_big_sphere_with_noise
+  - diff_sphere
 - title: "S-curve data"
   desc: The S-curve datasets.
   contents:
@@ -76,23 +76,23 @@ reference:
   contents:
   - nonlinear_2d
   - curvilinear_2d
-  - sine_curve_with_noise
-  - nonlinear_connect_with_noise
-  - two_curvilinear_data_with_noise
+  - sine_curve
+  - nonlinear_connect
+  - two_curvilinear
   - swiss_roll
-  - nonlinear_mirror_with_noise
-  - two_curvy_panckakes_with_noise
+  - nonlinear_mirror
+  - two_curvy_panckakes
 - title: "Linear data"
   desc: The linear datasets.
   contents:
   - plane
-  - long_cluster_data
-  - three_diff_linear_with_noise
-  - four_diff_long_clutsers_with_noise
-  - plane_2d_with_hole
-  - four_long_clusters_with_bkg_noise
-  - three_linear_with_noise
-  - two_linear_diff_with_noise
+  - two_long_clust
+  - three_diff_linear
+  - four_long_clust
+  - plane_2d_hole
+  - four_long_clust_bkg
+  - three_long_clust
+  - two_long_clust_diff
 - title: "Mobius data"
   desc: The mobius datasets.
   contents:
@@ -103,15 +103,15 @@ reference:
   desc: Additional high-dimensional datasets.
   contents:
   - conic_spiral_3d_row
-  - conic_spiral_with_noise
+  - conic_spiral_3d
   - dini_surface_3d_row
-  - dini_surface_with_noise
+  - dini_surface_3d
   - roman_surface_3d_row
-  - roman_surface_with_noise
-  - spiral_with_noise
+  - roman_surface_3d
+  - spiral_3d
   - torus_3d_row
-  - torus_with_noise
-  - cube_3d_with_noise
+  - torus_3d
+  - cube_3d
 - title: "Add noise dimensions"
   desc: Generate additional noise dimensions.
   contents:

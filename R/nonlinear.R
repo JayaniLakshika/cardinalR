@@ -10,11 +10,11 @@
 #' @return A matrix containing the generated points on the curvilinear 2D manifold.
 #'
 #' @examples
-#' curvilinear_points <- curvilinear_2d(n = 100, num_noise = 2,
+#' curvilinear_points <- curv_2d(n = 100, num_noise = 2,
 #'                                      min_n = -1, max_n = 1)
 #'
 #' @export
-curvilinear_2d <- function(n, num_noise, min_n, max_n){
+curv_2d <- function(n, num_noise, min_n, max_n){
 
   x <- stats::runif(n, 0, 2)
   y <- -(x^3 + stats::runif(n, 0, 3)) + stats::runif(n, 0, 0.5)
@@ -89,9 +89,9 @@ nonlinear_2d <- function(n, num_noise, min_n, max_n) {
 #' @export
 #'
 #' @examples
-#' sine_curve_with_noise <- sine_curve_with_noise(n = 100, num_noise = 8,
+#' sine_curve <- sine_curve(n = 100, num_noise = 8,
 #'                                                min_n = -0.05, max_n = 0.05)
-sine_curve_with_noise <- function(n, num_noise, min_n,
+sine_curve <- function(n, num_noise, min_n,
                                   max_n) {
 
   theta <- stats::runif(n, 0,1.80 * pi)
@@ -127,9 +127,9 @@ sine_curve_with_noise <- function(n, num_noise, min_n,
 #' @export
 #'
 #' @examples
-#' nonlinear_connect_with_noise <- nonlinear_connect_with_noise(n = 400,
+#' nonlinear_connect <- nonlinear_connect(n = 400,
 #' num_noise = 8, min_n = -0.05, max_n = 0.05)
-nonlinear_connect_with_noise <- function(n, num_noise, min_n,
+nonlinear_connect <- function(n, num_noise, min_n,
                                          max_n) {
 
   # To check that the assigned n is divided by three
@@ -201,9 +201,9 @@ nonlinear_connect_with_noise <- function(n, num_noise, min_n,
 #' @export
 #'
 #' @examples
-#' nonlinear_mirror_with_noise <- nonlinear_mirror_with_noise(n = 400,
+#' nonlinear_mirror <- nonlinear_mirror(n = 400,
 #' num_noise = 8, min_n = -0.05, max_n = 0.05)
-nonlinear_mirror_with_noise <- function(n, num_noise, min_n,
+nonlinear_mirror <- function(n, num_noise, min_n,
                                         max_n) {
 
   # To check that the assigned n is divided by two
@@ -259,9 +259,9 @@ nonlinear_mirror_with_noise <- function(n, num_noise, min_n,
 #' @export
 #'
 #' @examples
-#' two_curvy_panckakes_with_noise <- two_curvy_panckakes_with_noise(n = 300,
+#' two_curvy_panckakes <- two_curvy_panckakes(n = 300,
 #' num_noise = 8, min_n = -0.05, max_n = 0.05)
-two_curvy_panckakes_with_noise <- function(n, num_noise, min_n,
+two_curvy_panckakes <- function(n, num_noise, min_n,
                                            max_n) {
 
   # To check that the assigned n is divided by two
@@ -312,9 +312,9 @@ two_curvy_panckakes_with_noise <- function(n, num_noise, min_n,
 #' @export
 #'
 #' @examples
-#' two_curvilinear_data_with_noise <- two_curvilinear_data_with_noise(n = 250,
+#' two_curvilinear <- two_curvilinear(n = 250,
 #' num_noise = 8, min_n = -0.05, max_n = 0.05)
-two_curvilinear_data_with_noise <- function(n, num_noise, min_n,
+two_curvilinear <- function(n, num_noise, min_n,
                                             max_n) {
 
   # To check that the assigned n is divided by two

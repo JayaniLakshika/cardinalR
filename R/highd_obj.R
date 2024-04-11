@@ -37,11 +37,11 @@ conic_spiral_3d_row <- function(a, b, c, w) {
 #' @return A matrix containing the generated data points with or without added noise.
 #'
 #' @examples
-#' conic_spiral_with_noise(n = 100, num_noise = 4,
+#' conic_spiral_3d(n = 100, num_noise = 4,
 #' min_n = -0.05, max_n = 0.05)
 #'
 #' @export
-conic_spiral_with_noise <- function(n, num_noise, min_n,
+conic_spiral_3d <- function(n, num_noise, min_n,
                                     max_n) {
 
   df <- matrix(
@@ -104,11 +104,11 @@ dini_surface_3d_row <- function(a = 1, b = 1) {
 #' @return A matrix containing the generated data points with or without added noise.
 #'
 #' @examples
-#' dini_surface_with_noise(n = 100, num_noise = 4,
+#' dini_surface_3d(n = 100, num_noise = 4,
 #' min_n = -0.05, max_n = 0.05)
 #'
 #' @export
-dini_surface_with_noise <- function(n, num_noise, min_n,
+dini_surface_3d <- function(n, num_noise, min_n,
                                     max_n) {
 
   df <- matrix(
@@ -170,11 +170,11 @@ roman_surface_3d_row <- function(a = 1) {
 #' @return A matrix containing the generated data points with or without added noise.
 #'
 #' @examples
-#' roman_surface_with_noise(n = 100, num_noise = 8,
+#' roman_surface_3d(n = 100, num_noise = 8,
 #' min_n = -0.05, max_n = 0.05)
 #'
 #' @export
-roman_surface_with_noise <- function(n, num_noise, min_n,
+roman_surface_3d <- function(n, num_noise, min_n,
                                      max_n) {
 
   df <- matrix(
@@ -216,11 +216,11 @@ roman_surface_with_noise <- function(n, num_noise, min_n,
 #' @return A matrix containing the generated data points with or without added noise.
 #'
 #' @examples
-#' spiral_with_noise(n = 100, num_dims = 10, num_noise = 4,
+#' spiral_3d(n = 100, num_dims = 10, num_noise = 4,
 #' min_n = -0.05, max_n = 0.05)
 #'
 #' @export
-spiral_with_noise <- function(n, num_dims, num_noise, min_n,
+spiral_3d <- function(n, num_dims, num_noise, min_n,
                               max_n) {
 
   u <- array(stats::runif(n=(n*1), min=0, max=5), dim=c(n, 1))
@@ -296,11 +296,11 @@ torus_3d_row <- function(radius) {
 #' @return A matrix containing the generated torus-shaped data points with or without added noise.
 #'
 #' @examples
-#' torus_with_noise(n = 100, num_noise = 4,
+#' torus_3d(n = 100, num_noise = 4,
 #' min_n = -0.05, max_n = 0.05)
 #'
 #' @export
-torus_with_noise <- function(n, num_noise, min_n, max_n) {
+torus_3d <- function(n, num_noise, min_n, max_n) {
 
   df <- matrix(
     do.call(
@@ -341,11 +341,11 @@ torus_with_noise <- function(n, num_noise, min_n, max_n) {
 #' @return A list containing the generated data matrix and the sample size.
 #'
 #' @examples
-#' cube_3d_with_noise(num_of_effective_dims = 3, num_noise = 2,
+#' cube_3d(num_of_effective_dims = 3, num_noise = 2,
 #' min_n = -0.01, max_n = 0.01)
 #'
 #' @export
-cube_3d_with_noise <- function(num_of_effective_dims, num_noise, min_n,
+cube_3d <- function(num_of_effective_dims, num_noise, min_n,
                                max_n) {
 
   df1 <- do.call(expand.grid, rep(list(c( (0:11) / 11)), num_of_effective_dims))

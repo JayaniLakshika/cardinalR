@@ -20,7 +20,7 @@ library(langevitour)
 ```
 
 ```{r}
-conic_data <- conic_spiral_with_noise(n = 300, num_noise = 2,
+conic_data <- conic_spiral_3d(n = 300, num_noise = 2,
 min_n = -0.05, max_n = 0.05)
 
 colnames(conic_data) <- paste0("x", 1:NCOL(conic_data))
@@ -29,7 +29,7 @@ langevitour(conic_data, pointSize = 2)
 ```
 
 ```{r}
-dini_data <- dini_surface_with_noise(n = 300, num_noise = 2,
+dini_data <- dini_surface_3d(n = 300, num_noise = 2,
 min_n = -0.05, max_n = 0.05)
 
 colnames(dini_data) <- paste0("x", 1:NCOL(dini_data))
@@ -38,7 +38,7 @@ langevitour(dini_data, pointSize = 2)
 ```
 
 ```{r}
-roman_data <- roman_surface_with_noise(n = 300, num_noise = 2,
+roman_data <- roman_surface_3d(n = 300, num_noise = 2,
 min_n = -0.05, max_n = 0.05)
 
 colnames(roman_data) <- paste0("x", 1:NCOL(roman_data))
@@ -47,7 +47,7 @@ langevitour(roman_data, pointSize = 2)
 ```
 
 ```{r}
-spiral_data <- spiral_with_noise(n = 300, num_dims = 10, num_noise = 2,
+spiral_data <- spiral_3d(n = 300, num_dims = 10, num_noise = 2,
 min_n = -0.05, max_n = 0.05)
 
 colnames(spiral_data) <- paste0("x", 1:NCOL(spiral_data))
@@ -56,7 +56,7 @@ langevitour(spiral_data, pointSize = 2)
 ```
 
 ```{r}
-torus_data <- torus_with_noise(n = 300, num_noise = 2,
+torus_data <- torus_3d(n = 300, num_noise = 2,
 min_n = -0.05, max_n = 0.05)
 
 colnames(torus_data) <- paste0("x", 1:NCOL(torus_data))
@@ -65,7 +65,7 @@ langevitour(torus_data, pointSize = 2)
 ```
 
 ```{r}
-cube_data <- cube_3d_with_noise(num_of_effective_dims = 3, num_noise = 2,
+cube_data <- cube_3d(num_of_effective_dims = 3, num_noise = 2,
 min_n = -0.01, max_n = 0.01)
 
 cube_data$n

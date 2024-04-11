@@ -20,9 +20,59 @@ library(langevitour)
 ```
 
 ```{r}
-curvy_data <- two_curvilinear_data_with_noise(n = 600, 
-                                              num_noise = 2, 
-                                              min_n = -0.05, max_n = 0.05)
+curvilinear_points <- curv_2d(n = 100, num_noise = 2, min_n = -0.05, max_n = 0.05)
+
+colnames(curvilinear_points) <- paste0("x", 1:NCOL(curvilinear_points))
+
+langevitour(curvilinear_points, pointSize = 2)
+```
+
+```{r}
+nonlinear_points <- nonlinear_2d(n = 100, num_noise = 2, min_n = -0.05, max_n = 0.05)
+
+colnames(nonlinear_points) <- paste0("x", 1:NCOL(nonlinear_points))
+
+langevitour(nonlinear_points, pointSize = 2)
+```
+
+```{r}
+sine_curve <- sine_curve(n = 100, num_noise = 2, min_n = -0.05, max_n = 0.05)
+
+colnames(sine_curve) <- paste0("x", 1:NCOL(sine_curve))
+
+langevitour(sine_curve, pointSize = 2)
+```
+
+```{r}
+nonlinear_connect <- nonlinear_connect(n = 400, num_noise = 2, min_n = -0.05, 
+                                       max_n = 0.05)
+
+colnames(nonlinear_connect) <- paste0("x", 1:NCOL(nonlinear_connect))
+
+langevitour(nonlinear_connect, pointSize = 2)
+```
+
+```{r}
+nonlinear_mirror <- nonlinear_mirror(n = 400, num_noise = 8, min_n = -0.05, 
+                                     max_n = 0.05)
+
+colnames(nonlinear_mirror) <- paste0("x", 1:NCOL(nonlinear_mirror))
+
+langevitour(nonlinear_mirror, pointSize = 2)
+```
+
+```{r}
+two_curvy_panckakes <- two_curvy_panckakes(n = 300, num_noise = 2, min_n = -0.05, 
+                                           max_n = 0.05)
+
+colnames(two_curvy_panckakes) <- paste0("x", 1:NCOL(two_curvy_panckakes))
+
+langevitour(two_curvy_panckakes, pointSize = 2)
+```
+
+```{r}
+curvy_data <- two_curvilinear(n = 600, num_noise = 2, min_n = -0.05, 
+                              max_n = 0.05)
 
 colnames(curvy_data) <- paste0("x", 1:NCOL(curvy_data))
 

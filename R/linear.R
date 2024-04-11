@@ -4,10 +4,10 @@
 #' intercepts, and ranges for the parameters.
 #'
 #' @param n The number of points to generate.
-#' @param coefficient_x_1 The coefficient of the first parameter in the x-dimension equation.
-#' @param coefficient_x_2 The coefficient of the second parameter in the x-dimension equation.
-#' @param coefficient_y_1 The coefficient of the first parameter in the y-dimension equation.
-#' @param coefficient_y_2 The coefficient of the second parameter in the y-dimension equation.
+#' @param coef_x1 The coefficient of the first parameter in the x-dimension equation.
+#' @param coef_x2 The coefficient of the second parameter in the x-dimension equation.
+#' @param coef_y1 The coefficient of the first parameter in the y-dimension equation.
+#' @param coef_y2 The coefficient of the second parameter in the y-dimension equation.
 #' @param intercept_x The intercept for the x-dimension equation.
 #' @param intercept_y The intercept for the y-dimension equation.
 #' @param u_min The minimum value for the first parameter (u) range.
@@ -21,20 +21,20 @@
 #' @return A matrix containing the generated points on the plane.
 #'
 #' @examples
-#' plane_points <- plane(n = 100, coefficient_x_1 = 1, coefficient_x_2 = 1,
-#'                      coefficient_y_1 = -1, coefficient_y_2 = 1, intercept_x = -10,
+#' plane_points <- plane(n = 100, coef_x1 = 1, coef_x2 = 1,
+#'                      coef_y1 = -1, coef_y2 = 1, intercept_x = -10,
 #'                      intercept_y = 8, u_min = 10, u_max = 30, v_min = 10, v_max = 20,
 #'                      num_noise = 2, min_n = 0, max_n = 1)
 #'
 #' @export
-plane <- function(n, coefficient_x_1, coefficient_x_2, coefficient_y_1,
-                  coefficient_y_2, intercept_x, intercept_y, u_min, u_max, v_min,
+plane <- function(n, coef_x1, coef_x2, coef_y1,
+                  coef_y2, intercept_x, intercept_y, u_min, u_max, v_min,
                   v_max, num_noise, min_n, max_n) {
 
   u <- stats::runif(n, min = u_min, max = u_max)
   v <- stats::runif(n, min = v_min, max = v_max)
-  x <- coefficient_x_1 * u + coefficient_x_2 * v + intercept_x
-  y <- coefficient_y_1 * u + coefficient_y_2 * v + intercept_y
+  x <- coef_x1 * u + coef_x2 * v + intercept_x
+  y <- coef_y1 * u + coef_y2 * v + intercept_y
 
   plane_mat <- matrix(c(x, y), ncol = 2)
 
@@ -66,9 +66,9 @@ plane <- function(n, coefficient_x_1, coefficient_x_2, coefficient_y_1,
 #' @export
 #'
 #' @examples
-#' long_cluster <- long_cluster_data(n = 200, num_noise = 8,
+#' long_cluster <- two_long_clust(n = 200, num_noise = 8,
 #'                                   min_n = -0.05, max_n = 0.05)
-long_cluster_data <- function(n, num_noise, min_n, max_n) {
+two_long_clust <- function(n, num_noise, min_n, max_n) {
 
   # To check that the assigned n is divided by two
   if ((n%%2) != 0) {
@@ -117,9 +117,9 @@ long_cluster_data <- function(n, num_noise, min_n, max_n) {
 #' @export
 #'
 #' @examples
-#' three_diff_linear <- three_diff_linear_with_noise(n = 150,
+#' three_diff_linear <- three_diff_linear(n = 150,
 #' num_noise = 8, min_n = -0.05, max_n = 0.05)
-three_diff_linear_with_noise <- function(n, num_noise, min_n,
+three_diff_linear <- function(n, num_noise, min_n,
                                          max_n) {
 
   # To check that the assigned n is divided by three
@@ -172,9 +172,9 @@ three_diff_linear_with_noise <- function(n, num_noise, min_n,
 #' @export
 #'
 #' @examples
-#' four_diff_long_clusters <- four_diff_long_clutsers_with_noise(n = 200,
+#' four_diff_long_clusters <- four_long_clutst(n = 200,
 #' num_noise = 8, min_n = -0.05, max_n = 0.05)
-four_diff_long_clutsers_with_noise <- function(n, num_noise,
+four_long_clutst <- function(n, num_noise,
                                                min_n, max_n) {
 
   # To check that the assigned n is divided by four
@@ -227,9 +227,9 @@ four_diff_long_clutsers_with_noise <- function(n, num_noise,
 #' @export
 #'
 #' @examples
-#' plane_data <- plane_2d_with_hole(n = 100, num_noise = 2,
+#' plane_data <- plane_2d_hole(n = 100, num_noise = 2,
 #' min_n = 0, max_n = 1)
-plane_2d_with_hole <- function(n, num_noise, min_n, max_n) {
+plane_2d_hole <- function(n, num_noise, min_n, max_n) {
 
   # To check that the assigned n is divided by four
   if ((n%%4) != 0) {
@@ -281,9 +281,9 @@ plane_2d_with_hole <- function(n, num_noise, min_n, max_n) {
 #'
 #' @examples
 #' # Generate four long clusters with background noise with custom parameters
-#' data <- four_long_clusters_with_bkg_noise(n = 400, num_noise = 4,
+#' data <- four_long_clust_bkg(n = 400, num_noise = 4,
 #' min_n = -0.05, max_n = 0.05)
-four_long_clusters_with_bkg_noise <- function(n, num_noise,
+four_long_clust_bkg <- function(n, num_noise,
                                               min_n, max_n) {
 
   # To check that the assigned n is divided by five
@@ -340,9 +340,9 @@ four_long_clusters_with_bkg_noise <- function(n, num_noise,
 #' @examples
 #'
 #' # Generate three linear clusters with noise with custom parameters
-#' data <- three_linear_with_noise(n = 300, num_noise = 4,
+#' data <- three_long_clust(n = 300, num_noise = 4,
 #' min_n = -0.05, max_n = 0.05)
-three_linear_with_noise <- function(n, num_noise, min_n,
+three_long_clust <- function(n, num_noise, min_n,
                                     max_n) {
 
   # To check that the assigned n is divided by three
@@ -398,9 +398,9 @@ three_linear_with_noise <- function(n, num_noise, min_n,
 #' @examples
 #'
 #' # Generate two linear differentiated clusters with noise with custom parameters
-#' data <- two_linear_diff_with_noise(n = 300, num_noise = 4,
+#' data <- two_long_clust_diff(n = 300, num_noise = 4,
 #' min_n = -0.05, max_n = 0.05)
-two_linear_diff_with_noise <- function(n, num_noise, min_n,
+two_long_clust_diff <- function(n, num_noise, min_n,
                                        max_n) {
 
   # To check that the assigned n is divided by three
