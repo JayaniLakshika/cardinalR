@@ -172,9 +172,9 @@ three_diff_linear <- function(n, num_noise, min_n,
 #' @export
 #'
 #' @examples
-#' four_diff_long_clusters <- four_long_clutst(n = 200,
+#' four_diff_long_clusters <- four_long_clust(n = 200,
 #' num_noise = 8, min_n = -0.05, max_n = 0.05)
-four_long_clutst <- function(n, num_noise,
+four_long_clust <- function(n, num_noise,
                                                min_n, max_n) {
 
   # To check that the assigned n is divided by four

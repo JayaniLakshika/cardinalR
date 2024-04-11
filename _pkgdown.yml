@@ -13,7 +13,7 @@ reference:
   - clust_diff_shapes_pts
   - gau_curvy_clust_bkg
   - one_doublet
-  - one_doublets_bkg
+  - one_doublet_bkg
   - one_doublet_four_clust
   - one_doublet_diff_var_clust
   - one_doublet_diff_patterns
@@ -49,10 +49,11 @@ reference:
   desc: The grid datasets.
   contents:
   - one_grid
-  - three_grid
   - one_grid_bkg
-  - two_grid_comb_bkg
+  - two_grid
   - two_grid_comb
+  - two_grid_comb_bkg
+  - three_grid
 - title: "Triangular data"
   desc: The triangular datasets.
   contents:
@@ -75,7 +76,7 @@ reference:
   desc: The nonlinear datasets.
   contents:
   - nonlinear_2d
-  - curvilinear_2d
+  - curv_2d
   - sine_curve
   - nonlinear_connect
   - two_curvilinear

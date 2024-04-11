@@ -13,9 +13,9 @@ knitr::opts_chunk$set(
 )
 ```
 
-# cardinalR <img src="man/figures/logo.png" align="right" height="250" width="auto" alt="" />
+# cardinalR <img src="man/figures/logo.png" align="right" height="250" alt="" />
 
-The `cardinalR` provides functionality for generating simulation high-dimensional datasets for use in various Nonlinear dimension reduction techniques.
+The `cardinalR` package provides functionality for generating simulation high-dimensional datasets for use in various Nonlinear dimension reduction techniques.
 
 ## Installation
 

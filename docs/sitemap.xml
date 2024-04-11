@@ -82,7 +82,16 @@
     <loc>https://jayanilakshika.github.io/cardinalR/index.html</loc>
   </url>
   <url>
+    <loc>https://jayanilakshika.github.io/cardinalR/reference/cell_cycle.html</loc>
+  </url>
+  <url>
     <loc>https://jayanilakshika.github.io/cardinalR/reference/cell_cycle_with_noise.html</loc>
+  </url>
+  <url>
+    <loc>https://jayanilakshika.github.io/cardinalR/reference/clust_diff_shapes.html</loc>
+  </url>
+  <url>
+    <loc>https://jayanilakshika.github.io/cardinalR/reference/clust_diff_shapes_pts.html</loc>
   </url>
   <url>
     <loc>https://jayanilakshika.github.io/cardinalR/reference/cluster_and_curvilinear__with_noise_and_bkg_noise.html</loc>
@@ -97,13 +106,22 @@
     <loc>https://jayanilakshika.github.io/cardinalR/reference/clusters_different_shapes_diff_num_points.html</loc>
   </url>
   <url>
+    <loc>https://jayanilakshika.github.io/cardinalR/reference/conic_spiral_3d.html</loc>
+  </url>
+  <url>
     <loc>https://jayanilakshika.github.io/cardinalR/reference/conic_spiral_3d_row.html</loc>
   </url>
   <url>
     <loc>https://jayanilakshika.github.io/cardinalR/reference/conic_spiral_with_noise.html</loc>
   </url>
   <url>
+    <loc>https://jayanilakshika.github.io/cardinalR/reference/cube_3d.html</loc>
+  </url>
+  <url>
     <loc>https://jayanilakshika.github.io/cardinalR/reference/cube_3d_with_noise.html</loc>
+  </url>
+  <url>
+    <loc>https://jayanilakshika.github.io/cardinalR/reference/curv_2d.html</loc>
   </url>
   <url>
     <loc>https://jayanilakshika.github.io/cardinalR/reference/curvilinear_2d.html</loc>
@@ -130,10 +148,19 @@
     <loc>https://jayanilakshika.github.io/cardinalR/reference/curvy_cell_cycle_with_noise.html</loc>
   </url>
   <url>
+    <loc>https://jayanilakshika.github.io/cardinalR/reference/curvy_cycle.html</loc>
+  </url>
+  <url>
     <loc>https://jayanilakshika.github.io/cardinalR/reference/curvy_tree.html</loc>
   </url>
   <url>
     <loc>https://jayanilakshika.github.io/cardinalR/reference/curvy_tree_with_noise.html</loc>
+  </url>
+  <url>
+    <loc>https://jayanilakshika.github.io/cardinalR/reference/diff_sphere.html</loc>
+  </url>
+  <url>
+    <loc>https://jayanilakshika.github.io/cardinalR/reference/dini_surface_3d.html</loc>
   </url>
   <url>
     <loc>https://jayanilakshika.github.io/cardinalR/reference/dini_surface_3d_row.html</loc>
@@ -157,7 +184,25 @@
     <loc>https://jayanilakshika.github.io/cardinalR/reference/four_diff_long_clutsers_with_noise.html</loc>
   </url>
   <url>
+    <loc>https://jayanilakshika.github.io/cardinalR/reference/four_long_clust.html</loc>
+  </url>
+  <url>
+    <loc>https://jayanilakshika.github.io/cardinalR/reference/four_long_clust_bkg.html</loc>
+  </url>
+  <url>
     <loc>https://jayanilakshika.github.io/cardinalR/reference/four_long_clusters_with_bkg_noise.html</loc>
+  </url>
+  <url>
+    <loc>https://jayanilakshika.github.io/cardinalR/reference/gau_clust.html</loc>
+  </url>
+  <url>
+    <loc>https://jayanilakshika.github.io/cardinalR/reference/gau_clust_diff.html</loc>
+  </url>
+  <url>
+    <loc>https://jayanilakshika.github.io/cardinalR/reference/gau_curvy_clust.html</loc>
+  </url>
+  <url>
+    <loc>https://jayanilakshika.github.io/cardinalR/reference/gau_curvy_clust_bkg.html</loc>
   </url>
   <url>
     <loc>https://jayanilakshika.github.io/cardinalR/reference/gaussian_clusters.html</loc>
@@ -187,10 +232,16 @@
     <loc>https://jayanilakshika.github.io/cardinalR/reference/mirror_s_curves_with_noise.html</loc>
   </url>
   <url>
+    <loc>https://jayanilakshika.github.io/cardinalR/reference/mirror_scurves.html</loc>
+  </url>
+  <url>
     <loc>https://jayanilakshika.github.io/cardinalR/reference/mobius_5d.html</loc>
   </url>
   <url>
     <loc>https://jayanilakshika.github.io/cardinalR/reference/mobius_5d_row.html</loc>
+  </url>
+  <url>
+    <loc>https://jayanilakshika.github.io/cardinalR/reference/mobius_clust.html</loc>
   </url>
   <url>
     <loc>https://jayanilakshika.github.io/cardinalR/reference/mobius_cluster_with_noise.html</loc>
@@ -199,16 +250,37 @@
     <loc>https://jayanilakshika.github.io/cardinalR/reference/nonlinear_2d.html</loc>
   </url>
   <url>
+    <loc>https://jayanilakshika.github.io/cardinalR/reference/nonlinear_connect.html</loc>
+  </url>
+  <url>
     <loc>https://jayanilakshika.github.io/cardinalR/reference/nonlinear_connect_with_noise.html</loc>
   </url>
   <url>
+    <loc>https://jayanilakshika.github.io/cardinalR/reference/nonlinear_mirror.html</loc>
+  </url>
+  <url>
     <loc>https://jayanilakshika.github.io/cardinalR/reference/nonlinear_mirror_with_noise.html</loc>
+  </url>
+  <url>
+    <loc>https://jayanilakshika.github.io/cardinalR/reference/one_doublet.html</loc>
+  </url>
+  <url>
+    <loc>https://jayanilakshika.github.io/cardinalR/reference/one_doublet_bkg.html</loc>
   </url>
   <url>
     <loc>https://jayanilakshika.github.io/cardinalR/reference/one_doublet_dfifferent_pattern_clusters_with_noise.html</loc>
   </url>
   <url>
     <loc>https://jayanilakshika.github.io/cardinalR/reference/one_doublet_dfifferent_var_clusters_with_noise.html</loc>
+  </url>
+  <url>
+    <loc>https://jayanilakshika.github.io/cardinalR/reference/one_doublet_diff_patterns.html</loc>
+  </url>
+  <url>
+    <loc>https://jayanilakshika.github.io/cardinalR/reference/one_doublet_diff_var_clust.html</loc>
+  </url>
+  <url>
+    <loc>https://jayanilakshika.github.io/cardinalR/reference/one_doublet_four_clust.html</loc>
   </url>
   <url>
     <loc>https://jayanilakshika.github.io/cardinalR/reference/one_doublet_four_clusters_with_noise.html</loc>
@@ -220,6 +292,12 @@
     <loc>https://jayanilakshika.github.io/cardinalR/reference/one_doublets_with_bkg_noise.html</loc>
   </url>
   <url>
+    <loc>https://jayanilakshika.github.io/cardinalR/reference/one_grid.html</loc>
+  </url>
+  <url>
+    <loc>https://jayanilakshika.github.io/cardinalR/reference/one_grid_bkg.html</loc>
+  </url>
+  <url>
     <loc>https://jayanilakshika.github.io/cardinalR/reference/one_grid_diff.html</loc>
   </url>
   <url>
@@ -229,7 +307,13 @@
     <loc>https://jayanilakshika.github.io/cardinalR/reference/plane.html</loc>
   </url>
   <url>
+    <loc>https://jayanilakshika.github.io/cardinalR/reference/plane_2d_hole.html</loc>
+  </url>
+  <url>
     <loc>https://jayanilakshika.github.io/cardinalR/reference/plane_2d_with_hole.html</loc>
+  </url>
+  <url>
+    <loc>https://jayanilakshika.github.io/cardinalR/reference/roman_surface_3d.html</loc>
   </url>
   <url>
     <loc>https://jayanilakshika.github.io/cardinalR/reference/roman_surface_3d_row.html</loc>
@@ -244,10 +328,19 @@
     <loc>https://jayanilakshika.github.io/cardinalR/reference/s_curve_hole.html</loc>
   </url>
   <url>
+    <loc>https://jayanilakshika.github.io/cardinalR/reference/scurve.html</loc>
+  </url>
+  <url>
+    <loc>https://jayanilakshika.github.io/cardinalR/reference/scurve_hole.html</loc>
+  </url>
+  <url>
     <loc>https://jayanilakshika.github.io/cardinalR/reference/seven_branch.html</loc>
   </url>
   <url>
     <loc>https://jayanilakshika.github.io/cardinalR/reference/seven_branching_data_with_noise.html</loc>
+  </url>
+  <url>
+    <loc>https://jayanilakshika.github.io/cardinalR/reference/sine_curve.html</loc>
   </url>
   <url>
     <loc>https://jayanilakshika.github.io/cardinalR/reference/sine_curve_with_noise.html</loc>
@@ -259,13 +352,25 @@
     <loc>https://jayanilakshika.github.io/cardinalR/reference/sphere.html</loc>
   </url>
   <url>
+    <loc>https://jayanilakshika.github.io/cardinalR/reference/spiral_3d.html</loc>
+  </url>
+  <url>
     <loc>https://jayanilakshika.github.io/cardinalR/reference/spiral_with_noise.html</loc>
   </url>
   <url>
     <loc>https://jayanilakshika.github.io/cardinalR/reference/swiss_roll.html</loc>
   </url>
   <url>
+    <loc>https://jayanilakshika.github.io/cardinalR/reference/three_circulars.html</loc>
+  </url>
+  <url>
     <loc>https://jayanilakshika.github.io/cardinalR/reference/three_circulars_with_noise.html</loc>
+  </url>
+  <url>
+    <loc>https://jayanilakshika.github.io/cardinalR/reference/three_clust_diff_dist.html</loc>
+  </url>
+  <url>
+    <loc>https://jayanilakshika.github.io/cardinalR/reference/three_clust_mirror.html</loc>
   </url>
   <url>
     <loc>https://jayanilakshika.github.io/cardinalR/reference/three_cluster_mirror_with_noise.html</loc>
@@ -274,10 +379,19 @@
     <loc>https://jayanilakshika.github.io/cardinalR/reference/three_clusters_data_with_noise.html</loc>
   </url>
   <url>
+    <loc>https://jayanilakshika.github.io/cardinalR/reference/three_diff_linear.html</loc>
+  </url>
+  <url>
     <loc>https://jayanilakshika.github.io/cardinalR/reference/three_diff_linear_with_noise.html</loc>
   </url>
   <url>
+    <loc>https://jayanilakshika.github.io/cardinalR/reference/three_doublets.html</loc>
+  </url>
+  <url>
     <loc>https://jayanilakshika.github.io/cardinalR/reference/three_doublets_with_noise.html</loc>
+  </url>
+  <url>
+    <loc>https://jayanilakshika.github.io/cardinalR/reference/three_grid.html</loc>
   </url>
   <url>
     <loc>https://jayanilakshika.github.io/cardinalR/reference/three_grid_with_noise.html</loc>
@@ -286,7 +400,16 @@
     <loc>https://jayanilakshika.github.io/cardinalR/reference/three_linear_with_noise.html</loc>
   </url>
   <url>
+    <loc>https://jayanilakshika.github.io/cardinalR/reference/three_long_clust.html</loc>
+  </url>
+  <url>
+    <loc>https://jayanilakshika.github.io/cardinalR/reference/three_nonlinear.html</loc>
+  </url>
+  <url>
     <loc>https://jayanilakshika.github.io/cardinalR/reference/three_nonlinear_with_noise.html</loc>
+  </url>
+  <url>
+    <loc>https://jayanilakshika.github.io/cardinalR/reference/torus_3d.html</loc>
   </url>
   <url>
     <loc>https://jayanilakshika.github.io/cardinalR/reference/torus_3d_row.html</loc>
@@ -304,7 +427,19 @@
     <loc>https://jayanilakshika.github.io/cardinalR/reference/tree_with_noise.html</loc>
   </url>
   <url>
+    <loc>https://jayanilakshika.github.io/cardinalR/reference/tri_3d.html</loc>
+  </url>
+  <url>
+    <loc>https://jayanilakshika.github.io/cardinalR/reference/tri_plane_bkg.html</loc>
+  </url>
+  <url>
     <loc>https://jayanilakshika.github.io/cardinalR/reference/triangular_plane_with_bkg_noise.html</loc>
+  </url>
+  <url>
+    <loc>https://jayanilakshika.github.io/cardinalR/reference/two_circulars.html</loc>
+  </url>
+  <url>
+    <loc>https://jayanilakshika.github.io/cardinalR/reference/two_curvilinear.html</loc>
   </url>
   <url>
     <loc>https://jayanilakshika.github.io/cardinalR/reference/two_curvilinear_data_with_noise.html</loc>
@@ -316,7 +451,22 @@
     <loc>https://jayanilakshika.github.io/cardinalR/reference/two_curvilinear_with_noise.html</loc>
   </url>
   <url>
+    <loc>https://jayanilakshika.github.io/cardinalR/reference/two_curvy.html</loc>
+  </url>
+  <url>
+    <loc>https://jayanilakshika.github.io/cardinalR/reference/two_curvy_diff_pts.html</loc>
+  </url>
+  <url>
+    <loc>https://jayanilakshika.github.io/cardinalR/reference/two_curvy_panckakes.html</loc>
+  </url>
+  <url>
     <loc>https://jayanilakshika.github.io/cardinalR/reference/two_curvy_panckakes_with_noise.html</loc>
+  </url>
+  <url>
+    <loc>https://jayanilakshika.github.io/cardinalR/reference/two_doublets_bkg.html</loc>
+  </url>
+  <url>
+    <loc>https://jayanilakshika.github.io/cardinalR/reference/two_doublets_parallel.html</loc>
   </url>
   <url>
     <loc>https://jayanilakshika.github.io/cardinalR/reference/two_doublets_parallel_with_noise.html</loc>
@@ -325,10 +475,28 @@
     <loc>https://jayanilakshika.github.io/cardinalR/reference/two_doublets_with_bkg_noise.html</loc>
   </url>
   <url>
+    <loc>https://jayanilakshika.github.io/cardinalR/reference/two_grid.html</loc>
+  </url>
+  <url>
+    <loc>https://jayanilakshika.github.io/cardinalR/reference/two_grid_comb.html</loc>
+  </url>
+  <url>
+    <loc>https://jayanilakshika.github.io/cardinalR/reference/two_grid_comb_bkg.html</loc>
+  </url>
+  <url>
     <loc>https://jayanilakshika.github.io/cardinalR/reference/two_grid_with_bkg_noise.html</loc>
   </url>
   <url>
     <loc>https://jayanilakshika.github.io/cardinalR/reference/two_linear_diff_with_noise.html</loc>
+  </url>
+  <url>
+    <loc>https://jayanilakshika.github.io/cardinalR/reference/two_long_clust.html</loc>
+  </url>
+  <url>
+    <loc>https://jayanilakshika.github.io/cardinalR/reference/two_long_clust_diff.html</loc>
+  </url>
+  <url>
+    <loc>https://jayanilakshika.github.io/cardinalR/reference/two_nonlinear.html</loc>
   </url>
   <url>
     <loc>https://jayanilakshika.github.io/cardinalR/reference/two_nonlinear_with_noise.html</loc>
@@ -338,5 +506,11 @@
   </url>
   <url>
     <loc>https://jayanilakshika.github.io/cardinalR/reference/two_s_curves_with_noise.html</loc>
+  </url>
+  <url>
+    <loc>https://jayanilakshika.github.io/cardinalR/reference/two_scurve_hole.html</loc>
+  </url>
+  <url>
+    <loc>https://jayanilakshika.github.io/cardinalR/reference/two_scurves.html</loc>
   </url>
 </urlset>

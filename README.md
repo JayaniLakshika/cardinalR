@@ -1,9 +1,9 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# cardinalR <img src="man/figures/logo.png" align="right" height="250" width="auto" alt="" />
+# cardinalR <img src="man/figures/logo.png" align="right" height="250" alt="" />
 
-The `cardinalR` provides functionality for generating simulation
+The `cardinalR` package provides functionality for generating simulation
 high-dimensional datasets for use in various Nonlinear dimension
 reduction techniques.
 
@@ -28,12 +28,12 @@ mobius_clust_data <-  mobius_clust(n = 500, num_noise = 2, min_n = -0.05,
                                    max_n = 0.05)
 
 head(mobius_clust_data, 5)
-#>             [,1]        [,2]         [,3]        [,4]        [,5]
-#> [1,] -3.84611861 -1.25704741 -0.638967081 -0.02949529  0.04362883
-#> [2,]  1.20362120 -3.58687775  0.385511981 -0.02135688  0.04524982
-#> [3,]  0.47560693  4.07085478  0.015786283 -0.02049019 -0.04610679
-#> [4,] -0.08629218  3.30104260 -0.336331289  0.04988311  0.04108780
-#> [5,]  4.67023931  0.03962249 -0.004886119 -0.01175689 -0.04458614
+#>           [,1]     [,2]       [,3]         [,4]        [,5]
+#> [1,]  2.384235 1.861535 -0.5586073 -0.020072385 -0.01130684
+#> [2,] -2.622239 2.946592 -0.1104749  0.043530516 -0.04262104
+#> [3,]  1.295260 4.018709 -0.4246547 -0.006094836  0.02994540
+#> [4,] -3.966696 1.219701  0.4038015 -0.003356082 -0.03539191
+#> [5,]  2.314262 2.208101 -0.2123592  0.000858585 -0.02029194
 ```
 
 <table style="width:100%">
