@@ -7,26 +7,26 @@ reference:
 - title: "Clustering data"
   desc: The clustering datasets.
   contents:
-  - gaussian_clusters
-  - gaussian_clusters_diff_points
-  - clusters_different_shapes
-  - clusters_different_shapes_diff_num_points
-  - cluster_and_curvilinear__with_noise_and_bkg_noise
-  - one_doublet_with_noise
-  - three_doublets_with_noise
-  - one_doublet_four_clusters_with_noise
-  - one_doublet_dfifferent_var_clusters_with_noise
-  - one_doublet_dfifferent_pattern_clusters_with_noise
-  - two_doublets_parallel_with_noise
-  - one_doublets_with_bkg_noise
-  - two_doublets_with_bkg_noise
-  - two_nonlinear_with_noise
-  - two_curvilinear_with_noise
-  - two_curvilinear_diff_with_noise
-  - three_clusters_data_with_noise
-  - three_nonlinear_with_noise
-  - three_cluster_mirror_with_noise
-  - cluster_and_curvilinear_with_noise
+  - gau_clust
+  - gau_clust_diff
+  - clust_diff_shapes
+  - clust_diff_shapes_pts
+  - gau_curvy_clust_bkg
+  - one_doublet
+  - one_doublets_bkg
+  - one_doublet_four_clust
+  - one_doublet_diff_var_clust
+  - one_doublet_diff_patterns
+  - two_doublets_parallel
+  - two_doublets_bkg
+  - two_nonlinear
+  - two_curvy
+  - two_curvy_diff_pts
+  - three_clust_diff_dist
+  - three_doublets
+  - three_nonlinear
+  - three_clust_mirror
+  - gau_curvy_clust
 - title: "Branching data"
   desc: The branching datasets.
   contents:
@@ -50,9 +50,9 @@ reference:
   contents:
   - one_grid
   - three_grid
-  - one_grid_diff_with_bkg_noise
-  - two_grid_with_bkg_noise
-  - one_grid_diff
+  - one_grid_bkg
+  - two_grid_comb_bkg
+  - two_grid_comb
 - title: "Triangular data"
   desc: The triangular datasets.
   contents:

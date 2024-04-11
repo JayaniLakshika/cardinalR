@@ -18,11 +18,11 @@
 #'
 #' @examples
 #'
-#' gaussian_clusters(n = 300, num_clust = 5,
+#' gau_clust(n = 300, num_clust = 5,
 #' mean_matrix = rbind(c(1,0,0,0), c(0,1,0,0), c(0,0,1,0),
 #' c(0,0,0,1), c(0,0,0,0)), var_vec = c(0.05, 0.05, 0.05, 0.05, 0.05),
 #' num_dims = 4, num_noise = 2, min_n = -0.05, max_n = 0.05)
-gaussian_clusters <- function(n, num_clust,
+gau_clust <- function(n, num_clust,
                               mean_matrix, var_vec, num_dims, num_noise,
                               min_n, max_n) {
 
@@ -128,14 +128,14 @@ gaussian_clusters <- function(n, num_clust,
 #' @examples
 #'
 #' # Generate Gaussian clusters with custom parameters
-#' data <- gaussian_clusters_diff_points(n = 400, clust_size_vec = c(50, 100, 200, 50),
+#' data <- gau_clust_diff(n = 400, clust_size_vec = c(50, 100, 200, 50),
 #'                                       num_clust = 4, mean_matrix =
 #'                                       rbind(c(1,0,0,0,0,0), c(0,1,0,0,0,0),
 #'                                       c(0,0,1,0,0,0), c(0,0,0,1,0,0)),
 #'                                       var_vec = c(0.02, 0.05, 0.06, 0.1),
 #'                                       num_dims = 6, num_noise = 4,
 #'                                       min_n = -0.05, max_n = 0.05)
-gaussian_clusters_diff_points <- function(n, clust_size_vec, num_clust,
+gau_clust_diff <- function(n, clust_size_vec, num_clust,
                                           mean_matrix, var_vec, num_dims,
                                           num_noise, min_n, max_n) {
 
@@ -233,10 +233,10 @@ gaussian_clusters_diff_points <- function(n, clust_size_vec, num_clust,
 #'
 #' @examples
 #' # Generate clusters with default parameters
-#' data <- clusters_different_shapes(n = 300, num_gau_clust = 4,
+#' data <- clust_diff_shapes(n = 300, num_gau_clust = 4,
 #' num_non_gau_clust = 2, clust_sd_gau = 0.05, clust_sd_non_gau = 0.1,
 #' num_dims = 7, a = 2, b = 4)
-clusters_different_shapes <- function(n, num_gau_clust,
+clust_diff_shapes <- function(n, num_gau_clust,
                                       num_non_gau_clust, clust_sd_gau,
                                       clust_sd_non_gau, num_dims, a, b) {
 
@@ -349,11 +349,11 @@ clusters_different_shapes <- function(n, num_gau_clust,
 #'
 #' @examples
 #' # Generate clusters with default parameters
-#' data <- clusters_different_shapes_diff_num_points(n = 400,
+#' data <- clust_diff_shapes_pts(n = 400,
 #' clust_size_vec = c(50, 50, 50, 50, 100, 100), num_gau_clust = 4,
 #' num_non_gau_clust = 2, clust_sd_gau = 0.05, clust_sd_non_gau = 0.1,
 #' num_dims = 7, a = 2, b = 4)
-clusters_different_shapes_diff_num_points <- function(n, clust_size_vec,
+clust_diff_shapes_pts <- function(n, clust_size_vec,
                                                       num_gau_clust,
                                                       num_non_gau_clust,
                                                       clust_sd_gau,
@@ -453,9 +453,9 @@ clusters_different_shapes_diff_num_points <- function(n, clust_size_vec,
 #' @examples
 #'
 #' # Generate clusters and curvilinear data with noise with custom parameters
-#' data <- cluster_and_curvilinear__with_noise_and_bkg_noise(n = 260,
+#' data <- gau_curvy_clust_bkg(n = 260,
 #' num_noise = 4, min_n = -0.05, max_n = 0.05)
-cluster_and_curvilinear__with_noise_and_bkg_noise <- function(n,
+gau_curvy_clust_bkg <- function(n,
                                                               num_noise,
                                                               min_n, max_n) {
 
@@ -520,9 +520,9 @@ cluster_and_curvilinear__with_noise_and_bkg_noise <- function(n,
 #' @examples
 #'
 #' # Generate doublets with noise with custom parameters
-#' data <- one_doublet_with_noise(n = 220, num_noise = 4,
+#' data <- one_doublet(n = 220, num_noise = 4,
 #' min_n = -0.05, max_n = 0.05)
-one_doublet_with_noise <- function(n, num_noise, min_n,
+one_doublet <- function(n, num_noise, min_n,
                                    max_n) {
 
 
@@ -586,9 +586,9 @@ one_doublet_with_noise <- function(n, num_noise, min_n,
 #' @examples
 #'
 #' # Generate doublets with three clusters and noise with custom parameters
-#' data <- three_doublets_with_noise(n = 420, num_noise = 4,
+#' data <- three_doublets(n = 420, num_noise = 4,
 #' min_n = -0.05, max_n = 0.05)
-three_doublets_with_noise <- function(n, num_noise, min_n,
+three_doublets <- function(n, num_noise, min_n,
                                       max_n) {
 
   # To check that the assigned n is divided by 4.2
@@ -692,9 +692,9 @@ three_doublets_with_noise <- function(n, num_noise, min_n,
 #' @examples
 #'
 #' # Generate doublets with four clusters and noise with custom parameters
-#' data <- one_doublet_four_clusters_with_noise(n = 440, num_noise = 4,
+#' data <- one_doublet_four_clust(n = 440, num_noise = 4,
 #' min_n = -0.05, max_n = 0.05)
-one_doublet_four_clusters_with_noise <- function(n, num_noise,
+one_doublet_four_clust <- function(n, num_noise,
                                                  min_n, max_n) {
 
   # To check that the assigned n is divided by 4.4
@@ -779,9 +779,9 @@ one_doublet_four_clusters_with_noise <- function(n, num_noise,
 #' @examples
 #'
 #' # Generate doublets with different variance clusters and noise with custom parameters
-#' data <- one_doublet_dfifferent_var_clusters_with_noise(n = 260, num_noise = 2,
+#' data <- one_doublet_diff_var_clust(n = 260, num_noise = 2,
 #' min_n = -0.05, max_n = 0.05)
-one_doublet_dfifferent_var_clusters_with_noise <- function(n, num_noise,
+one_doublet_diff_var_clust <- function(n, num_noise,
                                                            min_n, max_n) {
 
   # To check that the assigned n is divided by 2.6
@@ -856,9 +856,9 @@ one_doublet_dfifferent_var_clusters_with_noise <- function(n, num_noise,
 #' @examples
 #'
 #' # Generate doublets with different pattern clusters and noise with custom parameters
-#' data <- one_doublet_dfifferent_pattern_clusters_with_noise(n = 280,
+#' data <- one_doublet_diff_patterns(n = 280,
 #' num_noise = 8, min_n = -0.05, max_n = 0.05)
-one_doublet_dfifferent_pattern_clusters_with_noise <- function(n, num_noise,
+one_doublet_diff_patterns <- function(n, num_noise,
                                                                min_n, max_n) {
 
   # To check that the assigned n is divided by 2.8
@@ -938,9 +938,9 @@ one_doublet_dfifferent_pattern_clusters_with_noise <- function(n, num_noise,
 #' @examples
 #'
 #' # Generate doublets in parallel with noise with custom parameters
-#' data <- two_doublets_parallel_with_noise(n = 440, num_noise = 2,
+#' data <- two_doublets_parallel(n = 440, num_noise = 2,
 #' min_n = -0.05, max_n = 0.05)
-two_doublets_parallel_with_noise <- function(n, num_noise, min_n,
+two_doublets_parallel <- function(n, num_noise, min_n,
                                              max_n) {
 
 
@@ -1045,9 +1045,9 @@ two_doublets_parallel_with_noise <- function(n, num_noise, min_n,
 #' @examples
 #'
 #' # Generate doublets with background noise with custom parameters
-#' data <- one_doublets_with_bkg_noise(n = 250, num_noise = 4,
+#' data <- one_doublet_bkg(n = 250, num_noise = 4,
 #' min_n = -0.05, max_n = 0.05)
-one_doublets_with_bkg_noise <- function(n, num_noise, min_n,
+one_doublet_bkg <- function(n, num_noise, min_n,
                                         max_n) {
 
   # To check that the assigned n is divided by 2.5
@@ -1130,9 +1130,9 @@ one_doublets_with_bkg_noise <- function(n, num_noise, min_n,
 #' @examples
 #'
 #' # Generate two doublets with background noise with custom parameters
-#' data <- two_doublets_with_bkg_noise(n = 200, num_noise = 4,
+#' data <- two_doublets_bkg(n = 200, num_noise = 4,
 #' min_n = -0.05, max_n = 0.05)
-two_doublets_with_bkg_noise <- function(n, num_noise, min_n,
+two_doublets_bkg <- function(n, num_noise, min_n,
                                         max_n) {
 
   # To check that the assigned n is divided by four
@@ -1211,9 +1211,9 @@ two_doublets_with_bkg_noise <- function(n, num_noise, min_n,
 #' @examples
 #'
 #' # Generate two nonlinear clusters with noise with custom parameters
-#' data <- two_nonlinear_with_noise(n = 200, num_noise = 4,
+#' data <- two_nonlinear(n = 200, num_noise = 4,
 #' min_n = -0.05, max_n = 0.050)
-two_nonlinear_with_noise <- function(n, num_noise, min_n,
+two_nonlinear <- function(n, num_noise, min_n,
                                      max_n) {
 
   # To check that the assigned n is divided by two
@@ -1273,9 +1273,9 @@ two_nonlinear_with_noise <- function(n, num_noise, min_n,
 #' @examples
 #'
 #' # Generate two curvilinear clusters with noise with custom parameters
-#' data <- two_curvilinear_with_noise(n = 200, num_noise = 4,
+#' data <- two_curvy(n = 200, num_noise = 4,
 #' min_n = -0.05, max_n = 0.05)
-two_curvilinear_with_noise <- function(n, num_noise, min_n,
+two_curvy <- function(n, num_noise, min_n,
                                        max_n) {
 
   # To check that the assigned n is divided by two
@@ -1325,7 +1325,7 @@ two_curvilinear_with_noise <- function(n, num_noise, min_n,
 #'
 #' This function generates data with two curvilinear clusters that are differentiated from each other, along with added noise.
 #'
-#' @param n The total number of data points to be generated.
+#' @param cluster_size_vec A vector specifying the number of points in each cluster.
 #' @param num_noise The number of additional noise dimensions to be generated.
 #' @param min_n The minimum value for the noise added to the data points.
 #' @param max_n The maximum value for the noise added to the data points.
@@ -1336,34 +1336,26 @@ two_curvilinear_with_noise <- function(n, num_noise, min_n,
 #' @examples
 #'
 #' # Generate two curvilinear differentiated clusters with noise with custom parameters
-#' data <- two_curvilinear_diff_with_noise(n = 200, num_noise = 4,
+#' data <- two_curvy_diff_pts(cluster_size_vec = c(50, 100), num_noise = 4,
 #' min_n = -0.05, max_n = 0.05)
-two_curvilinear_diff_with_noise <- function(n, num_noise, min_n,
+two_curvy_diff_pts <- function(cluster_size_vec, num_noise, min_n,
                                             max_n) {
 
-  # To check that the assigned n is divided by two
-  if ((n%%2) != 0) {
-    warning("The sample size should be a product of two.")
-    cluster_size <- floor(n/2)
 
-  } else {
-    cluster_size <- n/2
-  }
-
-  theta <- stats::runif(cluster_size, 0.40, 0.70 * pi)
+  theta <- stats::runif(cluster_size_vec[1], 0.40, 0.70 * pi)
   df1 <- matrix(c(
-    cos(theta) + stats::rnorm(cluster_size, 1, 0.06),
-    sin(theta) + stats::rnorm(cluster_size, 1, 0.06),
-    cos(theta) + stats::rnorm(cluster_size, 1, 0.06),
-    sin(theta) + stats::rnorm(cluster_size, 1, 0.06)
+    cos(theta) + stats::rnorm(cluster_size_vec[1], 1, 0.06),
+    sin(theta) + stats::rnorm(cluster_size_vec[1], 1, 0.06),
+    cos(theta) + stats::rnorm(cluster_size_vec[1], 1, 0.06),
+    sin(theta) + stats::rnorm(cluster_size_vec[1], 1, 0.06)
   ), ncol = 4)
 
-  theta1 <- stats::runif(cluster_size, 0.20, 0.90 * pi)
+  theta1 <- stats::runif(cluster_size_vec[2], 0.20, 0.90 * pi)
   df2 <- matrix(c(
-    1 + cos(theta1) + stats::rnorm(cluster_size, 1, 0.06),
-    1 + sin(theta1) + stats::rnorm(cluster_size, 1, 0.06),
-    cos(theta1) + stats::rnorm(cluster_size, 1, 0.06),
-    sin(theta1) + stats::rnorm(cluster_size, 1, 0.06)
+    1 + cos(theta1) + stats::rnorm(cluster_size_vec[2], 1, 0.06),
+    1 + sin(theta1) + stats::rnorm(cluster_size_vec[2], 1, 0.06),
+    cos(theta1) + stats::rnorm(cluster_size_vec[2], 1, 0.06),
+    sin(theta1) + stats::rnorm(cluster_size_vec[2], 1, 0.06)
   ), ncol = 4)
 
   df <- rbind(df1, df2)
@@ -1399,9 +1391,9 @@ two_curvilinear_diff_with_noise <- function(n, num_noise, min_n,
 #' @examples
 #'
 #' # Generate three nonlinear clusters with noise with custom parameters
-#' data <- three_nonlinear_with_noise(n = 300, num_noise = 4,
+#' data <- three_nonlinear(n = 300, num_noise = 4,
 #' min_n = -0.05, max_n = 0.05)
-three_nonlinear_with_noise <- function(n, num_noise, min_n,
+three_nonlinear <- function(n, num_noise, min_n,
                                        max_n) {
 
   # To check that the assigned n is divided by three
@@ -1458,9 +1450,9 @@ three_nonlinear_with_noise <- function(n, num_noise, min_n,
 #' @examples
 #'
 #' # Generate three cluster mirror with noise with custom parameters
-#' data <- three_cluster_mirror_with_noise(n = 300, num_noise = 4,
+#' data <- three_clust_mirror(n = 300, num_noise = 4,
 #' min_n = -0.05, max_n = 0.05)
-three_cluster_mirror_with_noise <- function(n, num_noise, min_n,
+three_clust_mirror <- function(n, num_noise, min_n,
                                             max_n) {
 
   # To check that the assigned n is divided by six
@@ -1528,10 +1520,10 @@ three_cluster_mirror_with_noise <- function(n, num_noise, min_n,
 #' @examples
 #'
 #' # Generate cluster and curvilinear data with custom parameters
-#' data <- cluster_and_curvilinear_with_noise(n = 300,
+#' data <- gau_curvy_clust(n = 300,
 #' clust_size_vec = c(100, 200), num_noise = 3, min_n = -0.05,
 #' max_n = 0.05)
-cluster_and_curvilinear_with_noise <- function(n, clust_size_vec = NULL,
+gau_curvy_clust <- function(n, clust_size_vec = NULL,
                                                num_noise, min_n, max_n) {
 
   ## If the number of points for each cluster is not defined
@@ -1597,11 +1589,11 @@ cluster_and_curvilinear_with_noise <- function(n, clust_size_vec = NULL,
 #' @return A matrix containing the generated data points with or without added noise.
 #'
 #' @examples
-#' three_clusters_data_with_noise(n = 100, num_dims = 7,
+#' three_clust_diff_dist(n = 100, num_dims = 7,
 #' num_noise = 4, min_n = -0.05, max_n = 0.05)
 #'
 #' @export
-three_clusters_data_with_noise <- function(n, num_dims, num_noise,
+three_clust_diff_dist <- function(n, num_dims, num_noise,
                                            min_n, max_n) {
 
   # To check that the assigned n is divided by three

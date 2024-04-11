@@ -37,15 +37,16 @@ langevitour(three_grd_data$df, pointSize = 2)
 ```
 
 ```{r}
-one_grdbkg_data <- one_grid_diff_with_bkg_noise(n = 585, num_noise = 2, min_n = -0.05, max_n = 0.05)
+one_grdbkg_data <- one_grid_bkg(n_value = 10, num_noise = 2, min_n = -0.05, max_n = 0.05)
+one_grdbkg_data$n
 
-colnames(one_grdbkg_data) <- paste0("x", 1:NCOL(one_grdbkg_data))
+colnames(one_grdbkg_data$df) <- paste0("x", 1:NCOL(one_grdbkg_data$df))
 
-langevitour(one_grdbkg_data, pointSize = 2)
+langevitour(one_grdbkg_data$df, pointSize = 2)
 ```
 
 ```{r}
-two_grd_data <- two_grid_with_bkg_noise(n_value = 15, num_noise = 2, min_n = -0.05, max_n = 0.05)
+two_grd_data <- two_grid_comb_bkg(n_value = 15, num_noise = 2, min_n = -0.05, max_n = 0.05)
 two_grd_data$n
 
 colnames(two_grd_data$df) <- paste0("x", 1:NCOL(two_grd_data$df))
@@ -54,7 +55,7 @@ langevitour(two_grd_data$df, pointSize = 2)
 ```
 
 ```{r}
-one_grddiff_data <- one_grid_diff(n = 512, num_noise = 2, min_n = -0.05, max_n = 0.05)
+one_grddiff_data <- two_grid_comb(n = 512, num_noise = 2, min_n = -0.05, max_n = 0.05)
 one_grddiff_data$n
 
 colnames(one_grddiff_data$df) <- paste0("x", 1:NCOL(one_grddiff_data$df))

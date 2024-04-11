@@ -78,42 +78,19 @@ three_grid <- function(n_value, num_noise, min_n, max_n) {
 #'
 #' This function generates a grid dataset with different values and background noise.
 #'
-#' @param n The total number of samples, including the background noise.
+#' @param n_value The number of grid points along each axis for the grids.
 #' @param num_noise The number of additional noise dimensions to add to the data.
 #' @param min_n The minimum value for the noise dimensions.
 #' @param max_n The maximum value for the noise dimensions.
-#' @return A list containing the grid dataset with different values and background noise.
+#' @return A list containing the one grid datasets with background noise and the sample size.
 #' @export
 #'
 #' @examples
-#' one_grid_diff_with_bkg_noise <- one_grid_diff_with_bkg_noise(n = 260,
+#' one_grid_bkg <- one_grid_bkg(n_value = 10,
 #' num_noise = 5, min_n = -0.05, max_n = 0.05)
-one_grid_diff_with_bkg_noise <- function(n = 260, num_noise = 5,
-                                         min_n = -0.05, max_n = 0.05) {
-
-
-  if (((n - (n * 6/26)) %% 2) != 0) {
-
-    stop("The sample size should be a product of two.")
-
-  } else {
-
-    if (((sqrt((n - (n * 6/26)) / 2)) %% 1) != 0) {
-
-      stop("The square root should exists.")
-
-    } else {
-
-      n_value <- sqrt((n - (n * 0.6/2.6)) / 2)
-
-    }
-
-  }
+one_grid_bkg <- function(n_value, num_noise, min_n, max_n) {
 
   df1 <- one_grid(nx = n_value, ny = n_value, num_noise = 0)
-  df2 <- df1 + 3
-  df1 <- rbind(df1, df2)
-
 
   if (num_noise != 0) {
 
@@ -123,9 +100,10 @@ one_grid_diff_with_bkg_noise <- function(n = 260, num_noise = 5,
 
   }
 
-  df2 <- gen_bkg_noise(n = n * 0.6/2.6, num_dims = NCOL(df1), mean = 3, sd = 5)
+  df2 <- gen_bkg_noise(n = NROW(df1) * 0.6/2.6, num_dims = NCOL(df1), mean = 3, sd = 5)
   df <- rbind(df1, df2)
-  df
+
+  return(list(df = df, n = NROW(df)))
 
 }
 
@@ -141,9 +119,9 @@ one_grid_diff_with_bkg_noise <- function(n = 260, num_noise = 5,
 #' @export
 #'
 #' @examples
-#' two_grid_with_bkg_noise <- two_grid_with_bkg_noise(n_value = 10, num_noise = 4,
+#' two_grid_comb_bkg <- two_grid_comb_bkg(n_value = 10, num_noise = 4,
 #'                                                   min_n = -0.05, max_n = 0.05)
-two_grid_with_bkg_noise <- function(n_value, num_noise, min_n, max_n) {
+two_grid_comb_bkg <- function(n_value, num_noise, min_n, max_n) {
 
   df1 <- one_grid(nx = n_value, ny = n_value, num_noise = 0)
   df3 <- df1 + 5
@@ -162,7 +140,7 @@ two_grid_with_bkg_noise <- function(n_value, num_noise, min_n, max_n) {
   df2 <- gen_bkg_noise(n = n * 0.6/2.6, num_dims = NCOL(df1), mean = 3, sd = 5)
   df <- rbind(df1, df2)
 
-  return(list(df = df, n = n))
+  return(list(df = df, n = NROW(df)))
 
 }
 
@@ -178,9 +156,9 @@ two_grid_with_bkg_noise <- function(n_value, num_noise, min_n, max_n) {
 #' @export
 #'
 #' @examples
-#' one_grid_diff <- one_grid_diff(n = 200, num_noise = 2,
+#' two_grid_comb <- two_grid_comb(n = 200, num_noise = 2,
 #' min_n = -0.05, max_n = 0.05)
-one_grid_diff <- function(n, num_noise, min_n, max_n) {
+two_grid_comb <- function(n, num_noise, min_n, max_n) {
 
   if ((n %% 2) != 0) {
 

@@ -20,7 +20,7 @@ library(langevitour)
 ```
 
 ```{r}
-gau_data <- gaussian_clusters(n = 500, num_clust = 5, 
+gau_data <- gau_clust(n = 500, num_clust = 5, 
 mean_matrix = rbind(c(1,0,0,0), c(0,1,0,0), c(0,0,1,0), c(0,0,0,1), c(0,0,0,0)), 
 var_vec = c(0.05, 0.05, 0.05, 0.05, 0.05), num_dims = 4, num_noise = 2, 
 min_n = -0.05, max_n = 0.05)
@@ -31,7 +31,7 @@ langevitour(gau_data, pointSize = 2)
 ```
 
 ```{r}
-gau_diff_data <- gaussian_clusters_diff_points(n = 500, 
+gau_diff_data <- gau_clust_diff(n = 500, 
 clust_size_vec = c(50, 100, 200, 150), num_clust = 4, 
 mean_matrix = rbind(c(1,0,0,0,0,0), c(0,1,0,0,0,0), c(0,0,1,0,0,0), c(0,0,0,1,0,0)),
 var_vec = c(0.02, 0.05, 0.06, 0.1), 
@@ -43,7 +43,7 @@ langevitour(gau_diff_data, pointSize = 2)
 ```
 
 ```{r}
-clust_diff_shape_data <- clusters_different_shapes(n = 600, 
+clust_diff_shape_data <- clust_diff_shapes(n = 600, 
 num_gau_clust = 4, num_non_gau_clust = 2, 
 clust_sd_gau = 0.05, clust_sd_non_gau = 0.1,
 num_dims = 7, a = 2, b = 4)
@@ -54,7 +54,7 @@ langevitour(clust_diff_shape_data, pointSize = 2)
 ```
 
 ```{r}
-clust_diff_shapep_data <- clusters_different_shapes_diff_num_points(n = 600,
+clust_diff_shapep_data <- clust_diff_shapes_pts(n = 600,
 clust_size_vec = c(150, 75, 50, 75, 150, 100), num_gau_clust = 4,
 num_non_gau_clust = 2, clust_sd_gau = 0.05, clust_sd_non_gau = 0.1,
 num_dims = 7, a = 3, b = 5)
@@ -65,7 +65,7 @@ langevitour(clust_diff_shapep_data, pointSize = 2)
 ```
 
 ```{r}
-clust_curvebkg_data <- cluster_and_curvilinear__with_noise_and_bkg_noise(n = 660,
+clust_curvebkg_data <- gau_curvy_clust_bkg(n = 660,
 num_noise = 2, min_n = -0.05, max_n = 0.05)
 
 colnames(clust_curvebkg_data) <- paste0("x", 1:NCOL(clust_curvebkg_data))
@@ -74,7 +74,7 @@ langevitour(clust_curvebkg_data, pointSize = 2)
 ```
 
 ```{r}
-one_doublet_data <- one_doublet_with_noise(n = 330, 
+one_doublet_data <- one_doublet(n = 330, 
 num_noise = 2, min_n = -0.05, max_n = 0.05)
 
 colnames(one_doublet_data) <- paste0("x", 1:NCOL(one_doublet_data))
@@ -83,7 +83,7 @@ langevitour(one_doublet_data, pointSize = 2)
 ```
 
 ```{r}
-three_doublet_data <- three_doublets_with_noise(n = 630, num_noise = 2,
+three_doublet_data <- three_doublets(n = 630, num_noise = 2,
 min_n = -0.05, max_n = 0.05)
 
 colnames(three_doublet_data) <- paste0("x", 1:NCOL(three_doublet_data))
@@ -92,7 +92,7 @@ langevitour(three_doublet_data, pointSize = 2)
 ```
 
 ```{r}
-one_doublet_clust_data <- one_doublet_four_clusters_with_noise(n = 660,
+one_doublet_clust_data <- one_doublet_four_clust(n = 660,
 num_noise = 2, min_n = -0.05, max_n = 0.05)
 
 colnames(one_doublet_clust_data) <- paste0("x", 1:NCOL(one_doublet_clust_data))
@@ -101,7 +101,7 @@ langevitour(one_doublet_clust_data, pointSize = 2)
 ```
 
 ```{r}
-one_doublet_diffv_data <- one_doublet_dfifferent_var_clusters_with_noise(n = 390,
+one_doublet_diffv_data <- one_doublet_diff_var_clust(n = 390,
 num_noise = 2, min_n = -0.05, max_n = 0.05)
 
 colnames(one_doublet_diffv_data) <- paste0("x", 1:NCOL(one_doublet_diffv_data))
@@ -110,7 +110,7 @@ langevitour(one_doublet_diffv_data, pointSize = 2)
 ```
 
 ```{r}
-one_doublet_diff_data <- one_doublet_dfifferent_pattern_clusters_with_noise(n = 630, 
+one_doublet_diff_data <- one_doublet_diff_patterns(n = 630, 
 num_noise = 2, min_n = -0.05, max_n = 0.05)
 
 colnames(one_doublet_diff_data) <- paste0("x", 1:NCOL(one_doublet_diff_data))
@@ -119,7 +119,7 @@ langevitour(one_doublet_diff_data, pointSize = 2)
 ```
 
 ```{r}
-two_doublet_para_data <- two_doublets_parallel_with_noise(n = 660, 
+two_doublet_para_data <- two_doublets_parallel(n = 660, 
 num_noise = 2, min_n = -0.05, max_n = 0.05)
 
 colnames(two_doublet_para_data) <- paste0("x", 1:NCOL(two_doublet_para_data))
@@ -128,7 +128,7 @@ langevitour(two_doublet_para_data, pointSize = 2)
 ```
 
 ```{r}
-one_doublet_data <- one_doublets_with_bkg_noise(n = 500, num_noise = 2,
+one_doublet_data <- one_doublet_bkg(n = 500, num_noise = 2,
 min_n = -0.05, max_n = 0.05)
 
 colnames(one_doublet_data) <- paste0("x", 1:NCOL(one_doublet_data))
@@ -137,7 +137,7 @@ langevitour(one_doublet_data, pointSize = 2)
 ```
 
 ```{r}
-two_doublet_data <- two_doublets_with_bkg_noise(n = 500, num_noise = 2,
+two_doublet_data <- two_doublets_bkg(n = 500, num_noise = 2,
 min_n = -0.05, max_n = 0.05)
 
 colnames(two_doublet_data) <- paste0("x", 1:NCOL(two_doublet_data))
@@ -146,7 +146,7 @@ langevitour(two_doublet_data, pointSize = 2)
 ```
 
 ```{r}
-two_nonlinear_data <- two_nonlinear_with_noise(n = 500, num_noise = 2,
+two_nonlinear_data <- two_nonlinear(n = 500, num_noise = 2,
 min_n = -0.05, max_n = 0.050)
 
 colnames(two_nonlinear_data) <- paste0("x", 1:NCOL(two_nonlinear_data))
@@ -155,7 +155,7 @@ langevitour(two_nonlinear_data, pointSize = 2)
 ```
 
 ```{r}
-three_curv_data <- two_curvilinear_with_noise(n = 500, num_noise = 2,
+three_curv_data <- two_curvy(n = 500, num_noise = 2,
 min_n = -0.05, max_n = 0.05)
 
 colnames(three_curv_data) <- paste0("x", 1:NCOL(three_curv_data))
@@ -164,7 +164,7 @@ langevitour(three_curv_data, pointSize = 2)
 ```
 
 ```{r}
-three_curv_diff_data <- two_curvilinear_diff_with_noise(n = 500, 
+three_curv_diff_data <- two_curvy_diff_pts(cluster_size_vec = c(50, 100), 
 num_noise = 2, min_n = -0.05, max_n = 0.05)
 
 colnames(three_curv_diff_data) <- paste0("x", 1:NCOL(three_curv_diff_data))
@@ -173,7 +173,7 @@ langevitour(three_curv_diff_data, pointSize = 2)
 ```
 
 ```{r}
-three_nonlinear_data <- three_nonlinear_with_noise(n = 330, 
+three_nonlinear_data <- three_nonlinear(n = 330, 
 num_noise = 2, min_n = -0.05, max_n = 0.05)
 
 colnames(three_nonlinear_data) <- paste0("x", 1:NCOL(three_nonlinear_data))
@@ -182,7 +182,7 @@ langevitour(three_nonlinear_data, pointSize = 2)
 ```
 
 ```{r}
-three_mir_data <- three_cluster_mirror_with_noise(n = 720, num_noise = 2,
+three_mir_data <- three_clust_mirror(n = 720, num_noise = 2,
 min_n = -0.05, max_n = 0.05)
 
 colnames(three_mir_data) <- paste0("x", 1:NCOL(three_mir_data))
@@ -191,7 +191,7 @@ langevitour(three_mir_data, pointSize = 2)
 ```
 
 ```{r}
-curve_clust_data <- cluster_and_curvilinear_with_noise(n = 500, 
+curve_clust_data <- gau_curvy_clust(n = 500, 
 clust_size_vec = c(150, 350), num_noise = 2, min_n = -0.05,
 max_n = 0.05)
 
@@ -201,7 +201,7 @@ langevitour(curve_clust_data, pointSize = 2)
 ```
 
 ```{r}
-three_clust_data <- three_clusters_data_with_noise(n = 660, num_dims = 6,
+three_clust_data <- three_clust_diff_dist(n = 660, num_dims = 6,
 num_noise = 2, min_n = -0.05, max_n = 0.05)
 
 colnames(three_clust_data) <- paste0("x", 1:NCOL(three_clust_data))
