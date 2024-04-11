@@ -6,11 +6,11 @@
 \usage{
 clusters_different_shapes_diff_num_points(
   n,
-  cluster_size_vec,
-  num_gussian_clusters,
-  num_non_gaussian_clusters,
-  cluster_sd_gau,
-  cluster_sd_non_gau,
+  clust_size_vec,
+  num_gau_clust,
+  num_non_gau_clust,
+  clust_sd_gau,
+  clust_sd_non_gau,
   num_dims,
   a,
   b
@@ -19,15 +19,15 @@ clusters_different_shapes_diff_num_points(
 \arguments{
 \item{n}{The total number of data points to be generated.}
 
-\item{cluster_size_vec}{A vector specifying the number of points for each cluster.}
+\item{clust_size_vec}{A vector specifying the number of points for each cluster.}
 
-\item{num_gussian_clusters}{The number of Gaussian clusters to generate.}
+\item{num_gau_clust}{The number of Gaussian clusters to generate.}
 
-\item{num_non_gaussian_clusters}{The number of non-Gaussian clusters to generate.}
+\item{num_non_gau_clust}{The number of non-Gaussian clusters to generate.}
 
-\item{cluster_sd_gau}{The standard deviation for the Gaussian clusters.}
+\item{clust_sd_gau}{The standard deviation for the Gaussian clusters.}
 
-\item{cluster_sd_non_gau}{The standard deviation for the non-Gaussian clusters.}
+\item{clust_sd_non_gau}{The standard deviation for the non-Gaussian clusters.}
 
 \item{num_dims}{The number of dimensions for the data points.}
 
@@ -46,7 +46,7 @@ with different numbers of points in each cluster.
 \examples{
 # Generate clusters with default parameters
 data <- clusters_different_shapes_diff_num_points(n = 400,
-cluster_size_vec = c(50, 50, 50, 50, 100, 100), num_gussian_clusters = 4,
-num_non_gaussian_clusters = 2, cluster_sd_gau = 0.05, cluster_sd_non_gau = 0.1,
+clust_size_vec = c(50, 50, 50, 50, 100, 100), num_gau_clust = 4,
+num_non_gau_clust = 2, clust_sd_gau = 0.05, clust_sd_non_gau = 0.1,
 num_dims = 7, a = 2, b = 4)
 }

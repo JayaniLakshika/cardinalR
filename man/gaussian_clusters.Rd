@@ -6,7 +6,7 @@
 \usage{
 gaussian_clusters(
   n,
-  num_clusters,
+  num_clust,
   mean_matrix,
   var_vec,
   num_dims,
@@ -18,7 +18,7 @@ gaussian_clusters(
 \arguments{
 \item{n}{The total number of data points to be generated.}
 
-\item{num_clusters}{The number of clusters to generate.}
+\item{num_clust}{The number of clusters to generate.}
 
 \item{mean_matrix}{A matrix where each row represents the mean vector for a cluster.}
 
@@ -43,7 +43,7 @@ This function generates Gaussian clusters with specified parameters.
 }
 \examples{
 
-gaussian_clusters(n = 300, num_clusters = 5,
+gaussian_clusters(n = 300, num_clust = 5,
 mean_matrix = rbind(c(1,0,0,0), c(0,1,0,0), c(0,0,1,0),
 c(0,0,0,1), c(0,0,0,0)), var_vec = c(0.05, 0.05, 0.05, 0.05, 0.05),
 num_dims = 4, num_noise = 2, min_n = -0.05, max_n = 0.05)

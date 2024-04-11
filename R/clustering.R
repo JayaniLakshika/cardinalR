@@ -5,7 +5,7 @@
 #' This function generates Gaussian clusters with specified parameters.
 #'
 #' @param n The total number of data points to be generated.
-#' @param num_clusters The number of clusters to generate.
+#' @param num_clust The number of clusters to generate.
 #' @param mean_matrix A matrix where each row represents the mean vector for a cluster.
 #' @param var_vec A vector specifying the variance for each cluster.
 #' @param num_dims The number of effective dimensions for the data points.
@@ -18,16 +18,16 @@
 #'
 #' @examples
 #'
-#' gaussian_clusters(n = 300, num_clusters = 5,
+#' gaussian_clusters(n = 300, num_clust = 5,
 #' mean_matrix = rbind(c(1,0,0,0), c(0,1,0,0), c(0,0,1,0),
 #' c(0,0,0,1), c(0,0,0,0)), var_vec = c(0.05, 0.05, 0.05, 0.05, 0.05),
 #' num_dims = 4, num_noise = 2, min_n = -0.05, max_n = 0.05)
-gaussian_clusters <- function(n, num_clusters,
+gaussian_clusters <- function(n, num_clust,
                               mean_matrix, var_vec, num_dims, num_noise,
                               min_n, max_n) {
 
 
-  if (n < num_clusters) {
+  if (n < num_clust) {
     stop('Number of clusters exceed the number of observations.')
 
   }
@@ -42,7 +42,7 @@ gaussian_clusters <- function(n, num_clusters,
 
   }
 
-  if (dim(mean_matrix)[1] != num_clusters) {
+  if (dim(mean_matrix)[1] != num_clust) {
     stop('There is not enough mean values for clusters.')
 
   }
@@ -52,23 +52,23 @@ gaussian_clusters <- function(n, num_clusters,
 
   }
 
-  if (length(var_vec) != num_clusters) {
+  if (length(var_vec) != num_clust) {
     stop('There is not enough varaiance values for clusters.')
 
   }
 
   # To check that the assigned n is divided by three
-  if ((n%%num_clusters) != 0) {
+  if ((n%%num_clust) != 0) {
     warning("The sample size should be a product of number of clusters.")
-    cluster_size <- floor(n/num_clusters)
+    cluster_size <- floor(n/num_clust)
 
   } else {
-    cluster_size <- n/num_clusters
+    cluster_size <- n/num_clust
   }
 
   df <- matrix(nrow = 0, ncol = num_dims)
 
-  for (i in 1:num_clusters) {
+  for (i in 1:num_clust) {
 
     # To filter the mean values for specific cluster
     mean_val_for_cluster <- mean_matrix[i, ]
@@ -113,8 +113,8 @@ gaussian_clusters <- function(n, num_clusters,
 #' This function generates Gaussian clusters with different numbers of points per cluster.
 #'
 #' @param n The total number of data points to be generated.
-#' @param cluster_size_vec A vector specifying the number of points in each cluster.
-#' @param num_clusters The number of clusters to generate.
+#' @param clust_size_vec A vector specifying the number of points in each cluster.
+#' @param num_clust The number of clusters to generate.
 #' @param mean_matrix A matrix where each row represents the mean vector for a cluster.
 #' @param var_vec A vector specifying the variance for each cluster.
 #' @param num_dims The number of effective dimensions for the data points.
@@ -128,18 +128,18 @@ gaussian_clusters <- function(n, num_clusters,
 #' @examples
 #'
 #' # Generate Gaussian clusters with custom parameters
-#' data <- gaussian_clusters_diff_points(n = 400, cluster_size_vec = c(50, 100, 200, 50),
-#'                                       num_clusters = 4, mean_matrix =
+#' data <- gaussian_clusters_diff_points(n = 400, clust_size_vec = c(50, 100, 200, 50),
+#'                                       num_clust = 4, mean_matrix =
 #'                                       rbind(c(1,0,0,0,0,0), c(0,1,0,0,0,0),
 #'                                       c(0,0,1,0,0,0), c(0,0,0,1,0,0)),
 #'                                       var_vec = c(0.02, 0.05, 0.06, 0.1),
 #'                                       num_dims = 6, num_noise = 4,
 #'                                       min_n = -0.05, max_n = 0.05)
-gaussian_clusters_diff_points <- function(n, cluster_size_vec, num_clusters,
+gaussian_clusters_diff_points <- function(n, clust_size_vec, num_clust,
                                           mean_matrix, var_vec, num_dims,
                                           num_noise, min_n, max_n) {
 
-  if (n < num_clusters) {
+  if (n < num_clust) {
     stop('Number of clusters exceed the number of observations.')
 
   }
@@ -154,7 +154,7 @@ gaussian_clusters_diff_points <- function(n, cluster_size_vec, num_clusters,
 
   }
 
-  if (dim(mean_matrix)[1] != num_clusters) {
+  if (dim(mean_matrix)[1] != num_clust) {
     stop('There is not enough mean values for clusters.')
 
   }
@@ -164,14 +164,14 @@ gaussian_clusters_diff_points <- function(n, cluster_size_vec, num_clusters,
 
   }
 
-  if (length(var_vec) != num_clusters) {
+  if (length(var_vec) != num_clust) {
     stop('There is not enough varaiance values for clusters.')
 
   }
 
   df <- matrix(nrow = 0, ncol = num_dims)
 
-  for (i in 1:num_clusters) {
+  for (i in 1:num_clust) {
 
     # To filter the mean values for specific cluster
     mean_val_for_cluster <- mean_matrix[i, ]
@@ -179,7 +179,7 @@ gaussian_clusters_diff_points <- function(n, cluster_size_vec, num_clusters,
     # To filter the variance values for specific cluster
     variance_val_for_cluster <- var_vec[i]
 
-    num_points_cluster <- cluster_size_vec[i]
+    num_points_cluster <- clust_size_vec[i]
 
     # Initialize an empty list to store the vectors with column
     # values
@@ -220,10 +220,10 @@ gaussian_clusters_diff_points <- function(n, cluster_size_vec, num_clusters,
 #' This function generates clusters with different shapes, including both Gaussian and non-Gaussian clusters.
 #'
 #' @param n The total number of data points to be generated.
-#' @param num_gussian_clusters The number of Gaussian clusters to generate.
-#' @param num_non_gaussian_clusters The number of non-Gaussian clusters to generate.
-#' @param cluster_sd_gau The standard deviation for the Gaussian clusters.
-#' @param cluster_sd_non_gau The standard deviation for the non-Gaussian clusters.
+#' @param num_gau_clust The number of Gaussian clusters to generate.
+#' @param num_non_gau_clust The number of non-Gaussian clusters to generate.
+#' @param clust_sd_gau The standard deviation for the Gaussian clusters.
+#' @param clust_sd_non_gau The standard deviation for the non-Gaussian clusters.
 #' @param num_dims The number of dimensions for the data points.
 #' @param a The scaling factor for the non-Gaussian cluster shape.
 #' @param b The translation factor for the non-Gaussian cluster shape.
@@ -233,23 +233,23 @@ gaussian_clusters_diff_points <- function(n, cluster_size_vec, num_clusters,
 #'
 #' @examples
 #' # Generate clusters with default parameters
-#' data <- clusters_different_shapes(n = 300, num_gussian_clusters = 4,
-#' num_non_gaussian_clusters = 2, cluster_sd_gau = 0.05, cluster_sd_non_gau = 0.1,
+#' data <- clusters_different_shapes(n = 300, num_gau_clust = 4,
+#' num_non_gau_clust = 2, clust_sd_gau = 0.05, clust_sd_non_gau = 0.1,
 #' num_dims = 7, a = 2, b = 4)
-clusters_different_shapes <- function(n, num_gussian_clusters,
-                                      num_non_gaussian_clusters, cluster_sd_gau,
-                                      cluster_sd_non_gau, num_dims, a, b) {
+clusters_different_shapes <- function(n, num_gau_clust,
+                                      num_non_gau_clust, clust_sd_gau,
+                                      clust_sd_non_gau, num_dims, a, b) {
 
 
-  num_clusters <- num_gussian_clusters + num_non_gaussian_clusters
+  num_clust <- num_gau_clust + num_non_gau_clust
 
   # To check that the assigned n is divided by the number of clusters.
-  if ((n%%num_clusters) != 0) {
+  if ((n%%num_clust) != 0) {
     warning("The sample size should be a product of number of clusters.")
-    cluster_size <- floor(n/num_clusters)
+    cluster_size <- floor(n/num_clust)
 
   } else {
-    cluster_size <- n/num_clusters
+    cluster_size <- n/num_clust
   }
 
   ## Generate Gaussian clusters
@@ -263,14 +263,14 @@ clusters_different_shapes <- function(n, num_gussian_clusters,
   # To select combinations for assigned number of clusters
 
   mean_val_grid_gau <- mean_val_grid[sample(NROW(mean_val_grid),
-                                            size=num_gussian_clusters, replace=FALSE),]
+                                            size=num_gau_clust, replace=FALSE),]
 
   mean_val_grid_non_gau <- mean_val_grid[sample(NROW(mean_val_grid),
-          size=num_non_gaussian_clusters, replace=FALSE),]
+          size=num_non_gau_clust, replace=FALSE),]
 
   df <- matrix(nrow = 0, ncol = num_dims)
 
-  for (i in 1:num_gussian_clusters) {
+  for (i in 1:num_gau_clust) {
 
     # To filter the mean values for specific cluster
     mean_val_for_cluster <- mean_val_grid_gau[i, ]
@@ -282,7 +282,7 @@ clusters_different_shapes <- function(n, num_gussian_clusters,
     for (j in 1:num_dims) {
 
       dim_val_list[[j]] <- stats::rnorm(cluster_size, mean = mean_val_for_cluster[j],
-                                               sd = cluster_sd_gau)
+                                               sd = clust_sd_gau)
 
     }
     # To generate a tibble for a cluster
@@ -295,7 +295,7 @@ clusters_different_shapes <- function(n, num_gussian_clusters,
   phi <- stats::runif(cluster_size, max = 2*pi)
   rho <- sqrt(stats::runif(cluster_size))
 
-  for (i in 1:num_non_gaussian_clusters) {
+  for (i in 1:num_non_gau_clust) {
 
     # To filter the mean values for specific cluster
     presence_of_elipse_cluster <- mean_val_grid_non_gau[i, ]
@@ -310,7 +310,7 @@ clusters_different_shapes <- function(n, num_gussian_clusters,
         ## Surface of poolar coordinate
       } else {
         dim_val_list_n[[j]] <- stats::rnorm(cluster_size, mean = 0,
-                                                   sd = cluster_sd_non_gau)
+                                                   sd = clust_sd_non_gau)
 
       }
 
@@ -334,11 +334,11 @@ clusters_different_shapes <- function(n, num_gussian_clusters,
 #' with different numbers of points in each cluster.
 #'
 #' @param n The total number of data points to be generated.
-#' @param cluster_size_vec A vector specifying the number of points for each cluster.
-#' @param num_gussian_clusters The number of Gaussian clusters to generate.
-#' @param num_non_gaussian_clusters The number of non-Gaussian clusters to generate.
-#' @param cluster_sd_gau The standard deviation for the Gaussian clusters.
-#' @param cluster_sd_non_gau The standard deviation for the non-Gaussian clusters.
+#' @param clust_size_vec A vector specifying the number of points for each cluster.
+#' @param num_gau_clust The number of Gaussian clusters to generate.
+#' @param num_non_gau_clust The number of non-Gaussian clusters to generate.
+#' @param clust_sd_gau The standard deviation for the Gaussian clusters.
+#' @param clust_sd_non_gau The standard deviation for the non-Gaussian clusters.
 #' @param num_dims The number of dimensions for the data points.
 #' @param a The scaling factor for the non-Gaussian cluster shape.
 #' @param b The translation factor for the non-Gaussian cluster shape.
@@ -350,18 +350,18 @@ clusters_different_shapes <- function(n, num_gussian_clusters,
 #' @examples
 #' # Generate clusters with default parameters
 #' data <- clusters_different_shapes_diff_num_points(n = 400,
-#' cluster_size_vec = c(50, 50, 50, 50, 100, 100), num_gussian_clusters = 4,
-#' num_non_gaussian_clusters = 2, cluster_sd_gau = 0.05, cluster_sd_non_gau = 0.1,
+#' clust_size_vec = c(50, 50, 50, 50, 100, 100), num_gau_clust = 4,
+#' num_non_gau_clust = 2, clust_sd_gau = 0.05, clust_sd_non_gau = 0.1,
 #' num_dims = 7, a = 2, b = 4)
-clusters_different_shapes_diff_num_points <- function(n, cluster_size_vec,
-                                                      num_gussian_clusters,
-                                                      num_non_gaussian_clusters,
-                                                      cluster_sd_gau,
-                                                      cluster_sd_non_gau, num_dims,
+clusters_different_shapes_diff_num_points <- function(n, clust_size_vec,
+                                                      num_gau_clust,
+                                                      num_non_gau_clust,
+                                                      clust_sd_gau,
+                                                      clust_sd_non_gau, num_dims,
                                                       a, b) {
 
 
-  num_clusters <- num_gussian_clusters + num_non_gaussian_clusters
+  num_clust <- num_gau_clust + num_non_gau_clust
 
   ## Generate Gaussian clusters
 
@@ -373,14 +373,14 @@ clusters_different_shapes_diff_num_points <- function(n, cluster_size_vec,
 
   # To select combinations for assigned number of clusters
   mean_val_grid_gau <- mean_val_grid[sample(NROW(mean_val_grid),
-                                            size=num_gussian_clusters, replace=FALSE),]
+                                            size=num_gau_clust, replace=FALSE),]
 
   mean_val_grid_non_gau <- mean_val_grid[sample(NROW(mean_val_grid),
-                                                size=num_non_gaussian_clusters, replace=FALSE),]
+                                                size=num_non_gau_clust, replace=FALSE),]
 
   df <- matrix(nrow = 0, ncol = num_dims)
 
-  for (i in 1:num_gussian_clusters) {
+  for (i in 1:num_gau_clust) {
 
     # To filter the mean values for specific cluster
     mean_val_for_cluster <- mean_val_grid_gau[i,]
@@ -391,8 +391,8 @@ clusters_different_shapes_diff_num_points <- function(n, cluster_size_vec,
 
     for (j in 1:num_dims) {
 
-      dim_val_list[[j]] <- stats::rnorm(cluster_size_vec[i], mean = mean_val_for_cluster[j],
-                                                      sd = cluster_sd_gau)
+      dim_val_list[[j]] <- stats::rnorm(clust_size_vec[i], mean = mean_val_for_cluster[j],
+                                                      sd = clust_sd_gau)
 
     }
     # To generate a tibble for a cluster
@@ -402,10 +402,10 @@ clusters_different_shapes_diff_num_points <- function(n, cluster_size_vec,
 
   }
 
-  for (i in 1:num_non_gaussian_clusters) {
+  for (i in 1:num_non_gau_clust) {
 
-    phi <- stats::runif(cluster_size_vec[(num_clusters - i)], max = 2*pi)
-    rho <- sqrt(stats::runif(cluster_size_vec[(num_clusters - i)]))
+    phi <- stats::runif(clust_size_vec[(num_clust - i)], max = 2*pi)
+    rho <- sqrt(stats::runif(clust_size_vec[(num_clust - i)]))
 
     # To filter the mean values for specific cluster
     presence_of_elipse_cluster <- mean_val_grid_non_gau[i, ]
@@ -419,8 +419,8 @@ clusters_different_shapes_diff_num_points <- function(n, cluster_size_vec,
         dim_val_list_n[[j]] <- sqrt(a)*rho*cos(phi) + b
         ## Surface of poolar coordinate
       } else {
-        dim_val_list_n[[j]] <- stats::rnorm(cluster_size_vec[(num_clusters - i)], mean = 0,
-                                                          sd = cluster_sd_non_gau)
+        dim_val_list_n[[j]] <- stats::rnorm(clust_size_vec[(num_clust - i)], mean = 0,
+                                                          sd = clust_sd_non_gau)
 
       }
 
@@ -1515,7 +1515,7 @@ three_cluster_mirror_with_noise <- function(n, num_noise, min_n,
 #' This function generates data with two clusters, one following a curvilinear pattern and the other distributed randomly.
 #'
 #' @param n The total number of data points to be generated.
-#' @param cluster_size_vec A vector specifying the number of points for each cluster.
+#' @param clust_size_vec A vector specifying the number of points for each cluster.
 #'                         If not provided, the n is divided equally
 #'                         between the two clusters.
 #' @param num_noise The number of additional noise dimensions to be generated.
@@ -1529,39 +1529,39 @@ three_cluster_mirror_with_noise <- function(n, num_noise, min_n,
 #'
 #' # Generate cluster and curvilinear data with custom parameters
 #' data <- cluster_and_curvilinear_with_noise(n = 300,
-#' cluster_size_vec = c(100, 200), num_noise = 3, min_n = -0.05,
+#' clust_size_vec = c(100, 200), num_noise = 3, min_n = -0.05,
 #' max_n = 0.05)
-cluster_and_curvilinear_with_noise <- function(n, cluster_size_vec = NULL,
+cluster_and_curvilinear_with_noise <- function(n, clust_size_vec = NULL,
                                                num_noise, min_n, max_n) {
 
   ## If the number of points for each cluster is not defined
-  if (is.null(cluster_size_vec)) {
+  if (is.null(clust_size_vec)) {
 
     # To check that the assigned n is divided by two
     if ((n%%2) != 0) {
       warning("The sample size should be a product of two.")
       cluster_size <- floor(n/2)
-      cluster_size_vec <- append(cluster_size, (n - cluster_size))
+      clust_size_vec <- append(cluster_size, (n - cluster_size))
 
     } else {
       cluster_size <- n/2
-      cluster_size_vec <- rep(cluster_size, 2)
+      clust_size_vec <- rep(cluster_size, 2)
     }
 
   }
 
-  theta = stats::runif(cluster_size_vec[1], 0.20,0.60 * pi)
-  x = cos(theta) + stats::rnorm(cluster_size_vec[1], 10, 0.03)
-  y = sin(theta) + stats::rnorm(cluster_size_vec[1], 10, 0.03)
-  z <- rep(0, cluster_size_vec[1]) + stats::rnorm(cluster_size_vec[1], 10, 0.03)
-  w <- rep(0, cluster_size_vec[1]) - stats::rnorm(cluster_size_vec[1], 10, 0.03)
+  theta = stats::runif(clust_size_vec[1], 0.20,0.60 * pi)
+  x = cos(theta) + stats::rnorm(clust_size_vec[1], 10, 0.03)
+  y = sin(theta) + stats::rnorm(clust_size_vec[1], 10, 0.03)
+  z <- rep(0, clust_size_vec[1]) + stats::rnorm(clust_size_vec[1], 10, 0.03)
+  w <- rep(0, clust_size_vec[1]) - stats::rnorm(clust_size_vec[1], 10, 0.03)
 
   df1 <- matrix(c(x, y, z, w), ncol = 4)
 
-  x = stats::rnorm(cluster_size_vec[2], 10, 0.05)
-  y = stats::rnorm(cluster_size_vec[2], 10, 0.05)
-  z <- rep(0, cluster_size_vec[2]) + stats::rnorm(cluster_size_vec[2], 10, 0.05)
-  w <- rep(0, cluster_size_vec[2]) - stats::rnorm(cluster_size_vec[2], 10, 0.05)
+  x = stats::rnorm(clust_size_vec[2], 10, 0.05)
+  y = stats::rnorm(clust_size_vec[2], 10, 0.05)
+  z <- rep(0, clust_size_vec[2]) + stats::rnorm(clust_size_vec[2], 10, 0.05)
+  w <- rep(0, clust_size_vec[2]) - stats::rnorm(clust_size_vec[2], 10, 0.05)
 
   df2 <- matrix(c(x, y, z, w), ncol = 4)
 

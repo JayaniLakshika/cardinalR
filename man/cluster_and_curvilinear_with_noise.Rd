@@ -6,7 +6,7 @@
 \usage{
 cluster_and_curvilinear_with_noise(
   n,
-  cluster_size_vec = NULL,
+  clust_size_vec = NULL,
   num_noise,
   min_n,
   max_n
@@ -15,7 +15,7 @@ cluster_and_curvilinear_with_noise(
 \arguments{
 \item{n}{The total number of data points to be generated.}
 
-\item{cluster_size_vec}{A vector specifying the number of points for each cluster.
+\item{clust_size_vec}{A vector specifying the number of points for each cluster.
 If not provided, the n is divided equally
 between the two clusters.}
 
@@ -35,6 +35,6 @@ This function generates data with two clusters, one following a curvilinear patt
 
 # Generate cluster and curvilinear data with custom parameters
 data <- cluster_and_curvilinear_with_noise(n = 300,
-cluster_size_vec = c(100, 200), num_noise = 3, min_n = -0.05,
+clust_size_vec = c(100, 200), num_noise = 3, min_n = -0.05,
 max_n = 0.05)
 }
