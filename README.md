@@ -4,8 +4,8 @@
 # cardinalR <img src="man/figures/logo.png" align="right" height="250" width="auto" alt="" />
 
 The `cardinalR` provides functionality for generating simulation
-high-dimensional datasets for use in various Nonlinear dimensionality
-reduction techniques.
+high-dimensional datasets for use in various Nonlinear dimension
+reduction techniqu.
 
 ## Installation
 
@@ -28,12 +28,12 @@ mobius_clust_data <-  mobius_clust(n = 500, num_noise = 2, min_n = -0.05,
                                    max_n = 0.05)
 
 head(mobius_clust_data, 5)
-#>             [,1]      [,2]        [,3]        [,4]         [,5]
-#> [1,]  4.14938980  1.314429  0.43507573 -0.04438254 -0.005752487
-#> [2,]  0.43150826  4.084147 -0.03339845  0.04392610 -0.037474740
-#> [3,] -0.05899146 -3.861268  0.15298222 -0.03167411 -0.026738660
-#> [4,]  2.62806362 -1.797529  0.30105461 -0.04480876 -0.005235957
-#> [5,] -2.70225381  2.682575 -0.63236840 -0.03620112  0.035464684
+#>           [,1]      [,2]         [,3]         [,4]        [,5]
+#> [1,]  2.486879  3.509532  0.176066187  0.004353183  0.04879121
+#> [2,]  2.002586  3.537843  0.001453752  0.034651974  0.04873449
+#> [3,]  4.718657 -1.977447 -0.059712873  0.032223992  0.04165662
+#> [4,] -2.584498  3.148256 -0.373358654 -0.039561103 -0.01725440
+#> [5,] -3.911566 -1.322548  0.604768408 -0.024144310  0.02965819
 ```
 
 <table style="width:100%">
