@@ -59,11 +59,11 @@ sphere <- function(radius, resolution, num_noise, min_n, max_n) {
 #' @return A matrix containing the generated data points with or without added noise.
 #'
 #' @examples
-#' small_big_sphere_with_noise(n = 390, num_noise = 4,
+#' diff_sphere(n = 390, num_noise = 4,
 #' min_n = -0.05, max_n = 0.05)
 #'
 #' @export
-small_big_sphere_with_noise <- function(n, num_noise, min_n,
+diff_sphere <- function(n, num_noise, min_n,
                                         max_n) {
 
   # To check that the assigned n is divided by thirteen
