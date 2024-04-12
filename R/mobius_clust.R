@@ -70,9 +70,27 @@ mobius_5d_row <- function(){
 #'
 #' @examples
 #' set.seed(20240412)
-#' mobius_data <- mobius_5d(n = 100, num_noise = 3,
-#'                          min_n = -0.05, max_n = 0.05)
+#' mobius_data <- mobius_5d(n = 100, num_noise = 2, min_n = -0.05, max_n = 0.05)
 mobius_5d <- function(n, num_noise, min_n, max_n){
+
+  if (n <= 0) {
+    stop('Number of points should be a positive number.')
+  }
+
+  if (num_noise < 0) {
+    stop('Number of noise dimensions should be a positive number.')
+
+  }
+
+  if (missing(n)) {
+    stop('Missing n.')
+
+  }
+
+  if (missing(num_noise)) {
+    stop('Missing num_noise.')
+
+  }
 
   df <- matrix(
     do.call(
@@ -86,6 +104,16 @@ mobius_5d <- function(n, num_noise, min_n, max_n){
   )
 
   if (num_noise != 0) {
+
+    if (missing(min_n)) {
+      stop('Missing min_n.')
+
+    }
+
+    if (missing(max_n)) {
+      stop('Missing max_n.')
+
+    }
 
     noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise = num_noise,
                                 min_n = min_n, max_n = max_n)
@@ -113,13 +141,42 @@ mobius_5d <- function(n, num_noise, min_n, max_n){
 #' @export
 #'
 #' @examples
-#' mobius_cluster <- mobius_clust(n = 200, num_noise = 8,
-#'                                             min_n = -0.05, max_n = 0.05)
+#' mobius_cluster <- mobius_clust(n = 200, num_noise = 2,min_n = -0.05,
+#' max_n = 0.05)
 mobius_clust <- function(n, num_noise, min_n, max_n) {
+
+  if (n <= 0) {
+    stop('Number of points should be a positive number.')
+  }
+
+  if (num_noise < 0) {
+    stop('Number of noise dimensions should be a positive number.')
+
+  }
+
+  if (missing(n)) {
+    stop('Missing n.')
+
+  }
+
+  if (missing(num_noise)) {
+    stop('Missing num_noise.')
+
+  }
 
   df1 <- mobius_5d(n = n * 0.80, num_noise = 0)
 
   if (num_noise != 0) {
+
+    if (missing(min_n)) {
+      stop('Missing min_n.')
+
+    }
+
+    if (missing(max_n)) {
+      stop('Missing max_n.')
+
+    }
 
     noise_mat <- gen_noise_dims(n = dim(df1)[1], num_noise = num_noise,
                                 min_n = min_n, max_n = max_n)

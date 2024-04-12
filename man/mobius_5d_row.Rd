@@ -13,5 +13,6 @@ A vector containing the coordinates of the point on the Mobius strip.
 This function generates a single row of data representing a point on a 5-dimensional Mobius strip.
 }
 \examples{
+set.seed(20240412)
 mobius_row <- mobius_5d_row()
 }

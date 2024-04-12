@@ -22,6 +22,6 @@ A matrix containing the generated Mobius strip.
 This function generates a dataset representing a 5-dimensional Mobius strip.
 }
 \examples{
-mobius_data <- mobius_5d(n = 100, num_noise = 3,
-                         min_n = -0.05, max_n = 0.05)
+set.seed(20240412)
+mobius_data <- mobius_5d(n = 100, num_noise = 2, min_n = -0.05, max_n = 0.05)
 }
