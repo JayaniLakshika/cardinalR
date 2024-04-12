@@ -10,10 +10,9 @@
 #' @export
 #'
 #' @examples
-#' tree_data <- curvy_tree(n = 300, num_noise = 8,
-#'                                    min_n = -0.05, max_n = 0.05)
-curvy_tree <- function(n, num_noise, min_n,
-                                  max_n) {
+#' set.seed(20240412)
+#' tree_data <- curvy_tree(n = 300, num_noise = 2, min_n = -0.05, max_n = 0.05)
+curvy_tree <- function(n, num_noise, min_n, max_n) {
 
   # To check that the assigned n is divided by three
   if ((n%%3) != 0) {
@@ -76,8 +75,8 @@ curvy_tree <- function(n, num_noise, min_n,
 #' @export
 #'
 #' @examples
-#' tree_data <- tree(n = 300, num_noise = 8,
-#'                              min_n = -0.05, max_n = 0.05)
+#' set.seed(20240412)
+#' tree_data <- tree(n = 300, num_noise = 2, min_n = -0.05, max_n = 0.05)
 tree <- function(n, num_noise, min_n, max_n) {
 
   # To check that the assigned n is divided by five
@@ -155,10 +154,10 @@ tree <- function(n, num_noise, min_n, max_n) {
 #' @export
 #'
 #' @examples
-#' seven_branching_data <- seven_branch(n = 210,
-#' num_noise = 8, min_n = -0.05, max_n = 0.05)
-seven_branch <- function(n, num_noise, min_n,
-                                            max_n) {
+#' set.seed(20240412)
+#' seven_branching_data <- seven_branch(n = 210, num_noise = 2, min_n = -0.05,
+#' max_n = 0.05)
+seven_branch <- function(n, num_noise, min_n, max_n) {
 
   # To check that the assigned n is divided by seven
   if ((n%%7) != 0) {
@@ -248,10 +247,10 @@ seven_branch <- function(n, num_noise, min_n,
 #' @export
 #'
 #' @examples
-#' four_branching_data <- four_branch(n = 400,
-#' num_noise = 8, min_n = -0.05, max_n = 0.05)
-four_branch <- function(n, num_noise, min_n,
-                                           max_n) {
+#' set.seed(20240412)
+#' four_branching_data <- four_branch(n = 400, num_noise = 2, min_n = -0.05,
+#' max_n = 0.05)
+four_branch <- function(n, num_noise, min_n, max_n) {
 
   # To check that the assigned n is divided by four
   if (((n - n * 0.1)%%4) != 0) {
@@ -327,10 +326,10 @@ four_branch <- function(n, num_noise, min_n,
 #' @export
 #'
 #' @examples
-#' branching_data <- eight_branch(n = 400,
-#' num_noise = 8, min_n = -0.05, max_n = 0.05)
-eight_branch <- function(n, num_noise, min_n,
-                                            max_n) {
+#' set.seed(20240412)
+#' branching_data <- eight_branch(n = 400, num_noise = 2, min_n = -0.05,
+#' max_n = 0.05)
+eight_branch <- function(n, num_noise, min_n, max_n) {
 
   # To check that the assigned n is divided by eight
   if ((n%%8) != 0) {
@@ -433,10 +432,11 @@ eight_branch <- function(n, num_noise, min_n,
 #' @examples
 #'
 #' # Generate curvy branching cluster data with custom parameters
+#' set.seed(20240412)
 #' data <- curvy_branch_clust(n = 300, clust_vec = c(100, 150, 50),
-#' num_noise = 6, min_n = -0.05, max_n = 0.05)
-curvy_branch_clust <- function(n, clust_vec = NULL,
-                                    num_noise, min_n, max_n) {
+#' num_noise = 2, min_n = -0.05, max_n = 0.05)
+curvy_branch_clust <- function(n, clust_vec = NULL, num_noise, min_n, max_n) {
+
   ## If the number of points for each cluster is not defined
   if (is.null(clust_vec)) {
 
@@ -512,10 +512,10 @@ curvy_branch_clust <- function(n, clust_vec = NULL,
 #' @examples
 #'
 #' # Generate curvy branching cluster data with background noise with custom parameters
-#' data <- curvy_branch_clust_bkg(n = 400, num_noise = 10,
-#' min_n = -0.5, max_n = 0.5)
-curvy_branch_clust_bkg <- function(n, num_noise,
-                                                   min_n, max_n) {
+#' set.seed(20240412)
+#' data <- curvy_branch_clust_bkg(n = 400, num_noise = 2, min_n = -0.05,
+#' max_n = 0.05)
+curvy_branch_clust_bkg <- function(n, num_noise, min_n, max_n) {
 
   # To check that the assigned n is divided by three
   if ((n%%4) != 0) {
@@ -586,10 +586,9 @@ curvy_branch_clust_bkg <- function(n, num_noise,
 #' @examples
 #'
 #' # Generate curvy branching clusters with noise with custom parameters
-#' data <- curvy_branch(n = 200, num_noise = 8,
-#' min_n = -0.05, max_n = 0.05)
-curvy_branch <- function(n, num_noise, min_n,
-                                       max_n) {
+#' set.seed(20240412)
+#' data <- curvy_branch(n = 200, num_noise = 2, min_n = -0.05, max_n = 0.05)
+curvy_branch <- function(n, num_noise, min_n, max_n) {
 
   # To check that the assigned n is divided by two
   if ((n%%2) != 0) {

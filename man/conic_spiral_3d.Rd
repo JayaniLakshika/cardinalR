@@ -22,7 +22,7 @@ A matrix containing the generated data points with or without added noise.
 This function generates data points along a conic spiral curve with optional noise.
 }
 \examples{
-conic_spiral_3d(n = 100, num_noise = 4,
-min_n = -0.05, max_n = 0.05)
+set.seed(20240412)
+conic_spiral_3d(n = 100, num_noise = 2, min_n = -0.05, max_n = 0.05)
 
 }

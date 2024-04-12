@@ -7,7 +7,8 @@
 torus_3d_row(radius)
 }
 \arguments{
-\item{radius}{A numeric vector containing the radii of the torus, from largest to smallest.}
+\item{radius}{A numeric vector containing the radii of the torus, from largest
+to smallest.}
 }
 \value{
 A vector representing a row of data points for the 3D torus.
@@ -16,6 +17,7 @@ A vector representing a row of data points for the 3D torus.
 This function generates a row of data points for a 3D torus with given radii.
 }
 \examples{
+set.seed(20240412)
 torus_3d_row(c(2, 1))
 
 }

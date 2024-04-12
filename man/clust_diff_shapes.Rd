@@ -36,10 +36,12 @@ clust_diff_shapes(
 A matrix containing the generated clusters with different shapes.
 }
 \description{
-This function generates clusters with different shapes, including both Gaussian and non-Gaussian clusters.
+This function generates clusters with different shapes, including both Gaussian
+and non-Gaussian clusters.
 }
 \examples{
 # Generate clusters with default parameters
+set.seed(20240412)
 data <- clust_diff_shapes(n = 300, num_gau_clust = 4,
 num_non_gau_clust = 2, clust_sd_gau = 0.05, clust_sd_non_gau = 0.1,
 num_dims = 7, a = 2, b = 4)

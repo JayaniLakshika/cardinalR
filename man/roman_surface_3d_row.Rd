@@ -16,6 +16,7 @@ A matrix containing the generated points on the Roman surface in 3D space.
 This function generates points on a Roman surface in 3D space.
 }
 \examples{
+set.seed(20240412)
 roman_surface_3d_row(a = 1)
 
 }

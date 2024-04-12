@@ -19,11 +19,13 @@ two_curvy_diff_pts(cluster_size_vec, num_noise, min_n, max_n)
 A matrix containing the generated data, with each row representing a data point.
 }
 \description{
-This function generates data with two curvilinear clusters that are differentiated from each other, along with added noise.
+This function generates data with two curvilinear clusters that are differentiated
+from each other, along with added noise.
 }
 \examples{
 
 # Generate two curvilinear differentiated clusters with noise with custom parameters
-data <- two_curvy_diff_pts(cluster_size_vec = c(50, 100), num_noise = 4,
+set.seed(20240412)
+data <- two_curvy_diff_pts(cluster_size_vec = c(50, 100), num_noise = 2,
 min_n = -0.05, max_n = 0.05)
 }

@@ -4,10 +4,10 @@
 \alias{cube_3d}
 \title{Generate a 3D cube with optional noise.}
 \usage{
-cube_3d(num_of_effective_dims, num_noise, min_n, max_n)
+cube_3d(num_dims, num_noise, min_n, max_n)
 }
 \arguments{
-\item{num_of_effective_dims}{Number of effective dimensions (default is 3 for a 3D cube).}
+\item{num_dims}{Number of effective dimensions (default is 3 for a 3D cube).}
 
 \item{num_noise}{Number of additional noise dimensions to add to the data.}
 
@@ -22,7 +22,7 @@ A list containing the generated data matrix and the sample size.
 This function generates a 3D cube along with optional noise.
 }
 \examples{
-cube_3d(num_of_effective_dims = 3, num_noise = 2,
-min_n = -0.01, max_n = 0.01)
+set.seed(20240412)
+cube_3d(num_dims = 3, num_noise = 2, min_n = -0.01, max_n = 0.01)
 
 }

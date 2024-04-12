@@ -43,6 +43,7 @@ This function generates Gaussian clusters with specified parameters.
 }
 \examples{
 
+set.seed(20240412)
 gau_clust(n = 300, num_clust = 5,
 mean_matrix = rbind(c(1,0,0,0), c(0,1,0,0), c(0,0,1,0),
 c(0,0,0,1), c(0,0,0,0)), var_vec = c(0.05, 0.05, 0.05, 0.05, 0.05),

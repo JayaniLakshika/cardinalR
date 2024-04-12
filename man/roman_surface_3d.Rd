@@ -22,7 +22,7 @@ A matrix containing the generated data points with or without added noise.
 This function generates data points on a Roman surface with optional noise.
 }
 \examples{
-roman_surface_3d(n = 100, num_noise = 8,
-min_n = -0.05, max_n = 0.05)
+set.seed(20240412)
+roman_surface_3d(n = 100, num_noise = 2, min_n = -0.05, max_n = 0.05)
 
 }

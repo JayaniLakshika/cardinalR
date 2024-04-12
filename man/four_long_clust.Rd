@@ -19,9 +19,11 @@ four_long_clust(n, num_noise, min_n, max_n)
 A matrix containing the four different long clusters with added noise.
 }
 \description{
-This function generates a dataset consisting of four different long clusters with added noise.
+This function generates a dataset consisting of four different long clusters
+with added noise.
 }
 \examples{
-four_diff_long_clusters <- four_long_clust(n = 200,
-num_noise = 8, min_n = -0.05, max_n = 0.05)
+set.seed(20240412)
+four_diff_long_clusters <- four_long_clust(n = 200, num_noise = 2,
+min_n = -0.05, max_n = 0.05)
 }

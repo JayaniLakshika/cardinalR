@@ -22,6 +22,7 @@ A matrix containing the three circular clusters with added noise.
 This function generates three circular clusters in 4D space with added noise dimensions.
 }
 \examples{
-circular_clusters_data <- three_circulars(n = 300,
-num_noise = 4, min_n = -0.05, max_n = 0.05)
+set.seed(20240412)
+circular_clusters_data <- three_circulars(n = 300, num_noise = 2,
+min_n = -0.05, max_n = 0.05)
 }

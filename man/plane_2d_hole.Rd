@@ -19,9 +19,11 @@ plane_2d_hole(n, num_noise, min_n, max_n)
 A list containing the 2D plane data with a hole and the sample size.
 }
 \description{
-This function generates a dataset representing a 2D plane with a hole in the middle, with added noise.
+This function generates a dataset representing a 2D plane with a hole in the
+middle, with added noise.
 }
 \examples{
+set.seed(20240412)
 plane_data <- plane_2d_hole(n = 100, num_noise = 2,
-min_n = 0, max_n = 1)
+min_n = -0.05, max_n = 0.05)
 }

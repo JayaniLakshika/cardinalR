@@ -22,6 +22,6 @@ A matrix containing the tree-like data with added noise.
 This function generates a dataset representing a tree-like structure, with added noise.
 }
 \examples{
-tree_data <- tree(n = 300, num_noise = 8,
-                             min_n = -0.05, max_n = 0.05)
+set.seed(20240412)
+tree_data <- tree(n = 300, num_noise = 2, min_n = -0.05, max_n = 0.05)
 }

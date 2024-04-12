@@ -22,6 +22,7 @@ A matrix containing the seven-branching data with added noise.
 This function generates a dataset representing seven branches with added noise.
 }
 \examples{
-seven_branching_data <- seven_branch(n = 210,
-num_noise = 8, min_n = -0.05, max_n = 0.05)
+set.seed(20240412)
+seven_branching_data <- seven_branch(n = 210, num_noise = 2, min_n = -0.05,
+max_n = 0.05)
 }

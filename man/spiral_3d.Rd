@@ -24,7 +24,7 @@ A matrix containing the generated data points with or without added noise.
 This function generates a dataset arranged in a spiral pattern with optional noise.
 }
 \examples{
-spiral_3d(n = 100, num_dims = 10, num_noise = 4,
-min_n = -0.05, max_n = 0.05)
+set.seed(20240412)
+spiral_3d(n = 100, num_dims = 10, num_noise = 2, min_n = -0.05, max_n = 0.05)
 
 }

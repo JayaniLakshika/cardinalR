@@ -24,6 +24,6 @@ This function generates linked data points.
 \examples{
 
 # Generate linked data with noise with custom parameters
-data <- two_circulars(n = 200, num_noise = 4,
-min_n = -0.05, max_n = 0.05)
+set.seed(20240412)
+data <- two_circulars(n = 200, num_noise = 2, min_n = -0.05, max_n = 0.05)
 }

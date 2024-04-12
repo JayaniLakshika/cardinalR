@@ -19,9 +19,11 @@ three_diff_linear(n, num_noise, min_n, max_n)
 A matrix containing the three different linear data with added noise.
 }
 \description{
-This function generates a dataset consisting of three different linear patterns with added noise.
+This function generates a dataset consisting of three different linear
+patterns with added noise.
 }
 \examples{
-three_diff_linear <- three_diff_linear(n = 150,
-num_noise = 8, min_n = -0.05, max_n = 0.05)
+set.seed(20240412)
+three_diff_linear <- three_diff_linear(n = 150, num_noise = 2, min_n = -0.05,
+max_n = 0.05)
 }

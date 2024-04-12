@@ -19,11 +19,13 @@ two_long_clust_diff(n, num_noise, min_n, max_n)
 A matrix containing the generated data, with each row representing a data point.
 }
 \description{
-This function generates data with two linear clusters that are differentiated from each other, along with added noise.
+This function generates data with two linear clusters that are differentiated
+ from each other, along with added noise.
 }
 \examples{
 
 # Generate two linear differentiated clusters with noise with custom parameters
-data <- two_long_clust_diff(n = 300, num_noise = 4,
-min_n = -0.05, max_n = 0.05)
+set.seed(20240412)
+data <- two_long_clust_diff(n = 300, num_noise = 2, min_n = -0.05,
+max_n = 0.05)
 }

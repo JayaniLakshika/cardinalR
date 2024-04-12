@@ -1,6 +1,7 @@
 #' Generate Grid Data with Noise
 #'
-#' This function generates a grid dataset with specified grid points along the x and y axes, and optionally adds noise dimensions.
+#' This function generates a grid dataset with specified grid points along the x
+#' and y axes, and optionally adds noise dimensions.
 #'
 #' @param nx The number of grid points along the x axis.
 #' @param ny The number of grid points along the y axis.
@@ -11,8 +12,8 @@
 #' @export
 #'
 #' @examples
-#' one_grid <- one_grid(nx = 10, ny = 10, num_noise = 2,
-#' min_n = -0.05, max_n = 0.05)
+#' set.seed(20240412)
+#' one_grid <- one_grid(nx = 10, ny = 10, num_noise = 2, min_n = -0.05, max_n = 0.05)
 one_grid <- function(nx, ny, num_noise, min_n, max_n) {
 
   df <- expand.grid(1:nx, 1:ny)
@@ -46,8 +47,8 @@ one_grid <- function(nx, ny, num_noise, min_n, max_n) {
 #' @export
 #'
 #' @examples
-#' two_grids <- two_grid(n_value = 19, num_noise = 4,
-#' min_n = -0.05, max_n = 0.05)
+#' set.seed(20240412)
+#' two_grids <- two_grid(n_value = 19, num_noise = 2, min_n = -0.05, max_n = 0.05)
 two_grid <- function(n_value, num_noise, min_n, max_n) {
 
   df1 <- one_grid(nx = n_value, ny = n_value, num_noise = 0)
@@ -85,8 +86,9 @@ two_grid <- function(n_value, num_noise, min_n, max_n) {
 #' @export
 #'
 #' @examples
-#' three_grids <- three_grid(n_value = 19, num_noise = 4,
-#' min_n = -0.05, max_n = 0.05)
+#' set.seed(20240412)
+#' three_grids <- three_grid(n_value = 19, num_noise = 2, min_n = -0.05,
+#' max_n = 0.05)
 three_grid <- function(n_value, num_noise, min_n, max_n) {
 
   df1 <- one_grid(nx = n_value, ny = n_value, num_noise = 0)
@@ -126,8 +128,9 @@ three_grid <- function(n_value, num_noise, min_n, max_n) {
 #' @export
 #'
 #' @examples
-#' one_grid_bkg <- one_grid_bkg(n_value = 10,
-#' num_noise = 5, min_n = -0.05, max_n = 0.05)
+#' set.seed(20240412)
+#' one_grid_bkg <- one_grid_bkg(n_value = 10, num_noise = 2, min_n = -0.05,
+#' max_n = 0.05)
 one_grid_bkg <- function(n_value, num_noise, min_n, max_n) {
 
   df1 <- one_grid(nx = n_value, ny = n_value, num_noise = 0)
@@ -159,8 +162,9 @@ one_grid_bkg <- function(n_value, num_noise, min_n, max_n) {
 #' @export
 #'
 #' @examples
-#' two_grid_comb_bkg <- two_grid_comb_bkg(n_value = 10, num_noise = 4,
-#'                                                   min_n = -0.05, max_n = 0.05)
+#' set.seed(20240412)
+#' two_grid_comb_bkg <- two_grid_comb_bkg(n_value = 10, num_noise = 2,
+#' min_n = -0.05, max_n = 0.05)
 two_grid_comb_bkg <- function(n_value, num_noise, min_n, max_n) {
 
   df1 <- one_grid(nx = n_value, ny = n_value, num_noise = 0)
@@ -196,8 +200,9 @@ two_grid_comb_bkg <- function(n_value, num_noise, min_n, max_n) {
 #' @export
 #'
 #' @examples
-#' two_grid_comb <- two_grid_comb(n = 200, num_noise = 2,
-#' min_n = -0.05, max_n = 0.05)
+#' set.seed(20240412)
+#' two_grid_comb <- two_grid_comb(n = 200, num_noise = 2, min_n = -0.05,
+#' max_n = 0.05)
 two_grid_comb <- function(n, num_noise, min_n, max_n) {
 
   if ((n %% 2) != 0) {

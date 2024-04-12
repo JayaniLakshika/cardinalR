@@ -22,6 +22,7 @@ A list containing the one grid datasets with background noise and the sample siz
 This function generates a grid dataset with different values and background noise.
 }
 \examples{
-one_grid_bkg <- one_grid_bkg(n_value = 10,
-num_noise = 5, min_n = -0.05, max_n = 0.05)
+set.seed(20240412)
+one_grid_bkg <- one_grid_bkg(n_value = 10, num_noise = 2, min_n = -0.05,
+max_n = 0.05)
 }

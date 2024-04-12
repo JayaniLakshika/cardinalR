@@ -16,13 +16,14 @@ torus_3d(n, num_noise, min_n, max_n)
 \item{max_n}{Maximum value for the noise added to the data.}
 }
 \value{
-A matrix containing the generated torus-shaped data points with or without added noise.
+A matrix containing the generated torus-shaped data points with or
+without added noise.
 }
 \description{
 This function generates a torus-shaped dataset along with optional noise.
 }
 \examples{
-torus_3d(n = 100, num_noise = 4,
-min_n = -0.05, max_n = 0.05)
+set.seed(20240412)
+torus_3d(n = 100, num_noise = 2, min_n = -0.05, max_n = 0.05)
 
 }

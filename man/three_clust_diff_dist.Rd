@@ -24,7 +24,8 @@ A matrix containing the generated data points with or without added noise.
 This function generates three clusters of data points along with optional noise.
 }
 \examples{
-three_clust_diff_dist(n = 100, num_dims = 7,
-num_noise = 4, min_n = -0.05, max_n = 0.05)
+set.seed(20240412)
+three_clust_diff_dist(n = 100, num_dims = 7, num_noise = 4, min_n = -0.05,
+max_n = 0.05)
 
 }

@@ -23,6 +23,6 @@ A list containing two grid datasets with added noise and the sample
 This function generates two grid datasets with noise dimensions.
 }
 \examples{
-two_grids <- two_grid(n_value = 19, num_noise = 4,
-min_n = -0.05, max_n = 0.05)
+set.seed(20240412)
+two_grids <- two_grid(n_value = 19, num_noise = 2, min_n = -0.05, max_n = 0.05)
 }

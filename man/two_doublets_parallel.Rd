@@ -25,6 +25,6 @@ running in parallel, along with added background noise.
 \examples{
 
 # Generate doublets in parallel with noise with custom parameters
-data <- two_doublets_parallel(n = 440, num_noise = 2,
-min_n = -0.05, max_n = 0.05)
+set.seed(20240412)
+data <- two_doublets_parallel(n = 440, num_noise = 2, min_n = -0.05, max_n = 0.05)
 }

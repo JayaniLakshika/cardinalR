@@ -58,9 +58,10 @@ This function generates points on a plane in 3D space based on the provided coef
 intercepts, and ranges for the parameters.
 }
 \examples{
+set.seed(20240412)
 plane_points <- plane(n = 100, coef_x1 = 1, coef_x2 = 1,
                      coef_y1 = -1, coef_y2 = 1, intercept_x = -10,
                      intercept_y = 8, u_min = 10, u_max = 30, v_min = 10, v_max = 20,
-                     num_noise = 2, min_n = 0, max_n = 1)
+                     num_noise = 2, min_n = -0.05, max_n = 0.05)
 
 }

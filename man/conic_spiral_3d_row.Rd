@@ -22,6 +22,7 @@ A matrix containing the generated points on the conic spiral.
 This function generates points on a conic spiral in 3D space.
 }
 \examples{
+set.seed(20240412)
 conic_spiral_3d_row(1, 2, 0.5, 3)
 
 }

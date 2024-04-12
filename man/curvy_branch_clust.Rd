@@ -28,6 +28,7 @@ This function generates curvy branching cluster data with three clusters of diff
 \examples{
 
 # Generate curvy branching cluster data with custom parameters
+set.seed(20240412)
 data <- curvy_branch_clust(n = 300, clust_vec = c(100, 150, 50),
-num_noise = 6, min_n = -0.05, max_n = 0.05)
+num_noise = 2, min_n = -0.05, max_n = 0.05)
 }

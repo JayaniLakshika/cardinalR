@@ -22,6 +22,7 @@ A matrix containing the eight branching data with added noise.
 This function generates a dataset representing eight branching patterns, with added noise.
 }
 \examples{
-branching_data <- eight_branch(n = 400,
-num_noise = 8, min_n = -0.05, max_n = 0.05)
+set.seed(20240412)
+branching_data <- eight_branch(n = 400, num_noise = 2, min_n = -0.05,
+max_n = 0.05)
 }

@@ -23,6 +23,7 @@ A list containing three grid datasets with added noise and the sample
 This function generates three grid datasets with noise dimensions.
 }
 \examples{
-three_grids <- three_grid(n_value = 19, num_noise = 4,
-min_n = -0.05, max_n = 0.05)
+set.seed(20240412)
+three_grids <- three_grid(n_value = 19, num_noise = 2, min_n = -0.05,
+max_n = 0.05)
 }

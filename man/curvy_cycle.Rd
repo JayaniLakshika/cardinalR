@@ -22,6 +22,7 @@ A matrix containing the curvy cell cycle data with added noise.
 This function generates a curvy cell cycle dataset with added noise dimensions.
 }
 \examples{
-curvy_cell_cycle_data <- curvy_cycle(n = 300,
-num_noise = 4, min_n = -0.05, max_n = 0.05)
+set.seed(20240412)
+curvy_cell_cycle_data <- curvy_cycle(n = 300, num_noise = 2, min_n = -0.05,
+max_n = 0.05)
 }

@@ -21,15 +21,16 @@
 #' @return A matrix containing the generated points on the plane.
 #'
 #' @examples
+#' set.seed(20240412)
 #' plane_points <- plane(n = 100, coef_x1 = 1, coef_x2 = 1,
 #'                      coef_y1 = -1, coef_y2 = 1, intercept_x = -10,
 #'                      intercept_y = 8, u_min = 10, u_max = 30, v_min = 10, v_max = 20,
-#'                      num_noise = 2, min_n = 0, max_n = 1)
+#'                      num_noise = 2, min_n = -0.05, max_n = 0.05)
 #'
 #' @export
-plane <- function(n, coef_x1, coef_x2, coef_y1,
-                  coef_y2, intercept_x, intercept_y, u_min, u_max, v_min,
-                  v_max, num_noise, min_n, max_n) {
+plane <- function(n, coef_x1, coef_x2, coef_y1, coef_y2, intercept_x,
+                  intercept_y, u_min, u_max, v_min, v_max, num_noise,
+                  min_n, max_n) {
 
   u <- stats::runif(n, min = u_min, max = u_max)
   v <- stats::runif(n, min = v_min, max = v_max)
@@ -66,8 +67,9 @@ plane <- function(n, coef_x1, coef_x2, coef_y1,
 #' @export
 #'
 #' @examples
-#' long_cluster <- two_long_clust(n = 200, num_noise = 8,
-#'                                   min_n = -0.05, max_n = 0.05)
+#' set.seed(20240412)
+#' long_cluster <- two_long_clust(n = 200, num_noise = 2, min_n = -0.05,
+#' max_n = 0.05)
 two_long_clust <- function(n, num_noise, min_n, max_n) {
 
   # To check that the assigned n is divided by two
@@ -107,7 +109,8 @@ two_long_clust <- function(n, num_noise, min_n, max_n) {
 
 #' Generate Three Different Linear Data with Noise
 #'
-#' This function generates a dataset consisting of three different linear patterns with added noise.
+#' This function generates a dataset consisting of three different linear
+#' patterns with added noise.
 #'
 #' @param n The total number of samples to generate.
 #' @param num_noise The number of additional noise dimensions to add to the data.
@@ -117,10 +120,10 @@ two_long_clust <- function(n, num_noise, min_n, max_n) {
 #' @export
 #'
 #' @examples
-#' three_diff_linear <- three_diff_linear(n = 150,
-#' num_noise = 8, min_n = -0.05, max_n = 0.05)
-three_diff_linear <- function(n, num_noise, min_n,
-                                         max_n) {
+#' set.seed(20240412)
+#' three_diff_linear <- three_diff_linear(n = 150, num_noise = 2, min_n = -0.05,
+#' max_n = 0.05)
+three_diff_linear <- function(n, num_noise, min_n, max_n) {
 
   # To check that the assigned n is divided by three
   if ((n%%3) != 0) {
@@ -162,7 +165,8 @@ three_diff_linear <- function(n, num_noise, min_n,
 
 #' Generate Four Different Long Clusters with Noise
 #'
-#' This function generates a dataset consisting of four different long clusters with added noise.
+#' This function generates a dataset consisting of four different long clusters
+#' with added noise.
 #'
 #' @param n The total number of samples to generate.
 #' @param num_noise The number of additional noise dimensions to add to the data.
@@ -172,10 +176,10 @@ three_diff_linear <- function(n, num_noise, min_n,
 #' @export
 #'
 #' @examples
-#' four_diff_long_clusters <- four_long_clust(n = 200,
-#' num_noise = 8, min_n = -0.05, max_n = 0.05)
-four_long_clust <- function(n, num_noise,
-                                               min_n, max_n) {
+#' set.seed(20240412)
+#' four_diff_long_clusters <- four_long_clust(n = 200, num_noise = 2,
+#' min_n = -0.05, max_n = 0.05)
+four_long_clust <- function(n, num_noise, min_n, max_n) {
 
   # To check that the assigned n is divided by four
   if ((n%%4) != 0) {
@@ -217,7 +221,8 @@ four_long_clust <- function(n, num_noise,
 
 #' Generate 2D Plane with Hole and Noise
 #'
-#' This function generates a dataset representing a 2D plane with a hole in the middle, with added noise.
+#' This function generates a dataset representing a 2D plane with a hole in the
+#' middle, with added noise.
 #'
 #' @param n The total number of samples to generate.
 #' @param num_noise The number of additional noise dimensions to add to the data.
@@ -227,8 +232,9 @@ four_long_clust <- function(n, num_noise,
 #' @export
 #'
 #' @examples
+#' set.seed(20240412)
 #' plane_data <- plane_2d_hole(n = 100, num_noise = 2,
-#' min_n = 0, max_n = 1)
+#' min_n = -0.05, max_n = 0.05)
 plane_2d_hole <- function(n, num_noise, min_n, max_n) {
 
   # To check that the assigned n is divided by four
@@ -281,10 +287,10 @@ plane_2d_hole <- function(n, num_noise, min_n, max_n) {
 #'
 #' @examples
 #' # Generate four long clusters with background noise with custom parameters
-#' data <- four_long_clust_bkg(n = 400, num_noise = 4,
-#' min_n = -0.05, max_n = 0.05)
-four_long_clust_bkg <- function(n, num_noise,
-                                              min_n, max_n) {
+#' set.seed(20240412)
+#' data <- four_long_clust_bkg(n = 400, num_noise = 4, min_n = -0.05,
+#' max_n = 0.05)
+four_long_clust_bkg <- function(n, num_noise, min_n, max_n) {
 
   # To check that the assigned n is divided by five
   if ((n%%5) != 0) {
@@ -340,10 +346,9 @@ four_long_clust_bkg <- function(n, num_noise,
 #' @examples
 #'
 #' # Generate three linear clusters with noise with custom parameters
-#' data <- three_long_clust(n = 300, num_noise = 4,
-#' min_n = -0.05, max_n = 0.05)
-three_long_clust <- function(n, num_noise, min_n,
-                                    max_n) {
+#' set.seed(20240412)
+#' data <- three_long_clust(n = 300, num_noise = 2, min_n = -0.05, max_n = 0.05)
+three_long_clust <- function(n, num_noise, min_n, max_n) {
 
   # To check that the assigned n is divided by three
   if ((n%%3) != 0) {
@@ -385,7 +390,8 @@ three_long_clust <- function(n, num_noise, min_n,
 
 #' Generate Two Linear Differentiated Clusters with Noise
 #'
-#' This function generates data with two linear clusters that are differentiated from each other, along with added noise.
+#' This function generates data with two linear clusters that are differentiated
+#'  from each other, along with added noise.
 #'
 #' @param n The total number of data points to be generated.
 #' @param num_noise The number of additional noise dimensions to be generated.
@@ -398,10 +404,10 @@ three_long_clust <- function(n, num_noise, min_n,
 #' @examples
 #'
 #' # Generate two linear differentiated clusters with noise with custom parameters
-#' data <- two_long_clust_diff(n = 300, num_noise = 4,
-#' min_n = -0.05, max_n = 0.05)
-two_long_clust_diff <- function(n, num_noise, min_n,
-                                       max_n) {
+#' set.seed(20240412)
+#' data <- two_long_clust_diff(n = 300, num_noise = 2, min_n = -0.05,
+#' max_n = 0.05)
+two_long_clust_diff <- function(n, num_noise, min_n, max_n) {
 
   # To check that the assigned n is divided by three
   if ((n%%3) != 0) {

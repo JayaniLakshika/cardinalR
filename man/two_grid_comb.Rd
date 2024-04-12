@@ -22,6 +22,7 @@ A list containing the grid dataset with different offsets and the sample size.
 This function generates a single grid dataset with a different offset.
 }
 \examples{
-two_grid_comb <- two_grid_comb(n = 200, num_noise = 2,
-min_n = -0.05, max_n = 0.05)
+set.seed(20240412)
+two_grid_comb <- two_grid_comb(n = 200, num_noise = 2, min_n = -0.05,
+max_n = 0.05)
 }

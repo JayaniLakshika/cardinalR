@@ -23,12 +23,13 @@ between the two clusters.}
 A matrix containing the generated data, with each row representing a data point.
 }
 \description{
-This function generates data with two clusters, one following a curvilinear pattern and the other distributed randomly.
+This function generates data with two clusters, one following a curvilinear
+pattern and the other distributed randomly.
 }
 \examples{
 
 # Generate cluster and curvilinear data with custom parameters
-data <- gau_curvy_clust(n = 300,
-clust_size_vec = c(100, 200), num_noise = 3, min_n = -0.05,
-max_n = 0.05)
+set.seed(20240412)
+data <- gau_curvy_clust(n = 300, clust_size_vec = c(100, 200), num_noise = 3,
+min_n = -0.05, max_n = 0.05)
 }

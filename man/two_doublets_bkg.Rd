@@ -24,6 +24,6 @@ This function generates data with two doublets along with added background noise
 \examples{
 
 # Generate two doublets with background noise with custom parameters
-data <- two_doublets_bkg(n = 200, num_noise = 4,
-min_n = -0.05, max_n = 0.05)
+set.seed(20240412)
+data <- two_doublets_bkg(n = 200, num_noise = 2, min_n = -0.05, max_n = 0.05)
 }

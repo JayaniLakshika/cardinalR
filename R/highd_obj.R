@@ -10,6 +10,7 @@
 #' @return A matrix containing the generated points on the conic spiral.
 #'
 #' @examples
+#' set.seed(20240412)
 #' conic_spiral_3d_row(1, 2, 0.5, 3)
 #'
 #' @export
@@ -37,12 +38,11 @@ conic_spiral_3d_row <- function(a, b, c, w) {
 #' @return A matrix containing the generated data points with or without added noise.
 #'
 #' @examples
-#' conic_spiral_3d(n = 100, num_noise = 4,
-#' min_n = -0.05, max_n = 0.05)
+#' set.seed(20240412)
+#' conic_spiral_3d(n = 100, num_noise = 2, min_n = -0.05, max_n = 0.05)
 #'
 #' @export
-conic_spiral_3d <- function(n, num_noise, min_n,
-                                    max_n) {
+conic_spiral_3d <- function(n, num_noise, min_n, max_n) {
 
   df <- matrix(
     do.call(
@@ -80,6 +80,7 @@ conic_spiral_3d <- function(n, num_noise, min_n,
 #' @return A matrix containing the generated points on the surface.
 #'
 #' @examples
+#' set.seed(20240412)
 #' dini_surface_3d_row(a = 1, b = 1)
 #'
 #' @export
@@ -104,12 +105,11 @@ dini_surface_3d_row <- function(a = 1, b = 1) {
 #' @return A matrix containing the generated data points with or without added noise.
 #'
 #' @examples
-#' dini_surface_3d(n = 100, num_noise = 4,
-#' min_n = -0.05, max_n = 0.05)
+#' set.seed(20240412)
+#' dini_surface_3d(n = 100, num_noise = 2, min_n = -0.05, max_n = 0.05)
 #'
 #' @export
-dini_surface_3d <- function(n, num_noise, min_n,
-                                    max_n) {
+dini_surface_3d <- function(n, num_noise, min_n, max_n) {
 
   df <- matrix(
     do.call(
@@ -146,6 +146,7 @@ dini_surface_3d <- function(n, num_noise, min_n,
 #' @return A matrix containing the generated points on the Roman surface in 3D space.
 #'
 #' @examples
+#' set.seed(20240412)
 #' roman_surface_3d_row(a = 1)
 #'
 #' @export
@@ -170,12 +171,11 @@ roman_surface_3d_row <- function(a = 1) {
 #' @return A matrix containing the generated data points with or without added noise.
 #'
 #' @examples
-#' roman_surface_3d(n = 100, num_noise = 8,
-#' min_n = -0.05, max_n = 0.05)
+#' set.seed(20240412)
+#' roman_surface_3d(n = 100, num_noise = 2, min_n = -0.05, max_n = 0.05)
 #'
 #' @export
-roman_surface_3d <- function(n, num_noise, min_n,
-                                     max_n) {
+roman_surface_3d <- function(n, num_noise, min_n, max_n) {
 
   df <- matrix(
     do.call(
@@ -216,8 +216,8 @@ roman_surface_3d <- function(n, num_noise, min_n,
 #' @return A matrix containing the generated data points with or without added noise.
 #'
 #' @examples
-#' spiral_3d(n = 100, num_dims = 10, num_noise = 4,
-#' min_n = -0.05, max_n = 0.05)
+#' set.seed(20240412)
+#' spiral_3d(n = 100, num_dims = 10, num_noise = 2, min_n = -0.05, max_n = 0.05)
 #'
 #' @export
 spiral_3d <- function(n, num_dims, num_noise, min_n,
@@ -253,11 +253,13 @@ spiral_3d <- function(n, num_dims, num_noise, min_n,
 #'
 #' This function generates a row of data points for a 3D torus with given radii.
 #'
-#' @param radius A numeric vector containing the radii of the torus, from largest to smallest.
+#' @param radius A numeric vector containing the radii of the torus, from largest
+#' to smallest.
 #'
 #' @return A vector representing a row of data points for the 3D torus.
 #'
 #' @examples
+#' set.seed(20240412)
 #' torus_3d_row(c(2, 1))
 #'
 #' @export
@@ -293,11 +295,12 @@ torus_3d_row <- function(radius) {
 #' @param min_n Minimum value for the noise added to the data.
 #' @param max_n Maximum value for the noise added to the data.
 #'
-#' @return A matrix containing the generated torus-shaped data points with or without added noise.
+#' @return A matrix containing the generated torus-shaped data points with or
+#' without added noise.
 #'
 #' @examples
-#' torus_3d(n = 100, num_noise = 4,
-#' min_n = -0.05, max_n = 0.05)
+#' set.seed(20240412)
+#' torus_3d(n = 100, num_noise = 2, min_n = -0.05, max_n = 0.05)
 #'
 #' @export
 torus_3d <- function(n, num_noise, min_n, max_n) {
@@ -333,7 +336,7 @@ torus_3d <- function(n, num_noise, min_n, max_n) {
 #'
 #' This function generates a 3D cube along with optional noise.
 #'
-#' @param num_of_effective_dims Number of effective dimensions (default is 3 for a 3D cube).
+#' @param num_dims Number of effective dimensions (default is 3 for a 3D cube).
 #' @param num_noise Number of additional noise dimensions to add to the data.
 #' @param min_n Minimum value for the noise added to the data.
 #' @param max_n Maximum value for the noise added to the data.
@@ -341,15 +344,14 @@ torus_3d <- function(n, num_noise, min_n, max_n) {
 #' @return A list containing the generated data matrix and the sample size.
 #'
 #' @examples
-#' cube_3d(num_of_effective_dims = 3, num_noise = 2,
-#' min_n = -0.01, max_n = 0.01)
+#' set.seed(20240412)
+#' cube_3d(num_dims = 3, num_noise = 2, min_n = -0.01, max_n = 0.01)
 #'
 #' @export
-cube_3d <- function(num_of_effective_dims, num_noise, min_n,
-                               max_n) {
+cube_3d <- function(num_dims, num_noise, min_n, max_n) {
 
-  df1 <- do.call(expand.grid, rep(list(c( (0:11) / 11)), num_of_effective_dims))
-  df2 <- do.call(expand.grid, rep(list(c(0, 1)), num_of_effective_dims))
+  df1 <- do.call(expand.grid, rep(list(c( (0:11) / 11)), num_dims))
+  df2 <- do.call(expand.grid, rep(list(c(0, 1)), num_dims))
   df <- unique(rbind(as.matrix(df1), as.matrix(df2)))
 
   if (num_noise != 0) {

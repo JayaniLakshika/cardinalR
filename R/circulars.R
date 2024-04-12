@@ -10,10 +10,10 @@
 #' @export
 #'
 #' @examples
-#' circular_clusters_data <- three_circulars(n = 300,
-#' num_noise = 4, min_n = -0.05, max_n = 0.05)
-three_circulars <- function(n, num_noise, min_n,
-                                       max_n) {
+#' set.seed(20240412)
+#' circular_clusters_data <- three_circulars(n = 300, num_noise = 2,
+#' min_n = -0.05, max_n = 0.05)
+three_circulars <- function(n, num_noise, min_n, max_n) {
 
   # To check that the assigned n is divided by three
   if ((n%%3) != 0) {
@@ -79,10 +79,10 @@ three_circulars <- function(n, num_noise, min_n,
 #' @export
 #'
 #' @examples
-#' cell_cycle_data <- cell_cycle(n = 300,
-#' num_noise = 4, min_n = -0.05, max_n = 0.05)
-cell_cycle <- function(n, num_noise, min_n,
-                                  max_n) {
+#' set.seed(20240412)
+#' cell_cycle_data <- cell_cycle(n = 300, num_noise = 2, min_n = -0.05,
+#' max_n = 0.05)
+cell_cycle <- function(n, num_noise, min_n, max_n) {
 
   # To check that the assigned n is divided by three
   if ((n%%3) != 0) {
@@ -146,10 +146,10 @@ cell_cycle <- function(n, num_noise, min_n,
 #' @export
 #'
 #' @examples
-#' curvy_cell_cycle_data <- curvy_cycle(n = 300,
-#' num_noise = 4, min_n = -0.05, max_n = 0.05)
-curvy_cycle <- function(n, num_noise, min_n,
-                                        max_n) {
+#' set.seed(20240412)
+#' curvy_cell_cycle_data <- curvy_cycle(n = 300, num_noise = 2, min_n = -0.05,
+#' max_n = 0.05)
+curvy_cycle <- function(n, num_noise, min_n, max_n) {
 
   # To check that the assigned n is divided by three
   if ((n%%3) != 0) {
@@ -215,8 +215,8 @@ curvy_cycle <- function(n, num_noise, min_n,
 #' @examples
 #'
 #' # Generate linked data with noise with custom parameters
-#' data <- two_circulars(n = 200, num_noise = 4,
-#' min_n = -0.05, max_n = 0.05)
+#' set.seed(20240412)
+#' data <- two_circulars(n = 200, num_noise = 2, min_n = -0.05, max_n = 0.05)
 two_circulars <- function(n, num_noise, min_n, max_n) {
 
   # To check that the assigned n is divided by two

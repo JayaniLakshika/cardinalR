@@ -24,6 +24,7 @@ This function generates data with four clusters, two of which follow a curviline
 \examples{
 
 # Generate curvy branching cluster data with background noise with custom parameters
-data <- curvy_branch_clust_bkg(n = 400, num_noise = 10,
-min_n = -0.5, max_n = 0.5)
+set.seed(20240412)
+data <- curvy_branch_clust_bkg(n = 400, num_noise = 2, min_n = -0.05,
+max_n = 0.05)
 }

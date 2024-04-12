@@ -24,6 +24,6 @@ This function generates data with three linear clusters, along with added noise.
 \examples{
 
 # Generate three linear clusters with noise with custom parameters
-data <- three_long_clust(n = 300, num_noise = 4,
-min_n = -0.05, max_n = 0.05)
+set.seed(20240412)
+data <- three_long_clust(n = 300, num_noise = 2, min_n = -0.05, max_n = 0.05)
 }

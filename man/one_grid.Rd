@@ -21,9 +21,10 @@ one_grid(nx, ny, num_noise, min_n, max_n)
 A matrix containing the grid data with added noise.
 }
 \description{
-This function generates a grid dataset with specified grid points along the x and y axes, and optionally adds noise dimensions.
+This function generates a grid dataset with specified grid points along the x
+and y axes, and optionally adds noise dimensions.
 }
 \examples{
-one_grid <- one_grid(nx = 10, ny = 10, num_noise = 2,
-min_n = -0.05, max_n = 0.05)
+set.seed(20240412)
+one_grid <- one_grid(nx = 10, ny = 10, num_noise = 2, min_n = -0.05, max_n = 0.05)
 }

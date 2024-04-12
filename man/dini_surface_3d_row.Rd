@@ -18,6 +18,7 @@ A matrix containing the generated points on the surface.
 This function generates points on a Dini's surface.
 }
 \examples{
+set.seed(20240412)
 dini_surface_3d_row(a = 1, b = 1)
 
 }

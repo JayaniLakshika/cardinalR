@@ -22,6 +22,7 @@ A list containing the two grid datasets with background noise and the sample siz
 This function generates two grid datasets with background noise.
 }
 \examples{
-two_grid_comb_bkg <- two_grid_comb_bkg(n_value = 10, num_noise = 4,
-                                                  min_n = -0.05, max_n = 0.05)
+set.seed(20240412)
+two_grid_comb_bkg <- two_grid_comb_bkg(n_value = 10, num_noise = 2,
+min_n = -0.05, max_n = 0.05)
 }

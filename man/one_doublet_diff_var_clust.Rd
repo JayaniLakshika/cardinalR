@@ -19,11 +19,13 @@ one_doublet_diff_var_clust(n, num_noise, min_n, max_n)
 A matrix containing the generated data, with each row representing a data point.
 }
 \description{
-This function generates data with one set of doublets (pairs of clusters) having clusters with different variance, along with added background noise.
+This function generates data with one set of doublets (pairs of clusters) having
+clusters with different variance, along with added background noise.
 }
 \examples{
 
 # Generate doublets with different variance clusters and noise with custom parameters
+set.seed(20240412)
 data <- one_doublet_diff_var_clust(n = 260, num_noise = 2,
 min_n = -0.05, max_n = 0.05)
 }

@@ -25,6 +25,6 @@ added background noise.
 \examples{
 
 # Generate doublets with background noise with custom parameters
-data <- one_doublet_bkg(n = 250, num_noise = 4,
-min_n = -0.05, max_n = 0.05)
+set.seed(20240412)
+data <- one_doublet_bkg(n = 250, num_noise = 2, min_n = -0.05, max_n = 0.05)
 }

@@ -22,6 +22,7 @@ A matrix containing the long cluster data with added noise.
 This function generates a dataset consisting of two long clusters with added noise.
 }
 \examples{
-long_cluster <- two_long_clust(n = 200, num_noise = 8,
-                                  min_n = -0.05, max_n = 0.05)
+set.seed(20240412)
+long_cluster <- two_long_clust(n = 200, num_noise = 2, min_n = -0.05,
+max_n = 0.05)
 }
