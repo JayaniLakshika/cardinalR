@@ -23,6 +23,7 @@ This function generates S-curve data, which is a commonly used dataset for
 testing and visualizing dimensionality reduction algorithms.
 }
 \examples{
-s_curve_data <- scurve(n = 100, num_noise = 3,
-min_n = -0.5, max_n = 0.5)
+set.seed(20240412)
+s_curve_data <- scurve(n = 100, num_noise = 2,
+min_n = -0.05, max_n = 0.05)
 }

@@ -22,6 +22,7 @@ A matrix containing the combined S-curve datasets with added noise.
 This function generates two S-curve datasets with added noise dimensions.
 }
 \examples{
-two_s_curve_data <- two_scurves(n = 200, num_noise = 8,
-min_n = -0.5, max_n = 0.5)
+set.seed(20240412)
+two_s_curve_data <- two_scurves(n = 200, num_noise = 2,
+min_n = -0.05, max_n = 0.05)
 }

@@ -23,6 +23,7 @@ This function generates S-curve data with a hole by filtering out samples that
 are not close to a specified anchor point.
 }
 \examples{
-s_curve_hole_data <- scurve_hole(n = 100, num_noise = 3,
-min_n = -0.5, max_n = 0.5)
+set.seed(20240412)
+s_curve_hole_data <- scurve_hole(n = 100, num_noise = 2,
+min_n = -0.05, max_n = 0.05)
 }

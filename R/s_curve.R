@@ -11,9 +11,30 @@
 #' @export
 #'
 #' @examples
-#' s_curve_data <- scurve(n = 100, num_noise = 3,
-#' min_n = -0.5, max_n = 0.5)
+#' set.seed(20240412)
+#' s_curve_data <- scurve(n = 100, num_noise = 2,
+#' min_n = -0.05, max_n = 0.05)
 scurve <- function(n, num_noise, min_n, max_n) {
+
+  if (n <= 0) {
+    stop('Number of points should be a positive number.')
+  }
+
+  if (num_noise < 0) {
+    stop('Number of noise dimensions should be a positive number.')
+
+  }
+
+  if (missing(n)) {
+    stop('Missing n.')
+
+  }
+
+  if (missing(num_noise)) {
+    stop('Missing num_noise.')
+
+  }
+
   a <- 3 * pi * stats::runif(n = n, min = -0.5, max = 0.5)
   x <- sin(a)
   y <- 2.0 * stats::runif(n = n)
@@ -22,6 +43,16 @@ scurve <- function(n, num_noise, min_n, max_n) {
   scurve_mat <- matrix(c(x, y, z), ncol = 3)
 
   if (num_noise != 0) {
+
+    if (missing(min_n)) {
+      stop('Missing min_n.')
+
+    }
+
+    if (missing(max_n)) {
+      stop('Missing max_n.')
+
+    }
 
     noise_mat <- gen_noise_dims(n = dim(scurve_mat)[1], num_noise = num_noise,
                                 min_n = min_n, max_n = max_n)
@@ -49,9 +80,30 @@ scurve <- function(n, num_noise, min_n, max_n) {
 #' @export
 #'
 #' @examples
-#' s_curve_hole_data <- scurve_hole(n = 100, num_noise = 3,
-#' min_n = -0.5, max_n = 0.5)
+#' set.seed(20240412)
+#' s_curve_hole_data <- scurve_hole(n = 100, num_noise = 2,
+#' min_n = -0.05, max_n = 0.05)
 scurve_hole <- function(n, num_noise, min_n, max_n) {
+
+  if (n <= 0) {
+    stop('Number of points should be a positive number.')
+  }
+
+  if (num_noise < 0) {
+    stop('Number of noise dimensions should be a positive number.')
+
+  }
+
+  if (missing(n)) {
+    stop('Missing n.')
+
+  }
+
+  if (missing(num_noise)) {
+    stop('Missing num_noise.')
+
+  }
+
   scurve <- scurve(n = n, num_noise = 0)
 
   anchor <- c(0, 1, 0)
@@ -60,6 +112,16 @@ scurve_hole <- function(n, num_noise, min_n, max_n) {
   rownames(scurve) <- NULL
 
   if (num_noise != 0) {
+
+    if (missing(min_n)) {
+      stop('Missing min_n.')
+
+    }
+
+    if (missing(max_n)) {
+      stop('Missing max_n.')
+
+    }
 
     noise_mat <- gen_noise_dims(n = dim(scurve)[1], num_noise = num_noise,
                                 min_n = min_n, max_n = max_n)
@@ -87,10 +149,29 @@ scurve_hole <- function(n, num_noise, min_n, max_n) {
 #' @export
 #'
 #' @examples
-#' two_s_curve_data <- two_scurves(n = 200, num_noise = 8,
-#' min_n = -0.5, max_n = 0.5)
-two_scurves <- function(n, num_noise, min_n,
-                                    max_n) {
+#' set.seed(20240412)
+#' two_s_curve_data <- two_scurves(n = 200, num_noise = 2,
+#' min_n = -0.05, max_n = 0.05)
+two_scurves <- function(n, num_noise, min_n, max_n) {
+
+  if (n <= 0) {
+    stop('Number of points should be a positive number.')
+  }
+
+  if (num_noise < 0) {
+    stop('Number of noise dimensions should be a positive number.')
+
+  }
+
+  if (missing(n)) {
+    stop('Missing n.')
+
+  }
+
+  if (missing(num_noise)) {
+    stop('Missing num_noise.')
+
+  }
 
   # To check that the assigned n is divided by two
   if ((n%%2) != 0) {
@@ -108,6 +189,16 @@ two_scurves <- function(n, num_noise, min_n,
   df <- rbind(df1, df2)
 
   if (num_noise != 0) {
+
+    if (missing(min_n)) {
+      stop('Missing min_n.')
+
+    }
+
+    if (missing(max_n)) {
+      stop('Missing max_n.')
+
+    }
 
     noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise = num_noise,
                                 min_n = min_n, max_n = max_n)
@@ -136,10 +227,29 @@ two_scurves <- function(n, num_noise, min_n,
 #' @export
 #'
 #' @examples
-#' mirror_s_curve_data <- mirror_scurves(n = 200, num_noise = 8,
-#' min_n = -0.5, max_n = 0.5)
-mirror_scurves <- function(n, num_noise, min_n,
-                                       max_n) {
+#' set.seed(20240412)
+#' mirror_s_curve_data <- mirror_scurves(n = 200, num_noise = 2,
+#' min_n = -0.05, max_n = 0.05)
+mirror_scurves <- function(n, num_noise, min_n, max_n) {
+
+  if (n <= 0) {
+    stop('Number of points should be a positive number.')
+  }
+
+  if (num_noise < 0) {
+    stop('Number of noise dimensions should be a positive number.')
+
+  }
+
+  if (missing(n)) {
+    stop('Missing n.')
+
+  }
+
+  if (missing(num_noise)) {
+    stop('Missing num_noise.')
+
+  }
 
   # To check that the assigned n is divided by two
   if ((n%%2) != 0) {
@@ -156,6 +266,16 @@ mirror_scurves <- function(n, num_noise, min_n,
   df <- rbind(df1, df2)
 
   if (num_noise != 0) {
+
+    if (missing(min_n)) {
+      stop('Missing min_n.')
+
+    }
+
+    if (missing(max_n)) {
+      stop('Missing max_n.')
+
+    }
 
     noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise = num_noise,
                                 min_n = min_n, max_n = max_n)
@@ -181,16 +301,35 @@ mirror_scurves <- function(n, num_noise, min_n,
 #' @param min_n The minimum value for the noise added to the data points.
 #' @param max_n The maximum value for the noise added to the data points.
 #'
-#' @return A list containing the generated data matrix (`df`) and the total sample size.
+#' @return A matrix containing the two S-curve datasets with added noise.
 #' @export
 #'
 #' @examples
 #'
 #' # Generate two S-curve data with noise with custom parameters
-#' data <- two_scurve_hole(n = 200, num_noise = 8,
+#' set.seed(20240412)
+#' data <- two_scurve_hole(n = 200, num_noise = 2,
 #' min_n = -0.05, max_n = 0.05)
-two_scurve_hole <- function(n = 200, num_noise = 8,
-                                        min_n = -0.05, max_n = 0.05) {
+two_scurve_hole <- function(n, num_noise, min_n, max_n) {
+
+  if (n <= 0) {
+    stop('Number of points should be a positive number.')
+  }
+
+  if (num_noise < 0) {
+    stop('Number of noise dimensions should be a positive number.')
+
+  }
+
+  if (missing(n)) {
+    stop('Missing n.')
+
+  }
+
+  if (missing(num_noise)) {
+    stop('Missing num_noise.')
+
+  }
 
   # To check that the assigned n is divided by two
   if ((n%%2) != 0) {
@@ -209,6 +348,16 @@ two_scurve_hole <- function(n = 200, num_noise = 8,
 
   if (num_noise != 0) {
 
+    if (missing(min_n)) {
+      stop('Missing min_n.')
+
+    }
+
+    if (missing(max_n)) {
+      stop('Missing max_n.')
+
+    }
+
     noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise = num_noise,
                                 min_n = min_n, max_n = max_n)
     df <- cbind(df, noise_mat)
@@ -216,6 +365,6 @@ two_scurve_hole <- function(n = 200, num_noise = 8,
   }
 
 
-  return(list(df = df, n = NROW(df)))
+  return(df)
 
 }
