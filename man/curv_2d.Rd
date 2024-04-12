@@ -22,7 +22,8 @@ A matrix containing the generated points on the curvilinear 2D manifold.
 This function generates points on a curvilinear 2D manifold based on a nonlinear equation.
 }
 \examples{
-curvilinear_points <- curv_2d(n = 100, num_noise = 2,
-                                     min_n = -1, max_n = 1)
+set.seed(20240412)
+curvilinear_points <- curv_2d(n = 100, num_noise = 2, min_n = -0.01,
+max_n = 0.01)
 
 }

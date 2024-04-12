@@ -22,6 +22,6 @@ A matrix containing the sine curve data with noise.
 This function generates a dataset representing a sine curve with added noise.
 }
 \examples{
-sine_curve <- sine_curve(n = 100, num_noise = 8,
-                                               min_n = -0.05, max_n = 0.05)
+set.seed(20240412)
+sine_curve <- sine_curve(n = 100, num_noise = 2, min_n = -0.05, max_n = 0.05)
 }

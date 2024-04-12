@@ -22,7 +22,8 @@ A matrix containing the generated points on the nonlinear 2D manifold.
 This function generates points on a nonlinear 2D manifold based on a given equation.
 }
 \examples{
-nonlinear_points <- nonlinear_2d(n = 100, num_noise = 2,
-                                 min_n = -1, max_n = 1)
+set.seed(20240412)
+nonlinear_points <- nonlinear_2d(n = 100, num_noise = 2, min_n = -0.01,
+max_n = 0.01)
 
 }

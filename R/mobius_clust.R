@@ -6,6 +6,7 @@
 #' @export
 #'
 #' @examples
+#' set.seed(20240412)
 #' mobius_row <- mobius_5d_row()
 mobius_5d_row <- function(){
 
@@ -68,6 +69,7 @@ mobius_5d_row <- function(){
 #' @export
 #'
 #' @examples
+#' set.seed(20240412)
 #' mobius_data <- mobius_5d(n = 100, num_noise = 3,
 #'                          min_n = -0.05, max_n = 0.05)
 mobius_5d <- function(n, num_noise, min_n, max_n){
@@ -113,8 +115,7 @@ mobius_5d <- function(n, num_noise, min_n, max_n){
 #' @examples
 #' mobius_cluster <- mobius_clust(n = 200, num_noise = 8,
 #'                                             min_n = -0.05, max_n = 0.05)
-mobius_clust <- function(n, num_noise, min_n,
-                                      max_n) {
+mobius_clust <- function(n, num_noise, min_n, max_n) {
 
   df1 <- mobius_5d(n = n * 0.80, num_noise = 0)
 

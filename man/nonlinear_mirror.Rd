@@ -22,6 +22,7 @@ A matrix containing the nonlinear mirror data with noise.
 This function generates a dataset representing two mirror-image clusters with added noise.
 }
 \examples{
-nonlinear_mirror <- nonlinear_mirror(n = 400,
-num_noise = 8, min_n = -0.05, max_n = 0.05)
+set.seed(20240412)
+nonlinear_mirror <- nonlinear_mirror(n = 400, num_noise = 2, min_n = -0.05,
+max_n = 0.05)
 }
