@@ -13,11 +13,30 @@
 #' set.seed(20240412)
 #' triangular_3d_data <- tri_3d(n = 100, num_noise = 2,
 #' min_n = -0.05, max_n = 0.05)
-tri_3d <- function(n, num_noise,
-                                     min_n, max_n) {
+tri_3d <- function(n, num_noise, min_n, max_n) {
+
+  if (n <= 0) {
+    stop('Number of points should be a positive number.')
+  }
+
+  if (num_noise < 0) {
+    stop('Number of noise dimensions should be a positive number.')
+
+  }
+
+  if (missing(n)) {
+    stop('Missing n.')
+
+  }
+
+  if (missing(num_noise)) {
+    stop('Missing num_noise.')
+
+  }
 
   trace_point <- stats::runif(3)
-  corner_points <- matrix(c(c(0, 1, 0.5, 0.5), c(0, 0, 1, 0.5), c(0, 0, 0, 1)), ncol =3)
+  corner_points <- matrix(c(c(0, 1, 0.5, 0.5), c(0, 0, 1, 0.5), c(0, 0, 0, 1)),
+                          ncol =3)
 
   df <- matrix(c(rep(0,n), rep(0,n), rep(0,n)), ncol =3)
   for(i in 1:n){
@@ -26,6 +45,16 @@ tri_3d <- function(n, num_noise,
   }
 
   if (num_noise != 0) {
+
+    if (missing(min_n)) {
+      stop('Missing min_n.')
+
+    }
+
+    if (missing(max_n)) {
+      stop('Missing max_n.')
+
+    }
 
     noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise = num_noise,
                                 min_n = min_n, max_n = max_n)
@@ -57,8 +86,26 @@ tri_3d <- function(n, num_noise,
 #' set.seed(20240412)
 #' triangular_plane_data <- tri_plane_bkg(n = 216,
 #' num_noise = 2, min_n = -0.05, max_n = 0.05)
-tri_plane_bkg <- function(n, num_noise,
-                                            min_n, max_n) {
+tri_plane_bkg <- function(n, num_noise, min_n, max_n) {
+
+  if (n <= 0) {
+    stop('Number of points should be a positive number.')
+  }
+
+  if (num_noise < 0) {
+    stop('Number of noise dimensions should be a positive number.')
+
+  }
+
+  if (missing(n)) {
+    stop('Missing n.')
+
+  }
+
+  if (missing(num_noise)) {
+    stop('Missing num_noise.')
+
+  }
 
   # To check that the assigned n is divided by three
   if ((n%%3) != 0) {
@@ -81,13 +128,24 @@ tri_plane_bkg <- function(n, num_noise,
 
   if (num_noise != 0) {
 
+    if (missing(min_n)) {
+      stop('Missing min_n.')
+
+    }
+
+    if (missing(max_n)) {
+      stop('Missing max_n.')
+
+    }
+
     noise_mat <- gen_noise_dims(n = dim(df1)[1], num_noise = num_noise,
                                 min_n = min_n, max_n = max_n)
     df1 <- cbind(df1, noise_mat)
 
   }
 
-  df2 <- gen_bkg_noise(n = cluster_size, num_dims = NCOL(df1), mean = 0.025, sd = 0.5)
+  df2 <- gen_bkg_noise(n = cluster_size, num_dims = NCOL(df1), mean = 0.025,
+                       sd = 0.5)
 
   df <- rbind(df1, df2, -df1)
 
