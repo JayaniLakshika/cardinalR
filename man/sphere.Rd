@@ -25,6 +25,7 @@ This function generates the coordinates for a sphere in three-dimensional space.
 }
 \examples{
 # Generate coordinates for a sphere with radius 1 and resolution 100
+set.seed(20240412)
 sphere(radius = 1, resolution = 20, num_noise = 3, min_n = -0.05,
 max_n = 0.05)
 

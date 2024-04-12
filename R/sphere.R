@@ -12,11 +12,41 @@
 #'
 #' @examples
 #' # Generate coordinates for a sphere with radius 1 and resolution 100
+#' set.seed(20240412)
 #' sphere(radius = 1, resolution = 20, num_noise = 3, min_n = -0.05,
 #' max_n = 0.05)
 #'
 #' @export
 sphere <- function(radius, resolution, num_noise, min_n, max_n) {
+
+  if (radius <= 0) {
+    stop('The radius of sphere should be a positive number.')
+  }
+
+  if (resolution <= 0) {
+    stop('The number of points on the sphere surface should be a positive number.')
+  }
+
+  if (num_noise < 0) {
+    stop('Number of noise dimensions should be a positive number.')
+
+  }
+
+  if (missing(radius)) {
+    stop('Missing radius.')
+
+  }
+
+  if (missing(resolution)) {
+    stop('Missing resolution.')
+
+  }
+
+  if (missing(num_noise)) {
+    stop('Missing num_noise.')
+
+  }
+
 
   # Generate the coordinates for the sphere
   theta <- seq(0, 2*pi, length.out = resolution)
@@ -31,6 +61,16 @@ sphere <- function(radius, resolution, num_noise, min_n, max_n) {
   sphere_mat <- matrix(c(x, y, z), ncol = 3)
 
   if (num_noise != 0) {
+
+    if (missing(min_n)) {
+      stop('Missing min_n.')
+
+    }
+
+    if (missing(max_n)) {
+      stop('Missing max_n.')
+
+    }
 
     noise_mat <- gen_noise_dims(n = dim(sphere_mat)[1], num_noise = num_noise,
                                 min_n = min_n, max_n = max_n)
@@ -59,12 +99,31 @@ sphere <- function(radius, resolution, num_noise, min_n, max_n) {
 #' @return A matrix containing the generated data points with or without added noise.
 #'
 #' @examples
-#' diff_sphere(n = 390, num_noise = 4,
+#' set.seed(20240412)
+#' diff_sphere(n = 390, num_noise = 2,
 #' min_n = -0.05, max_n = 0.05)
 #'
 #' @export
-diff_sphere <- function(n, num_noise, min_n,
-                                        max_n) {
+diff_sphere <- function(n, num_noise, min_n, max_n) {
+
+  if (n <= 0) {
+    stop('The number of points should be a positive number.')
+  }
+
+  if (num_noise < 0) {
+    stop('Number of noise dimensions should be a positive number.')
+
+  }
+
+  if (missing(n)) {
+    stop('Missing n.')
+
+  }
+
+  if (missing(num_noise)) {
+    stop('Missing num_noise.')
+
+  }
 
   # To check that the assigned n is divided by thirteen
   if ((n%%13) != 0) {
@@ -75,7 +134,8 @@ diff_sphere <- function(n, num_noise, min_n,
     small_sphere_sample_size <- n/13
   }
 
-  m <- matrix(stats::rnorm(n = small_sphere_sample_size * 4), nrow = small_sphere_sample_size, ncol = 4)
+  m <- matrix(stats::rnorm(n = small_sphere_sample_size * 4),
+              nrow = small_sphere_sample_size, ncol = 4)
   d_dim_sphere <- 3 * m / sqrt(rowSums(m * m))
 
   small_spheres <-
@@ -95,6 +155,16 @@ diff_sphere <- function(n, num_noise, min_n,
   df <- rbind(do.call(rbind, small_spheres), big_sphere)
 
   if (num_noise != 0) {
+
+    if (missing(min_n)) {
+      stop('Missing min_n.')
+
+    }
+
+    if (missing(max_n)) {
+      stop('Missing max_n.')
+
+    }
 
     noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise = num_noise,
                                 min_n = min_n, max_n = max_n)
