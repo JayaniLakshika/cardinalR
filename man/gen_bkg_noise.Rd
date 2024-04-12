@@ -26,6 +26,7 @@ the number of samples, number of dimensions, mean, and standard deviation.
 \examples{
 
 # Generate background noise with custom mean and standard deviation
-gen_bkg_noise(n = 100, num_dims = 10, mean = 5, sd = 2)
+set.seed(20240412)
+gen_bkg_noise(n = 50, num_dims = 3, mean = 5, sd = 2)
 
 }

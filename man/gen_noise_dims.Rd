@@ -23,6 +23,7 @@ This function generates random noise dimensions to be added to the coordinates o
 }
 \examples{
 # Generate random noise dimensions with 3 dimensions, minimum value -1, and maximum value 1
-gen_noise_dims(n = 50, num_noise = 3, min_n = -1, max_n = 1)
+set.seed(20240412)
+gen_noise_dims(n = 50, num_noise = 3, min_n = -0.01, max_n = 0.01)
 
 }

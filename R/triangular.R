@@ -10,7 +10,8 @@
 #' @export
 #'
 #' @examples
-#' triangular_3d_data <- tri_3d(n = 150, num_noise = 4,
+#' set.seed(20240412)
+#' triangular_3d_data <- tri_3d(n = 100, num_noise = 2,
 #' min_n = -0.05, max_n = 0.05)
 tri_3d <- function(n, num_noise,
                                      min_n, max_n) {
@@ -53,8 +54,9 @@ tri_3d <- function(n, num_noise,
 #' @export
 #'
 #' @examples
-#' triangular_plane_data <- tri_plane_bkg(n = 675,
-#' num_noise = 3, min_n = -0.05, max_n = 0.05)
+#' set.seed(20240412)
+#' triangular_plane_data <- tri_plane_bkg(n = 216,
+#' num_noise = 2, min_n = -0.05, max_n = 0.05)
 tri_plane_bkg <- function(n, num_noise,
                                             min_n, max_n) {
 

@@ -14,6 +14,7 @@
 #' one_grid <- one_grid(nx = 10, ny = 10, num_noise = 2,
 #' min_n = -0.05, max_n = 0.05)
 one_grid <- function(nx, ny, num_noise, min_n, max_n) {
+
   df <- expand.grid(1:nx, 1:ny)
   df_mat <- matrix(c(df$Var1, df$Var2), ncol = 2)
 

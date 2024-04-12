@@ -22,6 +22,7 @@ A matrix containing the triangular plane dataset with background noise.
 This function generates a triangular plane dataset with background noise dimensions.
 }
 \examples{
-triangular_plane_data <- tri_plane_bkg(n = 675,
-num_noise = 3, min_n = -0.05, max_n = 0.05)
+set.seed(20240412)
+triangular_plane_data <- tri_plane_bkg(n = 216,
+num_noise = 2, min_n = -0.05, max_n = 0.05)
 }
