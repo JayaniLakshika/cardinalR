@@ -4,7 +4,7 @@
 \alias{gau_curvy_clust}
 \title{Generate Cluster and Curvilinear Data with Noise}
 \usage{
-gau_curvy_clust(n, clust_size_vec = NULL, num_noise, min_n, max_n)
+gau_curvy_clust(n, clust_size_vec, num_noise, min_n, max_n)
 }
 \arguments{
 \item{n}{The total number of data points to be generated.}

@@ -2,18 +2,8 @@ pandoc: 3.1.1
 pkgdown: 2.0.7
 pkgdown_sha: ~
 articles:
-  cardinalr01clustering: cardinalr01clustering.html
-  cardinalr02branching: cardinalr02branching.html
-  cardinalr03circulars: cardinalr03circulars.html
-  cardinalr04grid: cardinalr04grid.html
-  cardinalr05trian: cardinalr05trian.html
-  cardinalr06sph: cardinalr06sph.html
-  cardinalr07scurve: cardinalr07scurve.html
-  cardinalr08nonlinear: cardinalr08nonlinear.html
-  cardinalr09linear: cardinalr09linear.html
-  cardinalr10mobius: cardinalr10mobius.html
-  cardinalr11highd: cardinalr11highd.html
-last_built: 2024-04-11T23:33Z
+  quollr1sample: quollr1sample.html
+last_built: 2024-04-13T03:00Z
 urls:
   reference: https://jayanilakshika.github.io/cardinalR/reference
   article: https://jayanilakshika.github.io/cardinalR/articles

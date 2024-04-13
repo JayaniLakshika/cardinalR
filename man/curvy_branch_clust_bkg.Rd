@@ -19,7 +19,8 @@ curvy_branch_clust_bkg(n, num_noise, min_n, max_n)
 A matrix containing the generated data, with each row representing a data point.
 }
 \description{
-This function generates data with four clusters, two of which follow a curvilinear pattern and the other two are distributed randomly.
+This function generates data with four clusters, two of which follow a
+curvilinear pattern and the other two are distributed randomly.
 }
 \examples{
 

@@ -44,6 +44,25 @@ conic_spiral_3d_row <- function(a, b, c, w) {
 #' @export
 conic_spiral_3d <- function(n, num_noise, min_n, max_n) {
 
+  if (n <= 0) {
+    stop('Number of points should be a positive number.')
+  }
+
+  if (num_noise < 0) {
+    stop('Number of noise dimensions should be a positive number.')
+
+  }
+
+  if (missing(n)) {
+    stop('Missing n.')
+
+  }
+
+  if (missing(num_noise)) {
+    stop('Missing num_noise.')
+
+  }
+
   df <- matrix(
     do.call(
       "rbind",
@@ -55,6 +74,16 @@ conic_spiral_3d <- function(n, num_noise, min_n, max_n) {
   )
 
   if (num_noise != 0) {
+
+    if (missing(min_n)) {
+      stop('Missing min_n.')
+
+    }
+
+    if (missing(max_n)) {
+      stop('Missing max_n.')
+
+    }
 
     noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise = num_noise,
                                 min_n = min_n, max_n = max_n)
@@ -111,6 +140,25 @@ dini_surface_3d_row <- function(a = 1, b = 1) {
 #' @export
 dini_surface_3d <- function(n, num_noise, min_n, max_n) {
 
+  if (n <= 0) {
+    stop('Number of points should be a positive number.')
+  }
+
+  if (num_noise < 0) {
+    stop('Number of noise dimensions should be a positive number.')
+
+  }
+
+  if (missing(n)) {
+    stop('Missing n.')
+
+  }
+
+  if (missing(num_noise)) {
+    stop('Missing num_noise.')
+
+  }
+
   df <- matrix(
     do.call(
       "rbind",
@@ -122,6 +170,16 @@ dini_surface_3d <- function(n, num_noise, min_n, max_n) {
   )
 
   if (num_noise != 0) {
+
+    if (missing(min_n)) {
+      stop('Missing min_n.')
+
+    }
+
+    if (missing(max_n)) {
+      stop('Missing max_n.')
+
+    }
 
     noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise = num_noise,
                                 min_n = min_n, max_n = max_n)
@@ -177,6 +235,25 @@ roman_surface_3d_row <- function(a = 1) {
 #' @export
 roman_surface_3d <- function(n, num_noise, min_n, max_n) {
 
+  if (n <= 0) {
+    stop('Number of points should be a positive number.')
+  }
+
+  if (num_noise < 0) {
+    stop('Number of noise dimensions should be a positive number.')
+
+  }
+
+  if (missing(n)) {
+    stop('Missing n.')
+
+  }
+
+  if (missing(num_noise)) {
+    stop('Missing num_noise.')
+
+  }
+
   df <- matrix(
     do.call(
       "rbind",
@@ -188,6 +265,16 @@ roman_surface_3d <- function(n, num_noise, min_n, max_n) {
   )
 
   if (num_noise != 0) {
+
+    if (missing(min_n)) {
+      stop('Missing min_n.')
+
+    }
+
+    if (missing(max_n)) {
+      stop('Missing max_n.')
+
+    }
 
     noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise = num_noise,
                                 min_n = min_n, max_n = max_n)
@@ -220,8 +307,36 @@ roman_surface_3d <- function(n, num_noise, min_n, max_n) {
 #' spiral_3d(n = 100, num_dims = 10, num_noise = 2, min_n = -0.05, max_n = 0.05)
 #'
 #' @export
-spiral_3d <- function(n, num_dims, num_noise, min_n,
-                              max_n) {
+spiral_3d <- function(n, num_dims, num_noise, min_n, max_n) {
+
+  if (n <= 0) {
+    stop('Number of points should be a positive number.')
+  }
+
+  if (num_noise < 0) {
+    stop('Number of noise dimensions should be a positive number.')
+
+  }
+
+  if (num_dims < 0) {
+    stop('Number of effective dimensions should be a positive number.')
+
+  }
+
+  if (missing(n)) {
+    stop('Missing n.')
+
+  }
+
+  if (missing(num_noise)) {
+    stop('Missing num_noise.')
+
+  }
+
+  if (missing(num_dims)) {
+    stop('Missing num_dims.')
+
+  }
 
   u <- array(stats::runif(n=(n*1), min=0, max=5), dim=c(n, 1))
   df <- array(cos(pi*u), dim=c(n, num_dims))
@@ -234,6 +349,16 @@ spiral_3d <- function(n, num_dims, num_noise, min_n,
   df[, num_dims] <- u*df[, num_dims, drop=FALSE]
 
   if (num_noise != 0) {
+
+    if (missing(min_n)) {
+      stop('Missing min_n.')
+
+    }
+
+    if (missing(max_n)) {
+      stop('Missing max_n.')
+
+    }
 
     noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise = num_noise,
                                 min_n = min_n, max_n = max_n)
@@ -305,6 +430,25 @@ torus_3d_row <- function(radius) {
 #' @export
 torus_3d <- function(n, num_noise, min_n, max_n) {
 
+  if (n <= 0) {
+    stop('Number of points should be a positive number.')
+  }
+
+  if (num_noise < 0) {
+    stop('Number of noise dimensions should be a positive number.')
+
+  }
+
+  if (missing(n)) {
+    stop('Missing n.')
+
+  }
+
+  if (missing(num_noise)) {
+    stop('Missing num_noise.')
+
+  }
+
   df <- matrix(
     do.call(
       "rbind",
@@ -317,6 +461,16 @@ torus_3d <- function(n, num_noise, min_n, max_n) {
 
 
   if (num_noise != 0) {
+
+    if (missing(min_n)) {
+      stop('Missing min_n.')
+
+    }
+
+    if (missing(max_n)) {
+      stop('Missing max_n.')
+
+    }
 
     noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise = num_noise,
                                 min_n = min_n, max_n = max_n)
@@ -350,21 +504,44 @@ torus_3d <- function(n, num_noise, min_n, max_n) {
 #' @export
 cube_3d <- function(num_dims, num_noise, min_n, max_n) {
 
+  if (num_dims <= 0) {
+    stop('Number of effective dimensions should be a positive number.')
+  }
+
+  if (num_noise < 0) {
+    stop('Number of noise dimensions should be a positive number.')
+
+  }
+
+  if (missing(num_noise)) {
+    stop('Missing num_noise.')
+
+  }
+
+  if (missing(num_dims)) {
+    stop('Missing num_dims.')
+
+  }
+
   df1 <- do.call(expand.grid, rep(list(c( (0:11) / 11)), num_dims))
   df2 <- do.call(expand.grid, rep(list(c(0, 1)), num_dims))
   df <- unique(rbind(as.matrix(df1), as.matrix(df2)))
 
   if (num_noise != 0) {
 
+    if (missing(min_n)) {
+      stop('Missing min_n.')
+
+    }
+
+    if (missing(max_n)) {
+      stop('Missing max_n.')
+
+    }
+
     noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise = num_noise,
                                 min_n = min_n, max_n = max_n)
     df <- cbind(df, noise_mat)
-
-    df
-
-  } else {
-
-    df
 
   }
 

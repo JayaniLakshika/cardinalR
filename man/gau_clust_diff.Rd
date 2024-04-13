@@ -5,7 +5,6 @@
 \title{Generate Gaussian Clusters with Different Points}
 \usage{
 gau_clust_diff(
-  n,
   clust_size_vec,
   num_clust,
   mean_matrix,
@@ -17,8 +16,6 @@ gau_clust_diff(
 )
 }
 \arguments{
-\item{n}{The total number of data points to be generated.}
-
 \item{clust_size_vec}{A vector specifying the number of points in each cluster.}
 
 \item{num_clust}{The number of clusters to generate.}
@@ -45,7 +42,7 @@ This function generates Gaussian clusters with different numbers of points per c
 
 # Generate Gaussian clusters with custom parameters
 set.seed(20240412)
-data <- gau_clust_diff(n = 400, clust_size_vec = c(50, 100, 200, 50),
+data <- gau_clust_diff(clust_size_vec = c(50, 100, 200, 50),
                                       num_clust = 4, mean_matrix =
                                       rbind(c(1,0,0,0,0,0), c(0,1,0,0,0,0),
                                       c(0,0,1,0,0,0), c(0,0,0,1,0,0)),

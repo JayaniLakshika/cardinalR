@@ -15,6 +15,25 @@
 #' min_n = -0.05, max_n = 0.05)
 three_circulars <- function(n, num_noise, min_n, max_n) {
 
+  if (n <= 0) {
+    stop('Number of points should be a positive number.')
+  }
+
+  if (num_noise < 0) {
+    stop('Number of noise dimensions should be a positive number.')
+
+  }
+
+  if (missing(n)) {
+    stop('Missing n.')
+
+  }
+
+  if (missing(num_noise)) {
+    stop('Missing num_noise.')
+
+  }
+
   # To check that the assigned n is divided by three
   if ((n%%3) != 0) {
     warning("The sample size should be a product of three.")
@@ -53,6 +72,16 @@ three_circulars <- function(n, num_noise, min_n, max_n) {
 
   if (num_noise != 0) {
 
+    if (missing(min_n)) {
+      stop('Missing min_n.')
+
+    }
+
+    if (missing(max_n)) {
+      stop('Missing max_n.')
+
+    }
+
     noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise = num_noise,
                                 min_n = min_n, max_n = max_n)
     df <- cbind(df, noise_mat)
@@ -83,6 +112,25 @@ three_circulars <- function(n, num_noise, min_n, max_n) {
 #' cell_cycle_data <- cell_cycle(n = 300, num_noise = 2, min_n = -0.05,
 #' max_n = 0.05)
 cell_cycle <- function(n, num_noise, min_n, max_n) {
+
+  if (n <= 0) {
+    stop('Number of points should be a positive number.')
+  }
+
+  if (num_noise < 0) {
+    stop('Number of noise dimensions should be a positive number.')
+
+  }
+
+  if (missing(n)) {
+    stop('Missing n.')
+
+  }
+
+  if (missing(num_noise)) {
+    stop('Missing num_noise.')
+
+  }
 
   # To check that the assigned n is divided by three
   if ((n%%3) != 0) {
@@ -120,6 +168,16 @@ cell_cycle <- function(n, num_noise, min_n, max_n) {
 
   if (num_noise != 0) {
 
+    if (missing(min_n)) {
+      stop('Missing min_n.')
+
+    }
+
+    if (missing(max_n)) {
+      stop('Missing max_n.')
+
+    }
+
     noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise = num_noise,
                                 min_n = min_n, max_n = max_n)
     df <- cbind(df, noise_mat)
@@ -150,6 +208,25 @@ cell_cycle <- function(n, num_noise, min_n, max_n) {
 #' curvy_cell_cycle_data <- curvy_cycle(n = 300, num_noise = 2, min_n = -0.05,
 #' max_n = 0.05)
 curvy_cycle <- function(n, num_noise, min_n, max_n) {
+
+  if (n <= 0) {
+    stop('Number of points should be a positive number.')
+  }
+
+  if (num_noise < 0) {
+    stop('Number of noise dimensions should be a positive number.')
+
+  }
+
+  if (missing(n)) {
+    stop('Missing n.')
+
+  }
+
+  if (missing(num_noise)) {
+    stop('Missing num_noise.')
+
+  }
 
   # To check that the assigned n is divided by three
   if ((n%%3) != 0) {
@@ -186,6 +263,16 @@ curvy_cycle <- function(n, num_noise, min_n, max_n) {
 
   if (num_noise != 0) {
 
+    if (missing(min_n)) {
+      stop('Missing min_n.')
+
+    }
+
+    if (missing(max_n)) {
+      stop('Missing max_n.')
+
+    }
+
     noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise = num_noise,
                                 min_n = min_n, max_n = max_n)
     df <- cbind(df, noise_mat)
@@ -219,6 +306,25 @@ curvy_cycle <- function(n, num_noise, min_n, max_n) {
 #' data <- two_circulars(n = 200, num_noise = 2, min_n = -0.05, max_n = 0.05)
 two_circulars <- function(n, num_noise, min_n, max_n) {
 
+  if (n <= 0) {
+    stop('Number of points should be a positive number.')
+  }
+
+  if (num_noise < 0) {
+    stop('Number of noise dimensions should be a positive number.')
+
+  }
+
+  if (missing(n)) {
+    stop('Missing n.')
+
+  }
+
+  if (missing(num_noise)) {
+    stop('Missing num_noise.')
+
+  }
+
   # To check that the assigned n is divided by two
   if ((n%%2) != 0) {
     warning("The sample size should be a product of two.")
@@ -243,6 +349,16 @@ two_circulars <- function(n, num_noise, min_n, max_n) {
   df <- rbind(df1, df2)
 
   if (num_noise != 0) {
+
+    if (missing(min_n)) {
+      stop('Missing min_n.')
+
+    }
+
+    if (missing(max_n)) {
+      stop('Missing max_n.')
+
+    }
 
     noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise = num_noise,
                                 min_n = min_n, max_n = max_n)

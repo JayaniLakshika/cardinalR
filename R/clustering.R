@@ -26,6 +26,49 @@
 gau_clust <- function(n, num_clust, mean_matrix, var_vec, num_dims, num_noise,
                       min_n, max_n) {
 
+  if (n <= 0) {
+    stop('Number of points should be a positive number.')
+  }
+
+  if (num_clust < 0) {
+    stop('Number of clusters should be a positive number.')
+
+  }
+
+  if (num_dims < 0) {
+    stop('Number of effective dimensions should be a positive number.')
+
+  }
+
+  if (num_noise < 0) {
+    stop('Number of noise dimensions should be a positive number.')
+
+  }
+
+  if (missing(n)) {
+    stop('Missing n.')
+
+  }
+
+  if (missing(num_dims)) {
+    stop('Missing num_dims.')
+
+  }
+
+  if (missing(num_noise)) {
+    stop('Missing num_noise.')
+
+  }
+
+  if (missing(mean_matrix)) {
+    stop('Missing mean_matrix.')
+
+  }
+
+  if (missing(var_vec)) {
+    stop('Missing var_vec.')
+
+  }
 
   if (n < num_clust) {
     stop('Number of clusters exceed the number of observations.')
@@ -95,6 +138,16 @@ gau_clust <- function(n, num_clust, mean_matrix, var_vec, num_dims, num_noise,
 
   if (num_noise != 0) {
 
+    if (missing(min_n)) {
+      stop('Missing min_n.')
+
+    }
+
+    if (missing(max_n)) {
+      stop('Missing max_n.')
+
+    }
+
     noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise = num_noise,
                                 min_n = min_n, max_n = max_n)
     df <- cbind(df, noise_mat)
@@ -112,7 +165,6 @@ gau_clust <- function(n, num_clust, mean_matrix, var_vec, num_dims, num_noise,
 #'
 #' This function generates Gaussian clusters with different numbers of points per cluster.
 #'
-#' @param n The total number of data points to be generated.
 #' @param clust_size_vec A vector specifying the number of points in each cluster.
 #' @param num_clust The number of clusters to generate.
 #' @param mean_matrix A matrix where each row represents the mean vector for a cluster.
@@ -129,15 +181,61 @@ gau_clust <- function(n, num_clust, mean_matrix, var_vec, num_dims, num_noise,
 #'
 #' # Generate Gaussian clusters with custom parameters
 #' set.seed(20240412)
-#' data <- gau_clust_diff(n = 400, clust_size_vec = c(50, 100, 200, 50),
+#' data <- gau_clust_diff(clust_size_vec = c(50, 100, 200, 50),
 #'                                       num_clust = 4, mean_matrix =
 #'                                       rbind(c(1,0,0,0,0,0), c(0,1,0,0,0,0),
 #'                                       c(0,0,1,0,0,0), c(0,0,0,1,0,0)),
 #'                                       var_vec = c(0.02, 0.05, 0.06, 0.1),
 #'                                       num_dims = 6, num_noise = 4,
 #'                                       min_n = -0.05, max_n = 0.05)
-gau_clust_diff <- function(n, clust_size_vec, num_clust, mean_matrix, var_vec,
+gau_clust_diff <- function(clust_size_vec, num_clust, mean_matrix, var_vec,
                            num_dims, num_noise, min_n, max_n) {
+
+  if (length(clust_size_vec) != num_clust) {
+    stop('Length of clust_size_vec should be equal to number of clusters.')
+  }
+
+  if (num_clust < 0) {
+    stop('Number of clusters should be a positive number.')
+
+  }
+
+  if (num_dims < 0) {
+    stop('Number of effective dimensions should be a positive number.')
+
+  }
+
+  if (num_noise < 0) {
+    stop('Number of noise dimensions should be a positive number.')
+
+  }
+
+  if (missing(clust_size_vec)) {
+    stop('Missing clust_size_vec.')
+
+  }
+
+  if (missing(num_dims)) {
+    stop('Missing num_dims.')
+
+  }
+
+  if (missing(num_noise)) {
+    stop('Missing num_noise.')
+
+  }
+
+  if (missing(mean_matrix)) {
+    stop('Missing mean_matrix.')
+
+  }
+
+  if (missing(var_vec)) {
+    stop('Missing var_vec.')
+
+  }
+
+  n <- sum(clust_size_vec)
 
   if (n < num_clust) {
     stop('Number of clusters exceed the number of observations.')
@@ -200,6 +298,16 @@ gau_clust_diff <- function(n, clust_size_vec, num_clust, mean_matrix, var_vec,
 
   if (num_noise != 0) {
 
+    if (missing(min_n)) {
+      stop('Missing min_n.')
+
+    }
+
+    if (missing(max_n)) {
+      stop('Missing max_n.')
+
+    }
+
     noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise = num_noise,
                                 min_n = min_n, max_n = max_n)
     df <- cbind(df, noise_mat)
@@ -241,6 +349,65 @@ gau_clust_diff <- function(n, clust_size_vec, num_clust, mean_matrix, var_vec,
 clust_diff_shapes <- function(n, num_gau_clust, num_non_gau_clust, clust_sd_gau,
                               clust_sd_non_gau, num_dims, a, b) {
 
+  if (n <= 0) {
+    stop('Number of observations should be a positive number.')
+
+  }
+
+  if (num_gau_clust <= 0) {
+    stop('Number of Gaussian clusters should be a positive number.')
+
+  }
+
+  if (num_non_gau_clust <= 0) {
+    stop('Number of Non-Gaussian clusters should be a positive number.')
+
+  }
+
+  if (num_dims < 0) {
+    stop('Number of effective dimensions should be a positive number.')
+
+  }
+
+  if (missing(n)) {
+    stop('Missing n.')
+
+  }
+
+  if (missing(num_dims)) {
+    stop('Missing num_dims.')
+
+  }
+
+  if (missing(num_gau_clust)) {
+    stop('Missing num_gau_clust.')
+
+  }
+
+  if (missing(num_non_gau_clust)) {
+    stop('Missing num_non_gau_clust.')
+
+  }
+
+  if (missing(clust_sd_gau)) {
+    stop('Missing clust_sd_gau.')
+
+  }
+
+  if (missing(clust_sd_non_gau)) {
+    stop('Missing clust_sd_non_gau.')
+
+  }
+
+  if (missing(a)) {
+    stop('Missing a.')
+
+  }
+
+  if (missing(b)) {
+    stop('Missing b.')
+
+  }
 
   num_clust <- num_gau_clust + num_non_gau_clust
 
@@ -335,7 +502,6 @@ clust_diff_shapes <- function(n, num_gau_clust, num_non_gau_clust, clust_sd_gau,
 #' and non-Gaussian clusters,
 #' with different numbers of points in each cluster.
 #'
-#' @param n The total number of data points to be generated.
 #' @param clust_size_vec A vector specifying the number of points for each cluster.
 #' @param num_gau_clust The number of Gaussian clusters to generate.
 #' @param num_non_gau_clust The number of non-Gaussian clusters to generate.
@@ -352,13 +518,73 @@ clust_diff_shapes <- function(n, num_gau_clust, num_non_gau_clust, clust_sd_gau,
 #' @examples
 #' # Generate clusters with default parameters
 #' set.seed(20240412)
-#' data <- clust_diff_shapes_pts(n = 400,
-#' clust_size_vec = c(50, 50, 50, 50, 100, 100), num_gau_clust = 4,
+#' data <- clust_diff_shapes_pts(clust_size_vec = c(50, 50, 50, 50, 100, 100),
+#' num_gau_clust = 4,
 #' num_non_gau_clust = 2, clust_sd_gau = 0.05, clust_sd_non_gau = 0.1,
 #' num_dims = 7, a = 2, b = 4)
-clust_diff_shapes_pts <- function(n, clust_size_vec, num_gau_clust,
+clust_diff_shapes_pts <- function(clust_size_vec, num_gau_clust,
                                   num_non_gau_clust, clust_sd_gau,
                                   clust_sd_non_gau, num_dims, a, b) {
+
+  if (length(clust_size_vec) != (num_gau_clust + num_non_gau_clust)) {
+    stop('Vector of number of observations for each cluster should be equal to
+         the number of clusters.')
+
+  }
+
+  if (num_gau_clust <= 0) {
+    stop('Number of Gaussian clusters should be a positive number.')
+
+  }
+
+  if (num_non_gau_clust <= 0) {
+    stop('Number of Non-Gaussian clusters should be a positive number.')
+
+  }
+
+  if (num_dims < 0) {
+    stop('Number of effective dimensions should be a positive number.')
+
+  }
+
+  if (missing(clust_size_vec)) {
+    stop('Missing clust_size_vec.')
+
+  }
+
+  if (missing(num_dims)) {
+    stop('Missing num_dims.')
+
+  }
+
+  if (missing(num_gau_clust)) {
+    stop('Missing num_gau_clust.')
+
+  }
+
+  if (missing(num_non_gau_clust)) {
+    stop('Missing num_non_gau_clust.')
+
+  }
+
+  if (missing(clust_sd_gau)) {
+    stop('Missing clust_sd_gau.')
+
+  }
+
+  if (missing(clust_sd_non_gau)) {
+    stop('Missing clust_sd_non_gau.')
+
+  }
+
+  if (missing(a)) {
+    stop('Missing a.')
+
+  }
+
+  if (missing(b)) {
+    stop('Missing b.')
+  }
 
 
   num_clust <- num_gau_clust + num_non_gau_clust
@@ -458,6 +684,25 @@ clust_diff_shapes_pts <- function(n, clust_size_vec, num_gau_clust,
 #' max_n = 0.05)
 gau_curvy_clust_bkg <- function(n, num_noise, min_n, max_n) {
 
+  if (n <= 0) {
+    stop('Number of points should be a positive number.')
+  }
+
+  if (num_noise < 0) {
+    stop('Number of noise dimensions should be a positive number.')
+
+  }
+
+  if (missing(n)) {
+    stop('Missing n.')
+
+  }
+
+  if (missing(num_noise)) {
+    stop('Missing num_noise.')
+
+  }
+
   # To check that the assigned n is divided by two
   if ((n%%2) != 0) {
     stop("The sample size should be a product of two.")
@@ -488,6 +733,16 @@ gau_curvy_clust_bkg <- function(n, num_noise, min_n, max_n) {
   df <- rbind(df1, df2, df3)
 
   if (num_noise != 0) {
+
+    if (missing(min_n)) {
+      stop('Missing min_n.')
+
+    }
+
+    if (missing(max_n)) {
+      stop('Missing max_n.')
+
+    }
 
     noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise = num_noise,
                                 min_n = min_n, max_n = max_n)
@@ -523,6 +778,24 @@ gau_curvy_clust_bkg <- function(n, num_noise, min_n, max_n) {
 #' data <- one_doublet(n = 220, num_noise = 2, min_n = -0.05, max_n = 0.05)
 one_doublet <- function(n, num_noise, min_n, max_n) {
 
+  if (n <= 0) {
+    stop('Number of points should be a positive number.')
+  }
+
+  if (num_noise < 0) {
+    stop('Number of noise dimensions should be a positive number.')
+
+  }
+
+  if (missing(n)) {
+    stop('Missing n.')
+
+  }
+
+  if (missing(num_noise)) {
+    stop('Missing num_noise.')
+
+  }
 
   # To check that the assigned n is divided by 2.2
   if (((n * 10)%%22) != 0) { #n%%2.2
@@ -553,6 +826,16 @@ one_doublet <- function(n, num_noise, min_n, max_n) {
   df <- rbind(df1, df2, df3)
 
   if (num_noise != 0) {
+
+    if (missing(min_n)) {
+      stop('Missing min_n.')
+
+    }
+
+    if (missing(max_n)) {
+      stop('Missing max_n.')
+
+    }
 
     noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise = num_noise,
                                 min_n = min_n, max_n = max_n)
@@ -588,6 +871,25 @@ one_doublet <- function(n, num_noise, min_n, max_n) {
 #' data <- three_doublets(n = 420, num_noise = 2,
 #' min_n = -0.05, max_n = 0.05)
 three_doublets <- function(n, num_noise, min_n, max_n) {
+
+  if (n <= 0) {
+    stop('Number of points should be a positive number.')
+  }
+
+  if (num_noise < 0) {
+    stop('Number of noise dimensions should be a positive number.')
+
+  }
+
+  if (missing(n)) {
+    stop('Missing n.')
+
+  }
+
+  if (missing(num_noise)) {
+    stop('Missing num_noise.')
+
+  }
 
   # To check that the assigned n is divided by 4.2
   if ((n%%4.2) != 0) {
@@ -659,6 +961,16 @@ three_doublets <- function(n, num_noise, min_n, max_n) {
 
   if (num_noise != 0) {
 
+    if (missing(min_n)) {
+      stop('Missing min_n.')
+
+    }
+
+    if (missing(max_n)) {
+      stop('Missing max_n.')
+
+    }
+
     noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise = num_noise,
                                 min_n = min_n, max_n = max_n)
     df <- cbind(df, noise_mat)
@@ -694,6 +1006,25 @@ three_doublets <- function(n, num_noise, min_n, max_n) {
 #' data <- one_doublet_four_clusts(n = 440, num_noise = 2,
 #' min_n = -0.05, max_n = 0.05)
 one_doublet_four_clusts <- function(n, num_noise, min_n, max_n) {
+
+  if (n <= 0) {
+    stop('Number of points should be a positive number.')
+  }
+
+  if (num_noise < 0) {
+    stop('Number of noise dimensions should be a positive number.')
+
+  }
+
+  if (missing(n)) {
+    stop('Missing n.')
+
+  }
+
+  if (missing(num_noise)) {
+    stop('Missing num_noise.')
+
+  }
 
   # To check that the assigned n is divided by 4.4
   if (((n * 10)%%44) != 0) { #n%%4.4
@@ -748,6 +1079,16 @@ one_doublet_four_clusts <- function(n, num_noise, min_n, max_n) {
 
   if (num_noise != 0) {
 
+    if (missing(min_n)) {
+      stop('Missing min_n.')
+
+    }
+
+    if (missing(max_n)) {
+      stop('Missing max_n.')
+
+    }
+
     noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise = num_noise,
                                 min_n = min_n, max_n = max_n)
     df <- cbind(df, noise_mat)
@@ -782,6 +1123,25 @@ one_doublet_four_clusts <- function(n, num_noise, min_n, max_n) {
 #' data <- one_doublet_diff_var_clust(n = 260, num_noise = 2,
 #' min_n = -0.05, max_n = 0.05)
 one_doublet_diff_var_clust <- function(n, num_noise, min_n, max_n) {
+
+  if (n <= 0) {
+    stop('Number of points should be a positive number.')
+  }
+
+  if (num_noise < 0) {
+    stop('Number of noise dimensions should be a positive number.')
+
+  }
+
+  if (missing(n)) {
+    stop('Missing n.')
+
+  }
+
+  if (missing(num_noise)) {
+    stop('Missing num_noise.')
+
+  }
 
   # To check that the assigned n is divided by 2.6
   if (((n * 10)%%26) != 0) {
@@ -825,6 +1185,16 @@ one_doublet_diff_var_clust <- function(n, num_noise, min_n, max_n) {
 
   if (num_noise != 0) {
 
+    if (missing(min_n)) {
+      stop('Missing min_n.')
+
+    }
+
+    if (missing(max_n)) {
+      stop('Missing max_n.')
+
+    }
+
     noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise = num_noise,
                                 min_n = min_n, max_n = max_n)
     df <- cbind(df, noise_mat)
@@ -859,6 +1229,25 @@ one_doublet_diff_var_clust <- function(n, num_noise, min_n, max_n) {
 #' data <- one_doublet_diff_patterns(n = 280, num_noise = 2, min_n = -0.05,
 #' max_n = 0.05)
 one_doublet_diff_patterns <- function(n, num_noise, min_n, max_n) {
+
+  if (n <= 0) {
+    stop('Number of points should be a positive number.')
+  }
+
+  if (num_noise < 0) {
+    stop('Number of noise dimensions should be a positive number.')
+
+  }
+
+  if (missing(n)) {
+    stop('Missing n.')
+
+  }
+
+  if (missing(num_noise)) {
+    stop('Missing num_noise.')
+
+  }
 
   # To check that the assigned n is divided by 2.8
   if ((n%%2.8) != 0) {
@@ -907,6 +1296,16 @@ one_doublet_diff_patterns <- function(n, num_noise, min_n, max_n) {
 
   if (num_noise != 0) {
 
+    if (missing(min_n)) {
+      stop('Missing min_n.')
+
+    }
+
+    if (missing(max_n)) {
+      stop('Missing max_n.')
+
+    }
+
     noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise = num_noise,
                                 min_n = min_n, max_n = max_n)
     df <- cbind(df, noise_mat)
@@ -939,8 +1338,26 @@ one_doublet_diff_patterns <- function(n, num_noise, min_n, max_n) {
 #' # Generate doublets in parallel with noise with custom parameters
 #' set.seed(20240412)
 #' data <- two_doublets_parallel(n = 440, num_noise = 2, min_n = -0.05, max_n = 0.05)
-two_doublets_parallel <- function(n, num_noise, min_n,
-                                             max_n) {
+two_doublets_parallel <- function(n, num_noise, min_n, max_n) {
+
+  if (n <= 0) {
+    stop('Number of points should be a positive number.')
+  }
+
+  if (num_noise < 0) {
+    stop('Number of noise dimensions should be a positive number.')
+
+  }
+
+  if (missing(n)) {
+    stop('Missing n.')
+
+  }
+
+  if (missing(num_noise)) {
+    stop('Missing num_noise.')
+
+  }
 
 
   # To check that the assigned n is divided by 4.4
@@ -1014,6 +1431,16 @@ two_doublets_parallel <- function(n, num_noise, min_n,
 
   if (num_noise != 0) {
 
+    if (missing(min_n)) {
+      stop('Missing min_n.')
+
+    }
+
+    if (missing(max_n)) {
+      stop('Missing max_n.')
+
+    }
+
     noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise = num_noise,
                                 min_n = min_n, max_n = max_n)
     df <- cbind(df, noise_mat)
@@ -1046,8 +1473,26 @@ two_doublets_parallel <- function(n, num_noise, min_n,
 #' # Generate doublets with background noise with custom parameters
 #' set.seed(20240412)
 #' data <- one_doublet_bkg(n = 250, num_noise = 2, min_n = -0.05, max_n = 0.05)
-one_doublet_bkg <- function(n, num_noise, min_n,
-                                        max_n) {
+one_doublet_bkg <- function(n, num_noise, min_n, max_n) {
+
+  if (n <= 0) {
+    stop('Number of points should be a positive number.')
+  }
+
+  if (num_noise < 0) {
+    stop('Number of noise dimensions should be a positive number.')
+
+  }
+
+  if (missing(n)) {
+    stop('Missing n.')
+
+  }
+
+  if (missing(num_noise)) {
+    stop('Missing num_noise.')
+
+  }
 
   # To check that the assigned n is divided by 2.5
   if ((n%%2.5) != 0) {
@@ -1100,6 +1545,16 @@ one_doublet_bkg <- function(n, num_noise, min_n,
 
   if (num_noise != 0) {
 
+    if (missing(min_n)) {
+      stop('Missing min_n.')
+
+    }
+
+    if (missing(max_n)) {
+      stop('Missing max_n.')
+
+    }
+
     noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise = num_noise,
                                 min_n = min_n, max_n = max_n)
     df <- cbind(df, noise_mat)
@@ -1131,8 +1586,26 @@ one_doublet_bkg <- function(n, num_noise, min_n,
 #' # Generate two doublets with background noise with custom parameters
 #' set.seed(20240412)
 #' data <- two_doublets_bkg(n = 200, num_noise = 2, min_n = -0.05, max_n = 0.05)
-two_doublets_bkg <- function(n, num_noise, min_n,
-                                        max_n) {
+two_doublets_bkg <- function(n, num_noise, min_n, max_n) {
+
+  if (n <= 0) {
+    stop('Number of points should be a positive number.')
+  }
+
+  if (num_noise < 0) {
+    stop('Number of noise dimensions should be a positive number.')
+
+  }
+
+  if (missing(n)) {
+    stop('Missing n.')
+
+  }
+
+  if (missing(num_noise)) {
+    stop('Missing num_noise.')
+
+  }
 
   # To check that the assigned n is divided by four
   if ((n%%4) != 0) {
@@ -1181,6 +1654,16 @@ two_doublets_bkg <- function(n, num_noise, min_n,
 
   if (num_noise != 0) {
 
+    if (missing(min_n)) {
+      stop('Missing min_n.')
+
+    }
+
+    if (missing(max_n)) {
+      stop('Missing max_n.')
+
+    }
+
     noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise = num_noise,
                                 min_n = min_n, max_n = max_n)
     df <- cbind(df, noise_mat)
@@ -1212,8 +1695,26 @@ two_doublets_bkg <- function(n, num_noise, min_n,
 #' # Generate two nonlinear clusters with noise with custom parameters
 #' set.seed(20240412)
 #' data <- two_nonlinear(n = 200, num_noise = 2, min_n = -0.05, max_n = 0.50)
-two_nonlinear <- function(n, num_noise, min_n,
-                                     max_n) {
+two_nonlinear <- function(n, num_noise, min_n, max_n) {
+
+  if (n <= 0) {
+    stop('Number of points should be a positive number.')
+  }
+
+  if (num_noise < 0) {
+    stop('Number of noise dimensions should be a positive number.')
+
+  }
+
+  if (missing(n)) {
+    stop('Missing n.')
+
+  }
+
+  if (missing(num_noise)) {
+    stop('Missing num_noise.')
+
+  }
 
   # To check that the assigned n is divided by two
   if ((n%%2) != 0) {
@@ -1242,6 +1743,16 @@ two_nonlinear <- function(n, num_noise, min_n,
   df <- rbind(df1, df2)
 
   if (num_noise != 0) {
+
+    if (missing(min_n)) {
+      stop('Missing min_n.')
+
+    }
+
+    if (missing(max_n)) {
+      stop('Missing max_n.')
+
+    }
 
     noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise = num_noise,
                                 min_n = min_n, max_n = max_n)
@@ -1276,6 +1787,25 @@ two_nonlinear <- function(n, num_noise, min_n,
 #' data <- two_curvy(n = 200, num_noise = 2, min_n = -0.05, max_n = 0.05)
 two_curvy <- function(n, num_noise, min_n, max_n) {
 
+  if (n <= 0) {
+    stop('Number of points should be a positive number.')
+  }
+
+  if (num_noise < 0) {
+    stop('Number of noise dimensions should be a positive number.')
+
+  }
+
+  if (missing(n)) {
+    stop('Missing n.')
+
+  }
+
+  if (missing(num_noise)) {
+    stop('Missing num_noise.')
+
+  }
+
   # To check that the assigned n is divided by two
   if ((n%%2) != 0) {
     warning("The sample size should be a product of two.")
@@ -1304,6 +1834,16 @@ two_curvy <- function(n, num_noise, min_n, max_n) {
   df <- rbind(df1, df2)
 
   if (num_noise != 0) {
+
+    if (missing(min_n)) {
+      stop('Missing min_n.')
+
+    }
+
+    if (missing(max_n)) {
+      stop('Missing max_n.')
+
+    }
 
     noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise = num_noise,
                                 min_n = min_n, max_n = max_n)
@@ -1340,6 +1880,24 @@ two_curvy <- function(n, num_noise, min_n, max_n) {
 #' min_n = -0.05, max_n = 0.05)
 two_curvy_diff_pts <- function(cluster_size_vec, num_noise, min_n, max_n) {
 
+  if (length(cluster_size_vec) != 2) {
+    stop('There should be two elements.')
+  }
+
+  if (num_noise < 0) {
+    stop('Number of noise dimensions should be a positive number.')
+
+  }
+
+  if (missing(cluster_size_vec)) {
+    stop('Missing cluster_size_vec.')
+
+  }
+
+  if (missing(num_noise)) {
+    stop('Missing num_noise.')
+
+  }
 
   theta <- stats::runif(cluster_size_vec[1], 0.40, 0.70 * pi)
   df1 <- matrix(c(
@@ -1360,6 +1918,16 @@ two_curvy_diff_pts <- function(cluster_size_vec, num_noise, min_n, max_n) {
   df <- rbind(df1, df2)
 
   if (num_noise != 0) {
+
+    if (missing(min_n)) {
+      stop('Missing min_n.')
+
+    }
+
+    if (missing(max_n)) {
+      stop('Missing max_n.')
+
+    }
 
     noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise = num_noise,
                                 min_n = min_n, max_n = max_n)
@@ -1394,6 +1962,25 @@ two_curvy_diff_pts <- function(cluster_size_vec, num_noise, min_n, max_n) {
 #' data <- three_nonlinear(n = 300, num_noise = 2, min_n = -0.05, max_n = 0.05)
 three_nonlinear <- function(n, num_noise, min_n, max_n) {
 
+  if (n <= 0) {
+    stop('Number of points should be a positive number.')
+  }
+
+  if (num_noise < 0) {
+    stop('Number of noise dimensions should be a positive number.')
+
+  }
+
+  if (missing(n)) {
+    stop('Missing n.')
+
+  }
+
+  if (missing(num_noise)) {
+    stop('Missing num_noise.')
+
+  }
+
   # To check that the assigned n is divided by three
   if ((n%%3) != 0) {
     warning("The sample size should be a product of three.")
@@ -1417,6 +2004,16 @@ three_nonlinear <- function(n, num_noise, min_n, max_n) {
   df <- rbind(df1, df2, df3)
 
   if (num_noise != 0) {
+
+    if (missing(min_n)) {
+      stop('Missing min_n.')
+
+    }
+
+    if (missing(max_n)) {
+      stop('Missing max_n.')
+
+    }
 
     noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise = num_noise,
                                 min_n = min_n, max_n = max_n)
@@ -1452,6 +2049,25 @@ three_nonlinear <- function(n, num_noise, min_n, max_n) {
 #' data <- three_clust_mirror(n = 300, num_noise = 2, min_n = -0.05, max_n = 0.05)
 three_clust_mirror <- function(n, num_noise, min_n, max_n) {
 
+  if (n <= 0) {
+    stop('Number of points should be a positive number.')
+  }
+
+  if (num_noise < 0) {
+    stop('Number of noise dimensions should be a positive number.')
+
+  }
+
+  if (missing(n)) {
+    stop('Missing n.')
+
+  }
+
+  if (missing(num_noise)) {
+    stop('Missing num_noise.')
+
+  }
+
   # To check that the assigned n is divided by six
   if ((n%%6) != 0) {
     warning("The sample size should be a product of six.")
@@ -1483,6 +2099,16 @@ three_clust_mirror <- function(n, num_noise, min_n, max_n) {
   df <- rbind(df_1, df_2)
 
   if (num_noise != 0) {
+
+    if (missing(min_n)) {
+      stop('Missing min_n.')
+
+    }
+
+    if (missing(max_n)) {
+      stop('Missing max_n.')
+
+    }
 
     noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise = num_noise,
                                 min_n = min_n, max_n = max_n)
@@ -1521,10 +2147,29 @@ three_clust_mirror <- function(n, num_noise, min_n, max_n) {
 #' set.seed(20240412)
 #' data <- gau_curvy_clust(n = 300, clust_size_vec = c(100, 200), num_noise = 3,
 #' min_n = -0.05, max_n = 0.05)
-gau_curvy_clust <- function(n, clust_size_vec = NULL, num_noise, min_n, max_n) {
+gau_curvy_clust <- function(n, clust_size_vec, num_noise, min_n, max_n) {
+
+  if (n <= 0) {
+    stop('Number of points should be a positive number.')
+  }
+
+  if (num_noise < 0) {
+    stop('Number of noise dimensions should be a positive number.')
+
+  }
+
+  if (missing(n)) {
+    stop('Missing n.')
+
+  }
+
+  if (missing(num_noise)) {
+    stop('Missing num_noise.')
+
+  }
 
   ## If the number of points for each cluster is not defined
-  if (is.null(clust_size_vec)) {
+  if (missing(clust_size_vec)) {
 
     # To check that the assigned n is divided by two
     if ((n%%2) != 0) {
@@ -1557,6 +2202,16 @@ gau_curvy_clust <- function(n, clust_size_vec = NULL, num_noise, min_n, max_n) {
   df <- rbind(df1, df2)
 
   if (num_noise != 0) {
+
+    if (missing(min_n)) {
+      stop('Missing min_n.')
+
+    }
+
+    if (missing(max_n)) {
+      stop('Missing max_n.')
+
+    }
 
     noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise = num_noise,
                                 min_n = min_n, max_n = max_n)
@@ -1593,6 +2248,25 @@ gau_curvy_clust <- function(n, clust_size_vec = NULL, num_noise, min_n, max_n) {
 #' @export
 three_clust_diff_dist <- function(n, num_dims, num_noise, min_n, max_n) {
 
+  if (n <= 0) {
+    stop('Number of points should be a positive number.')
+  }
+
+  if (num_noise < 0) {
+    stop('Number of noise dimensions should be a positive number.')
+
+  }
+
+  if (missing(n)) {
+    stop('Missing n.')
+
+  }
+
+  if (missing(num_noise)) {
+    stop('Missing num_noise.')
+
+  }
+
   # To check that the assigned n is divided by three
   if ((n %% 3) != 0) {
     warning("The sample size should be a product of three.")
@@ -1613,6 +2287,16 @@ three_clust_diff_dist <- function(n, num_dims, num_noise, min_n, max_n) {
   df <- rbind(df1, df2, df3)
 
   if (num_noise != 0) {
+
+    if (missing(min_n)) {
+      stop('Missing min_n.')
+
+    }
+
+    if (missing(max_n)) {
+      stop('Missing max_n.')
+
+    }
 
     noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise = num_noise,
                                 min_n = min_n, max_n = max_n)

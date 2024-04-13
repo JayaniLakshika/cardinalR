@@ -14,7 +14,7 @@ reference:
   - gau_curvy_clust_bkg
   - one_doublet
   - one_doublet_bkg
-  - one_doublet_four_clust
+  - one_doublet_four_clusts
   - one_doublet_diff_var_clust
   - one_doublet_diff_patterns
   - two_doublets_parallel

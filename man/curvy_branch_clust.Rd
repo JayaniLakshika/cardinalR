@@ -4,7 +4,7 @@
 \alias{curvy_branch_clust}
 \title{Generate Curvy Branching Cluster Data}
 \usage{
-curvy_branch_clust(n, clust_vec = NULL, num_noise, min_n, max_n)
+curvy_branch_clust(n, clust_vec, num_noise, min_n, max_n)
 }
 \arguments{
 \item{n}{The total number of data points to be generated.}

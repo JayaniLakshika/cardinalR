@@ -611,7 +611,7 @@
 # gau_clust_diff() works
 
     Code
-      gau_clust_diff(n = 400, clust_size_vec = c(50, 100, 200, 50), num_clust = 4,
+      gau_clust_diff(clust_size_vec = c(50, 100, 200, 50), num_clust = 4,
       mean_matrix = rbind(c(1, 0, 0, 0, 0, 0), c(0, 1, 0, 0, 0, 0), c(0, 0, 1, 0, 0,
         0), c(0, 0, 0, 1, 0, 0)), var_vec = c(0.02, 0.05, 0.06, 0.1), num_dims = 6,
       num_noise = 4, min_n = -0.05, max_n = 0.05)
@@ -2031,7 +2031,7 @@
 # clust_diff_shapes_pts() works
 
     Code
-      clust_diff_shapes_pts(n = 400, clust_size_vec = c(50, 50, 50, 50, 100, 100),
+      clust_diff_shapes_pts(clust_size_vec = c(50, 50, 50, 50, 100, 100),
       num_gau_clust = 4, num_non_gau_clust = 2, clust_sd_gau = 0.05,
       clust_sd_non_gau = 0.1, num_dims = 7, a = 2, b = 4)
     Output

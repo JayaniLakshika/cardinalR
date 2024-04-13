@@ -16,10 +16,48 @@
 #' one_grid <- one_grid(nx = 10, ny = 10, num_noise = 2, min_n = -0.05, max_n = 0.05)
 one_grid <- function(nx, ny, num_noise, min_n, max_n) {
 
+  if (nx <= 0) {
+    stop('The number of grid points along the x axis should be a positive number.')
+  }
+
+  if (ny <= 0) {
+    stop('The number of grid points along the y axis should be a positive number.')
+  }
+
+  if (num_noise < 0) {
+    stop('Number of noise dimensions should be a positive number.')
+
+  }
+
+  if (missing(nx)) {
+    stop('Missing nx.')
+
+  }
+
+  if (missing(ny)) {
+    stop('Missing nx.')
+
+  }
+
+  if (missing(num_noise)) {
+    stop('Missing num_noise.')
+
+  }
+
   df <- expand.grid(1:nx, 1:ny)
   df_mat <- matrix(c(df$Var1, df$Var2), ncol = 2)
 
   if (num_noise != 0) {
+
+    if (missing(min_n)) {
+      stop('Missing min_n.')
+
+    }
+
+    if (missing(max_n)) {
+      stop('Missing max_n.')
+
+    }
 
     noise_mat <- gen_noise_dims(n = dim(df_mat)[1], num_noise = num_noise,
                                 min_n = min_n, max_n = max_n)
@@ -51,6 +89,25 @@ one_grid <- function(nx, ny, num_noise, min_n, max_n) {
 #' two_grids <- two_grid(n_value = 19, num_noise = 2, min_n = -0.05, max_n = 0.05)
 two_grid <- function(n_value, num_noise, min_n, max_n) {
 
+  if (n_value <= 0) {
+    stop('The number of grid points along the x and y axes should be a positive number.')
+  }
+
+  if (num_noise < 0) {
+    stop('Number of noise dimensions should be a positive number.')
+
+  }
+
+  if (missing(n_value)) {
+    stop('Missing n_value.')
+
+  }
+
+  if (missing(num_noise)) {
+    stop('Missing num_noise.')
+
+  }
+
   df1 <- one_grid(nx = n_value, ny = n_value, num_noise = 0)
   df1 <- cbind(df1, stats::runif(NROW(df1), -0.01, 0.01), stats::runif(NROW(df1), -0.01, 0.01))
 
@@ -61,6 +118,16 @@ two_grid <- function(n_value, num_noise, min_n, max_n) {
   df <- rbind(df1, df2)
 
   if (num_noise != 0) {
+
+    if (missing(min_n)) {
+      stop('Missing min_n.')
+
+    }
+
+    if (missing(max_n)) {
+      stop('Missing max_n.')
+
+    }
 
     noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise = num_noise,
                                 min_n = min_n, max_n = max_n)
@@ -91,6 +158,25 @@ two_grid <- function(n_value, num_noise, min_n, max_n) {
 #' max_n = 0.05)
 three_grid <- function(n_value, num_noise, min_n, max_n) {
 
+  if (n_value <= 0) {
+    stop('The number of grid points along the x and y axes should be a positive number.')
+  }
+
+  if (num_noise < 0) {
+    stop('Number of noise dimensions should be a positive number.')
+
+  }
+
+  if (missing(n_value)) {
+    stop('Missing n_value.')
+
+  }
+
+  if (missing(num_noise)) {
+    stop('Missing num_noise.')
+
+  }
+
   df1 <- one_grid(nx = n_value, ny = n_value, num_noise = 0)
   df1 <- cbind(df1, stats::runif(NROW(df1), -0.01, 0.01), stats::runif(NROW(df1), -0.01, 0.01))
 
@@ -105,6 +191,16 @@ three_grid <- function(n_value, num_noise, min_n, max_n) {
   df <- rbind(df1, df2, df3)
 
   if (num_noise != 0) {
+
+    if (missing(min_n)) {
+      stop('Missing min_n.')
+
+    }
+
+    if (missing(max_n)) {
+      stop('Missing max_n.')
+
+    }
 
     noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise = num_noise,
                                 min_n = min_n, max_n = max_n)
@@ -133,9 +229,38 @@ three_grid <- function(n_value, num_noise, min_n, max_n) {
 #' max_n = 0.05)
 one_grid_bkg <- function(n_value, num_noise, min_n, max_n) {
 
+  if (n_value <= 0) {
+    stop('The number of grid points along the x and y axes should be a positive number.')
+  }
+
+  if (num_noise < 0) {
+    stop('Number of noise dimensions should be a positive number.')
+
+  }
+
+  if (missing(n_value)) {
+    stop('Missing n_value.')
+
+  }
+
+  if (missing(num_noise)) {
+    stop('Missing num_noise.')
+
+  }
+
   df1 <- one_grid(nx = n_value, ny = n_value, num_noise = 0)
 
   if (num_noise != 0) {
+
+    if (missing(min_n)) {
+      stop('Missing min_n.')
+
+    }
+
+    if (missing(max_n)) {
+      stop('Missing max_n.')
+
+    }
 
     noise_mat <- gen_noise_dims(n = dim(df1)[1], num_noise = num_noise,
                                 min_n = min_n, max_n = max_n)
@@ -167,6 +292,25 @@ one_grid_bkg <- function(n_value, num_noise, min_n, max_n) {
 #' min_n = -0.05, max_n = 0.05)
 two_grid_comb_bkg <- function(n_value, num_noise, min_n, max_n) {
 
+  if (n_value <= 0) {
+    stop('The number of grid points along the x and y axes should be a positive number.')
+  }
+
+  if (num_noise < 0) {
+    stop('Number of noise dimensions should be a positive number.')
+
+  }
+
+  if (missing(n_value)) {
+    stop('Missing n_value.')
+
+  }
+
+  if (missing(num_noise)) {
+    stop('Missing num_noise.')
+
+  }
+
   df1 <- one_grid(nx = n_value, ny = n_value, num_noise = 0)
   df3 <- df1 + 5
   df1 <- rbind(df1, df3)
@@ -174,6 +318,16 @@ two_grid_comb_bkg <- function(n_value, num_noise, min_n, max_n) {
   n <- NROW(df1) + NROW(df1) * 0.6/2
 
   if (num_noise != 0) {
+
+    if (missing(min_n)) {
+      stop('Missing min_n.')
+
+    }
+
+    if (missing(max_n)) {
+      stop('Missing max_n.')
+
+    }
 
     noise_mat <- gen_noise_dims(n = dim(df1)[1], num_noise = num_noise,
                                 min_n = min_n, max_n = max_n)
@@ -192,7 +346,7 @@ two_grid_comb_bkg <- function(n_value, num_noise, min_n, max_n) {
 #'
 #' This function generates a single grid dataset with a different offset.
 #'
-#' @param n The total number of samples in the dataset.
+#' @param n_value The number of grid points along each axis for the grids.
 #' @param num_noise The number of additional noise dimensions to add to the data.
 #' @param min_n The minimum value for the noise dimensions.
 #' @param max_n The maximum value for the noise dimensions.
@@ -201,33 +355,45 @@ two_grid_comb_bkg <- function(n_value, num_noise, min_n, max_n) {
 #'
 #' @examples
 #' set.seed(20240412)
-#' two_grid_comb <- two_grid_comb(n = 200, num_noise = 2, min_n = -0.05,
+#' two_grid_comb <- two_grid_comb(n_value = 10, num_noise = 2, min_n = -0.05,
 #' max_n = 0.05)
-two_grid_comb <- function(n, num_noise, min_n, max_n) {
+two_grid_comb <- function(n_value, num_noise, min_n, max_n) {
 
-  if ((n %% 2) != 0) {
+  if (n_value <= 0) {
+    stop('The number of grid points along the x and y axes should be a positive number.')
+  }
 
-    stop("The sample size should be a product of two.")
-
-  } else {
-
-    if (((sqrt(n/2)) %% 1) != 0) {
-
-      stop("The square root should exists.")
-
-    } else {
-
-      n_value <- sqrt(n/2)
-
-    }
+  if (num_noise < 0) {
+    stop('Number of noise dimensions should be a positive number.')
 
   }
+
+  if (missing(n_value)) {
+    stop('Missing n_value.')
+
+  }
+
+  if (missing(num_noise)) {
+    stop('Missing num_noise.')
+
+  }
+
 
   df1 <- one_grid(nx = n_value, ny = n_value, num_noise = 0)
   df2 <- df1 + 3
   df <- rbind(df1, df2)
 
   if (num_noise != 0) {
+
+    if (missing(min_n)) {
+      stop('Missing min_n.')
+
+    }
+
+    if (missing(max_n)) {
+      stop('Missing max_n.')
+
+    }
 
     noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise = num_noise,
                                 min_n = min_n, max_n = max_n)
