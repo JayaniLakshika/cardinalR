@@ -80,9 +80,9 @@ head(mobius_clust_data, 5)
 
 <table style="width:100%">
   <tr>
-    <td align="center"><img src="man/figures/mobius_1.png" height="100" alt="" /></td>
-    <td align="center"><img src="man/figures/mobius_2.png" height="100" alt="" /></td>
-    <td align="center"><img src="man/figures/mobius_3.png" height="100" alt="" /></td>
+    <td align="center"><img src="man/figures/mobius_1.png" height="200" alt="" /></td>
+    <td align="center"><img src="man/figures/mobius_2.png" height="200" alt="" /></td>
+    <td align="center"><img src="man/figures/mobius_3.png" height="200" alt="" /></td>
   </tr>
 </table>
 
