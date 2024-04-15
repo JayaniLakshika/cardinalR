@@ -54,7 +54,7 @@ You can find the high-dimensional view in
 
 Different representations from tSNE (t-distributed Stochastic Neighbor
 Embedding) and UMAP (Uniform Manifold Approximation and Projection) are
-shown.
+shown below.
 
 <img src="man/figures/README-unnamed-chunk-6-1.png" width="100%" style="display: block; margin: auto;" />
 

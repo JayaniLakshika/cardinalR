@@ -90,7 +90,7 @@ head(mobius_clust_data, 5)
 You can find the high-dimensional view in [here](https://youtu.be/731aZxDifCs).
 
 Different representations from tSNE (t-distributed Stochastic Neighbor Embedding) 
-and UMAP (Uniform Manifold Approximation and Projection) are shown.
+and UMAP (Uniform Manifold Approximation and Projection) are shown below.
 
 ```{r, echo=FALSE}
 nldr_tsne1 <- mobius_clust_tsne_param1 |>
