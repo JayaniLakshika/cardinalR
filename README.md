@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# cardinalR <img src="man/figures/logo.png" align="right" height="250" alt="" />
+# cardinalR <img src="man/figures/logo.png" align="right" height="150" alt="" />
 
 The `cardinalR` package provides functionality for generating simulation
 high-dimensional datasets for use in various Nonlinear dimension
