@@ -1,5 +1,5 @@
-Package: cardinalR
 Type: Package
+Package: cardinalR
 Title: Collection of data structures
 Version: 0.1.0
 Authors@R: c(
@@ -14,28 +14,30 @@ Authors@R: c(
     person("Thiyanga", "S. Talagala", , "ttalagala@sjp.ac.lk", role = "aut",
            comment = c(ORCID = "0000-0002-0656-9789"))
   )
-Description:
-    A collection of simple simulation datasets designed for generating Nonlinear
-    Dimensionality Reduction (NLDR) representations techniques such as tSNE 
-    (t-distributed Stochastic Neighbor Embedding), and UMAP (Uniform Manifold 
-    Approximation and Projection). These datasets serve as a valuable resource 
-    for understanding the reliability of NLDR representations in various contexts.
+Description:A collection of simple simulation datasets designed for
+    generating Nonlinear Dimensionality Reduction (NLDR) representations
+    techniques such as tSNE (t-distributed Stochastic Neighbor Embedding),
+    and UMAP (Uniform Manifold Approximation and Projection). These
+    datasets serve as a valuable resource for understanding the
+    reliability of NLDR representations in various contexts.
 License: MIT + file LICENSE
-Encoding: UTF-8
-LazyData: true
 URL: https://github.com/JayaniLakshika/cardinalR
 BugReports: https://github.com/JayaniLakshika/cardinalR/issues
-Imports:
-    stats,
-    purrr
-Suggests: 
-    knitr,
-    rmarkdown,
-    langevitour, 
-    testthat (>= 3.0.0)
-VignetteBuilder: knitr
-RoxygenNote: 7.3.1
-Config/testthat/edition: 3
 Depends: 
     R (>= 3.5.0)
+Imports:
+    purrr,
+    stats,
+    utils
+Suggests: 
+    knitr,
+    langevitour,
+    rmarkdown,
+    testthat (>= 3.0.0)
+VignetteBuilder: 
+    knitr
+Config/testthat/edition: 3
+Encoding: UTF-8
 Language: en-GB
+LazyData: true
+RoxygenNote: 7.3.1
