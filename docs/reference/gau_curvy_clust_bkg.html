@@ -87,8 +87,10 @@
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Generate clusters and curvilinear data with noise with custom parameters</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">20240412</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu">gau_curvy_clust_bkg</span><span class="op">(</span>n <span class="op">=</span> <span class="fl">260</span>, num_noise <span class="op">=</span> <span class="fl">2</span>, min_n <span class="op">=</span> <span class="op">-</span><span class="fl">0.05</span>,</span></span>
-<span class="r-in"><span>max_n <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu">gau_curvy_clust_bkg</span><span class="op">(</span></span></span>
+<span class="r-in"><span>  n <span class="op">=</span> <span class="fl">260</span>, num_noise <span class="op">=</span> <span class="fl">2</span>, min_n <span class="op">=</span> <span class="op">-</span><span class="fl">0.05</span>,</span></span>
+<span class="r-in"><span>  max_n <span class="op">=</span> <span class="fl">0.05</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

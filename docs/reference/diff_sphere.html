@@ -88,8 +88,10 @@ and adds noise to the data if specified.</p>
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">20240412</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu">diff_sphere</span><span class="op">(</span>n <span class="op">=</span> <span class="fl">390</span>, num_noise <span class="op">=</span> <span class="fl">2</span>,</span></span>
-<span class="r-in"><span>min_n <span class="op">=</span> <span class="op">-</span><span class="fl">0.05</span>, max_n <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">diff_sphere</span><span class="op">(</span></span></span>
+<span class="r-in"><span>  n <span class="op">=</span> <span class="fl">390</span>, num_noise <span class="op">=</span> <span class="fl">2</span>,</span></span>
+<span class="r-in"><span>  min_n <span class="op">=</span> <span class="op">-</span><span class="fl">0.05</span>, max_n <span class="op">=</span> <span class="fl">0.05</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                [,1]         [,2]          [,3]         [,4]          [,5]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   [1,]   2.15264081  -6.89994741 -2.096558e+00   8.84084278  1.701318e-02</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   [2,]  -1.59579735  -8.30226886 -1.463587e+00   8.66723218  1.606255e-03</span>

@@ -90,8 +90,10 @@ from each other, along with added noise.</p>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Generate two curvilinear differentiated clusters with noise with custom parameters</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">20240412</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu">two_curvy_diff_pts</span><span class="op">(</span>cluster_size_vec <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">50</span>, <span class="fl">100</span><span class="op">)</span>, num_noise <span class="op">=</span> <span class="fl">2</span>,</span></span>
-<span class="r-in"><span>min_n <span class="op">=</span> <span class="op">-</span><span class="fl">0.05</span>, max_n <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu">two_curvy_diff_pts</span><span class="op">(</span></span></span>
+<span class="r-in"><span>  cluster_size_vec <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">50</span>, <span class="fl">100</span><span class="op">)</span>, num_noise <span class="op">=</span> <span class="fl">2</span>,</span></span>
+<span class="r-in"><span>  min_n <span class="op">=</span> <span class="op">-</span><span class="fl">0.05</span>, max_n <span class="op">=</span> <span class="fl">0.05</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
