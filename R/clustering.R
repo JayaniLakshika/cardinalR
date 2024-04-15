@@ -2091,7 +2091,7 @@ gau_curvy_clust <- function(n, clust_size_vec, num_noise, min_n, max_n) {
 #' @examples
 #' set.seed(20240412)
 #' three_clust_diff_dist(
-#'   n = 100, num_dims = 7, num_noise = 4, min_n = -0.05,
+#'   n = 150, num_dims = 7, num_noise = 4, min_n = -0.05,
 #'   max_n = 0.05
 #' )
 #'
