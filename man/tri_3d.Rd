@@ -23,6 +23,8 @@ This function generates triangular 3D datasets with added noise dimensions.
 }
 \examples{
 set.seed(20240412)
-triangular_3d_data <- tri_3d(n = 100, num_noise = 2,
-min_n = -0.05, max_n = 0.05)
+triangular_3d_data <- tri_3d(
+  n = 100, num_noise = 2,
+  min_n = -0.05, max_n = 0.05
+)
 }

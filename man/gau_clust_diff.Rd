@@ -42,11 +42,15 @@ This function generates Gaussian clusters with different numbers of points per c
 
 # Generate Gaussian clusters with custom parameters
 set.seed(20240412)
-data <- gau_clust_diff(clust_size_vec = c(50, 100, 200, 50),
-                                      num_clust = 4, mean_matrix =
-                                      rbind(c(1,0,0,0,0,0), c(0,1,0,0,0,0),
-                                      c(0,0,1,0,0,0), c(0,0,0,1,0,0)),
-                                      var_vec = c(0.02, 0.05, 0.06, 0.1),
-                                      num_dims = 6, num_noise = 4,
-                                      min_n = -0.05, max_n = 0.05)
+data <- gau_clust_diff(
+  clust_size_vec = c(50, 100, 200, 50),
+  num_clust = 4, mean_matrix =
+    rbind(
+      c(1, 0, 0, 0, 0, 0), c(0, 1, 0, 0, 0, 0),
+      c(0, 0, 1, 0, 0, 0), c(0, 0, 0, 1, 0, 0)
+    ),
+  var_vec = c(0.02, 0.05, 0.06, 0.1),
+  num_dims = 6, num_noise = 4,
+  min_n = -0.05, max_n = 0.05
+)
 }

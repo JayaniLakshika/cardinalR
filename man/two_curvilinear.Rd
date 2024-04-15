@@ -23,6 +23,8 @@ This function generates a dataset representing two curvilinear clusters with add
 }
 \examples{
 set.seed(20240412)
-two_curvilinear <- two_curvilinear(n = 250, num_noise = 2, min_n = -0.05,
-max_n = 0.05)
+two_curvilinear <- two_curvilinear(
+  n = 250, num_noise = 2, min_n = -0.05,
+  max_n = 0.05
+)
 }

@@ -11,29 +11,27 @@
 #'
 #' @examples
 #' set.seed(20240412)
-#' curvilinear_points <- curv_2d(n = 100, num_noise = 2, min_n = -0.01,
-#' max_n = 0.01)
+#' curvilinear_points <- curv_2d(
+#'   n = 100, num_noise = 2, min_n = -0.01,
+#'   max_n = 0.01
+#' )
 #'
 #' @export
-curv_2d <- function(n, num_noise, min_n, max_n){
-
+curv_2d <- function(n, num_noise, min_n, max_n) {
   if (n <= 0) {
-    stop('Number of points should be a positive number.')
+    stop("Number of points should be a positive number.")
   }
 
   if (num_noise < 0) {
-    stop('Number of noise dimensions should be a positive number.')
-
+    stop("Number of noise dimensions should be a positive number.")
   }
 
   if (missing(n)) {
-    stop('Missing n.')
-
+    stop("Missing n.")
   }
 
   if (missing(num_noise)) {
-    stop('Missing num_noise.')
-
+    stop("Missing num_noise.")
   }
 
   x <- stats::runif(n, 0, 2)
@@ -42,29 +40,24 @@ curv_2d <- function(n, num_noise, min_n, max_n){
   curvilinear_mat <- matrix(c(x, y), ncol = 2)
 
   if (num_noise != 0) {
-
     if (missing(min_n)) {
-      stop('Missing min_n.')
-
+      stop("Missing min_n.")
     }
 
     if (missing(max_n)) {
-      stop('Missing max_n.')
-
+      stop("Missing max_n.")
     }
 
-    noise_mat <- gen_noise_dims(n = dim(curvilinear_mat)[1], num_noise = num_noise,
-                                min_n = min_n, max_n = max_n)
+    noise_mat <- gen_noise_dims(
+      n = dim(curvilinear_mat)[1], num_noise = num_noise,
+      min_n = min_n, max_n = max_n
+    )
     curvilinear_mat <- cbind(curvilinear_mat, noise_mat)
 
     curvilinear_mat
-
   } else {
-
     curvilinear_mat
-
   }
-
 }
 
 #' Generate points on a nonlinear 2D manifold
@@ -80,61 +73,54 @@ curv_2d <- function(n, num_noise, min_n, max_n){
 #'
 #' @examples
 #' set.seed(20240412)
-#' nonlinear_points <- nonlinear_2d(n = 100, num_noise = 2, min_n = -0.01,
-#' max_n = 0.01)
+#' nonlinear_points <- nonlinear_2d(
+#'   n = 100, num_noise = 2, min_n = -0.01,
+#'   max_n = 0.01
+#' )
 #'
 #' @export
 nonlinear_2d <- function(n, num_noise, min_n, max_n) {
-
   if (n <= 0) {
-    stop('Number of points should be a positive number.')
+    stop("Number of points should be a positive number.")
   }
 
   if (num_noise < 0) {
-    stop('Number of noise dimensions should be a positive number.')
-
+    stop("Number of noise dimensions should be a positive number.")
   }
 
   if (missing(n)) {
-    stop('Missing n.')
-
+    stop("Missing n.")
   }
 
   if (missing(num_noise)) {
-    stop('Missing num_noise.')
-
+    stop("Missing num_noise.")
   }
 
-  theta = stats::runif(n, 0.2, 0.6 * pi)
-  x = cos(theta) + stats::rnorm(n, 10, 0.03)
-  y = sin(theta) + stats::rnorm(n, 10, 0.03)
+  theta <- stats::runif(n, 0.2, 0.6 * pi)
+  x <- cos(theta) + stats::rnorm(n, 10, 0.03)
+  y <- sin(theta) + stats::rnorm(n, 10, 0.03)
 
   nonlinear_mat <- matrix(c(x, y), ncol = 2)
 
   if (num_noise != 0) {
-
     if (missing(min_n)) {
-      stop('Missing min_n.')
-
+      stop("Missing min_n.")
     }
 
     if (missing(max_n)) {
-      stop('Missing max_n.')
-
+      stop("Missing max_n.")
     }
 
-    noise_mat <- gen_noise_dims(n = dim(nonlinear_mat)[1], num_noise = num_noise,
-                                min_n = min_n, max_n = max_n)
+    noise_mat <- gen_noise_dims(
+      n = dim(nonlinear_mat)[1], num_noise = num_noise,
+      min_n = min_n, max_n = max_n
+    )
     nonlinear_mat <- cbind(nonlinear_mat, noise_mat)
 
     nonlinear_mat
-
   } else {
-
     nonlinear_mat
-
   }
-
 }
 
 #' Generate Sine Curve Data with Noise
@@ -152,55 +138,46 @@ nonlinear_2d <- function(n, num_noise, min_n, max_n) {
 #' set.seed(20240412)
 #' sine_curve <- sine_curve(n = 100, num_noise = 2, min_n = -0.05, max_n = 0.05)
 sine_curve <- function(n, num_noise, min_n, max_n) {
-
   if (n <= 0) {
-    stop('Number of points should be a positive number.')
+    stop("Number of points should be a positive number.")
   }
 
   if (num_noise < 0) {
-    stop('Number of noise dimensions should be a positive number.')
-
+    stop("Number of noise dimensions should be a positive number.")
   }
 
   if (missing(n)) {
-    stop('Missing n.')
-
+    stop("Missing n.")
   }
 
   if (missing(num_noise)) {
-    stop('Missing num_noise.')
-
+    stop("Missing num_noise.")
   }
 
-  theta <- stats::runif(n, 0,1.80 * pi)
+  theta <- stats::runif(n, 0, 1.80 * pi)
   x <- theta
   y <- sin(theta)
   df <- matrix(c(x, y), ncol = 2)
 
   if (num_noise != 0) {
-
     if (missing(min_n)) {
-      stop('Missing min_n.')
-
+      stop("Missing min_n.")
     }
 
     if (missing(max_n)) {
-      stop('Missing max_n.')
-
+      stop("Missing max_n.")
     }
 
-    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise = num_noise,
-                                min_n = min_n, max_n = max_n)
+    noise_mat <- gen_noise_dims(
+      n = dim(df)[1], num_noise = num_noise,
+      min_n = min_n, max_n = max_n
+    )
     df <- cbind(df, noise_mat)
 
     df
-
   } else {
-
     df
-
   }
-
 }
 
 #' Generate Nonlinear Connected Data with Noise
@@ -216,62 +193,59 @@ sine_curve <- function(n, num_noise, min_n, max_n) {
 #'
 #' @examples
 #' set.seed(20240412)
-#' nonlinear_connect <- nonlinear_connect(n = 400, num_noise = 2, min_n = -0.05,
-#' max_n = 0.05)
+#' nonlinear_connect <- nonlinear_connect(
+#'   n = 400, num_noise = 2, min_n = -0.05,
+#'   max_n = 0.05
+#' )
 nonlinear_connect <- function(n, num_noise, min_n, max_n) {
-
   if (n <= 0) {
-    stop('Number of points should be a positive number.')
+    stop("Number of points should be a positive number.")
   }
 
   if (num_noise < 0) {
-    stop('Number of noise dimensions should be a positive number.')
-
+    stop("Number of noise dimensions should be a positive number.")
   }
 
   if (missing(n)) {
-    stop('Missing n.')
-
+    stop("Missing n.")
   }
 
   if (missing(num_noise)) {
-    stop('Missing num_noise.')
-
+    stop("Missing num_noise.")
   }
 
   # To check that the assigned n is divided by three
-  if ((n%%4) != 0) {
+  if ((n %% 4) != 0) {
     warning("The sample size should be a product of four.")
-    cluster_size <- floor(n/4)
-
+    cluster_size <- floor(n / 4)
   } else {
-    cluster_size <- n/4
+    cluster_size <- n / 4
   }
 
-  theta = stats::runif(cluster_size, 0,0.80 * pi)
-  x = cos(theta) + stats::rnorm(cluster_size, 10, 0.03)
-  y = sin(theta) + stats::rnorm(cluster_size, 10, 0.03)
+  theta <- stats::runif(cluster_size, 0, 0.80 * pi)
+  x <- cos(theta) + stats::rnorm(cluster_size, 10, 0.03)
+  y <- sin(theta) + stats::rnorm(cluster_size, 10, 0.03)
   z <- rep(0, cluster_size) + stats::rnorm(cluster_size, 10, 0.03)
   w <- rep(0, cluster_size) - stats::rnorm(cluster_size, 10, 0.03)
 
   df1 <- matrix(c(x, y, z, w), ncol = 4)
 
-  x = cos(-theta) + stats::rnorm(cluster_size, 10, 0.03) + stats::rnorm(cluster_size, 0.1, 0)
-  y = sin(-theta) + stats::rnorm(cluster_size, 10, 0.03) + stats::rnorm(cluster_size, 0.1, 0)
+  x <- cos(-theta) + stats::rnorm(cluster_size, 10, 0.03) + stats::rnorm(cluster_size, 0.1, 0)
+  y <- sin(-theta) + stats::rnorm(cluster_size, 10, 0.03) + stats::rnorm(cluster_size, 0.1, 0)
   z <- rep(0, cluster_size) + stats::rnorm(cluster_size, 10, 0.03)
   w <- rep(0, cluster_size) - stats::rnorm(cluster_size, 10, 0.03)
 
   df2 <- matrix(c(x, y, z, w), ncol = 4)
 
-  x = cos(-theta) + stats::rnorm(cluster_size, 10, 0.03) + stats::rnorm(cluster_size, 0.1, 0)
-  z = sin(-theta) + stats::rnorm(cluster_size, 10, 0.03) + stats::rnorm(cluster_size, 0.1, 0)
+  x <- cos(-theta) + stats::rnorm(cluster_size, 10, 0.03) + stats::rnorm(cluster_size, 0.1, 0)
+  z <- sin(-theta) + stats::rnorm(cluster_size, 10, 0.03) + stats::rnorm(cluster_size, 0.1, 0)
   y <- rep(0, cluster_size) + stats::rnorm(cluster_size, 10, 0.03)
   w <- rep(0, cluster_size) - stats::rnorm(cluster_size, 10, 0.03)
 
   df3 <- matrix(c(x, y, z, w), ncol = 4)
 
-  x = cos(theta) + stats::rnorm(cluster_size, 10, 0.03) + stats::rnorm(cluster_size, 0.1, 0)
-  z = sin(theta) + stats::rnorm(cluster_size, 10, 0.03) + stats::rnorm(cluster_size, 0.1, 0)
+  x <- cos(theta) + stats::rnorm(cluster_size, 10, 0.03) + stats::rnorm(cluster_size, 0.1, 0)
+  z <- sin(theta) + stats::rnorm(cluster_size, 10, 0.03) + stats::rnorm(cluster_size, 0.1, 0)
   y <- rep(0, cluster_size) + stats::rnorm(cluster_size, 10, 0.03)
   w <- rep(0, cluster_size) - stats::rnorm(cluster_size, 10, 0.03)
 
@@ -280,29 +254,24 @@ nonlinear_connect <- function(n, num_noise, min_n, max_n) {
   df <- rbind(df1, df2, df3, df4)
 
   if (num_noise != 0) {
-
     if (missing(min_n)) {
-      stop('Missing min_n.')
-
+      stop("Missing min_n.")
     }
 
     if (missing(max_n)) {
-      stop('Missing max_n.')
-
+      stop("Missing max_n.")
     }
 
-    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise = num_noise,
-                                min_n = min_n, max_n = max_n)
+    noise_mat <- gen_noise_dims(
+      n = dim(df)[1], num_noise = num_noise,
+      min_n = min_n, max_n = max_n
+    )
     df <- cbind(df, noise_mat)
 
     df
-
   } else {
-
     df
-
   }
-
 }
 
 
@@ -319,36 +288,33 @@ nonlinear_connect <- function(n, num_noise, min_n, max_n) {
 #'
 #' @examples
 #' set.seed(20240412)
-#' nonlinear_mirror <- nonlinear_mirror(n = 400, num_noise = 2, min_n = -0.05,
-#' max_n = 0.05)
+#' nonlinear_mirror <- nonlinear_mirror(
+#'   n = 400, num_noise = 2, min_n = -0.05,
+#'   max_n = 0.05
+#' )
 nonlinear_mirror <- function(n, num_noise, min_n, max_n) {
-
   if (n <= 0) {
-    stop('Number of points should be a positive number.')
+    stop("Number of points should be a positive number.")
   }
 
   if (num_noise < 0) {
-    stop('Number of noise dimensions should be a positive number.')
-
+    stop("Number of noise dimensions should be a positive number.")
   }
 
   if (missing(n)) {
-    stop('Missing n.')
-
+    stop("Missing n.")
   }
 
   if (missing(num_noise)) {
-    stop('Missing num_noise.')
-
+    stop("Missing num_noise.")
   }
 
   # To check that the assigned n is divided by two
-  if ((n%%2) != 0) {
+  if ((n %% 2) != 0) {
     warning("The sample size should be a product of two.")
-    cluster_size <- floor(n/2)
-
+    cluster_size <- floor(n / 2)
   } else {
-    cluster_size <- n/2
+    cluster_size <- n / 2
   }
 
   x <- stats::runif(cluster_size, -8, 1.5)
@@ -368,29 +334,24 @@ nonlinear_mirror <- function(n, num_noise, min_n, max_n) {
   df <- rbind(df1, df2)
 
   if (num_noise != 0) {
-
     if (missing(min_n)) {
-      stop('Missing min_n.')
-
+      stop("Missing min_n.")
     }
 
     if (missing(max_n)) {
-      stop('Missing max_n.')
-
+      stop("Missing max_n.")
     }
 
-    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise = num_noise,
-                                min_n = min_n, max_n = max_n)
+    noise_mat <- gen_noise_dims(
+      n = dim(df)[1], num_noise = num_noise,
+      min_n = min_n, max_n = max_n
+    )
     df <- cbind(df, noise_mat)
 
     df
-
   } else {
-
     df
-
   }
-
 }
 
 #' Generate Two Curvy Pancakes with Noise
@@ -406,73 +367,65 @@ nonlinear_mirror <- function(n, num_noise, min_n, max_n) {
 #'
 #' @examples
 #' set.seed(20240412)
-#' two_curvy_panckakes <- two_curvy_panckakes(n = 300, num_noise = 2,
-#' min_n = -0.05, max_n = 0.05)
+#' two_curvy_panckakes <- two_curvy_panckakes(
+#'   n = 300, num_noise = 2,
+#'   min_n = -0.05, max_n = 0.05
+#' )
 two_curvy_panckakes <- function(n, num_noise, min_n, max_n) {
-
   if (n <= 0) {
-    stop('Number of points should be a positive number.')
+    stop("Number of points should be a positive number.")
   }
 
   if (num_noise < 0) {
-    stop('Number of noise dimensions should be a positive number.')
-
+    stop("Number of noise dimensions should be a positive number.")
   }
 
   if (missing(n)) {
-    stop('Missing n.')
-
+    stop("Missing n.")
   }
 
   if (missing(num_noise)) {
-    stop('Missing num_noise.')
-
+    stop("Missing num_noise.")
   }
 
   # To check that the assigned n is divided by two
-  if ((n%%2) != 0) {
+  if ((n %% 2) != 0) {
     warning("The sample size should be a product of two.")
-    cluster_size <- floor(n/2)
-
+    cluster_size <- floor(n / 2)
   } else {
-    cluster_size <- n/2
+    cluster_size <- n / 2
   }
 
-  phi <- stats::runif(cluster_size, max = 2*pi)
+  phi <- stats::runif(cluster_size, max = 2 * pi)
   rho <- sqrt(stats::runif(cluster_size))
 
-  theta <- stats::runif(cluster_size, 0,1.80 * pi)
+  theta <- stats::runif(cluster_size, 0, 1.80 * pi)
   x <- theta
   y <- sin(theta)
-  df1 <- matrix(c(x, y, sqrt(1)*rho*cos(phi) + 4, sqrt(1)*rho*sin(phi) + 4), ncol = 4)
-  df2 <- matrix(c(x+1, y+1, sqrt(1)*rho*cos(phi) + 6, sqrt(1)*rho*sin(phi) + 6), ncol = 4)
+  df1 <- matrix(c(x, y, sqrt(1) * rho * cos(phi) + 4, sqrt(1) * rho * sin(phi) + 4), ncol = 4)
+  df2 <- matrix(c(x + 1, y + 1, sqrt(1) * rho * cos(phi) + 6, sqrt(1) * rho * sin(phi) + 6), ncol = 4)
 
   df <- rbind(df1, df2)
 
   if (num_noise != 0) {
-
     if (missing(min_n)) {
-      stop('Missing min_n.')
-
+      stop("Missing min_n.")
     }
 
     if (missing(max_n)) {
-      stop('Missing max_n.')
-
+      stop("Missing max_n.")
     }
 
-    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise = num_noise,
-                                min_n = min_n, max_n = max_n)
+    noise_mat <- gen_noise_dims(
+      n = dim(df)[1], num_noise = num_noise,
+      min_n = min_n, max_n = max_n
+    )
     df <- cbind(df, noise_mat)
 
     df
-
   } else {
-
     df
-
   }
-
 }
 
 #' Generate Two Curvilinear Data with Noise
@@ -488,36 +441,33 @@ two_curvy_panckakes <- function(n, num_noise, min_n, max_n) {
 #'
 #' @examples
 #' set.seed(20240412)
-#' two_curvilinear <- two_curvilinear(n = 250, num_noise = 2, min_n = -0.05,
-#' max_n = 0.05)
+#' two_curvilinear <- two_curvilinear(
+#'   n = 250, num_noise = 2, min_n = -0.05,
+#'   max_n = 0.05
+#' )
 two_curvilinear <- function(n, num_noise, min_n, max_n) {
-
   if (n <= 0) {
-    stop('Number of points should be a positive number.')
+    stop("Number of points should be a positive number.")
   }
 
   if (num_noise < 0) {
-    stop('Number of noise dimensions should be a positive number.')
-
+    stop("Number of noise dimensions should be a positive number.")
   }
 
   if (missing(n)) {
-    stop('Missing n.')
-
+    stop("Missing n.")
   }
 
   if (missing(num_noise)) {
-    stop('Missing num_noise.')
-
+    stop("Missing num_noise.")
   }
 
   # To check that the assigned n is divided by two
-  if (((n - n * 0.2)%%2) != 0) {
+  if (((n - n * 0.2) %% 2) != 0) {
     warning("The sample size should be a product of two.")
-    cluster_size <- floor((n - n * 0.2)/2)
-
+    cluster_size <- floor((n - n * 0.2) / 2)
   } else {
-    cluster_size <- (n - n * 0.2)/2
+    cluster_size <- (n - n * 0.2) / 2
   }
 
   x <- stats::runif(cluster_size, -2, -0.5)
@@ -544,29 +494,24 @@ two_curvilinear <- function(n, num_noise, min_n, max_n) {
   df <- rbind(df1, df2, df3)
 
   if (num_noise != 0) {
-
     if (missing(min_n)) {
-      stop('Missing min_n.')
-
+      stop("Missing min_n.")
     }
 
     if (missing(max_n)) {
-      stop('Missing max_n.')
-
+      stop("Missing max_n.")
     }
 
-    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise = num_noise,
-                                min_n = min_n, max_n = max_n)
+    noise_mat <- gen_noise_dims(
+      n = dim(df)[1], num_noise = num_noise,
+      min_n = min_n, max_n = max_n
+    )
     df <- cbind(df, noise_mat)
 
     df
-
   } else {
-
     df
-
   }
-
 }
 
 #' Generate Swiss Roll Data
@@ -587,24 +532,20 @@ two_curvilinear <- function(n, num_noise, min_n, max_n) {
 #' set.seed(20240412)
 #' data <- swiss_roll(n = 200, num_noise = 2, min_n = -0.05, max_n = 0.05)
 swiss_roll <- function(n, num_noise, min_n, max_n) {
-
   if (n <= 0) {
-    stop('Number of points should be a positive number.')
+    stop("Number of points should be a positive number.")
   }
 
   if (num_noise < 0) {
-    stop('Number of noise dimensions should be a positive number.')
-
+    stop("Number of noise dimensions should be a positive number.")
   }
 
   if (missing(n)) {
-    stop('Missing n.')
-
+    stop("Missing n.")
   }
 
   if (missing(num_noise)) {
-    stop('Missing num_noise.')
-
+    stop("Missing num_noise.")
   }
 
   phi <- stats::runif(n, min = 1.5 * pi, max = 4.5 * pi)
@@ -614,26 +555,22 @@ swiss_roll <- function(n, num_noise, min_n, max_n) {
   df <- matrix(c(x, y, z), ncol = 3)
 
   if (num_noise != 0) {
-
     if (missing(min_n)) {
-      stop('Missing min_n.')
-
+      stop("Missing min_n.")
     }
 
     if (missing(max_n)) {
-      stop('Missing max_n.')
-
+      stop("Missing max_n.")
     }
 
-    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise = num_noise,
-                                min_n = min_n, max_n = max_n)
+    noise_mat <- gen_noise_dims(
+      n = dim(df)[1], num_noise = num_noise,
+      min_n = min_n, max_n = max_n
+    )
     df <- cbind(df, noise_mat)
 
     df
-
   } else {
-
     df
-
   }
 }

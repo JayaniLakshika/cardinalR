@@ -25,6 +25,8 @@ This function generates data with clusters and curvilinear patterns along with a
 
 # Generate clusters and curvilinear data with noise with custom parameters
 set.seed(20240412)
-data <- gau_curvy_clust_bkg(n = 260, num_noise = 2, min_n = -0.05,
-max_n = 0.05)
+data <- gau_curvy_clust_bkg(
+  n = 260, num_noise = 2, min_n = -0.05,
+  max_n = 0.05
+)
 }

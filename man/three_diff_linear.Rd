@@ -24,6 +24,8 @@ patterns with added noise.
 }
 \examples{
 set.seed(20240412)
-three_diff_linear <- three_diff_linear(n = 150, num_noise = 2, min_n = -0.05,
-max_n = 0.05)
+three_diff_linear <- three_diff_linear(
+  n = 150, num_noise = 2, min_n = -0.05,
+  max_n = 0.05
+)
 }

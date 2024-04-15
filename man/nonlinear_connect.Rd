@@ -23,6 +23,8 @@ This function generates a dataset representing nonlinear connected clusters with
 }
 \examples{
 set.seed(20240412)
-nonlinear_connect <- nonlinear_connect(n = 400, num_noise = 2, min_n = -0.05,
-max_n = 0.05)
+nonlinear_connect <- nonlinear_connect(
+  n = 400, num_noise = 2, min_n = -0.05,
+  max_n = 0.05
+)
 }

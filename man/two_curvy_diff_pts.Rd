@@ -26,6 +26,8 @@ from each other, along with added noise.
 
 # Generate two curvilinear differentiated clusters with noise with custom parameters
 set.seed(20240412)
-data <- two_curvy_diff_pts(cluster_size_vec = c(50, 100), num_noise = 2,
-min_n = -0.05, max_n = 0.05)
+data <- two_curvy_diff_pts(
+  cluster_size_vec = c(50, 100), num_noise = 2,
+  min_n = -0.05, max_n = 0.05
+)
 }

@@ -23,6 +23,8 @@ This function generates a dataset consisting of two long clusters with added noi
 }
 \examples{
 set.seed(20240412)
-long_cluster <- two_long_clust(n = 200, num_noise = 2, min_n = -0.05,
-max_n = 0.05)
+long_cluster <- two_long_clust(
+  n = 200, num_noise = 2, min_n = -0.05,
+  max_n = 0.05
+)
 }

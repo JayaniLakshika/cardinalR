@@ -24,6 +24,8 @@ with added noise.
 }
 \examples{
 set.seed(20240412)
-four_diff_long_clusters <- four_long_clust(n = 200, num_noise = 2,
-min_n = -0.05, max_n = 0.05)
+four_diff_long_clusters <- four_long_clust(
+  n = 200, num_noise = 2,
+  min_n = -0.05, max_n = 0.05
+)
 }

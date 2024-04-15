@@ -22,82 +22,71 @@
 #'
 #' @examples
 #' set.seed(20240412)
-#' plane_points <- plane(n = 100, coef_x1 = 1, coef_x2 = 1,
-#'                      coef_y1 = -1, coef_y2 = 1, intercept_x = -10,
-#'                      intercept_y = 8, u_min = 10, u_max = 30, v_min = 10, v_max = 20,
-#'                      num_noise = 2, min_n = -0.05, max_n = 0.05)
+#' plane_points <- plane(
+#'   n = 100, coef_x1 = 1, coef_x2 = 1,
+#'   coef_y1 = -1, coef_y2 = 1, intercept_x = -10,
+#'   intercept_y = 8, u_min = 10, u_max = 30, v_min = 10, v_max = 20,
+#'   num_noise = 2, min_n = -0.05, max_n = 0.05
+#' )
 #'
 #' @export
 plane <- function(n, coef_x1, coef_x2, coef_y1, coef_y2, intercept_x,
                   intercept_y, u_min, u_max, v_min, v_max, num_noise,
                   min_n, max_n) {
   if (n <= 0) {
-    stop('Number of points should be a positive number.')
+    stop("Number of points should be a positive number.")
   }
 
   if (num_noise < 0) {
-    stop('Number of noise dimensions should be a positive number.')
-
+    stop("Number of noise dimensions should be a positive number.")
   }
 
   if (missing(n)) {
-    stop('Missing n.')
-
+    stop("Missing n.")
   }
 
   if (missing(coef_x1)) {
-    stop('Missing coef_x1.')
-
+    stop("Missing coef_x1.")
   }
 
   if (missing(coef_x2)) {
-    stop('Missing coef_x2.')
-
+    stop("Missing coef_x2.")
   }
 
   if (missing(coef_y1)) {
-    stop('Missing coef_y1.')
-
+    stop("Missing coef_y1.")
   }
 
   if (missing(coef_y2)) {
-    stop('Missing coef_y2.')
-
+    stop("Missing coef_y2.")
   }
 
   if (missing(intercept_x)) {
-    stop('Missing coef_y1.')
-
+    stop("Missing coef_y1.")
   }
 
   if (missing(intercept_y)) {
-    stop('Missing coef_y2.')
-
+    stop("Missing coef_y2.")
   }
 
   if (missing(u_min)) {
-    stop('Missing u_min.')
-
+    stop("Missing u_min.")
   }
 
   if (missing(u_max)) {
-    stop('Missing u_max.')
-
+    stop("Missing u_max.")
   }
 
   if (missing(v_min)) {
-    stop('Missing u_min.')
-
+    stop("Missing u_min.")
   }
 
   if (missing(v_max)) {
-    stop('Missing u_max.')
-
+    stop("Missing u_max.")
   }
 
   if (missing(num_noise)) {
-    stop('Missing num_noise.')
-
+    stop("Missing num_noise.")
   }
 
   u <- stats::runif(n, min = u_min, max = u_max)
@@ -108,29 +97,24 @@ plane <- function(n, coef_x1, coef_x2, coef_y1, coef_y2, intercept_x,
   plane_mat <- matrix(c(x, y), ncol = 2)
 
   if (num_noise != 0) {
-
     if (missing(min_n)) {
-      stop('Missing min_n.')
-
+      stop("Missing min_n.")
     }
 
     if (missing(max_n)) {
-      stop('Missing max_n.')
-
+      stop("Missing max_n.")
     }
 
-    noise_mat <- gen_noise_dims(n = dim(plane_mat)[1], num_noise = num_noise,
-                                min_n = min_n, max_n = max_n)
+    noise_mat <- gen_noise_dims(
+      n = dim(plane_mat)[1], num_noise = num_noise,
+      min_n = min_n, max_n = max_n
+    )
     plane_mat <- cbind(plane_mat, noise_mat)
 
     plane_mat
-
   } else {
-
     plane_mat
-
   }
-
 }
 
 #' Generate Long Cluster Data
@@ -146,36 +130,33 @@ plane <- function(n, coef_x1, coef_x2, coef_y1, coef_y2, intercept_x,
 #'
 #' @examples
 #' set.seed(20240412)
-#' long_cluster <- two_long_clust(n = 200, num_noise = 2, min_n = -0.05,
-#' max_n = 0.05)
+#' long_cluster <- two_long_clust(
+#'   n = 200, num_noise = 2, min_n = -0.05,
+#'   max_n = 0.05
+#' )
 two_long_clust <- function(n, num_noise, min_n, max_n) {
-
   if (n <= 0) {
-    stop('Number of points should be a positive number.')
+    stop("Number of points should be a positive number.")
   }
 
   if (num_noise < 0) {
-    stop('Number of noise dimensions should be a positive number.')
-
+    stop("Number of noise dimensions should be a positive number.")
   }
 
   if (missing(n)) {
-    stop('Missing n.')
-
+    stop("Missing n.")
   }
 
   if (missing(num_noise)) {
-    stop('Missing num_noise.')
-
+    stop("Missing num_noise.")
   }
 
   # To check that the assigned n is divided by two
-  if ((n%%2) != 0) {
+  if ((n %% 2) != 0) {
     warning("The sample size should be a product of two.")
-    cluster_size <- floor(n/2)
-
+    cluster_size <- floor(n / 2)
   } else {
-    cluster_size <- n/2
+    cluster_size <- n / 2
   }
 
   x <- 0:(cluster_size - 1) + 0.03 * cluster_size * stats::rnorm(cluster_size)
@@ -189,29 +170,24 @@ two_long_clust <- function(n, num_noise, min_n, max_n) {
   df <- rbind(df1, df2)
 
   if (num_noise != 0) {
-
     if (missing(min_n)) {
-      stop('Missing min_n.')
-
+      stop("Missing min_n.")
     }
 
     if (missing(max_n)) {
-      stop('Missing max_n.')
-
+      stop("Missing max_n.")
     }
 
-    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise = num_noise,
-                                min_n = min_n, max_n = max_n)
+    noise_mat <- gen_noise_dims(
+      n = dim(df)[1], num_noise = num_noise,
+      min_n = min_n, max_n = max_n
+    )
     df <- cbind(df, noise_mat)
 
     df
-
   } else {
-
     df
-
   }
-
 }
 
 #' Generate Three Different Linear Data with Noise
@@ -228,36 +204,33 @@ two_long_clust <- function(n, num_noise, min_n, max_n) {
 #'
 #' @examples
 #' set.seed(20240412)
-#' three_diff_linear <- three_diff_linear(n = 150, num_noise = 2, min_n = -0.05,
-#' max_n = 0.05)
+#' three_diff_linear <- three_diff_linear(
+#'   n = 150, num_noise = 2, min_n = -0.05,
+#'   max_n = 0.05
+#' )
 three_diff_linear <- function(n, num_noise, min_n, max_n) {
-
   if (n <= 0) {
-    stop('Number of points should be a positive number.')
+    stop("Number of points should be a positive number.")
   }
 
   if (num_noise < 0) {
-    stop('Number of noise dimensions should be a positive number.')
-
+    stop("Number of noise dimensions should be a positive number.")
   }
 
   if (missing(n)) {
-    stop('Missing n.')
-
+    stop("Missing n.")
   }
 
   if (missing(num_noise)) {
-    stop('Missing num_noise.')
-
+    stop("Missing num_noise.")
   }
 
   # To check that the assigned n is divided by three
-  if ((n%%3) != 0) {
+  if ((n %% 3) != 0) {
     warning("The sample size should be a product of three.")
-    cluster_size <- floor(n/3)
-
+    cluster_size <- floor(n / 3)
   } else {
-    cluster_size <- n/3
+    cluster_size <- n / 3
   }
 
   x <- 0:(cluster_size - 1) + 0.03 * cluster_size * stats::rnorm(cluster_size)
@@ -274,29 +247,24 @@ three_diff_linear <- function(n, num_noise, min_n, max_n) {
   df <- rbind(df1, df2, df3)
 
   if (num_noise != 0) {
-
     if (missing(min_n)) {
-      stop('Missing min_n.')
-
+      stop("Missing min_n.")
     }
 
     if (missing(max_n)) {
-      stop('Missing max_n.')
-
+      stop("Missing max_n.")
     }
 
-    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise = num_noise,
-                                min_n = min_n, max_n = max_n)
+    noise_mat <- gen_noise_dims(
+      n = dim(df)[1], num_noise = num_noise,
+      min_n = min_n, max_n = max_n
+    )
     df <- cbind(df, noise_mat)
 
     df
-
   } else {
-
     df
-
   }
-
 }
 
 #' Generate Four Different Long Clusters with Noise
@@ -313,36 +281,33 @@ three_diff_linear <- function(n, num_noise, min_n, max_n) {
 #'
 #' @examples
 #' set.seed(20240412)
-#' four_diff_long_clusters <- four_long_clust(n = 200, num_noise = 2,
-#' min_n = -0.05, max_n = 0.05)
+#' four_diff_long_clusters <- four_long_clust(
+#'   n = 200, num_noise = 2,
+#'   min_n = -0.05, max_n = 0.05
+#' )
 four_long_clust <- function(n, num_noise, min_n, max_n) {
-
   if (n <= 0) {
-    stop('Number of points should be a positive number.')
+    stop("Number of points should be a positive number.")
   }
 
   if (num_noise < 0) {
-    stop('Number of noise dimensions should be a positive number.')
-
+    stop("Number of noise dimensions should be a positive number.")
   }
 
   if (missing(n)) {
-    stop('Missing n.')
-
+    stop("Missing n.")
   }
 
   if (missing(num_noise)) {
-    stop('Missing num_noise.')
-
+    stop("Missing num_noise.")
   }
 
   # To check that the assigned n is divided by four
-  if ((n%%4) != 0) {
+  if ((n %% 4) != 0) {
     warning("The sample size should be a product of four.")
-    cluster_size <- floor(n/4)
-
+    cluster_size <- floor(n / 4)
   } else {
-    cluster_size <- n/4
+    cluster_size <- n / 4
   }
 
   x <- 0:(cluster_size - 1) + 0.03 * cluster_size * stats::rnorm(cluster_size)
@@ -359,29 +324,24 @@ four_long_clust <- function(n, num_noise, min_n, max_n) {
   df <- rbind(df1, df2, df3, df4)
 
   if (num_noise != 0) {
-
     if (missing(min_n)) {
-      stop('Missing min_n.')
-
+      stop("Missing min_n.")
     }
 
     if (missing(max_n)) {
-      stop('Missing max_n.')
-
+      stop("Missing max_n.")
     }
 
-    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise = num_noise,
-                                min_n = min_n, max_n = max_n)
+    noise_mat <- gen_noise_dims(
+      n = dim(df)[1], num_noise = num_noise,
+      min_n = min_n, max_n = max_n
+    )
     df <- cbind(df, noise_mat)
 
     df
-
   } else {
-
     df
-
   }
-
 }
 
 #' Generate 2D Plane with Hole and Noise
@@ -398,35 +358,32 @@ four_long_clust <- function(n, num_noise, min_n, max_n) {
 #'
 #' @examples
 #' set.seed(20240412)
-#' plane_data <- plane_2d_hole(n = 100, num_noise = 2,
-#' min_n = -0.05, max_n = 0.05)
+#' plane_data <- plane_2d_hole(
+#'   n = 100, num_noise = 2,
+#'   min_n = -0.05, max_n = 0.05
+#' )
 plane_2d_hole <- function(n, num_noise, min_n, max_n) {
-
   if (n <= 0) {
-    stop('Number of points should be a positive number.')
+    stop("Number of points should be a positive number.")
   }
 
   if (num_noise < 0) {
-    stop('Number of noise dimensions should be a positive number.')
-
+    stop("Number of noise dimensions should be a positive number.")
   }
 
   if (missing(n)) {
-    stop('Missing n.')
-
+    stop("Missing n.")
   }
 
   if (missing(num_noise)) {
-    stop('Missing num_noise.')
-
+    stop("Missing num_noise.")
   }
 
   # To check that the assigned n is divided by four
-  if ((n%%4) != 0) {
+  if ((n %% 4) != 0) {
     stop("The sample size should be a product of four.")
-
   } else {
-    cluster_size <- n/4
+    cluster_size <- n / 4
   }
 
   u <- stats::runif(cluster_size, min = 10, max = 30)
@@ -446,25 +403,22 @@ plane_2d_hole <- function(n, num_noise, min_n, max_n) {
   df <- rbind(df1 - 10, df1 + 10, df2, df3)
 
   if (num_noise != 0) {
-
     if (missing(min_n)) {
-      stop('Missing min_n.')
-
+      stop("Missing min_n.")
     }
 
     if (missing(max_n)) {
-      stop('Missing max_n.')
-
+      stop("Missing max_n.")
     }
 
-    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise = num_noise,
-                                min_n = min_n, max_n = max_n)
+    noise_mat <- gen_noise_dims(
+      n = dim(df)[1], num_noise = num_noise,
+      min_n = min_n, max_n = max_n
+    )
     df <- cbind(df, noise_mat)
-
   }
 
   return(list(df = df, n = NROW(df)))
-
 }
 
 #' Generate Four Long Clusters with Background Noise
@@ -482,36 +436,33 @@ plane_2d_hole <- function(n, num_noise, min_n, max_n) {
 #' @examples
 #' # Generate four long clusters with background noise with custom parameters
 #' set.seed(20240412)
-#' data <- four_long_clust_bkg(n = 400, num_noise = 4, min_n = -0.05,
-#' max_n = 0.05)
+#' data <- four_long_clust_bkg(
+#'   n = 400, num_noise = 4, min_n = -0.05,
+#'   max_n = 0.05
+#' )
 four_long_clust_bkg <- function(n, num_noise, min_n, max_n) {
-
   if (n <= 0) {
-    stop('Number of points should be a positive number.')
+    stop("Number of points should be a positive number.")
   }
 
   if (num_noise < 0) {
-    stop('Number of noise dimensions should be a positive number.')
-
+    stop("Number of noise dimensions should be a positive number.")
   }
 
   if (missing(n)) {
-    stop('Missing n.')
-
+    stop("Missing n.")
   }
 
   if (missing(num_noise)) {
-    stop('Missing num_noise.')
-
+    stop("Missing num_noise.")
   }
 
   # To check that the assigned n is divided by five
-  if ((n%%5) != 0) {
+  if ((n %% 5) != 0) {
     warning("The sample size should be a product of five.")
-    cluster_size <- floor(n/5)
-
+    cluster_size <- floor(n / 5)
   } else {
-    cluster_size <- n/5
+    cluster_size <- n / 5
   }
 
   x <- 0:(cluster_size - 1) + 0.03 * cluster_size * stats::rnorm(cluster_size)
@@ -529,21 +480,19 @@ four_long_clust_bkg <- function(n, num_noise, min_n, max_n) {
   df1 <- rbind(df1, df_2, df3, df4)
 
   if (num_noise != 0) {
-
     if (missing(min_n)) {
-      stop('Missing min_n.')
-
+      stop("Missing min_n.")
     }
 
     if (missing(max_n)) {
-      stop('Missing max_n.')
-
+      stop("Missing max_n.")
     }
 
-    noise_mat <- gen_noise_dims(n = dim(df1)[1], num_noise = num_noise,
-                                min_n = min_n, max_n = max_n)
+    noise_mat <- gen_noise_dims(
+      n = dim(df1)[1], num_noise = num_noise,
+      min_n = min_n, max_n = max_n
+    )
     df1 <- cbind(df1, noise_mat)
-
   }
 
   df2 <- gen_bkg_noise(n = cluster_size, num_dims = NCOL(df1), mean = 0, sd = 10)
@@ -551,7 +500,6 @@ four_long_clust_bkg <- function(n, num_noise, min_n, max_n) {
   df <- rbind(df1, df2)
 
   df
-
 }
 
 #' Generate Three Linear Clusters with Noise
@@ -572,33 +520,28 @@ four_long_clust_bkg <- function(n, num_noise, min_n, max_n) {
 #' set.seed(20240412)
 #' data <- three_long_clust(n = 300, num_noise = 2, min_n = -0.05, max_n = 0.05)
 three_long_clust <- function(n, num_noise, min_n, max_n) {
-
   if (n <= 0) {
-    stop('Number of points should be a positive number.')
+    stop("Number of points should be a positive number.")
   }
 
   if (num_noise < 0) {
-    stop('Number of noise dimensions should be a positive number.')
-
+    stop("Number of noise dimensions should be a positive number.")
   }
 
   if (missing(n)) {
-    stop('Missing n.')
-
+    stop("Missing n.")
   }
 
   if (missing(num_noise)) {
-    stop('Missing num_noise.')
-
+    stop("Missing num_noise.")
   }
 
   # To check that the assigned n is divided by three
-  if ((n%%3) != 0) {
+  if ((n %% 3) != 0) {
     warning("The sample size should be a product of three.")
-    cluster_size <- floor(n/3)
-
+    cluster_size <- floor(n / 3)
   } else {
-    cluster_size <- n/3
+    cluster_size <- n / 3
   }
 
   x <- 0:(cluster_size - 1) + 0.03 * cluster_size * stats::rnorm(cluster_size)
@@ -615,29 +558,24 @@ three_long_clust <- function(n, num_noise, min_n, max_n) {
   df <- rbind(df1, df2, df3)
 
   if (num_noise != 0) {
-
     if (missing(min_n)) {
-      stop('Missing min_n.')
-
+      stop("Missing min_n.")
     }
 
     if (missing(max_n)) {
-      stop('Missing max_n.')
-
+      stop("Missing max_n.")
     }
 
-    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise = num_noise,
-                                min_n = min_n, max_n = max_n)
+    noise_mat <- gen_noise_dims(
+      n = dim(df)[1], num_noise = num_noise,
+      min_n = min_n, max_n = max_n
+    )
     df <- cbind(df, noise_mat)
 
     df
-
   } else {
-
     df
-
   }
-
 }
 
 #' Generate Two Linear Differentiated Clusters with Noise
@@ -657,36 +595,33 @@ three_long_clust <- function(n, num_noise, min_n, max_n) {
 #'
 #' # Generate two linear differentiated clusters with noise with custom parameters
 #' set.seed(20240412)
-#' data <- two_long_clust_diff(n = 300, num_noise = 2, min_n = -0.05,
-#' max_n = 0.05)
+#' data <- two_long_clust_diff(
+#'   n = 300, num_noise = 2, min_n = -0.05,
+#'   max_n = 0.05
+#' )
 two_long_clust_diff <- function(n, num_noise, min_n, max_n) {
-
   if (n <= 0) {
-    stop('Number of points should be a positive number.')
+    stop("Number of points should be a positive number.")
   }
 
   if (num_noise < 0) {
-    stop('Number of noise dimensions should be a positive number.')
-
+    stop("Number of noise dimensions should be a positive number.")
   }
 
   if (missing(n)) {
-    stop('Missing n.')
-
+    stop("Missing n.")
   }
 
   if (missing(num_noise)) {
-    stop('Missing num_noise.')
-
+    stop("Missing num_noise.")
   }
 
   # To check that the assigned n is divided by three
-  if ((n%%3) != 0) {
+  if ((n %% 3) != 0) {
     warning("The sample size should be a product of three.")
-    cluster_size <- floor(n/3)
-
+    cluster_size <- floor(n / 3)
   } else {
-    cluster_size <- n/3
+    cluster_size <- n / 3
   }
 
   x <- 0:(cluster_size - 1) + 0.03 * cluster_size * stats::rnorm(cluster_size)
@@ -702,27 +637,22 @@ two_long_clust_diff <- function(n, num_noise, min_n, max_n) {
   df <- rbind(df1, df2, df3)
 
   if (num_noise != 0) {
-
     if (missing(min_n)) {
-      stop('Missing min_n.')
-
+      stop("Missing min_n.")
     }
 
     if (missing(max_n)) {
-      stop('Missing max_n.')
-
+      stop("Missing max_n.")
     }
 
-    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise = num_noise,
-                                min_n = min_n, max_n = max_n)
+    noise_mat <- gen_noise_dims(
+      n = dim(df)[1], num_noise = num_noise,
+      min_n = min_n, max_n = max_n
+    )
     df <- cbind(df, noise_mat)
 
     df
-
   } else {
-
     df
-
   }
-
 }

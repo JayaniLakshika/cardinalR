@@ -24,6 +24,8 @@ This function generates data with four long clusters along with background noise
 \examples{
 # Generate four long clusters with background noise with custom parameters
 set.seed(20240412)
-data <- four_long_clust_bkg(n = 400, num_noise = 4, min_n = -0.05,
-max_n = 0.05)
+data <- four_long_clust_bkg(
+  n = 400, num_noise = 4, min_n = -0.05,
+  max_n = 0.05
+)
 }

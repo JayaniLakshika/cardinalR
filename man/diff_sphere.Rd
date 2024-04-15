@@ -24,7 +24,9 @@ and adds noise to the data if specified.
 }
 \examples{
 set.seed(20240412)
-diff_sphere(n = 390, num_noise = 2,
-min_n = -0.05, max_n = 0.05)
+diff_sphere(
+  n = 390, num_noise = 2,
+  min_n = -0.05, max_n = 0.05
+)
 
 }

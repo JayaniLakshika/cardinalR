@@ -26,6 +26,8 @@ clusters with different variance, along with added background noise.
 
 # Generate doublets with different variance clusters and noise with custom parameters
 set.seed(20240412)
-data <- one_doublet_diff_var_clust(n = 260, num_noise = 2,
-min_n = -0.05, max_n = 0.05)
+data <- one_doublet_diff_var_clust(
+  n = 260, num_noise = 2,
+  min_n = -0.05, max_n = 0.05
+)
 }

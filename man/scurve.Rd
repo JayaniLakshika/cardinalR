@@ -24,6 +24,8 @@ testing and visualizing dimensionality reduction algorithms.
 }
 \examples{
 set.seed(20240412)
-s_curve_data <- scurve(n = 100, num_noise = 2,
-min_n = -0.05, max_n = 0.05)
+s_curve_data <- scurve(
+  n = 100, num_noise = 2,
+  min_n = -0.05, max_n = 0.05
+)
 }

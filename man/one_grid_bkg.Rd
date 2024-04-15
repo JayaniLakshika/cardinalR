@@ -23,6 +23,8 @@ This function generates a grid dataset with different values and background nois
 }
 \examples{
 set.seed(20240412)
-one_grid_bkg <- one_grid_bkg(n_value = 10, num_noise = 2, min_n = -0.05,
-max_n = 0.05)
+one_grid_bkg <- one_grid_bkg(
+  n_value = 10, num_noise = 2, min_n = -0.05,
+  max_n = 0.05
+)
 }

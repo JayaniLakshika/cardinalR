@@ -30,6 +30,8 @@ pattern and the other distributed randomly.
 
 # Generate cluster and curvilinear data with custom parameters
 set.seed(20240412)
-data <- gau_curvy_clust(n = 300, clust_size_vec = c(100, 200), num_noise = 3,
-min_n = -0.05, max_n = 0.05)
+data <- gau_curvy_clust(
+  n = 300, clust_size_vec = c(100, 200), num_noise = 3,
+  min_n = -0.05, max_n = 0.05
+)
 }

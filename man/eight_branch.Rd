@@ -23,6 +23,8 @@ This function generates a dataset representing eight branching patterns, with ad
 }
 \examples{
 set.seed(20240412)
-branching_data <- eight_branch(n = 400, num_noise = 2, min_n = -0.05,
-max_n = 0.05)
+branching_data <- eight_branch(
+  n = 400, num_noise = 2, min_n = -0.05,
+  max_n = 0.05
+)
 }

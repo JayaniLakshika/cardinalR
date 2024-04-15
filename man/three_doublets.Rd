@@ -26,6 +26,8 @@ along with added background noise.
 
 # Generate doublets with three clusters and noise with custom parameters
 set.seed(20240412)
-data <- three_doublets(n = 420, num_noise = 2,
-min_n = -0.05, max_n = 0.05)
+data <- three_doublets(
+  n = 420, num_noise = 2,
+  min_n = -0.05, max_n = 0.05
+)
 }

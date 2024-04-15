@@ -25,6 +25,8 @@ This function generates two S-curve data with noise.
 
 # Generate two S-curve data with noise with custom parameters
 set.seed(20240412)
-data <- two_scurve_hole(n = 200, num_noise = 2,
-min_n = -0.05, max_n = 0.05)
+data <- two_scurve_hole(
+  n = 200, num_noise = 2,
+  min_n = -0.05, max_n = 0.05
+)
 }

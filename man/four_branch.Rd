@@ -23,6 +23,8 @@ This function generates a dataset representing four branches with added noise.
 }
 \examples{
 set.seed(20240412)
-four_branching_data <- four_branch(n = 400, num_noise = 2, min_n = -0.05,
-max_n = 0.05)
+four_branching_data <- four_branch(
+  n = 400, num_noise = 2, min_n = -0.05,
+  max_n = 0.05
+)
 }

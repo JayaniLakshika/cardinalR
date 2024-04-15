@@ -26,6 +26,8 @@ having different patterns, along with added background noise.
 
 # Generate doublets with different pattern clusters and noise with custom parameters
 set.seed(20240412)
-data <- one_doublet_diff_patterns(n = 280, num_noise = 2, min_n = -0.05,
-max_n = 0.05)
+data <- one_doublet_diff_patterns(
+  n = 280, num_noise = 2, min_n = -0.05,
+  max_n = 0.05
+)
 }

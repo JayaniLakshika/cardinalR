@@ -4,6 +4,16 @@ template:
   bootswatch: litera
 
 reference:
+- title: "Data"
+  desc: The example data sets.
+  contents:
+  - mobius_clust_data
+  - mobius_clust_tsne_param1
+  - mobius_clust_tsne_param2
+  - mobius_clust_tsne_param3
+  - mobius_clust_umap_param1
+  - mobius_clust_umap_param2
+  - mobius_clust_umap_param3
 - title: "Clustering data"
   desc: The clustering datasets.
   contents:

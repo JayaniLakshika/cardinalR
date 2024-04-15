@@ -23,6 +23,8 @@ This function generates mirror S-curve datasets with added noise dimensions.
 }
 \examples{
 set.seed(20240412)
-mirror_s_curve_data <- mirror_scurves(n = 200, num_noise = 2,
-min_n = -0.05, max_n = 0.05)
+mirror_s_curve_data <- mirror_scurves(
+  n = 200, num_noise = 2,
+  min_n = -0.05, max_n = 0.05
+)
 }

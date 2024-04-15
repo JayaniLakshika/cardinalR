@@ -23,6 +23,8 @@ This function generates a dataset representing seven branches with added noise.
 }
 \examples{
 set.seed(20240412)
-seven_branching_data <- seven_branch(n = 210, num_noise = 2, min_n = -0.05,
-max_n = 0.05)
+seven_branching_data <- seven_branch(
+  n = 210, num_noise = 2, min_n = -0.05,
+  max_n = 0.05
+)
 }

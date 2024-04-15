@@ -23,6 +23,8 @@ This function generates a triangular plane dataset with background noise dimensi
 }
 \examples{
 set.seed(20240412)
-triangular_plane_data <- tri_plane_bkg(n = 216,
-num_noise = 2, min_n = -0.05, max_n = 0.05)
+triangular_plane_data <- tri_plane_bkg(
+  n = 216,
+  num_noise = 2, min_n = -0.05, max_n = 0.05
+)
 }

@@ -23,6 +23,8 @@ This function generates a cell cycle dataset with added noise dimensions.
 }
 \examples{
 set.seed(20240412)
-cell_cycle_data <- cell_cycle(n = 300, num_noise = 2, min_n = -0.05,
-max_n = 0.05)
+cell_cycle_data <- cell_cycle(
+  n = 300, num_noise = 2, min_n = -0.05,
+  max_n = 0.05
+)
 }

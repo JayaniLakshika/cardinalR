@@ -23,6 +23,8 @@ This function generates a dataset representing two mirror-image clusters with ad
 }
 \examples{
 set.seed(20240412)
-nonlinear_mirror <- nonlinear_mirror(n = 400, num_noise = 2, min_n = -0.05,
-max_n = 0.05)
+nonlinear_mirror <- nonlinear_mirror(
+  n = 400, num_noise = 2, min_n = -0.05,
+  max_n = 0.05
+)
 }

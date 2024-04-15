@@ -26,6 +26,8 @@ curvilinear pattern and the other two are distributed randomly.
 
 # Generate curvy branching cluster data with background noise with custom parameters
 set.seed(20240412)
-data <- curvy_branch_clust_bkg(n = 400, num_noise = 2, min_n = -0.05,
-max_n = 0.05)
+data <- curvy_branch_clust_bkg(
+  n = 400, num_noise = 2, min_n = -0.05,
+  max_n = 0.05
+)
 }

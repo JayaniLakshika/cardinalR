@@ -26,6 +26,8 @@ This function generates data with two linear clusters that are differentiated
 
 # Generate two linear differentiated clusters with noise with custom parameters
 set.seed(20240412)
-data <- two_long_clust_diff(n = 300, num_noise = 2, min_n = -0.05,
-max_n = 0.05)
+data <- two_long_clust_diff(
+  n = 300, num_noise = 2, min_n = -0.05,
+  max_n = 0.05
+)
 }

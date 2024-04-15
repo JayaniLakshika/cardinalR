@@ -13,33 +13,28 @@
 #' set.seed(20240412)
 #' tree_data <- curvy_tree(n = 300, num_noise = 2, min_n = -0.05, max_n = 0.05)
 curvy_tree <- function(n, num_noise, min_n, max_n) {
-
   if (n <= 0) {
-    stop('Number of points should be a positive number.')
+    stop("Number of points should be a positive number.")
   }
 
   if (num_noise < 0) {
-    stop('Number of noise dimensions should be a positive number.')
-
+    stop("Number of noise dimensions should be a positive number.")
   }
 
   if (missing(n)) {
-    stop('Missing n.')
-
+    stop("Missing n.")
   }
 
   if (missing(num_noise)) {
-    stop('Missing num_noise.')
-
+    stop("Missing num_noise.")
   }
 
   # To check that the assigned n is divided by three
-  if ((n%%3) != 0) {
+  if ((n %% 3) != 0) {
     warning("The sample size should be a product of three.")
-    cluster_size <- floor(n/3)
-
+    cluster_size <- floor(n / 3)
   } else {
-    cluster_size <- n/3
+    cluster_size <- n / 3
   }
 
 
@@ -67,29 +62,24 @@ curvy_tree <- function(n, num_noise, min_n, max_n) {
   df <- rbind(df1, df2, df3)
 
   if (num_noise != 0) {
-
     if (missing(min_n)) {
-      stop('Missing min_n.')
-
+      stop("Missing min_n.")
     }
 
     if (missing(max_n)) {
-      stop('Missing max_n.')
-
+      stop("Missing max_n.")
     }
 
-    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise = num_noise,
-                                min_n = min_n, max_n = max_n)
+    noise_mat <- gen_noise_dims(
+      n = dim(df)[1], num_noise = num_noise,
+      min_n = min_n, max_n = max_n
+    )
     df <- cbind(df, noise_mat)
 
     df
-
   } else {
-
     df
-
   }
-
 }
 
 #' Generate Tree-like Data with Noise
@@ -107,33 +97,28 @@ curvy_tree <- function(n, num_noise, min_n, max_n) {
 #' set.seed(20240412)
 #' tree_data <- tree(n = 300, num_noise = 2, min_n = -0.05, max_n = 0.05)
 tree <- function(n, num_noise, min_n, max_n) {
-
   if (n <= 0) {
-    stop('Number of points should be a positive number.')
+    stop("Number of points should be a positive number.")
   }
 
   if (num_noise < 0) {
-    stop('Number of noise dimensions should be a positive number.')
-
+    stop("Number of noise dimensions should be a positive number.")
   }
 
   if (missing(n)) {
-    stop('Missing n.')
-
+    stop("Missing n.")
   }
 
   if (missing(num_noise)) {
-    stop('Missing num_noise.')
-
+    stop("Missing num_noise.")
   }
 
   # To check that the assigned n is divided by five
-  if ((n%%5) != 0) {
+  if ((n %% 5) != 0) {
     warning("The sample size should be a product of five.")
-    cluster_size <- floor(n/5)
-
+    cluster_size <- floor(n / 5)
   } else {
-    cluster_size <- n/5
+    cluster_size <- n / 5
   }
 
 
@@ -145,7 +130,7 @@ tree <- function(n, num_noise, min_n, max_n) {
   df1 <- matrix(c(x, y, z, w), ncol = 4)
 
   x <- stats::runif(cluster_size, -0.5, 0.5)
-  y <- abs(10*x)
+  y <- abs(10 * x)
   z <- stats::rnorm(cluster_size, 10, 0.03)
   w <- stats::rnorm(cluster_size, 10, 0.03)
 
@@ -175,29 +160,24 @@ tree <- function(n, num_noise, min_n, max_n) {
   df <- rbind(df1, df2, df3, df4, df5)
 
   if (num_noise != 0) {
-
     if (missing(min_n)) {
-      stop('Missing min_n.')
-
+      stop("Missing min_n.")
     }
 
     if (missing(max_n)) {
-      stop('Missing max_n.')
-
+      stop("Missing max_n.")
     }
 
-    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise = num_noise,
-                                min_n = min_n, max_n = max_n)
+    noise_mat <- gen_noise_dims(
+      n = dim(df)[1], num_noise = num_noise,
+      min_n = min_n, max_n = max_n
+    )
     df <- cbind(df, noise_mat)
 
     df
-
   } else {
-
     df
-
   }
-
 }
 
 #' Generate Seven-Branching Data with Noise
@@ -213,36 +193,33 @@ tree <- function(n, num_noise, min_n, max_n) {
 #'
 #' @examples
 #' set.seed(20240412)
-#' seven_branching_data <- seven_branch(n = 210, num_noise = 2, min_n = -0.05,
-#' max_n = 0.05)
+#' seven_branching_data <- seven_branch(
+#'   n = 210, num_noise = 2, min_n = -0.05,
+#'   max_n = 0.05
+#' )
 seven_branch <- function(n, num_noise, min_n, max_n) {
-
   if (n <= 0) {
-    stop('Number of points should be a positive number.')
+    stop("Number of points should be a positive number.")
   }
 
   if (num_noise < 0) {
-    stop('Number of noise dimensions should be a positive number.')
-
+    stop("Number of noise dimensions should be a positive number.")
   }
 
   if (missing(n)) {
-    stop('Missing n.')
-
+    stop("Missing n.")
   }
 
   if (missing(num_noise)) {
-    stop('Missing num_noise.')
-
+    stop("Missing num_noise.")
   }
 
   # To check that the assigned n is divided by seven
-  if ((n%%7) != 0) {
+  if ((n %% 7) != 0) {
     warning("The sample size should be a product of seven.")
-    cluster_size <- floor(n/7)
-
+    cluster_size <- floor(n / 7)
   } else {
-    cluster_size <- n/7
+    cluster_size <- n / 7
   }
 
   x <- stats::runif(cluster_size, -2, 2)
@@ -260,14 +237,14 @@ seven_branch <- function(n, num_noise, min_n, max_n) {
   df2 <- matrix(c(x, y, z, w), ncol = 4)
 
   x <- stats::runif(cluster_size, -2, 1.5)
-  y <- (1 + (x-3)^2 + stats::runif(cluster_size, 0, 1)) + stats::runif(cluster_size, 0, 0.1)
+  y <- (1 + (x - 3)^2 + stats::runif(cluster_size, 0, 1)) + stats::runif(cluster_size, 0, 0.1)
   z <- rep(0, cluster_size) + stats::rnorm(cluster_size, 10, 0.03)
   w <- rep(0, cluster_size) - stats::rnorm(cluster_size, 10, 0.03)
 
   df3 <- matrix(c(x, y, z, w), ncol = 4)
 
   x <- stats::runif(cluster_size, -0.5, 3)
-  y <- (1 + -(x-3)^2 + stats::runif(cluster_size, 0, 1)) + stats::runif(cluster_size, 0, 0.1)
+  y <- (1 + -(x - 3)^2 + stats::runif(cluster_size, 0, 1)) + stats::runif(cluster_size, 0, 0.1)
   z <- rep(0, cluster_size) + stats::rnorm(cluster_size, 10, 0.03)
   w <- rep(0, cluster_size) - stats::rnorm(cluster_size, 10, 0.03)
 
@@ -297,29 +274,24 @@ seven_branch <- function(n, num_noise, min_n, max_n) {
   df <- rbind(df1, df2, df3, df4, df5, df6, df7)
 
   if (num_noise != 0) {
-
     if (missing(min_n)) {
-      stop('Missing min_n.')
-
+      stop("Missing min_n.")
     }
 
     if (missing(max_n)) {
-      stop('Missing max_n.')
-
+      stop("Missing max_n.")
     }
 
-    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise = num_noise,
-                                min_n = min_n, max_n = max_n)
+    noise_mat <- gen_noise_dims(
+      n = dim(df)[1], num_noise = num_noise,
+      min_n = min_n, max_n = max_n
+    )
     df <- cbind(df, noise_mat)
 
     df
-
   } else {
-
     df
-
   }
-
 }
 
 #' Generate Four-Branching Data with Noise
@@ -335,36 +307,33 @@ seven_branch <- function(n, num_noise, min_n, max_n) {
 #'
 #' @examples
 #' set.seed(20240412)
-#' four_branching_data <- four_branch(n = 400, num_noise = 2, min_n = -0.05,
-#' max_n = 0.05)
+#' four_branching_data <- four_branch(
+#'   n = 400, num_noise = 2, min_n = -0.05,
+#'   max_n = 0.05
+#' )
 four_branch <- function(n, num_noise, min_n, max_n) {
-
   if (n <= 0) {
-    stop('Number of points should be a positive number.')
+    stop("Number of points should be a positive number.")
   }
 
   if (num_noise < 0) {
-    stop('Number of noise dimensions should be a positive number.')
-
+    stop("Number of noise dimensions should be a positive number.")
   }
 
   if (missing(n)) {
-    stop('Missing n.')
-
+    stop("Missing n.")
   }
 
   if (missing(num_noise)) {
-    stop('Missing num_noise.')
-
+    stop("Missing num_noise.")
   }
 
   # To check that the assigned n is divided by four
-  if (((n - n * 0.1)%%4) != 0) {
+  if (((n - n * 0.1) %% 4) != 0) {
     warning("The sample size should be a product of four.")
-    cluster_size <- floor((n - n * 0.1)/4)
-
+    cluster_size <- floor((n - n * 0.1) / 4)
   } else {
-    cluster_size <- (n - n * 0.1)/4
+    cluster_size <- (n - n * 0.1) / 4
   }
 
   x <- stats::runif(cluster_size, -5, 1)
@@ -405,29 +374,24 @@ four_branch <- function(n, num_noise, min_n, max_n) {
   df <- rbind(df1, df2, df3, df4, df5)
 
   if (num_noise != 0) {
-
     if (missing(min_n)) {
-      stop('Missing min_n.')
-
+      stop("Missing min_n.")
     }
 
     if (missing(max_n)) {
-      stop('Missing max_n.')
-
+      stop("Missing max_n.")
     }
 
-    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise = num_noise,
-                                min_n = min_n, max_n = max_n)
+    noise_mat <- gen_noise_dims(
+      n = dim(df)[1], num_noise = num_noise,
+      min_n = min_n, max_n = max_n
+    )
     df <- cbind(df, noise_mat)
 
     df
-
   } else {
-
     df
-
   }
-
 }
 
 #' Generate Eight Branching Data with Noise
@@ -443,36 +407,33 @@ four_branch <- function(n, num_noise, min_n, max_n) {
 #'
 #' @examples
 #' set.seed(20240412)
-#' branching_data <- eight_branch(n = 400, num_noise = 2, min_n = -0.05,
-#' max_n = 0.05)
+#' branching_data <- eight_branch(
+#'   n = 400, num_noise = 2, min_n = -0.05,
+#'   max_n = 0.05
+#' )
 eight_branch <- function(n, num_noise, min_n, max_n) {
-
   if (n <= 0) {
-    stop('Number of points should be a positive number.')
+    stop("Number of points should be a positive number.")
   }
 
   if (num_noise < 0) {
-    stop('Number of noise dimensions should be a positive number.')
-
+    stop("Number of noise dimensions should be a positive number.")
   }
 
   if (missing(n)) {
-    stop('Missing n.')
-
+    stop("Missing n.")
   }
 
   if (missing(num_noise)) {
-    stop('Missing num_noise.')
-
+    stop("Missing num_noise.")
   }
 
   # To check that the assigned n is divided by eight
-  if ((n%%8) != 0) {
+  if ((n %% 8) != 0) {
     warning("The sample size should be a product of eight.")
-    cluster_size <- floor(n/8)
-
+    cluster_size <- floor(n / 8)
   } else {
-    cluster_size <- n/8
+    cluster_size <- n / 8
   }
 
   x <- stats::runif(cluster_size, -1, 2)
@@ -483,21 +444,21 @@ eight_branch <- function(n, num_noise, min_n, max_n) {
   df1 <- matrix(c(x, y, z, w), ncol = 4)
 
   x <- stats::runif(cluster_size, -1, 1)
-  y <- (exp(2*x) + stats::runif(cluster_size, 0, 0.1)) + stats::runif(cluster_size, 0, 0.2)
+  y <- (exp(2 * x) + stats::runif(cluster_size, 0, 0.1)) + stats::runif(cluster_size, 0, 0.2)
   z <- rep(0, cluster_size) + stats::rnorm(cluster_size, 10, 0.03)
   w <- rep(0, cluster_size) - stats::rnorm(cluster_size, 10, 0.03)
 
   df2 <- matrix(c(x, y, z, w), ncol = 4)
 
   x <- stats::runif(cluster_size, -1, 0.6)
-  y <- (exp(3*x) + stats::runif(cluster_size, 0, 0.1)) + stats::runif(cluster_size, 0, 0.2)
+  y <- (exp(3 * x) + stats::runif(cluster_size, 0, 0.1)) + stats::runif(cluster_size, 0, 0.2)
   z <- rep(0, cluster_size) + stats::rnorm(cluster_size, 10, 0.03)
   w <- rep(0, cluster_size) - stats::rnorm(cluster_size, 10, 0.03)
 
   df3 <- matrix(c(x, y, z, w), ncol = 4)
 
   x <- stats::runif(cluster_size, -1, 3)
-  y <- (exp(0.5*x) + stats::runif(cluster_size, 0, 0.1)) + stats::runif(cluster_size, 0, 0.2)
+  y <- (exp(0.5 * x) + stats::runif(cluster_size, 0, 0.1)) + stats::runif(cluster_size, 0, 0.2)
   z <- rep(0, cluster_size) + stats::rnorm(cluster_size, 10, 0.03)
   w <- rep(0, cluster_size) - stats::rnorm(cluster_size, 10, 0.03)
 
@@ -511,21 +472,21 @@ eight_branch <- function(n, num_noise, min_n, max_n) {
   df5 <- matrix(c(x, y, z, w), ncol = 4)
 
   x <- stats::runif(cluster_size, -1, 1)
-  y <- (exp(2*-x) + stats::runif(cluster_size, 0, 0.1)) + stats::runif(cluster_size, 0, 0.2)
+  y <- (exp(2 * -x) + stats::runif(cluster_size, 0, 0.1)) + stats::runif(cluster_size, 0, 0.2)
   z <- rep(0, cluster_size) + stats::rnorm(cluster_size, 10, 0.03)
   w <- rep(0, cluster_size) - stats::rnorm(cluster_size, 10, 0.03)
 
   df6 <- matrix(c(x, y, z, w), ncol = 4)
 
   x <- stats::runif(cluster_size, -0.6, 1)
-  y <- (exp(3*-x) + stats::runif(cluster_size, 0, 0.1)) + stats::runif(cluster_size, 0, 0.2)
+  y <- (exp(3 * -x) + stats::runif(cluster_size, 0, 0.1)) + stats::runif(cluster_size, 0, 0.2)
   z <- rep(0, cluster_size) + stats::rnorm(cluster_size, 10, 0.03)
   w <- rep(0, cluster_size) - stats::rnorm(cluster_size, 10, 0.03)
 
   df7 <- matrix(c(x, y, z, w), ncol = 4)
 
   x <- stats::runif(cluster_size, -3, 1)
-  y <- (exp(0.5*-x) + stats::runif(cluster_size, 0, 0.1)) + stats::runif(cluster_size, 0, 0.2)
+  y <- (exp(0.5 * -x) + stats::runif(cluster_size, 0, 0.1)) + stats::runif(cluster_size, 0, 0.2)
   z <- rep(0, cluster_size) + stats::rnorm(cluster_size, 10, 0.03)
   w <- rep(0, cluster_size) - stats::rnorm(cluster_size, 10, 0.03)
 
@@ -534,29 +495,24 @@ eight_branch <- function(n, num_noise, min_n, max_n) {
   df <- rbind(df1, df2, df3, df4, df5, df6, df7, df8)
 
   if (num_noise != 0) {
-
     if (missing(min_n)) {
-      stop('Missing min_n.')
-
+      stop("Missing min_n.")
     }
 
     if (missing(max_n)) {
-      stop('Missing max_n.')
-
+      stop("Missing max_n.")
     }
 
-    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise = num_noise,
-                                min_n = min_n, max_n = max_n)
+    noise_mat <- gen_noise_dims(
+      n = dim(df)[1], num_noise = num_noise,
+      min_n = min_n, max_n = max_n
+    )
     df <- cbind(df, noise_mat)
 
     df
-
   } else {
-
     df
-
   }
-
 }
 
 #' Generate Curvy Branching Cluster Data
@@ -578,43 +534,38 @@ eight_branch <- function(n, num_noise, min_n, max_n) {
 #'
 #' # Generate curvy branching cluster data with custom parameters
 #' set.seed(20240412)
-#' data <- curvy_branch_clust(n = 300, clust_vec = c(100, 150, 50),
-#' num_noise = 2, min_n = -0.05, max_n = 0.05)
+#' data <- curvy_branch_clust(
+#'   n = 300, clust_vec = c(100, 150, 50),
+#'   num_noise = 2, min_n = -0.05, max_n = 0.05
+#' )
 curvy_branch_clust <- function(n, clust_vec, num_noise, min_n, max_n) {
-
   if (n <= 0) {
-    stop('Number of points should be a positive number.')
+    stop("Number of points should be a positive number.")
   }
 
   if (num_noise < 0) {
-    stop('Number of noise dimensions should be a positive number.')
-
+    stop("Number of noise dimensions should be a positive number.")
   }
 
   if (missing(n)) {
-    stop('Missing n.')
-
+    stop("Missing n.")
   }
 
   if (missing(num_noise)) {
-    stop('Missing num_noise.')
-
+    stop("Missing num_noise.")
   }
 
   ## If the number of points for each cluster is not defined
   if (missing(clust_vec)) {
-
     # To check that the assigned n is divided by three
-    if ((n%%3) != 0) {
+    if ((n %% 3) != 0) {
       warning("The sample size should be a product of three.")
-      cluster_size <- floor(n/3)
+      cluster_size <- floor(n / 3)
       clust_vec <- append(rep(cluster_size, 2), (n - cluster_size * 2))
-
     } else {
-      cluster_size <- n/3
+      cluster_size <- n / 3
       clust_vec <- rep(cluster_size, 3)
     }
-
   }
 
   theta <- stats::runif(clust_vec[1], 0.20, 0.90 * pi)
@@ -636,39 +587,37 @@ curvy_branch_clust <- function(n, clust_vec, num_noise, min_n, max_n) {
     sin(-theta1) + stats::rnorm(clust_vec[3], 1, 0.06)
   ), ncol = 4)
 
-  df3 <- matrix(c(stats::rnorm(clust_vec[2], mean = 1, sd = 0.08),
-                  stats::rnorm(clust_vec[2], mean = 1, sd = 0.08),
-                  stats::rnorm(clust_vec[2], mean = 1, sd = 0.08),
-                  stats::rnorm(clust_vec[2], mean = 1, sd = 0.08)),
-                ncol = 4)
+  df3 <- matrix(
+    c(
+      stats::rnorm(clust_vec[2], mean = 1, sd = 0.08),
+      stats::rnorm(clust_vec[2], mean = 1, sd = 0.08),
+      stats::rnorm(clust_vec[2], mean = 1, sd = 0.08),
+      stats::rnorm(clust_vec[2], mean = 1, sd = 0.08)
+    ),
+    ncol = 4
+  )
 
   df <- rbind(df1, df2, df3)
 
   if (num_noise != 0) {
-
     if (missing(min_n)) {
-      stop('Missing min_n.')
-
+      stop("Missing min_n.")
     }
 
     if (missing(max_n)) {
-      stop('Missing max_n.')
-
+      stop("Missing max_n.")
     }
 
-    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise = num_noise,
-                                min_n = min_n, max_n = max_n)
+    noise_mat <- gen_noise_dims(
+      n = dim(df)[1], num_noise = num_noise,
+      min_n = min_n, max_n = max_n
+    )
     df <- cbind(df, noise_mat)
 
     df
-
   } else {
-
     df
-
   }
-
-
 }
 
 #' Generate Curvy Branching Cluster Data with Background Noise
@@ -688,36 +637,33 @@ curvy_branch_clust <- function(n, clust_vec, num_noise, min_n, max_n) {
 #'
 #' # Generate curvy branching cluster data with background noise with custom parameters
 #' set.seed(20240412)
-#' data <- curvy_branch_clust_bkg(n = 400, num_noise = 2, min_n = -0.05,
-#' max_n = 0.05)
+#' data <- curvy_branch_clust_bkg(
+#'   n = 400, num_noise = 2, min_n = -0.05,
+#'   max_n = 0.05
+#' )
 curvy_branch_clust_bkg <- function(n, num_noise, min_n, max_n) {
-
   if (n <= 0) {
-    stop('Number of points should be a positive number.')
+    stop("Number of points should be a positive number.")
   }
 
   if (num_noise < 0) {
-    stop('Number of noise dimensions should be a positive number.')
-
+    stop("Number of noise dimensions should be a positive number.")
   }
 
   if (missing(n)) {
-    stop('Missing n.')
-
+    stop("Missing n.")
   }
 
   if (missing(num_noise)) {
-    stop('Missing num_noise.')
-
+    stop("Missing num_noise.")
   }
 
   # To check that the assigned n is divided by three
-  if ((n%%4) != 0) {
+  if ((n %% 4) != 0) {
     warning("The sample size should be a product of number of clusters.")
-    cluster_size <- floor(n/4)
-
+    cluster_size <- floor(n / 4)
   } else {
-    cluster_size <- n/4
+    cluster_size <- n / 4
   }
 
 
@@ -732,47 +678,48 @@ curvy_branch_clust_bkg <- function(n, num_noise, min_n, max_n) {
 
   theta1 <- stats::runif(cluster_size, 0.20, 0.90 * pi)
 
-  df2 <- matrix(c( cos(-theta1) + stats::rnorm(cluster_size, 1, 0.06),
-                   sin(-theta1) + stats::rnorm(cluster_size, 1, 0.06),
-                   cos(-theta1) + stats::rnorm(cluster_size, 1, 0.06),
-                   sin(-theta1) + stats::rnorm(cluster_size, 1, 0.06)), ncol = 4)
+  df2 <- matrix(c(
+    cos(-theta1) + stats::rnorm(cluster_size, 1, 0.06),
+    sin(-theta1) + stats::rnorm(cluster_size, 1, 0.06),
+    cos(-theta1) + stats::rnorm(cluster_size, 1, 0.06),
+    sin(-theta1) + stats::rnorm(cluster_size, 1, 0.06)
+  ), ncol = 4)
 
-  df3 <- matrix(c(stats::rnorm(cluster_size, mean = 1, sd = 0.08),
-                  stats::rnorm(cluster_size, mean = 1, sd = 0.08),
-                  stats::rnorm(cluster_size, mean = 1, sd = 0.08),
-                  stats::rnorm(cluster_size, mean = 1, sd = 0.08)), ncol = 4)
+  df3 <- matrix(c(
+    stats::rnorm(cluster_size, mean = 1, sd = 0.08),
+    stats::rnorm(cluster_size, mean = 1, sd = 0.08),
+    stats::rnorm(cluster_size, mean = 1, sd = 0.08),
+    stats::rnorm(cluster_size, mean = 1, sd = 0.08)
+  ), ncol = 4)
 
-  df4 <- matrix(c(stats::rnorm(cluster_size, mean = 1, sd = 1),
-                  stats::rnorm(cluster_size, mean = 1, sd = 1),
-                  stats::rnorm(cluster_size, mean = 1, sd = 1),
-                  stats::rnorm(cluster_size, mean = 1, sd = 1)), ncol = 4)
+  df4 <- matrix(c(
+    stats::rnorm(cluster_size, mean = 1, sd = 1),
+    stats::rnorm(cluster_size, mean = 1, sd = 1),
+    stats::rnorm(cluster_size, mean = 1, sd = 1),
+    stats::rnorm(cluster_size, mean = 1, sd = 1)
+  ), ncol = 4)
 
   df <- rbind(df1, df2, df3, df4)
 
   if (num_noise != 0) {
-
     if (missing(min_n)) {
-      stop('Missing min_n.')
-
+      stop("Missing min_n.")
     }
 
     if (missing(max_n)) {
-      stop('Missing max_n.')
-
+      stop("Missing max_n.")
     }
 
-    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise = num_noise,
-                                min_n = min_n, max_n = max_n)
+    noise_mat <- gen_noise_dims(
+      n = dim(df)[1], num_noise = num_noise,
+      min_n = min_n, max_n = max_n
+    )
     df <- cbind(df, noise_mat)
 
     df
-
   } else {
-
     df
-
   }
-
 }
 
 #' Generate Curvy Branching Clusters with Noise
@@ -793,33 +740,28 @@ curvy_branch_clust_bkg <- function(n, num_noise, min_n, max_n) {
 #' set.seed(20240412)
 #' data <- curvy_branch(n = 200, num_noise = 2, min_n = -0.05, max_n = 0.05)
 curvy_branch <- function(n, num_noise, min_n, max_n) {
-
   if (n <= 0) {
-    stop('Number of points should be a positive number.')
+    stop("Number of points should be a positive number.")
   }
 
   if (num_noise < 0) {
-    stop('Number of noise dimensions should be a positive number.')
-
+    stop("Number of noise dimensions should be a positive number.")
   }
 
   if (missing(n)) {
-    stop('Missing n.')
-
+    stop("Missing n.")
   }
 
   if (missing(num_noise)) {
-    stop('Missing num_noise.')
-
+    stop("Missing num_noise.")
   }
 
   # To check that the assigned n is divided by two
-  if ((n%%2) != 0) {
+  if ((n %% 2) != 0) {
     warning("The sample size should be a product of two.")
-    cluster_size <- floor(n/2)
-
+    cluster_size <- floor(n / 2)
   } else {
-    cluster_size <- n/2
+    cluster_size <- n / 2
   }
 
   theta <- stats::runif(cluster_size, 0.20, 0.90 * pi)
@@ -843,27 +785,22 @@ curvy_branch <- function(n, num_noise, min_n, max_n) {
   df <- rbind(df1, df2)
 
   if (num_noise != 0) {
-
     if (missing(min_n)) {
-      stop('Missing min_n.')
-
+      stop("Missing min_n.")
     }
 
     if (missing(max_n)) {
-      stop('Missing max_n.')
-
+      stop("Missing max_n.")
     }
 
-    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise = num_noise,
-                                min_n = min_n, max_n = max_n)
+    noise_mat <- gen_noise_dims(
+      n = dim(df)[1], num_noise = num_noise,
+      min_n = min_n, max_n = max_n
+    )
     df <- cbind(df, noise_mat)
 
     df
-
   } else {
-
     df
-
   }
-
 }

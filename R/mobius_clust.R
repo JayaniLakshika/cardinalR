@@ -8,16 +8,15 @@
 #' @examples
 #' set.seed(20240412)
 #' mobius_row <- mobius_5d_row()
-mobius_5d_row <- function(){
-
-  ##Generates Angles
+mobius_5d_row <- function() {
+  ## Generates Angles
   a <- stats::runif(1, min = 0, max = 2 * pi)
   a <- c(a, a / 2)
 
-  ##Generates Small Radius
+  ## Generates Small Radius
   radius <- c(1, stats::runif(1, min = -.4, max = .4))
 
-  ##Generates Row of Data
+  ## Generates Row of Data
   mobius <- c(
     (cos(a[2]) * radius[2] + radius[1]) * cos(a[1]),
     (cos(a[2]) * radius[2] + radius[1]) * sin(a[1]),
@@ -71,25 +70,21 @@ mobius_5d_row <- function(){
 #' @examples
 #' set.seed(20240412)
 #' mobius_data <- mobius_5d(n = 100, num_noise = 2, min_n = -0.05, max_n = 0.05)
-mobius_5d <- function(n, num_noise, min_n, max_n){
-
+mobius_5d <- function(n, num_noise, min_n, max_n) {
   if (n <= 0) {
-    stop('Number of points should be a positive number.')
+    stop("Number of points should be a positive number.")
   }
 
   if (num_noise < 0) {
-    stop('Number of noise dimensions should be a positive number.')
-
+    stop("Number of noise dimensions should be a positive number.")
   }
 
   if (missing(n)) {
-    stop('Missing n.')
-
+    stop("Missing n.")
   }
 
   if (missing(num_noise)) {
-    stop('Missing num_noise.')
-
+    stop("Missing num_noise.")
   }
 
   df <- matrix(
@@ -104,29 +99,24 @@ mobius_5d <- function(n, num_noise, min_n, max_n){
   )
 
   if (num_noise != 0) {
-
     if (missing(min_n)) {
-      stop('Missing min_n.')
-
+      stop("Missing min_n.")
     }
 
     if (missing(max_n)) {
-      stop('Missing max_n.')
-
+      stop("Missing max_n.")
     }
 
-    noise_mat <- gen_noise_dims(n = dim(df)[1], num_noise = num_noise,
-                                min_n = min_n, max_n = max_n)
+    noise_mat <- gen_noise_dims(
+      n = dim(df)[1], num_noise = num_noise,
+      min_n = min_n, max_n = max_n
+    )
     df <- cbind(df, noise_mat)
 
     df
-
   } else {
-
     df
-
   }
-
 }
 
 #' Generate Mobius Cluster with Noise
@@ -141,52 +131,47 @@ mobius_5d <- function(n, num_noise, min_n, max_n){
 #' @export
 #'
 #' @examples
-#' mobius_cluster <- mobius_clust(n = 200, num_noise = 2,min_n = -0.05,
-#' max_n = 0.05)
+#' mobius_cluster <- mobius_clust(
+#'   n = 200, num_noise = 2, min_n = -0.05,
+#'   max_n = 0.05
+#' )
 mobius_clust <- function(n, num_noise, min_n, max_n) {
-
   if (n <= 0) {
-    stop('Number of points should be a positive number.')
+    stop("Number of points should be a positive number.")
   }
 
   if (num_noise < 0) {
-    stop('Number of noise dimensions should be a positive number.')
-
+    stop("Number of noise dimensions should be a positive number.")
   }
 
   if (missing(n)) {
-    stop('Missing n.')
-
+    stop("Missing n.")
   }
 
   if (missing(num_noise)) {
-    stop('Missing num_noise.')
-
+    stop("Missing num_noise.")
   }
 
   df1 <- mobius_5d(n = n * 0.80, num_noise = 0)
 
   if (num_noise != 0) {
-
     if (missing(min_n)) {
-      stop('Missing min_n.')
-
+      stop("Missing min_n.")
     }
 
     if (missing(max_n)) {
-      stop('Missing max_n.')
-
+      stop("Missing max_n.")
     }
 
-    noise_mat <- gen_noise_dims(n = dim(df1)[1], num_noise = num_noise,
-                                min_n = min_n, max_n = max_n)
+    noise_mat <- gen_noise_dims(
+      n = dim(df1)[1], num_noise = num_noise,
+      min_n = min_n, max_n = max_n
+    )
     df1 <- cbind(df1, noise_mat)
-
   }
 
   ## To add background noise
   df2 <- gen_bkg_noise(n = n * 0.20, num_dims = NCOL(df1), mean = 0, sd = 0.3)
   df <- rbind(df1, df2)
   df
-
 }

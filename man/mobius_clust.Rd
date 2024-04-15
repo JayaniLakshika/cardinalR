@@ -22,6 +22,8 @@ A matrix containing the mobius cluster with added noise.
 This function generates a dataset consisting of a mobius cluster with added noise.
 }
 \examples{
-mobius_cluster <- mobius_clust(n = 200, num_noise = 2,min_n = -0.05,
-max_n = 0.05)
+mobius_cluster <- mobius_clust(
+  n = 200, num_noise = 2, min_n = -0.05,
+  max_n = 0.05
+)
 }

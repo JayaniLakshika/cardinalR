@@ -24,6 +24,8 @@ middle, with added noise.
 }
 \examples{
 set.seed(20240412)
-plane_data <- plane_2d_hole(n = 100, num_noise = 2,
-min_n = -0.05, max_n = 0.05)
+plane_data <- plane_2d_hole(
+  n = 100, num_noise = 2,
+  min_n = -0.05, max_n = 0.05
+)
 }

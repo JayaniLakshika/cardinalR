@@ -16,62 +16,49 @@
 #'
 #' @export
 gen_noise_dims <- function(n, num_noise, min_n, max_n) {
-
   if (n <= 0) {
-    stop('Number of points should be a positive number.')
+    stop("Number of points should be a positive number.")
   }
 
   if (num_noise < 0) {
-    stop('Number of noise dimensions should be a positive number.')
-
+    stop("Number of noise dimensions should be a positive number.")
   }
 
   if (missing(n)) {
-    stop('Missing n.')
-
+    stop("Missing n.")
   }
 
   if (missing(num_noise)) {
-    stop('Missing num_noise.')
-
+    stop("Missing num_noise.")
   }
 
   ## Is there are noise dimensions?
   if (num_noise != 0) {
-
     if (missing(min_n)) {
-      stop('Missing min_n.')
-
+      stop("Missing min_n.")
     }
 
     if (missing(max_n)) {
-      stop('Missing max_n.')
-
+      stop("Missing max_n.")
     }
 
     # Initialize an empty list to store the vectors
     noise_dim_val_list <- list()
 
     for (j in 1:num_noise) {
-      if ((j%%2) == 0) {
+      if ((j %% 2) == 0) {
         noise_dim_val_list[[j]] <- stats::runif(n, min = min_n, max = max_n)
       } else {
         noise_dim_val_list[[j]] <- (-1) * stats::runif(n, min = min_n, max = max_n)
       }
-
-
     }
 
     noise_mat <- matrix(unlist(noise_dim_val_list), ncol = num_noise)
-
-
   } else {
     noise_mat <- NULL
   }
 
   return(noise_mat)
-
-
 }
 
 #' Generate Background Noise Data
@@ -95,36 +82,29 @@ gen_noise_dims <- function(n, num_noise, min_n, max_n) {
 #'
 #' @export
 gen_bkg_noise <- function(n, num_dims, mean, sd) {
-
   if (n <= 0) {
-    stop('Number of points should be a positive number.')
+    stop("Number of points should be a positive number.")
   }
 
   if (num_dims < 0) {
-    stop('Number of dimensions should be a positive number.')
-
+    stop("Number of dimensions should be a positive number.")
   }
 
   if (missing(n)) {
-    stop('Missing n.')
-
+    stop("Missing n.")
   }
 
   if (missing(num_dims)) {
-    stop('Missing num_noise.')
-
+    stop("Missing num_noise.")
   }
 
   if (num_dims != 0) {
-
     if (missing(mean)) {
-      stop('Missing mean.')
-
+      stop("Missing mean.")
     }
 
     if (missing(sd)) {
-      stop('Missing sd.')
-
+      stop("Missing sd.")
     }
 
     # Initialize an empty list to store the vectors
@@ -135,16 +115,11 @@ gen_bkg_noise <- function(n, num_dims, mean, sd) {
     }
 
     bkg_mat <- matrix(unlist(noise_bkg_val_list), ncol = length(noise_bkg_val_list))
-
-  } else{
-
+  } else {
     bkg_mat <- NULL
-
   }
 
   return(bkg_mat)
-
-
 }
 
 utils::globalVariables(c("n"))

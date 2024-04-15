@@ -23,6 +23,8 @@ This function generates a single grid dataset with a different offset.
 }
 \examples{
 set.seed(20240412)
-two_grid_comb <- two_grid_comb(n_value = 10, num_noise = 2, min_n = -0.05,
-max_n = 0.05)
+two_grid_comb <- two_grid_comb(
+  n_value = 10, num_noise = 2, min_n = -0.05,
+  max_n = 0.05
+)
 }

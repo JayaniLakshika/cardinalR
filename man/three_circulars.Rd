@@ -23,6 +23,8 @@ This function generates three circular clusters in 4D space with added noise dim
 }
 \examples{
 set.seed(20240412)
-circular_clusters_data <- three_circulars(n = 300, num_noise = 2,
-min_n = -0.05, max_n = 0.05)
+circular_clusters_data <- three_circulars(
+  n = 300, num_noise = 2,
+  min_n = -0.05, max_n = 0.05
+)
 }

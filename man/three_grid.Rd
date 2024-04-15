@@ -24,6 +24,8 @@ This function generates three grid datasets with noise dimensions.
 }
 \examples{
 set.seed(20240412)
-three_grids <- three_grid(n_value = 19, num_noise = 2, min_n = -0.05,
-max_n = 0.05)
+three_grids <- three_grid(
+  n_value = 19, num_noise = 2, min_n = -0.05,
+  max_n = 0.05
+)
 }

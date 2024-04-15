@@ -23,6 +23,8 @@ This function generates a dataset representing two curvy pancake-shaped clusters
 }
 \examples{
 set.seed(20240412)
-two_curvy_panckakes <- two_curvy_panckakes(n = 300, num_noise = 2,
-min_n = -0.05, max_n = 0.05)
+two_curvy_panckakes <- two_curvy_panckakes(
+  n = 300, num_noise = 2,
+  min_n = -0.05, max_n = 0.05
+)
 }

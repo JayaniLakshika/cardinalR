@@ -98,20 +98,17 @@
 <h2 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
 </h2>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/JayaniLakshika/cardinalR" class="external-link">cardinalR</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://patchwork.data-imaginist.com" class="external-link">patchwork</a></span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/JayaniLakshika/cardinalR" class="external-link">cardinalR</a></span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">mobius_clust_data</span> <span class="op">&lt;-</span>  <span class="fu"><a href="reference/mobius_clust.html">mobius_clust</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">500</span>, num_noise <span class="op">=</span> <span class="fl">2</span>, min_n <span class="op">=</span> <span class="op">-</span><span class="fl">0.05</span>, </span>
-<span>                                   max_n <span class="op">=</span> <span class="fl">0.05</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">mobius_clust_data</span>, <span class="fl">5</span><span class="op">)</span></span>
-<span><span class="co">#&gt;            [,1]      [,2]       [,3]         [,4]        [,5]</span></span>
-<span><span class="co">#&gt; [1,]  4.1635489 -2.918578 -0.1905457 -0.046566921  0.03039120</span></span>
-<span><span class="co">#&gt; [2,] -1.5852128 -4.060249  0.1113200 -0.046504419 -0.02390320</span></span>
-<span><span class="co">#&gt; [3,]  0.5178231  3.768195 -0.3816143  0.041049056  0.02510526</span></span>
-<span><span class="co">#&gt; [4,] -2.3488377 -3.261409  0.2564583  0.003226491 -0.01010104</span></span>
-<span><span class="co">#&gt; [5,] -1.3478358 -4.164247 -0.7642495  0.037363422 -0.04741094</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">mobius_clust_data</span>, <span class="fl">5</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 5 × 5</span></span>
+<span><span class="co">#&gt;       x1    x2     x3       x4       x5</span></span>
+<span><span class="co">#&gt;    &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1 -1.02   3.57 -0.373  0.00687 -0.0139 </span></span>
+<span><span class="co">#&gt; 2  0.793 -3.56  0.620 -0.0261  -0.0457 </span></span>
+<span><span class="co">#&gt; 3 -1.91  -3.91 -0.533 -0.0232  -0.0122 </span></span>
+<span><span class="co">#&gt; 4 -2.79   2.94 -0.364  0.0415   0.0214 </span></span>
+<span><span class="co">#&gt; 5 -1.70  -3.59  0.277 -0.00686  0.00410</span></span></code></pre></div>
 <table style="width:100%" class="table"><tr>
 <td align="center">
 <img src="reference/figures/mobius_1.png" height="100" alt="">
@@ -124,6 +121,7 @@
 </td>
 </tr></table>
 <p>You can find the high-dimensional view in <a href="https://youtu.be/731aZxDifCs" class="external-link">here</a>.</p>
+<p>Different representations from tSNE (t-distributed Stochastic Neighbor Embedding) and UMAP (Uniform Manifold Approximation and Projection) are shown below.</p>
 <p><img src="reference/figures/README-unnamed-chunk-6-1.png" width="100%" style="display: block; margin: auto;"></p>
 </div>
 <div class="section level2">
