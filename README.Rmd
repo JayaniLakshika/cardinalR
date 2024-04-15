@@ -9,6 +9,7 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
   fig.path = "man/figures/README-",
+  fig.align = "center",
   out.width = "100%"
 )
 ```
@@ -32,10 +33,41 @@ devtools::install_github("JayaniLakshika/cardinalR")
 library(cardinalR)
 ```
 
-```{r}
-mobius_clust_data <-  mobius_clust(n = 500, num_noise = 2, min_n = -0.05, 
-                                   max_n = 0.05)
+```{r, echo=FALSE}
+library(ggplot2)
+library(patchwork)
 
+theme_set(theme_linedraw() +
+   theme(
+     #aspect.ratio = 1,
+     plot.background = element_rect(fill = 'transparent', colour = NA),
+     plot.title = element_text(size = 7, hjust = 0.5, vjust = -0.5),
+     panel.background = element_rect(fill = 'transparent', 
+                                     colour = NA),
+     panel.grid.major = element_blank(), 
+     panel.grid.minor = element_blank(), 
+     axis.title.x = element_blank(), axis.title.y = element_blank(),
+     axis.text.x = element_blank(), axis.ticks.x = element_blank(),
+     axis.text.y = element_blank(), axis.ticks.y = element_blank(),
+     legend.background = element_rect(fill = 'transparent', 
+                                      colour = NA),
+     legend.key = element_rect(fill = 'transparent', 
+                               colour = NA),
+     legend.position = "none", 
+     legend.title = element_text(size=5), 
+     legend.text = element_text(size=4),
+     legend.key.height = unit(0.25, 'cm'),
+     legend.key.width = unit(0.25, 'cm')
+   )
+)
+interior_annotation <- function(label, position = c(0.92, 0.92)) {
+  annotation_custom(grid::textGrob(label = label,
+      x = unit(position[1], "npc"), y = unit(position[2], "npc"),
+      gp = grid::gpar(cex = 1, col="grey70")))
+}
+```
+
+```{r}
 head(mobius_clust_data, 5)
 ```
 
@@ -49,6 +81,47 @@ head(mobius_clust_data, 5)
 
 
 You can find the high-dimensional view in [here](https://youtu.be/731aZxDifCs).
+
+Different representations from tSNE (t-distributed Stochastic Neighbor Embedding) 
+and UMAP (Uniform Manifold Approximation and Projection) are shown below.
+
+```{r, echo=FALSE}
+nldr_tsne1 <- mobius_clust_tsne_param1 |>
+  ggplot(aes(x = emb1,
+             y = emb2)) +
+  geom_point(alpha=0.1, size=1)
+
+nldr_tsne2 <- mobius_clust_tsne_param2 |>
+  ggplot(aes(x = emb1,
+             y = emb2)) +
+  geom_point(alpha=0.1, size=1)
+
+nldr_tsne3 <- mobius_clust_tsne_param3 |>
+  ggplot(aes(x = emb1,
+             y = emb2)) +
+  geom_point(alpha=0.1, size=1)
+
+nldr_umap1 <- mobius_clust_umap_param1 |>
+  ggplot(aes(x = emb1,
+             y = emb2)) +
+  geom_point(alpha=0.1, size=1)
+
+nldr_umap2 <- mobius_clust_umap_param2 |>
+  ggplot(aes(x = emb1,
+             y = emb2)) +
+  geom_point(alpha=0.1, size=1)
+
+nldr_umap3 <- mobius_clust_umap_param3 |>
+  ggplot(aes(x = emb1,
+             y = emb2)) +
+  geom_point(alpha=0.1, size=1)
+```
+
+```{r, echo=FALSE}
+nldr_tsne1 + nldr_tsne2 + nldr_tsne3 + 
+  nldr_umap1 + nldr_umap2 + nldr_umap3 +
+  plot_layout(ncol = 3)
+```
 
 ## About the name
 

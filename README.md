@@ -24,16 +24,15 @@ library(cardinalR)
 ```
 
 ``` r
-mobius_clust_data <-  mobius_clust(n = 500, num_noise = 2, min_n = -0.05, 
-                                   max_n = 0.05)
-
 head(mobius_clust_data, 5)
-#>           [,1]       [,2]        [,3]         [,4]         [,5]
-#> [1,]  3.164352 -3.1579512 -0.16601543  0.023294189  0.006899329
-#> [2,]  2.317015 -3.5780339 -0.24598113  0.041812066  0.027856200
-#> [3,]  3.063388  3.4620065  0.09776815  0.038146483 -0.025419387
-#> [4,]  2.834203  0.6149248 -0.20932330  0.023618497 -0.028356911
-#> [5,] -3.953907 -1.5987889 -0.66295592 -0.005704091  0.041557090
+#> # A tibble: 5 × 5
+#>       x1    x2     x3       x4       x5
+#>    <dbl> <dbl>  <dbl>    <dbl>    <dbl>
+#> 1 -1.02   3.57 -0.373  0.00687 -0.0139 
+#> 2  0.793 -3.56  0.620 -0.0261  -0.0457 
+#> 3 -1.91  -3.91 -0.533 -0.0232  -0.0122 
+#> 4 -2.79   2.94 -0.364  0.0415   0.0214 
+#> 5 -1.70  -3.59  0.277 -0.00686  0.00410
 ```
 
 <table style="width:100%">
@@ -52,6 +51,12 @@ head(mobius_clust_data, 5)
 
 You can find the high-dimensional view in
 [here](https://youtu.be/731aZxDifCs).
+
+Different representations from tSNE (t-distributed Stochastic Neighbor
+Embedding) and UMAP (Uniform Manifold Approximation and Projection) are
+shown below.
+
+<img src="man/figures/README-unnamed-chunk-6-1.png" width="100%" style="display: block; margin: auto;" />
 
 ## About the name
 

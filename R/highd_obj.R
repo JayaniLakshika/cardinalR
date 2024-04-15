@@ -8,6 +8,7 @@
 #' @param w Number of spirals.
 #'
 #' @return A matrix containing the generated points on the conic spiral.
+#' @importFrom stats runif
 #'
 #' @examples
 #' set.seed(20240412)
@@ -36,6 +37,7 @@ conic_spiral_3d_row <- function(a, b, c, w) {
 #' @param max_n Maximum value for the noise added to the data.
 #'
 #' @return A matrix containing the generated data points with or without added noise.
+#' @importFrom purrr reduce
 #'
 #' @examples
 #' set.seed(20240412)
@@ -63,15 +65,9 @@ conic_spiral_3d <- function(n, num_noise, min_n, max_n) {
 
   }
 
-  df <- matrix(
-    do.call(
-      "rbind",
-      as.list(
-        replicate(n, conic_spiral_3d_row(a = .2, b = 1, c = .1, w = 2))
-      )
-    ),
-    ncol = 3, byrow = TRUE
-  )
+  df_list <- lapply(1:n, function(i) conic_spiral_3d_row(a = 0.2, b = 1, c = 0.1,
+                                                         w = 2))
+  df <- purrr::reduce(df_list, rbind)
 
   if (num_noise != 0) {
 
@@ -132,6 +128,7 @@ dini_surface_3d_row <- function(a = 1, b = 1) {
 #' @param max_n Maximum value for the noise added to the data.
 #'
 #' @return A matrix containing the generated data points with or without added noise.
+#' @importFrom purrr reduce
 #'
 #' @examples
 #' set.seed(20240412)
@@ -159,15 +156,8 @@ dini_surface_3d <- function(n, num_noise, min_n, max_n) {
 
   }
 
-  df <- matrix(
-    do.call(
-      "rbind",
-      as.list(
-        replicate(n, dini_surface_3d_row(a = 1, b = 1))
-      )
-    ),
-    ncol = 3, byrow = TRUE
-  )
+  df_list <- lapply(1:n, function(i) dini_surface_3d_row(a = 1, b = 1))
+  df <- purrr::reduce(df_list, rbind)
 
   if (num_noise != 0) {
 
@@ -227,6 +217,7 @@ roman_surface_3d_row <- function(a = 1) {
 #' @param max_n Maximum value for the noise added to the data.
 #'
 #' @return A matrix containing the generated data points with or without added noise.
+#' @importFrom purrr reduce
 #'
 #' @examples
 #' set.seed(20240412)
@@ -254,15 +245,8 @@ roman_surface_3d <- function(n, num_noise, min_n, max_n) {
 
   }
 
-  df <- matrix(
-    do.call(
-      "rbind",
-      as.list(
-        replicate(n, roman_surface_3d_row(a = 1))
-      )
-    ),
-    ncol = 3, byrow = TRUE
-  )
+  df_list <- lapply(1:n, function(i) roman_surface_3d_row(a = 1))
+  df <- purrr::reduce(df_list, rbind)
 
   if (num_noise != 0) {
 
@@ -301,6 +285,7 @@ roman_surface_3d <- function(n, num_noise, min_n, max_n) {
 #' @param max_n Maximum value for the noise added to the data.
 #'
 #' @return A matrix containing the generated data points with or without added noise.
+#' @importFrom purrr reduce
 #'
 #' @examples
 #' set.seed(20240412)
@@ -382,6 +367,7 @@ spiral_3d <- function(n, num_dims, num_noise, min_n, max_n) {
 #' to smallest.
 #'
 #' @return A vector representing a row of data points for the 3D torus.
+#' @importFrom purrr reduce
 #'
 #' @examples
 #' set.seed(20240412)
@@ -422,6 +408,7 @@ torus_3d_row <- function(radius) {
 #'
 #' @return A matrix containing the generated torus-shaped data points with or
 #' without added noise.
+#' @importFrom purrr reduce
 #'
 #' @examples
 #' set.seed(20240412)
@@ -449,15 +436,8 @@ torus_3d <- function(n, num_noise, min_n, max_n) {
 
   }
 
-  df <- matrix(
-    do.call(
-      "rbind",
-      as.list(
-        replicate(n, torus_3d_row(radius = 2 ^ (1:0)))
-      )
-    ),
-    ncol = 3, byrow = TRUE
-  )
+  df_list <- lapply(1:n, function(i) torus_3d_row(radius = 2 ^ (1:0)))
+  df <- purrr::reduce(df_list, rbind)
 
 
   if (num_noise != 0) {
@@ -496,6 +476,7 @@ torus_3d <- function(n, num_noise, min_n, max_n) {
 #' @param max_n Maximum value for the noise added to the data.
 #'
 #' @return A list containing the generated data matrix and the sample size.
+#' @importFrom purrr reduce
 #'
 #' @examples
 #' set.seed(20240412)
