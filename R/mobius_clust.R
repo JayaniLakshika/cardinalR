@@ -87,16 +87,8 @@ mobius_5d <- function(n, num_noise, min_n, max_n) {
     stop("Missing num_noise.")
   }
 
-  df <- matrix(
-    do.call(
-      "rbind",
-      as.list(
-        replicate(n, mobius_5d_row())
-      )
-    ),
-    ncol = 3,
-    byrow = TRUE
-  )
+  df_list <- lapply(1:n, function(i) mobius_5d_row())
+  df <- purrr::reduce(df_list, rbind)
 
   if (num_noise != 0) {
     if (missing(min_n)) {
