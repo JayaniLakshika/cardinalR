@@ -3,14 +3,23 @@
 
 # cardinalR <img src="man/figures/logo.png" align="right" height="150" alt="" />
 
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/cardinalR)](https://CRAN.R-project.org/package=cardinalR)
+[![Downloads](http://cranlogs.r-pkg.org/badges/cardinalR)](https://cran.r-project.org/package=cardinalR)
+
 The `cardinalR` package provides functionality for generating simulation
 high-dimensional datasets for use in various Nonlinear dimension
 reduction techniques.
 
 ## Installation
 
-You can install the development version of `cardinalR` from
-[GitHub](https://github.com/) with:
+You can install the released version of `cardinalR` from
+[CRAN](https://CRAN.R-project.org) with:
+
+``` r
+install.packages("cardinalR") 
+```
+
+The development version from [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("devtools")
