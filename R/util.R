@@ -585,7 +585,7 @@ gen_clustloc <- function(p = 4, k = 3) {
 
 #' Remove points within a spherical hole in the middle
 #'
-#' @param df A data frame or matrix of coordinates.
+#' @param df A tibble of coordinates.
 #' @param anchor A numeric vector giving the center of the hole.
 #' @param r A numeric value for the hole radius.
 #' @return A tibble with the hole removed.
@@ -597,7 +597,7 @@ gen_clustloc <- function(p = 4, k = 3) {
 #'
 #' @export
 gen_hole <- function(df, anchor = NULL, r = 0.5) {
-  if (!is.data.frame(df)) cli::cli_abort("df should be a data frame.")
+  if (!tibble::is_tibble(df)) cli::cli_abort("df should be a tibble.")
 
   # hole anchor: default = mean of data
   if (is.null(anchor)) {

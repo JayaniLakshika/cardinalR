@@ -7,7 +7,7 @@
 gen_hole(df, anchor = NULL, r = 0.5)
 }
 \arguments{
-\item{df}{A data frame or matrix of coordinates.}
+\item{df}{A tibble of coordinates.}
 
 \item{anchor}{A numeric vector giving the center of the hole.}
 
