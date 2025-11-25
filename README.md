@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# cardinalR <img src="man/figures/logo.png" align="right" height="150" alt="" />
+# cardinalR <img src="man/figures/logo.png" align="right" height="150" alt="cardinalR package logo" />
 
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/cardinalR)](https://CRAN.R-project.org/package=cardinalR)
 [![Downloads](http://cranlogs.r-pkg.org/badges/cardinalR)](https://cran.r-project.org/package=cardinalR)
@@ -57,17 +57,17 @@ Following shows three 2-D projections from the 4-D `mobiusgau` data.
 
 <td align="center">
 
-<img src="man/figures/mobius_1.png" height="200" alt="" />
+<img src="man/figures/mobius_1.png" height="200" alt="Mobius Gaussian data projection 1" />
 </td>
 
 <td align="center">
 
-<img src="man/figures/mobius_2.png" height="200" alt="" />
+<img src="man/figures/mobius_2.png" height="200" alt="Mobius Gaussian data projection 2" />
 </td>
 
 <td align="center">
 
-<img src="man/figures/mobius_3.png" height="200" alt="" />
+<img src="man/figures/mobius_3.png" height="200" alt="Mobius Gaussian data projection 3" />
 </td>
 
 </tr>
@@ -82,7 +82,7 @@ Manifold Approximation and Projection) representations of `mobiusgau`
 are shown below. Figures a–c illustrate the t-SNE projections and
 figures d–f present the corresponding UMAP projections.
 
-<img src="man/figures/README-unnamed-chunk-6-1.png" width="100%" style="display: block; margin: auto;" />
+<img src="man/figures/README-unnamed-chunk-6-1.png" alt="tSNE and UMAP layouts with different hyperparameter choices." width="100%" style="display: block; margin: auto;" />
 
 ## About the name
 

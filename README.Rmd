@@ -14,7 +14,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# cardinalR <img src="man/figures/logo.png" align="right" height="150" alt="" />
+# cardinalR <img src="man/figures/logo.png" align="right" height="150" alt="cardinalR package logo" />
 
 [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/cardinalR)](https://CRAN.R-project.org/package=cardinalR)
 [![Downloads](http://cranlogs.r-pkg.org/badges/cardinalR)](https://cran.r-project.org/package=cardinalR)
@@ -96,9 +96,9 @@ Following shows three 2-D projections from the 4-D `mobiusgau` data.
 
 <table style="width:100%">
   <tr>
-    <td align="center"><img src="man/figures/mobius_1.png" height="200" alt="" /></td>
-    <td align="center"><img src="man/figures/mobius_2.png" height="200" alt="" /></td>
-    <td align="center"><img src="man/figures/mobius_3.png" height="200" alt="" /></td>
+    <td align="center"><img src="man/figures/mobius_1.png" height="200" alt="Mobius Gaussian data projection 1" /></td>
+    <td align="center"><img src="man/figures/mobius_2.png" height="200" alt="Mobius Gaussian data projection 2" /></td>
+    <td align="center"><img src="man/figures/mobius_3.png" height="200" alt="Mobius Gaussian data projection 3" /></td>
   </tr>
 </table>
 
@@ -161,7 +161,7 @@ nldr_umap3 <- mobiusgau_umap3 |>
 
 ```
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, fig.alt="tSNE and UMAP layouts with different hyperparameter choices."}
 nldr_tsne1 + nldr_tsne2 + nldr_tsne3 +
   nldr_umap1 + nldr_umap2 + nldr_umap3 +
   plot_layout(ncol = 3)
