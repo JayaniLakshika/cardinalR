@@ -28,7 +28,7 @@
 
     <a class="navbar-brand me-2" href="index.html">cardinalR</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.9</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.2</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -41,9 +41,9 @@
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
-<li><a class="dropdown-item" href="articles/01main_function.html">Quick start</a></li>
-    <li><a class="dropdown-item" href="articles/02cardinalRexamples.html">Example data structures</a></li>
-    <li><a class="dropdown-item" href="articles/03additionalfun.html">Additional functions</a></li>
+<li><a class="dropdown-item" href="articles/cardinalR01main_function.html">Quick start</a></li>
+    <li><a class="dropdown-item" href="articles/cardinalR02examples.html">Example data structures</a></li>
+    <li><a class="dropdown-item" href="articles/cardinalR03additionalfun.html">Additional functions</a></li>
   </ul>
 </li>
 <li class="nav-item"><a class="nav-link" href="news/index.html">Changelog</a></li>
@@ -93,6 +93,10 @@
 <span><span class="co">#&gt; 3 -0.402   0.506   -0.196   -0.0325</span></span>
 <span><span class="co">#&gt; 4 -0.218  -0.684    0.0347   0.0497</span></span>
 <span><span class="co">#&gt; 5  0.225   0.699    0.00575  0.0251</span></span></code></pre></div>
+<p>To view the data in high-dimensional space</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">langevitour</span><span class="op">(</span><span class="va">mobiusgau</span><span class="op">)</span></span></code></pre></div>
+<p>Following shows three 2-D projections from the 4-D <code>mobiusgau</code> data.</p>
 <table style="width:100%" class="table"><tr>
 <td align="center">
 <img src="reference/figures/mobius_1.png" height="200" alt="">
@@ -105,8 +109,8 @@
 </td>
 </tr></table>
 <p>You can find the high-dimensional view in <a href="https://youtu.be/D2drIAnz4pM" class="external-link">here</a>.</p>
-<p>tSNE (t-distributed Stochastic Neighbor Embedding) and UMAP (Uniform Manifold Approximation and Projection) representations of <code>mobiusgau</code> are shown below.</p>
-<p><img src="reference/figures/README-unnamed-chunk-6-1.png" width="100%" style="display: block; margin: auto;" alt="NLDR layouts generated in R"></p>
+<p>tSNE (t-distributed Stochastic Neighbor Embedding) and UMAP (Uniform Manifold Approximation and Projection) representations of <code>mobiusgau</code> are shown below. Figures a–c illustrate the t-SNE projections and figures d–f present the corresponding UMAP projections.</p>
+<p><img src="reference/figures/README-unnamed-chunk-6-1.png" width="100%" style="display: block; margin: auto;"></p>
 </div>
 <div class="section level2">
 <h2 id="about-the-name">About the name<a class="anchor" aria-label="anchor" href="#about-the-name"></a>
