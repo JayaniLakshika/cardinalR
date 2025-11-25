@@ -48,9 +48,9 @@ langevitour(mobiusgau)
 
 Following shows three 2-D projections from the 4-D `mobiusgau` data.
 
-|                                     |                                     |                                     |
-|:-----------------------------------:|:-----------------------------------:|:-----------------------------------:|
-| ![](reference/figures/mobius_1.png) | ![](reference/figures/mobius_2.png) | ![](reference/figures/mobius_3.png) |
+|                                                                      |                                                                      |                                                                      |
+|:--------------------------------------------------------------------:|:--------------------------------------------------------------------:|:--------------------------------------------------------------------:|
+| ![Mobius Gaussian data projection 1](reference/figures/mobius_1.png) | ![Mobius Gaussian data projection 2](reference/figures/mobius_2.png) | ![Mobius Gaussian data projection 3](reference/figures/mobius_3.png) |
 
 You can find the high-dimensional view in
 [here](https://youtu.be/D2drIAnz4pM).
@@ -60,7 +60,8 @@ Manifold Approximation and Projection) representations of `mobiusgau`
 are shown below. Figures a–c illustrate the t-SNE projections and
 figures d–f present the corresponding UMAP projections.
 
-![](reference/figures/README-unnamed-chunk-6-1.png)
+![tSNE and UMAP layouts with different hyperparameter
+choices.](reference/figures/README-unnamed-chunk-6-1.png)
 
 ## About the name
 
