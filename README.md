@@ -43,6 +43,14 @@ head(mobiusgau, 5)
 #> 5  0.225   0.699    0.00575  0.0251
 ```
 
+To view the data in high-dimensional space
+
+``` r
+langevitour(mobiusgau)
+```
+
+Following shows three 2-D projections from the 4-D `mobiusgau` data.
+
 <table style="width:100%">
 
 <tr>
@@ -71,9 +79,10 @@ You can find the high-dimensional view in
 
 tSNE (t-distributed Stochastic Neighbor Embedding) and UMAP (Uniform
 Manifold Approximation and Projection) representations of `mobiusgau`
-are shown below.
+are shown below. Figures a–c illustrate the t-SNE projections and
+figures d–f present the corresponding UMAP projections.
 
-<img src="man/figures/README-unnamed-chunk-6-1.png" width="100%" style="display: block; margin: auto;" alt="NLDR layouts generated in R"/>
+<img src="man/figures/README-unnamed-chunk-6-1.png" width="100%" style="display: block; margin: auto;" />
 
 ## About the name
 

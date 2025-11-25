@@ -518,7 +518,7 @@ gen_rotation <- function(p = 4, planes_angles) {
 
 #' Generate Normalized data
 #'
-#' This function normalize the data by absolute value
+#' This function normalize the data by the largest absolute value found in the dataset.
 #'
 #' @param data A tibble representing the data which needed to be normalized.
 #'
@@ -566,11 +566,11 @@ normalize_data <- function(data) {
 gen_clustloc <- function(p = 4, k = 3) {
 
   if (p <= 0) {
-    cli::cli_abort("p should be positive.")
+    cli::cli_abort("Invalid input: p should be positive.")
   }
 
   if (k <= 0) {
-    cli::cli_abort("k should be positive.")
+    cli::cli_abort("Invalid input: k should be positive.")
   }
 
   # Generate k points in p-dimensional simplex

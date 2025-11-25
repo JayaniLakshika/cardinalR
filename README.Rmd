@@ -87,6 +87,13 @@ interior_annotation <- function(label, position = c(0.92, 0.92)) {
 head(mobiusgau, 5)
 ```
 
+To view the data in high-dimensional space
+
+```r
+langevitour(mobiusgau)
+```
+Following shows three 2-D projections from the 4-D `mobiusgau` data.
+
 <table style="width:100%">
   <tr>
     <td align="center"><img src="man/figures/mobius_1.png" height="200" alt="" /></td>
@@ -97,7 +104,7 @@ head(mobiusgau, 5)
 
 You can find the high-dimensional view in [here](https://youtu.be/D2drIAnz4pM).
 
-tSNE (t-distributed Stochastic Neighbor Embedding) and UMAP (Uniform Manifold Approximation and Projection) representations of `mobiusgau` are shown below.
+tSNE (t-distributed Stochastic Neighbor Embedding) and UMAP (Uniform Manifold Approximation and Projection) representations of `mobiusgau` are shown below. Figures a–c illustrate the t-SNE projections and figures d–f present the corresponding UMAP projections.
 
 ```{r, echo=FALSE}
 nldr_tsne1 <- mobiusgau_tsne1 |>
