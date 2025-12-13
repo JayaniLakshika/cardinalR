@@ -21,7 +21,7 @@ gen_cone(n = 500, p = 4, h = 5, ratio = 0.5)
 
 - h:
 
-  A numeric value (default: 5) representing the h of the cone.
+  A numeric value (default: 5) representing the height of the cone.
 
 - ratio:
 
