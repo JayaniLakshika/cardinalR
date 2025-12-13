@@ -4,16 +4,21 @@
 \alias{gen_clusteredspheres}
 \title{Generate Small Spheres Within a Big Sphere}
 \usage{
-gen_clusteredspheres(n = c(1000, 100), k = 3, r = c(15, 3), loc = 10/sqrt(3))
+gen_clusteredspheres(
+  n_vec = c(1000, 100),
+  k_small = 3,
+  r_vec = c(15, 3),
+  sep = 10/sqrt(3)
+)
 }
 \arguments{
-\item{n}{A numeric vector (default: c(1000, 100)) representing the sample sizes of the big and small spheres respectively.}
+\item{n_vec}{A numeric vector (default: c(1000, 100)) representing the sample sizes of the big and small spheres respectively.}
 
-\item{k}{A numeric value (default: 3) representing the number of small spheres.}
+\item{k_small}{A numeric value (default: 3) representing the number of small spheres.}
 
-\item{r}{A numeric vector (default: c(15, 3)) representing the radius of the big and small spheres respectively.}
+\item{r_vec}{A numeric vector (default: c(15, 3)) representing the radius of the big and small spheres respectively.}
 
-\item{loc}{A numeric value (default: 10 / sqrt(3) representing how far the small spheres are placed from each other.}
+\item{sep}{A numeric value (default: 10 / sqrt(3) representing how far the small spheres are placed from each other.}
 }
 \value{
 A data containing small spheres within a big sphere.
@@ -23,6 +28,6 @@ This function generates a dataset representing a structure with a small and big 
 }
 \examples{
 set.seed(20240412)
-clusteredspheres <- gen_clusteredspheres(n = c(1000, 100), k = 3,
-r = c(15, 3), loc = 10 / sqrt(3))
+clusteredspheres <- gen_clusteredspheres(n_vec = c(1000, 100), k_small = 3,
+r_vec = c(15, 3), sep = 10 / sqrt(3))
 }

@@ -4,7 +4,7 @@
 #'
 #' @param n A numeric value (default: 500) representing the sample size.
 #' @param p A numeric value (default: 4) representing the number of dimensions.
-#' @param h A numeric value (default: 5) representing the h of the cone.
+#' @param h A numeric value (default: 5) representing the height of the cone.
 #' @param ratio A numeric value (default: 0.5) representing the radius tip to radius base ratio of the cone. Should be less than 1.
 #'
 #' @return A data containing the cone with the option of a sharp or blunted apex.

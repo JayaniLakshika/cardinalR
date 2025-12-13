@@ -11,7 +11,7 @@ gen_cone(n = 500, p = 4, h = 5, ratio = 0.5)
 
 \item{p}{A numeric value (default: 4) representing the number of dimensions.}
 
-\item{h}{A numeric value (default: 5) representing the h of the cone.}
+\item{h}{A numeric value (default: 5) representing the height of the cone.}
 
 \item{ratio}{A numeric value (default: 0.5) representing the radius tip to radius base ratio of the cone. Should be less than 1.}
 }

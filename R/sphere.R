@@ -232,41 +232,41 @@ gen_gridedsphere <- function(n = 500, p = 4){
 #'
 #' This function generates a dataset representing a structure with a small and big spheres.
 #'
-#' @param n A numeric vector (default: c(1000, 100)) representing the sample sizes of the big and small spheres respectively.
-#' @param k A numeric value (default: 3) representing the number of small spheres.
-#' @param r A numeric vector (default: c(15, 3)) representing the radius of the big and small spheres respectively.
-#' @param loc A numeric value (default: 10 / sqrt(3) representing how far the small spheres are placed from each other.
+#' @param n_vec A numeric vector (default: c(1000, 100)) representing the sample sizes of the big and small spheres respectively.
+#' @param k_small A numeric value (default: 3) representing the number of small spheres.
+#' @param r_vec A numeric vector (default: c(15, 3)) representing the radius of the big and small spheres respectively.
+#' @param sep A numeric value (default: 10 / sqrt(3) representing how far the small spheres are placed from each other.
 #' @return A data containing small spheres within a big sphere.
 #' @export
 #'
 #' @examples
 #' set.seed(20240412)
-#' clusteredspheres <- gen_clusteredspheres(n = c(1000, 100), k = 3,
-#' r = c(15, 3), loc = 10 / sqrt(3))
-gen_clusteredspheres <- function(n = c(1000, 100), k = 3, r = c(15, 3),
-                                 loc = 10 / sqrt(3)) {
+#' clusteredspheres <- gen_clusteredspheres(n_vec = c(1000, 100), k_small = 3,
+#' r_vec = c(15, 3), sep = 10 / sqrt(3))
+gen_clusteredspheres <- function(n_vec = c(1000, 100), k_small = 3, r_vec = c(15, 3),
+                                 sep = 10 / sqrt(3)) {
 
-  if (length(n) != 2) {
+  if (length(n_vec) != 2) {
     cli::cli_abort("n should contain exactly two values.")
   }
 
-  if (any(n < 0)) {
+  if (any(n_vec < 0)) {
     cli::cli_abort("Values in n should be positive.")
   }
 
-  if (any(r < 0)) {
+  if (any(r_vec < 0)) {
     cli::cli_abort("Values in r should be positive.")
   }
 
-  n_big <- n[1]
-  n_small <- n[2]
+  n_big <- n_vec[1]
+  n_small <- n_vec[2]
 
-  r_big <- r[1]
-  r_small <- r[2]
+  r_big <- r_vec[1]
+  r_small <- r_vec[2]
 
   d_dim_sphere <- gen_unifsphere(n_small, r_small)
-  small_spheres <- lapply(seq_len(k), function(i) {
-    center <- stats::rnorm(3, sd = loc)
+  small_spheres <- lapply(seq_len(k_small), function(i) {
+    center <- stats::rnorm(3, sd = sep)
     sweep(d_dim_sphere, 2, center, "+")
   })
 

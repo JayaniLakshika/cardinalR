@@ -13,7 +13,7 @@ normalize_data(data)
 A normalized data.
 }
 \description{
-This function normalize the data by absolute value
+This function normalize the data by the largest absolute value found in the dataset.
 }
 \examples{
 set.seed(20240412)
