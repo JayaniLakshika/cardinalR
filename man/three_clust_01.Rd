@@ -5,9 +5,9 @@
 \alias{three_clust_01}
 \title{Three-Cluster Dataset in 4-D}
 \format{
-A data frame with 1500 rows and 4 columns:
+A data frame with 1500 rows and 5 columns:
 \describe{
-  \item{x1, x2, x3, x4}{High-dimensional coordinates}
+  \item{cluster, x1, x2, x3, x4}{High-dimensional coordinates}
 }
 }
 \source{

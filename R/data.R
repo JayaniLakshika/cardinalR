@@ -213,9 +213,9 @@
 #'
 #' The `three_clust_01` dataset contains three distinct clusters in a 4-D space.
 #'
-#' @format A data frame with 1500 rows and 4 columns:
+#' @format A data frame with 1500 rows and 5 columns:
 #' \describe{
-#'   \item{x1, x2, x3, x4}{High-dimensional coordinates}
+#'   \item{cluster, x1, x2, x3, x4}{High-dimensional coordinates}
 #' }
 #'
 #' @examples
@@ -237,9 +237,9 @@
 #'
 #' The `three_clust_02` dataset contains three distinct clusters in a 4-D space.
 #'
-#' @format A data frame with 1500 rows and 4 columns:
+#' @format A data frame with 1500 rows and 5 columns:
 #' \describe{
-#'   \item{x1, x2, x3, x4}{High-dimensional coordinates}
+#'   \item{cluster, x1, x2, x3, x4}{High-dimensional coordinates}
 #' }
 #'
 #' @examples
@@ -261,9 +261,9 @@
 #'
 #' The `three_clust_03` dataset contains three distinct clusters in a 4-D space.
 #'
-#' @format A data frame with 1500 rows and 4 columns:
+#' @format A data frame with 1500 rows and 5 columns:
 #' \describe{
-#'   \item{x1, x2, x3, x4}{High-dimensional coordinates}
+#'   \item{cluster, x1, x2, x3, x4}{High-dimensional coordinates}
 #' }
 #'
 #' @examples
@@ -285,9 +285,9 @@
 #'
 #' The `three_clust_04` dataset contains three distinct clusters in a 4-D space.
 #'
-#' @format A data frame with 1500 rows and 4 columns:
+#' @format A data frame with 1500 rows and 5 columns:
 #' \describe{
-#'   \item{x1, x2, x3, x4}{High-dimensional coordinates}
+#'   \item{cluster, x1, x2, x3, x4}{High-dimensional coordinates}
 #' }
 #'
 #' @examples
@@ -309,9 +309,9 @@
 #'
 #' The `three_clust_05` dataset contains three distinct clusters in a 4-D space.
 #'
-#' @format A data frame with 1500 rows and 4 columns:
+#' @format A data frame with 1500 rows and 5 columns:
 #' \describe{
-#'   \item{x1, x2, x3, x4}{High-dimensional coordinates}
+#'   \item{cluster, x1, x2, x3, x4}{High-dimensional coordinates}
 #' }
 #'
 #' @examples
