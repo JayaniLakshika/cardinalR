@@ -24,6 +24,16 @@ The example data sets.
 - [`mobiusgau_umap3`](https://jayanilakshika.github.io/cardinalR/reference/mobiusgau_umap3.md)
   : UMAP embedding for mobiusgau dataset which with noise dimensions
   UMAP parameters set to n-neigbors: 5 and min-dist: 0.9.
+- [`three_clust_01`](https://jayanilakshika.github.io/cardinalR/reference/three_clust_01.md)
+  : Three-Cluster Dataset in 4-D
+- [`three_clust_02`](https://jayanilakshika.github.io/cardinalR/reference/three_clust_02.md)
+  : Three-Cluster Dataset in 4-D
+- [`three_clust_03`](https://jayanilakshika.github.io/cardinalR/reference/three_clust_03.md)
+  : Three-Cluster Dataset in 4-D
+- [`three_clust_04`](https://jayanilakshika.github.io/cardinalR/reference/three_clust_04.md)
+  : Three-Cluster Dataset in 4-D
+- [`three_clust_05`](https://jayanilakshika.github.io/cardinalR/reference/three_clust_05.md)
+  : Three-Cluster Dataset in 4-D
 
 ## Branching
 
@@ -118,51 +128,6 @@ Odd shaped clusters.
   : Generate Two Shifted Grid Clusters in High Dimensions
 - [`make_shape_para()`](https://jayanilakshika.github.io/cardinalR/reference/make_shape_para.md)
   : Generate Parallel Multi-Shape Clusters
-
-## Three clusters
-
-Three different shaped clusters.
-
-- [`make_three_clust_01()`](https://jayanilakshika.github.io/cardinalR/reference/make_three_clust_01.md)
-  : Generate a Three-Cluster Dataset in High Dimensions
-- [`make_three_clust_02()`](https://jayanilakshika.github.io/cardinalR/reference/make_three_clust_02.md)
-  : Generate a Three-Cluster Dataset in High Dimensions
-- [`make_three_clust_03()`](https://jayanilakshika.github.io/cardinalR/reference/make_three_clust_03.md)
-  : Generate a Three-Cluster Dataset in High Dimensions
-- [`make_three_clust_04()`](https://jayanilakshika.github.io/cardinalR/reference/make_three_clust_04.md)
-  : Generate a Three-Cluster Dataset in High Dimensions
-- [`make_three_clust_05()`](https://jayanilakshika.github.io/cardinalR/reference/make_three_clust_05.md)
-  : Generate a Three-Cluster Dataset in High Dimensions
-- [`make_three_clust_06()`](https://jayanilakshika.github.io/cardinalR/reference/make_three_clust_06.md)
-  : Generate a Three-Cluster Dataset in High Dimensions
-- [`make_three_clust_07()`](https://jayanilakshika.github.io/cardinalR/reference/make_three_clust_07.md)
-  : Generate a Three-Cluster Dataset in High Dimensions
-- [`make_three_clust_08()`](https://jayanilakshika.github.io/cardinalR/reference/make_three_clust_08.md)
-  : Generate a Three-Cluster Dataset in High Dimensions
-- [`make_three_clust_09()`](https://jayanilakshika.github.io/cardinalR/reference/make_three_clust_09.md)
-  : Generate a Three-Cluster Dataset in High Dimensions
-- [`make_three_clust_10()`](https://jayanilakshika.github.io/cardinalR/reference/make_three_clust_10.md)
-  : Generate a Three-Cluster Dataset in High Dimensions
-- [`make_three_clust_11()`](https://jayanilakshika.github.io/cardinalR/reference/make_three_clust_11.md)
-  : Generate a Three-Cluster Dataset in High Dimensions
-- [`make_three_clust_12()`](https://jayanilakshika.github.io/cardinalR/reference/make_three_clust_12.md)
-  : Generate a Three-Cluster Dataset in High Dimensions
-- [`make_three_clust_13()`](https://jayanilakshika.github.io/cardinalR/reference/make_three_clust_13.md)
-  : Generate a Three-Cluster Dataset in High Dimensions
-- [`make_three_clust_14()`](https://jayanilakshika.github.io/cardinalR/reference/make_three_clust_14.md)
-  : Generate a Three-Cluster Dataset in High Dimensions
-- [`make_three_clust_15()`](https://jayanilakshika.github.io/cardinalR/reference/make_three_clust_15.md)
-  : Generate a Three-Cluster Dataset in High Dimensions
-- [`make_three_clust_16()`](https://jayanilakshika.github.io/cardinalR/reference/make_three_clust_16.md)
-  : Generate a Three-Cluster Dataset in High Dimensions
-- [`make_three_clust_17()`](https://jayanilakshika.github.io/cardinalR/reference/make_three_clust_17.md)
-  : Generate a Three-Cluster Dataset in High Dimensions
-- [`make_three_clust_18()`](https://jayanilakshika.github.io/cardinalR/reference/make_three_clust_18.md)
-  : Generate a Three-Cluster Dataset in High Dimensions
-- [`make_three_clust_19()`](https://jayanilakshika.github.io/cardinalR/reference/make_three_clust_19.md)
-  : Generate a Three-Cluster Dataset in High Dimensions
-- [`make_three_clust_20()`](https://jayanilakshika.github.io/cardinalR/reference/make_three_clust_20.md)
-  : Generate a Three-Cluster Dataset in High Dimensions
 
 ## Polynomial
 
