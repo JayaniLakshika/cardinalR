@@ -1,5 +1,7 @@
 # Changelog
 
+## cardinalR 1.0.4
+
 ## cardinalR 1.0.1
 
 CRAN release: 2025-11-17
