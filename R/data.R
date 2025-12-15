@@ -208,3 +208,123 @@
 #'
 #' @source This dataset is generated for illustrative purposes.
 "mobiusgau_tsne3"
+
+#' Three-Cluster Dataset in 4-D
+#'
+#' The `three_clust_01` dataset contains three distinct clusters in a 4-D space.
+#'
+#' @format A data frame with 1500 rows and 4 columns:
+#' \describe{
+#'   \item{x1, x2, x3, x4}{High-dimensional coordinates}
+#' }
+#'
+#' @examples
+#' # Load the mobiusgau dataset
+#' data(three_clust_01)
+#'
+#' # Display the first few rows of the dataset
+#' head(three_clust_01)
+#'
+#' @keywords datasets
+#'
+#' @rdname three_clust_01
+#' @docType data
+#' @usage data(three_clust_01)
+#' @source This dataset is generated for example purposes.
+"three_clust_01"
+
+#' Three-Cluster Dataset in 4-D
+#'
+#' The `three_clust_02` dataset contains three distinct clusters in a 4-D space.
+#'
+#' @format A data frame with 1500 rows and 4 columns:
+#' \describe{
+#'   \item{x1, x2, x3, x4}{High-dimensional coordinates}
+#' }
+#'
+#' @examples
+#' # Load the mobiusgau dataset
+#' data(three_clust_02)
+#'
+#' # Display the first few rows of the dataset
+#' head(three_clust_02)
+#'
+#' @keywords datasets
+#'
+#' @rdname three_clust_02
+#' @docType data
+#' @usage data(three_clust_02)
+#' @source This dataset is generated for example purposes.
+"three_clust_02"
+
+#' Three-Cluster Dataset in 4-D
+#'
+#' The `three_clust_03` dataset contains three distinct clusters in a 4-D space.
+#'
+#' @format A data frame with 1500 rows and 4 columns:
+#' \describe{
+#'   \item{x1, x2, x3, x4}{High-dimensional coordinates}
+#' }
+#'
+#' @examples
+#' # Load the mobiusgau dataset
+#' data(three_clust_03)
+#'
+#' # Display the first few rows of the dataset
+#' head(three_clust_03)
+#'
+#' @keywords datasets
+#'
+#' @rdname three_clust_03
+#' @docType data
+#' @usage data(three_clust_03)
+#' @source This dataset is generated for example purposes.
+"three_clust_03"
+
+#' Three-Cluster Dataset in 4-D
+#'
+#' The `three_clust_04` dataset contains three distinct clusters in a 4-D space.
+#'
+#' @format A data frame with 1500 rows and 4 columns:
+#' \describe{
+#'   \item{x1, x2, x3, x4}{High-dimensional coordinates}
+#' }
+#'
+#' @examples
+#' # Load the mobiusgau dataset
+#' data(three_clust_04)
+#'
+#' # Display the first few rows of the dataset
+#' head(three_clust_04)
+#'
+#' @keywords datasets
+#'
+#' @rdname three_clust_04
+#' @docType data
+#' @usage data(three_clust_04)
+#' @source This dataset is generated for example purposes.
+"three_clust_04"
+
+#' Three-Cluster Dataset in 4-D
+#'
+#' The `three_clust_05` dataset contains three distinct clusters in a 4-D space.
+#'
+#' @format A data frame with 1500 rows and 4 columns:
+#' \describe{
+#'   \item{x1, x2, x3, x4}{High-dimensional coordinates}
+#' }
+#'
+#' @examples
+#' # Load the mobiusgau dataset
+#' data(three_clust_05)
+#'
+#' # Display the first few rows of the dataset
+#' head(three_clust_05)
+#'
+#' @keywords datasets
+#'
+#' @rdname three_clust_05
+#' @docType data
+#' @usage data(three_clust_05)
+#' @source This dataset is generated for example purposes.
+"three_clust_05"

@@ -14,6 +14,11 @@ reference:
   - mobiusgau_umap1
   - mobiusgau_umap2
   - mobiusgau_umap3
+  - three_clust_01
+  - three_clust_02
+  - three_clust_03
+  - three_clust_04
+  - three_clust_05
 - title: "Branching"
   desc: Branching data structure.
   contents:
@@ -64,29 +69,6 @@ reference:
   - make_twogrid_overlap
   - make_twogrid_shift
   - make_shape_para
-- title: "Three clusters"
-  desc: Three different shaped clusters.
-  contents:
-  - make_three_clust_01
-  - make_three_clust_02
-  - make_three_clust_03
-  - make_three_clust_04
-  - make_three_clust_05
-  - make_three_clust_06
-  - make_three_clust_07
-  - make_three_clust_08
-  - make_three_clust_09
-  - make_three_clust_10
-  - make_three_clust_11
-  - make_three_clust_12
-  - make_three_clust_13
-  - make_three_clust_14
-  - make_three_clust_15
-  - make_three_clust_16
-  - make_three_clust_17
-  - make_three_clust_18
-  - make_three_clust_19
-  - make_three_clust_20
 - title: "Polynomial"
   desc: Polynomial data structures.
   contents:
