@@ -88,7 +88,7 @@ gen_bkgnoise <- function(n = 500, p = 4, m = rep(0, p), s = rep(2, p)) {
   }
 
   if (!is.vector(m)) {
-    cli::cli_abort("m should be vector.")
+    cli::cli_abort("m should be a vector.")
   }
 
   if (length(m) != p) {
