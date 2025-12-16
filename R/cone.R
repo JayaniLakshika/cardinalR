@@ -7,7 +7,7 @@
 #' @param h A numeric value (default: 5) representing the height of the cone.
 #' @param ratio A numeric value (default: 0.5) representing the radius tip to radius base ratio of the cone. Should be less than 1.
 #'
-#' @return A data containing the cone with the option of a sharp or blunted apex.
+#' @return A tibble containing the cone with the option of a sharp or blunted apex.
 #' @export
 #'
 #' @examples

@@ -4,7 +4,7 @@
 #'
 #' @param n A numeric value (default: 500) representing the sample size.
 #' @param p A numeric value (default: 4) representing the number of dimensions.
-#' @return A data containing the long linear data.
+#' @return A tibble containing the long linear data.
 #' @export
 #'
 #' @examples

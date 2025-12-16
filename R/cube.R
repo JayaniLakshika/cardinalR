@@ -4,7 +4,7 @@
 #'
 #' @param n A numeric vector (default: 500) representing the sample size.
 #' @param p A numeric value (default: 4) representing the number of dimensions.
-#' @return A data containing the cube with grid points.
+#' @return A tibble containing the cube with grid points.
 #' @export
 #'
 #' @examples

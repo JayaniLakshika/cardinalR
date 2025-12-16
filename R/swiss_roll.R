@@ -4,7 +4,7 @@
 #'
 #' @param n A numeric value (default: 500) representing the sample size.
 #' @param w A numeric vector (default: c(-1, 1)) representing the vertical variation.
-#' @return A data containing the generated swiss roll data.
+#' @return A tibble containing the generated swiss roll data.
 #' @references
 #' Agrafiotis, D. K., & Xu, H. (2002).
 #' A self-organizing principle for learning nonlinear manifolds.

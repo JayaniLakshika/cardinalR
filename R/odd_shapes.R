@@ -4,7 +4,7 @@
 #'
 #' @param n A numeric vector (default: c(200, 100)) representing the sample sizes.
 #' @param p A numeric value (default: 4) representing the number of dimensions.
-#' @return A data containing the mobius cluster and Gaussian cluster.
+#' @return A tibble containing the mobius cluster and Gaussian cluster.
 #' @export
 #'
 #' @examples

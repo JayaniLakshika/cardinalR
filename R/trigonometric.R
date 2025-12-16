@@ -3,7 +3,7 @@
 #' This function generates a dataset representing a structure with a Crescent pattern.
 #'
 #' @param n A numeric value (default: 500) representing the sample size.
-#' @return A data containing a Crescent structure.
+#' @return A tibble containing a Crescent structure.
 #' @export
 #'
 #' @examples

@@ -5,7 +5,7 @@
 #' @param n A numeric value (default: 500) representing the sample size.
 #' @param p A numeric value (default: 4) representing the number of dimensions.
 #' @param s A numeric matrix (default:  diag(4) * 0.01) representing the variance of along each dimension.
-#' @return A data containing a Gaussian.
+#' @return A tibble containing a Gaussian.
 #' @export
 #'
 #' @examples

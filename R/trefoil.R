@@ -5,7 +5,7 @@
 #'
 #' @param n A numeric value (default: 500) representing the sample size.
 #' @param steps A numeric value (default: 5) representing the number of steps for the theta parameter.
-#' @return A data containing 4-D trefoil knot.
+#' @return A tibble containing 4-D trefoil knot.
 #' @export
 #' @examples
 #' set.seed(20240412)
