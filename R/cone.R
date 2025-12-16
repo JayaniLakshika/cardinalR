@@ -20,7 +20,7 @@ gen_cone <- function(n = 500, p = 4, h = 5, ratio = 0.5) {
   }
 
   if (n <= 0) {
-    cli::cli_abort("n should be positive.")
+    cli::cli_abort("n must be a positive integer.")
   }
 
   if (h <= 0) {
