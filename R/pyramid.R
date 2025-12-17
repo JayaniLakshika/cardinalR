@@ -1,4 +1,4 @@
-#' Generate Rectangular Based Pyramid
+#' Generate Rectangular-based Pyramid
 #'
 #' This function generates a dataset representing a rectangular based pyramid.
 #'
@@ -8,7 +8,7 @@
 #' @param l_vec A numeric vector (default: c(3, 2)) representing the base lengths along the and y of the pyramid.
 #' @param rt A numeric value (default: 0.5) representing the tip radius of the pyramid.
 #'
-#' @return A tibble containing the rectangular based pyramid.
+#' @return A tibble containing the rectangular-based pyramid.
 #' @export
 #'
 #' @examples
