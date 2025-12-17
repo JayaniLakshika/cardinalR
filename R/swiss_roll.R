@@ -2,7 +2,7 @@
 #'
 #' This function generates swiss roll data.
 #'
-#' @param n A numeric value (default: 500) representing the sample size.
+#' @param n An integer value (default: 500) representing the sample size.
 #' @param w A numeric vector (default: c(-1, 1)) representing the vertical variation.
 #' @return A tibble containing the generated swiss roll data.
 #' @references

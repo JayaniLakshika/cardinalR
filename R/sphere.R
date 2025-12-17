@@ -2,8 +2,8 @@
 #'
 #' This function generates a dataset representing a structure with a circle.
 #'
-#' @param n A numeric value (default: 500) representing the sample size.
-#' @param p A numeric value (default: 4) representing the number of dimensions.
+#' @param n An integer value (default: 500) representing the sample size.
+#' @param p An integer value (default: 4) representing the number of dimensions.
 #' @return A data containing a circle.
 #' @export
 #'
@@ -52,7 +52,7 @@ gen_circle <- function(n = 500, p = 4){
 #'
 #' This function generates a dataset representing a structure with a curvy cell cycle.
 #'
-#' @param n A numeric value (default: 500) representing the sample size.
+#' @param n An integer value (default: 500) representing the sample size.
 #' @param p A numeric value (default: 4) representing the number of dimensions.
 #' @return A data containing a curvy cell cycle.
 #' @export
