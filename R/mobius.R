@@ -2,7 +2,7 @@
 #'
 #' This function generates a dataset representing a structure with a mobius.
 #'
-#' @param n A numeric value (default: 500) representing the sample size.
+#' @param n An integer value (default: 500) representing the sample size.
 #' @return A tibble containing a mobius structure.
 #' @export
 #'

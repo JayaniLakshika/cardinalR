@@ -2,8 +2,8 @@
 #'
 #' This function generates a dataset consisting of a mobius cluster and Gaussian cluster.
 #'
-#' @param n A numeric vector (default: c(200, 100)) representing the sample sizes.
-#' @param p A numeric value (default: 4) representing the number of dimensions.
+#' @param n An integer vector (default: c(200, 100)) representing the sample sizes.
+#' @param p An integer value (default: 4) representing the number of dimensions.
 #' @return A tibble containing the mobius cluster and Gaussian cluster.
 #' @export
 #'

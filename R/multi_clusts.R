@@ -4,9 +4,9 @@
 #' Each cluster can have a different shape, scale, rotation, and centroid,
 #' allowing the construction of complex synthetic datasets.
 #'
-#' @param n A numeric vector (default: c(200, 500, 300)) representing the sample sizes
+#' @param n An integer vector (default: c(200, 500, 300)) representing the sample sizes
 #'   for each cluster. Must have length \code{k}.
-#' @param k A numeric value (default: 3) representing the number of clusters.
+#' @param k An integervalue (default: 3) representing the number of clusters.
 #' @param loc A numeric matrix giving the centroids of the clusters.
 #'   The number of rows must equal \code{k}; the number of columns should match
 #'   the maximum dimensionality across all shapes.

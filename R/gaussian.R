@@ -2,8 +2,8 @@
 #'
 #' This function generates a dataset representing a structure with a Gaussian.
 #'
-#' @param n A numeric value (default: 500) representing the sample size.
-#' @param p A numeric value (default: 4) representing the number of dimensions.
+#' @param n An integer value (default: 500) representing the sample size.
+#' @param p An integer value (default: 4) representing the number of dimensions.
 #' @param s A numeric matrix (default:  diag(4) * 0.01) representing the variance of along each dimension.
 #' @return A tibble containing a multivariate Gaussian dataset.
 #' @export

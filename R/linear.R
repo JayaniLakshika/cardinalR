@@ -2,8 +2,8 @@
 #'
 #' This function generates a dataset consisting of long linear data.
 #'
-#' @param n A numeric value (default: 500) representing the sample size.
-#' @param p A numeric value (default: 4) representing the number of dimensions.
+#' @param n An integer value (default: 500) representing the sample size.
+#' @param p An integer  value (default: 4) representing the number of dimensions.
 #' @return A tibble containing the long linear data.
 #' @export
 #'
