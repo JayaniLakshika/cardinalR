@@ -2,8 +2,8 @@
 #'
 #' This function generates a dataset representing a cone with the option of a sharp or blunted apex.
 #'
-#' @param n A numeric value (default: 500) representing the sample size.
-#' @param p A numeric value (default: 4) representing the number of dimensions.
+#' @param n An integer value (default: 500) representing the sample size.
+#' @param p An integervalue (default: 4) representing the number of dimensions.
 #' @param h A numeric value (default: 5) representing the height of the cone.
 #' @param ratio A numeric value (default: 0.5) representing the radius tip to radius base ratio of the cone. Should be less than 1.
 #'
@@ -20,7 +20,7 @@ gen_cone <- function(n = 500, p = 4, h = 5, ratio = 0.5) {
   }
 
   if (n <= 0) {
-    cli::cli_abort("n must be a positive integer.")
+    cli::cli_abort("n should be positive.")
   }
 
   if (h <= 0) {
