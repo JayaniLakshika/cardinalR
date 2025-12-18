@@ -13,7 +13,7 @@ gen_quadratic(n = 500, range = c(-1, 1))
 
 - n:
 
-  A numeric value (default: 500) representing the sample size.
+  A integer value (default: 500) representing the sample size.
 
 - range:
 
@@ -22,7 +22,7 @@ gen_quadratic(n = 500, range = c(-1, 1))
 
 ## Value
 
-A data containing a quadratic structure.
+A tibble containing a quadratic structure.
 
 ## Examples
 

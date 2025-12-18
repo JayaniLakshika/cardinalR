@@ -13,15 +13,15 @@ gen_expbranches(n = 400, k = 4)
 
 - n:
 
-  A numeric value (default: 400) representing the sample size.
+  An integer value (default: 400) representing the sample size.
 
 - k:
 
-  A numeric value (default: 4) representing the number of branches.
+  An integer value (default: 4) representing the number of branches.
 
 ## Value
 
-A data containing exponential shaped branches.
+A tibble containing exponential shaped branches.
 
 ## Examples
 

@@ -24,12 +24,12 @@ gen_multicluster(
 
 - n:
 
-  A numeric vector (default: c(200, 500, 300)) representing the sample
+  An integer vector (default: c(200, 500, 300)) representing the sample
   sizes for each cluster. Must have length `k`.
 
 - k:
 
-  A numeric value (default: 3) representing the number of clusters.
+  An integervalue (default: 3) representing the number of clusters.
 
 - loc:
 

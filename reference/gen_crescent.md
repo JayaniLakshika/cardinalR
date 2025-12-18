@@ -13,11 +13,11 @@ gen_crescent(n = 500)
 
 - n:
 
-  A numeric value (default: 500) representing the sample size.
+  An integer value (default: 500) representing the sample size.
 
 ## Value
 
-A data containing a Crescent structure.
+A tibble containing a Crescent structure.
 
 ## Examples
 

@@ -1,4 +1,4 @@
-# Generate Rectangular Based Pyramid
+# Generate Rectangular-based Pyramid
 
 This function generates a dataset representing a rectangular based
 pyramid.
@@ -13,11 +13,11 @@ gen_pyrrect(n = 500, p = 4, h = 5, l_vec = c(3, 2), rt = 0.5)
 
 - n:
 
-  A numeric value (default: 500) representing the sample size.
+  An integer value (default: 500) representing the sample size.
 
 - p:
 
-  A numeric value (default: 4) representing the number of dimensions.
+  An integer value (default: 4) representing the number of dimensions.
 
 - h:
 
@@ -35,7 +35,7 @@ gen_pyrrect(n = 500, p = 4, h = 5, l_vec = c(3, 2), rt = 0.5)
 
 ## Value
 
-A data containing the rectangular based pyramid.
+A tibble containing the rectangular-based pyramid.
 
 ## Examples
 

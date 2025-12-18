@@ -13,11 +13,11 @@ gen_pyrtri(n = 500, p = 4, h = 5, l = 3, rt = 0.5)
 
 - n:
 
-  A numeric value (default: 500) representing the sample size.
+  An integer value (default: 500) representing the sample size.
 
 - p:
 
-  A numeric value (default: 4) representing the number of dimensions.
+  An integer value (default: 4) representing the number of dimensions.
 
 - h:
 

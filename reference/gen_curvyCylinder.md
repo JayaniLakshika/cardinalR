@@ -13,7 +13,7 @@ gen_curvycylinder(n = 500, h = 10)
 
 - n:
 
-  A numeric value (default: 500) representing the sample size.
+  An integer value (default: 500) representing the sample size.
 
 - h:
 

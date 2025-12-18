@@ -13,15 +13,16 @@ make_mobiusgau(n = c(200, 100), p = 4)
 
 - n:
 
-  A numeric vector (default: c(200, 100)) representing the sample sizes.
+  An integer vector (default: c(200, 100)) representing the sample
+  sizes.
 
 - p:
 
-  A numeric value (default: 4) representing the number of dimensions.
+  An integer value (default: 4) representing the number of dimensions.
 
 ## Value
 
-A data containing the mobius cluster and Gaussian cluster.
+A tibble containing the mobius cluster and Gaussian cluster.
 
 ## Examples
 

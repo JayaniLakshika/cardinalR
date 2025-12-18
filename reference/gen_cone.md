@@ -13,11 +13,11 @@ gen_cone(n = 500, p = 4, h = 5, ratio = 0.5)
 
 - n:
 
-  A numeric value (default: 500) representing the sample size.
+  An integer value (default: 500) representing the sample size.
 
 - p:
 
-  A numeric value (default: 4) representing the number of dimensions.
+  An integervalue (default: 4) representing the number of dimensions.
 
 - h:
 
@@ -30,7 +30,7 @@ gen_cone(n = 500, p = 4, h = 5, ratio = 0.5)
 
 ## Value
 
-A data containing the cone with the option of a sharp or blunted apex.
+A tibble containing the cone with the option of a sharp or blunted apex.
 
 ## Examples
 

@@ -13,11 +13,11 @@ gen_pyrfrac(n = 500, p = 4)
 
 - n:
 
-  A numeric value (default: 500) representing the sample size.
+  An integer value (default: 500) representing the sample size.
 
 - p:
 
-  A numeric value (default: 4) representing the number of dimensions.
+  An integer value (default: 4) representing the number of dimensions.
 
 ## Value
 

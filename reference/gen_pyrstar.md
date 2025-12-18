@@ -12,11 +12,11 @@ gen_pyrstar(n = 500, p = 4, h = 5, rb = 3)
 
 - n:
 
-  A numeric value (default: 500) representing the sample size.
+  An integer value (default: 500) representing the sample size.
 
 - p:
 
-  A numeric value (default: 4) representing the number of dimensions.
+  An integer value (default: 4) representing the number of dimensions.
 
 - h:
 

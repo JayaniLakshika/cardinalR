@@ -12,7 +12,7 @@ gen_scurve(n = 500)
 
 - n:
 
-  A numeric value (default: 500) representing the sample size.
+  An integer value (default: 500) representing the sample size.
 
 ## Value
 

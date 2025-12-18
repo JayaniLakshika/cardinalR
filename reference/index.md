@@ -73,7 +73,7 @@ Cube data structure.
 Gaussian data structure.
 
 - [`gen_gaussian()`](https://jayanilakshika.github.io/cardinalR/reference/gen_gaussian.md)
-  : Generate Gaussian
+  : Generate Multivariate Gaussian Cloud
 
 ## Linear
 
@@ -143,7 +143,7 @@ Polynomial data structures.
 Pyramid data structures.
 
 - [`gen_pyrrect()`](https://jayanilakshika.github.io/cardinalR/reference/gen_pyrrect.md)
-  : Generate Rectangular Based Pyramid
+  : Generate Rectangular-based Pyramid
 - [`gen_pyrtri()`](https://jayanilakshika.github.io/cardinalR/reference/gen_pyrtri.md)
   : Generate Triangular Based Pyramid
 - [`gen_pyrstar()`](https://jayanilakshika.github.io/cardinalR/reference/gen_pyrstar.md)

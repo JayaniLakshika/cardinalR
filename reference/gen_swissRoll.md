@@ -12,7 +12,7 @@ gen_swissroll(n = 500, w = c(-1, 1))
 
 - n:
 
-  A numeric value (default: 500) representing the sample size.
+  An integer value (default: 500) representing the sample size.
 
 - w:
 
@@ -21,7 +21,7 @@ gen_swissroll(n = 500, w = c(-1, 1))
 
 ## Value
 
-A data containing the generated swiss roll data.
+A tibble containing the generated swiss roll data.
 
 ## References
 
