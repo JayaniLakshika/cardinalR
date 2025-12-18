@@ -2,9 +2,9 @@
 #'
 #' This function generates a dataset representing a structure with exponential shaped branches.
 #'
-#' @param n A numeric value (default: 400) representing the sample size.
-#' @param k A numeric value (default: 4) representing the number of branches.
-#' @return A data containing exponential shaped branches.
+#' @param n An integer value (default: 400) representing the sample size.
+#' @param k An integer value (default: 4) representing the number of branches.
+#' @return A tibble containing exponential shaped branches.
 #'
 #' @export
 #'

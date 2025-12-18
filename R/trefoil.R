@@ -3,9 +3,9 @@
 #' This function generates coordinates for a 4-D trefoil knot.
 #' The number of points is determined by the length of the theta and phi sequences.
 #'
-#' @param n A numeric value (default: 500) representing the sample size.
+#' @param n An integer value (default: 500) representing the sample size.
 #' @param steps A numeric value (default: 5) representing the number of steps for the theta parameter.
-#' @return A data containing 4-D trefoil knot.
+#' @return A tibble containing 4-D trefoil knot.
 #' @export
 #' @examples
 #' set.seed(20240412)
@@ -56,7 +56,7 @@ gen_trefoil4d <- function(n = 500, steps = 5) {
 #' This function generates coordinates for a 3-D trefoil knot
 #' by applying a stereographic projection from 4-D space.
 #'
-#' @param n A numeric value (default: 500) representing the sample size.
+#' @param n An integer value (default: 500) representing the sample size.
 #' @param steps A numeric value (default: 5) representing the number of steps for the theta parameter.
 #' @return A data containing 3-D trefoil knot.
 #' @export

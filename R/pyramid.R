@@ -1,14 +1,14 @@
-#' Generate Rectangular Based Pyramid
+#' Generate Rectangular-based Pyramid
 #'
 #' This function generates a dataset representing a rectangular based pyramid.
 #'
-#' @param n A numeric value (default: 500) representing the sample size.
-#' @param p A numeric value (default: 4) representing the number of dimensions.
+#' @param n An integer value (default: 500) representing the sample size.
+#' @param p An integer value (default: 4) representing the number of dimensions.
 #' @param h A numeric value (default: 5) representing the height of the pyramid.
 #' @param l_vec A numeric vector (default: c(3, 2)) representing the base lengths along the and y of the pyramid.
 #' @param rt A numeric value (default: 0.5) representing the tip radius of the pyramid.
 #'
-#' @return A data containing the rectangular based pyramid.
+#' @return A tibble containing the rectangular-based pyramid.
 #' @export
 #'
 #' @examples
@@ -78,8 +78,8 @@ gen_pyrrect <- function(n = 500, p = 4, h = 5, l_vec = c(3, 2), rt = 0.5) {
 #'
 #' This function generates a dataset representing a triangular based pyramid.
 #'
-#' @param n A numeric value (default: 500) representing the sample size.
-#' @param p A numeric value (default: 4) representing the number of dimensions.
+#' @param n An integer value (default: 500) representing the sample size.
+#' @param p An integer value (default: 4) representing the number of dimensions.
 #' @param h A numeric value (default: 5) representing the height of the pyramid.
 #' @param l A numeric value (default: 3) representing the base length of the pyramid.
 #' @param rt A numeric value (default: 0.5) representing the tip radius of the pyramid.
@@ -158,8 +158,8 @@ gen_pyrtri <- function(n = 500, p = 4, h = 5, l = 3, rt = 0.5) {
 #'
 #' This function generates a dataset representing a star based pyramid.
 #'
-#' @param n A numeric value (default: 500) representing the sample size.
-#' @param p A numeric value (default: 4) representing the number of dimensions.
+#' @param n An integer value (default: 500) representing the sample size.
+#' @param p An integer value (default: 4) representing the number of dimensions.
 #' @param h A numeric value (default: 5) representing the height of the pyramid.
 #' @param rb A numeric value (default: 3) representing the base radius of the pyramid.
 #'
@@ -227,8 +227,8 @@ gen_pyrstar <- function(n = 500, p = 4, h = 5, rb = 3) {
 #'
 #' This function generates p-D triangular pyramid with triangular pyramid shaped holes.
 #'
-#' @param n A numeric value (default: 500) representing the sample size.
-#' @param p A numeric value (default: 4) representing the number of dimensions.
+#' @param n An integer value (default: 500) representing the sample size.
+#' @param p An integer value (default: 4) representing the number of dimensions.
 #' @return A data containing a triangular pyramid with triangular pyramid shaped holes.
 #' @export
 #'

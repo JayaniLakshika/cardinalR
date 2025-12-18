@@ -2,8 +2,8 @@
 #'
 #' This function generates a dataset representing a structure with a Crescent pattern.
 #'
-#' @param n A numeric value (default: 500) representing the sample size.
-#' @return A data containing a Crescent structure.
+#' @param n An integer value (default: 500) representing the sample size.
+#' @return A tibble containing a Crescent structure.
 #' @export
 #'
 #' @examples
@@ -35,7 +35,7 @@ gen_crescent <- function(n = 500) {
 #'
 #' This function generates a dataset representing a structure with a curvy cylinder.
 #'
-#' @param n A numeric value (default: 500) representing the sample size.
+#' @param n An integer value (default: 500) representing the sample size.
 #' @param h A numeric value (default: 10) representing the height of the cylinder.
 #' @return A data containing a curvy cylinder.
 #' @export

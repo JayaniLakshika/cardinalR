@@ -2,9 +2,9 @@
 #'
 #' This function generates a dataset representing a structure with a quadratic pattern.
 #'
-#' @param n A numeric value (default: 500) representing the sample size.
+#' @param n A integer value (default: 500) representing the sample size.
 #' @param range A numeric vector (default: c(-1, 1)) representing the range along x1 axis.
-#' @return A data containing a quadratic structure.
+#' @return A tibble containing a quadratic structure.
 #' @export
 #'
 #' @examples

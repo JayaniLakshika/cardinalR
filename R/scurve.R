@@ -2,7 +2,7 @@
 #'
 #' This function generates S-curve data.
 #'
-#' @param n A numeric value (default: 500) representing the sample size.
+#' @param n An integer value (default: 500) representing the sample size.
 #' @return A data containing the generated S-curve data.
 #' @references
 #' Buitinck, L., Louppe, G., Blondel, M., Pedregosa, F., Mueller, A.,
