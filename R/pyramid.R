@@ -5,7 +5,8 @@
 #' @param n An integer value (default: 500) representing the sample size.
 #' @param p An integer value (default: 4) representing the number of dimensions.
 #' @param h A numeric value (default: 5) representing the height of the pyramid.
-#' @param l_vec A numeric vector (default: c(3, 2)) representing the base lengths along the and y of the pyramid.
+#' @param l_vec A numeric vector (default: c(3, 2)) representing the base lengths
+#' along the and y of the pyramid.
 #' @param rt A numeric value (default: 0.5) representing the tip radius of the pyramid.
 #'
 #' @return A tibble containing the rectangular-based pyramid.

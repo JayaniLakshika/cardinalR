@@ -2,24 +2,26 @@
 % Please edit documentation in R/gaussian.R
 \name{gen_gaussian}
 \alias{gen_gaussian}
-\title{Generate Gaussian}
+\title{Generate Multivariate Gaussian Cloud}
 \usage{
-gen_gaussian(n = 500, p = 4, s = diag(p) * 0.01)
+gen_gaussian(n = 500, p = 4, m = rep(0, p), s = diag(p) * 0.01)
 }
 \arguments{
-\item{n}{A numeric value (default: 500) representing the sample size.}
+\item{n}{An integer value (default: 500) representing the sample size.}
 
-\item{p}{A numeric value (default: 4) representing the number of dimensions.}
+\item{p}{An integer value (default: 4) representing the number of dimensions.}
+
+\item{m}{A numeric vector (default: c(0, 0, 0, 0)) representing the mean along each dimensions.}
 
 \item{s}{A numeric matrix (default:  diag(4) * 0.01) representing the variance of along each dimension.}
 }
 \value{
-A data containing a Gaussian.
+A tibble containing a multivariate Gaussian cloud dataset.
 }
 \description{
 This function generates a dataset representing a structure with a Gaussian.
 }
 \examples{
 set.seed(20240412)
-gaussian <- gen_gaussian(n = 500, p = 4, s = diag(4))
+gaussian <- gen_gaussian(n = 500, p = 4, m = rep(0, 4), s = diag(4))
 }

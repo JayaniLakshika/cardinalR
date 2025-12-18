@@ -7,12 +7,12 @@
 gen_trefoil4d(n = 500, steps = 5)
 }
 \arguments{
-\item{n}{A numeric value (default: 500) representing the sample size.}
+\item{n}{An integer value (default: 500) representing the sample size.}
 
 \item{steps}{A numeric value (default: 5) representing the number of steps for the theta parameter.}
 }
 \value{
-A data containing 4-D trefoil knot.
+A tibble containing 4-D trefoil knot.
 }
 \description{
 This function generates coordinates for a 4-D trefoil knot.

@@ -7,12 +7,12 @@
 gen_quadratic(n = 500, range = c(-1, 1))
 }
 \arguments{
-\item{n}{A numeric value (default: 500) representing the sample size.}
+\item{n}{A integer value (default: 500) representing the sample size.}
 
 \item{range}{A numeric vector (default: c(-1, 1)) representing the range along x1 axis.}
 }
 \value{
-A data containing a quadratic structure.
+A tibble containing a quadratic structure.
 }
 \description{
 This function generates a dataset representing a structure with a quadratic pattern.

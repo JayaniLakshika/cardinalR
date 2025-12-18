@@ -16,10 +16,10 @@ gen_multicluster(
 )
 }
 \arguments{
-\item{n}{A numeric vector (default: c(200, 500, 300)) representing the sample sizes
+\item{n}{An integer vector (default: c(200, 500, 300)) representing the sample sizes
 for each cluster. Must have length \code{k}.}
 
-\item{k}{A numeric value (default: 3) representing the number of clusters.}
+\item{k}{An integervalue (default: 3) representing the number of clusters.}
 
 \item{loc}{A numeric matrix giving the centroids of the clusters.
 The number of rows must equal \code{k}; the number of columns should match

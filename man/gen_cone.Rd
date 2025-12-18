@@ -7,16 +7,16 @@
 gen_cone(n = 500, p = 4, h = 5, ratio = 0.5)
 }
 \arguments{
-\item{n}{A numeric value (default: 500) representing the sample size.}
+\item{n}{An integer value (default: 500) representing the sample size.}
 
-\item{p}{A numeric value (default: 4) representing the number of dimensions.}
+\item{p}{An integervalue (default: 4) representing the number of dimensions.}
 
 \item{h}{A numeric value (default: 5) representing the height of the cone.}
 
 \item{ratio}{A numeric value (default: 0.5) representing the radius tip to radius base ratio of the cone. Should be less than 1.}
 }
 \value{
-A data containing the cone with the option of a sharp or blunted apex.
+A tibble containing the cone with the option of a sharp or blunted apex.
 }
 \description{
 This function generates a dataset representing a cone with the option of a sharp or blunted apex.

@@ -7,7 +7,7 @@
 gen_curvycycle(n = 500, p = 4)
 }
 \arguments{
-\item{n}{A numeric value (default: 500) representing the sample size.}
+\item{n}{An integer value (default: 500) representing the sample size.}
 
 \item{p}{A numeric value (default: 4) representing the number of dimensions.}
 }

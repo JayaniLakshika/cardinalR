@@ -7,12 +7,12 @@
 make_mobiusgau(n = c(200, 100), p = 4)
 }
 \arguments{
-\item{n}{A numeric vector (default: c(200, 100)) representing the sample sizes.}
+\item{n}{An integer vector (default: c(200, 100)) representing the sample sizes.}
 
-\item{p}{A numeric value (default: 4) representing the number of dimensions.}
+\item{p}{An integer value (default: 4) representing the number of dimensions.}
 }
 \value{
-A data containing the mobius cluster and Gaussian cluster.
+A tibble containing the mobius cluster and Gaussian cluster.
 }
 \description{
 This function generates a dataset consisting of a mobius cluster and Gaussian cluster.

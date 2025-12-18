@@ -7,9 +7,9 @@
 gen_pyrtri(n = 500, p = 4, h = 5, l = 3, rt = 0.5)
 }
 \arguments{
-\item{n}{A numeric value (default: 500) representing the sample size.}
+\item{n}{An integer value (default: 500) representing the sample size.}
 
-\item{p}{A numeric value (default: 4) representing the number of dimensions.}
+\item{p}{An integer value (default: 4) representing the number of dimensions.}
 
 \item{h}{A numeric value (default: 5) representing the height of the pyramid.}
 

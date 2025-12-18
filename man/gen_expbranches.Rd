@@ -7,12 +7,12 @@
 gen_expbranches(n = 400, k = 4)
 }
 \arguments{
-\item{n}{A numeric value (default: 400) representing the sample size.}
+\item{n}{An integer value (default: 400) representing the sample size.}
 
-\item{k}{A numeric value (default: 4) representing the number of branches.}
+\item{k}{An integer value (default: 4) representing the number of branches.}
 }
 \value{
-A data containing exponential shaped branches.
+A tibble containing exponential shaped branches.
 }
 \description{
 This function generates a dataset representing a structure with exponential shaped branches.

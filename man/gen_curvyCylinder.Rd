@@ -7,7 +7,7 @@
 gen_curvycylinder(n = 500, h = 10)
 }
 \arguments{
-\item{n}{A numeric value (default: 500) representing the sample size.}
+\item{n}{An integer value (default: 500) representing the sample size.}
 
 \item{h}{A numeric value (default: 10) representing the height of the cylinder.}
 }

@@ -7,10 +7,10 @@
 gen_mobius(n = 500)
 }
 \arguments{
-\item{n}{A numeric value (default: 500) representing the sample size.}
+\item{n}{An integer value (default: 500) representing the sample size.}
 }
 \value{
-A data containing a mobius structure.
+A tibble containing a mobius structure.
 }
 \description{
 This function generates a dataset representing a structure with a mobius.

@@ -7,7 +7,7 @@
 gen_trefoil3d(n = 500, steps = 5)
 }
 \arguments{
-\item{n}{A numeric value (default: 500) representing the sample size.}
+\item{n}{An integer value (default: 500) representing the sample size.}
 
 \item{steps}{A numeric value (default: 5) representing the number of steps for the theta parameter.}
 }

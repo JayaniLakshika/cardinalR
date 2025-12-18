@@ -12,7 +12,7 @@
 make_mobiusgau <- function(n = c(200, 100), p = 4) {
 
   if (p < 3) {
-    cli::cli_abort("p should be greater than 3.")
+    cli::cli_abort("p should be greater than or equal to 3.")
   }
 
   if (length(n) != 2) {
@@ -139,7 +139,7 @@ make_multigau <- function(n = c(300, 200, 500), p = 4, k = 3, loc = NULL, scale 
 make_curvygau <- function(n = c(200, 100), p = 4) {
 
   if (p < 3) {
-    cli::cli_abort("p should be greater than 3.")
+    cli::cli_abort("p should be greater than or equal to 3.")
   }
 
   if (length(n) != 2) {
@@ -510,7 +510,7 @@ make_gaucircles <- function(n = c(200, 100, 100), p = 4, num_circles = 2, scale_
   k <- num_circles + 1
 
   if (p < 3) {
-    cli::cli_abort("p should be greater than 3.")
+    cli::cli_abort("p should be greater than or equal to 3.")
   }
 
   if (length(n) != k) {
@@ -569,7 +569,7 @@ make_gaucurvycycle <- function(n = c(200, 100, 100), p = 4, num_curvycycle = 2, 
   k <- num_curvycycle + 1
 
   if (p < 3) {
-    cli::cli_abort("p should be greater than 3.")
+    cli::cli_abort("p should be greater than or equal to 3.")
   }
 
   if (length(n) != k) {

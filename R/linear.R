@@ -3,7 +3,7 @@
 #' This function generates a dataset consisting of long linear data.
 #'
 #' @param n An integer value (default: 500) representing the sample size.
-#' @param p An integer  value (default: 4) representing the number of dimensions.
+#' @param p An integer value (default: 4) representing the number of dimensions.
 #' @return A tibble containing the long linear data.
 #' @export
 #'
@@ -13,7 +13,7 @@
 gen_longlinear <- function(n = 500, p = 4) {
 
   if (p < 2) {
-    cli::cli_abort("p should be greater than 2.")
+    cli::cli_abort("p should be greater than or equal to 2.")
   }
 
   if (n <= 0){

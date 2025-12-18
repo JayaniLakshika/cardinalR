@@ -7,12 +7,12 @@
 gen_swissroll(n = 500, w = c(-1, 1))
 }
 \arguments{
-\item{n}{A numeric value (default: 500) representing the sample size.}
+\item{n}{An integer value (default: 500) representing the sample size.}
 
 \item{w}{A numeric vector (default: c(-1, 1)) representing the vertical variation.}
 }
 \value{
-A data containing the generated swiss roll data.
+A tibble containing the generated swiss roll data.
 }
 \description{
 This function generates swiss roll data.

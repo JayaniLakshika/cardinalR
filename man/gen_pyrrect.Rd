@@ -2,23 +2,24 @@
 % Please edit documentation in R/pyramid.R
 \name{gen_pyrrect}
 \alias{gen_pyrrect}
-\title{Generate Rectangular Based Pyramid}
+\title{Generate Rectangular-based Pyramid}
 \usage{
 gen_pyrrect(n = 500, p = 4, h = 5, l_vec = c(3, 2), rt = 0.5)
 }
 \arguments{
-\item{n}{A numeric value (default: 500) representing the sample size.}
+\item{n}{An integer value (default: 500) representing the sample size.}
 
-\item{p}{A numeric value (default: 4) representing the number of dimensions.}
+\item{p}{An integer value (default: 4) representing the number of dimensions.}
 
 \item{h}{A numeric value (default: 5) representing the height of the pyramid.}
 
-\item{l_vec}{A numeric vector (default: c(3, 2)) representing the base lengths along the and y of the pyramid.}
+\item{l_vec}{A numeric vector (default: c(3, 2)) representing the base lengths
+along the and y of the pyramid.}
 
 \item{rt}{A numeric value (default: 0.5) representing the tip radius of the pyramid.}
 }
 \value{
-A data containing the rectangular based pyramid.
+A tibble containing the rectangular-based pyramid.
 }
 \description{
 This function generates a dataset representing a rectangular based pyramid.

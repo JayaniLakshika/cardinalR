@@ -7,12 +7,12 @@
 gen_gridcube(n = 500, p = 4)
 }
 \arguments{
-\item{n}{A numeric vector (default: 500) representing the sample size.}
+\item{n}{An integer vector (default: 500) representing the sample size.}
 
-\item{p}{A numeric value (default: 4) representing the number of dimensions.}
+\item{p}{An integer value (default: 4) representing the number of dimensions.}
 }
 \value{
-A data containing the cube with grid points.
+A tibble containing the cube with grid points.
 }
 \description{
 This function generates a grid dataset with specified grid points along each axes.
