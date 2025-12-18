@@ -1,7 +1,7 @@
 # gen_gaussian() works
 
     Code
-      gen_gaussian(n = 500, p = 4, s = diag(4))
+      gen_gaussian(n = 500, p = 4, m = rep(0, 4), s = diag(4))
     Message
       v Data generation completed successfully!!!
     Output
