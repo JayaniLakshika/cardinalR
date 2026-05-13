@@ -20,14 +20,14 @@
 Source:
 [`DESCRIPTION`](https://github.com/JayaniLakshika/cardinalR/blob/main/DESCRIPTION)
 
-Gamage J, Cook D, Harrison P, Lydeamore M, Talagala T (2025).
+Gamage J, Cook D, Harrison P, Lydeamore M, Talagala T (2026).
 *cardinalR: Collection of Data Structures*. R package version 1.0.6,
 <https://jayanilakshika.github.io/cardinalR/>.
 
     @Manual{,
       title = {cardinalR: Collection of Data Structures},
       author = {Jayani P. Gamage and Dianne Cook and Paul Harrison and Michael Lydeamore and Thiyanga S. Talagala},
-      year = {2025},
+      year = {2026},
       note = {R package version 1.0.6},
       url = {https://jayanilakshika.github.io/cardinalR/},
     }

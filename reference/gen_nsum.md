@@ -34,7 +34,7 @@ the elements in this vector will be approximately equal to \`n\`. If
 
 ``` r
 gen_nsum(500, 6) # Example with n=500, p=6
-#> [1] 83 84 84 83 83 83
+#> [1] 84 83 83 84 83 83
 gen_nsum(700, 4) # Example with n=700, p=4
 #> [1] 175 175 175 175
 gen_nsum(625, 5) # Example with n=625 (perfect division)

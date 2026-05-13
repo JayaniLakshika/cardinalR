@@ -34,7 +34,7 @@ is a perfect p-th power, the elements will be equal.
 
 ``` r
 gen_nproduct(500, 6) # Example with n=500, p=6
-#> [1] 1 2 2 5 5 5
+#> [1] 1 1 3 4 6 7
 gen_nproduct(700, 4) # Example with n=700, p=4
 #> [1] 4 5 5 7
 gen_nproduct(625, 4) # Example with n=625 (perfect power)

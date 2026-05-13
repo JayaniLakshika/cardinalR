@@ -37,6 +37,7 @@ A data containing the generated background noise data.
 ## Examples
 
 ``` r
+
 # Generate background noise with custom mean and standard deviation
 set.seed(20240412)
 gen_bkgnoise(n = 500, p = 4, m = c(0, 0, 0, 0), s = c(2, 2, 2, 2))

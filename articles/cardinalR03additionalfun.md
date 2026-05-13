@@ -1,6 +1,7 @@
 # Additional functions
 
 ``` r
+
 library(cardinalR)
 ```
 
@@ -14,6 +15,7 @@ function allows users to generate multivariate Gaussian noise to serve
 as background data in high-dimensional spaces.
 
 ``` r
+
 # Example: Generate 4D background noise
 bkg_data <- gen_bkgnoise(n = 500, p = 4, 
                          m = c(0, 0, 0, 0), s = c(2, 2, 2, 2))
@@ -38,6 +40,7 @@ and standard deviations (`s`).
 ensures the rows of the input data is randomized.
 
 ``` r
+
 randomized_data <- randomize_rows(bkg_data)
 head(randomized_data)
 #> # A tibble: 6 × 4
@@ -59,6 +62,7 @@ by centering each cluster (subtracting its mean) and then adding a
 translation vector from a provided matrix (`vert_mat`).
 
 ``` r
+
 df <- tibble::tibble(
   x1 = rnorm(12),
   x2 = rnorm(12),
@@ -95,6 +99,7 @@ planes and angles.
 
 ``` r
 
+
 rotations_4d <- list(
   list(plane = c(1, 2), angle = 60),
   list(plane = c(3, 4), angle = 90)
@@ -118,6 +123,7 @@ function rescales the entire dataset to fit within (\[-1, 1\]) based on
 its maximum absolute value.
 
 ``` r
+
 norm_data <- normalize_data(bkg_data)
 head(norm_data)
 #>             x1          x2          x3          x4
@@ -137,6 +143,7 @@ generates points forming a **simplex-like arrangement** ensuring each
 cluster center is equidistant from others as much as possible.
 
 ``` r
+
 
 centers <- gen_clustloc(p = 4, k = 5)
 head(centers)
@@ -162,18 +169,20 @@ randomly distributes any remainder, ensuring the elements sum exactly to
 `n`.
 
 ``` r
+
 gen_nsum(n = 100, k = 3)
 #> [1] 34 33 33
 ```
 
 The function `gen_nproduct(n, p)` aims to produce `p` positive integers
 whose product is approximately `n`. It starts with all elements equal to
-the rounded $p^{th}$ root of `n` and iteratively adjusts elements up or
-down in a randomized manner until the product is within a small
+the rounded $`p^{th}`$ root of `n` and iteratively adjusts elements up
+or down in a randomized manner until the product is within a small
 tolerance of `n`. This accommodates the fact that exact integer
 solutions for a given product are often impossible.
 
 ``` r
+
 gen_nproduct(n = 500, p = 4)
 #> [1] 4 5 5 5
 ```

@@ -1,11 +1,11 @@
-pandoc: 3.1.11
+pandoc: 3.8.3
 pkgdown: 2.2.0
 pkgdown_sha: ~
 articles:
   cardinalR01main_function: cardinalR01main_function.html
   cardinalR02examples: cardinalR02examples.html
   cardinalR03additionalfun: cardinalR03additionalfun.html
-last_built: 2025-12-18T03:08Z
+last_built: 2026-05-13T04:41Z
 urls:
   reference: https://jayanilakshika.github.io/cardinalR/reference
   article: https://jayanilakshika.github.io/cardinalR/articles

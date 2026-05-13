@@ -12,12 +12,14 @@ You can install the released version of `cardinalR` from
 [CRAN](https://CRAN.R-project.org) with:
 
 ``` r
+
 install.packages("cardinalR") 
 ```
 
 The development version from [GitHub](https://github.com/) with:
 
 ``` r
+
 # install.packages("pak")
 pak::pak("JayaniLakshika/cardinalR")
 ```
@@ -25,10 +27,12 @@ pak::pak("JayaniLakshika/cardinalR")
 ## Example
 
 ``` r
+
 library(cardinalR)
 ```
 
 ``` r
+
 head(mobiusgau, 5)
 #> # A tibble: 5 × 4
 #>        x1       x2       x3      x4
@@ -43,13 +47,14 @@ head(mobiusgau, 5)
 To view the data in high-dimensional space
 
 ``` r
+
 langevitour(mobiusgau)
 ```
 
 Following shows three 2-D projections from the 4-D `mobiusgau` data.
 
-|                                                                      |                                                                      |                                                                      |
-|:--------------------------------------------------------------------:|:--------------------------------------------------------------------:|:--------------------------------------------------------------------:|
+|  |  |  |
+|:--:|:--:|:--:|
 | ![Mobius Gaussian data projection 1](reference/figures/mobius_1.png) | ![Mobius Gaussian data projection 2](reference/figures/mobius_2.png) | ![Mobius Gaussian data projection 3](reference/figures/mobius_3.png) |
 
 You can find the high-dimensional view in
